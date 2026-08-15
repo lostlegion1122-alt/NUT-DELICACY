@@ -1,0 +1,43 @@
+# Netlify Configuration for Njoy (NUT-DELICACY)
+
+[build]
+  # The directory containing the static HTML, CSS, assets, and image frames
+  publish = "."
+  # No build step required for pure static HTML/JS
+  command = ""
+
+# Security & Global Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache-Control for high-speed delivery of 521 animation frames
+[[headers]]
+  for = "/images%20frame%20part-01/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images%20frame%20part-02/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
