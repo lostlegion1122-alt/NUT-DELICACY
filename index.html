@@ -3,9 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Njoy by Nut Delicacy — Real ingredients. Real joy. 100% Organic, stone-ground, small-batch artisanal nut butters.">
-  <title>Njoy by Nut Delicacy | Real is Worth the Wait</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   
+  <!-- Primary SEO Meta Tags -->
+  <title>Njoy by Nut Delicacy | Artisanal Stone-Ground Organic Nut Butters</title>
+  <meta name="description" content="Njoy by Nut Delicacy — 100% Pure single-origin organic nut butters, traditional granite stone-ground below 28°C. Zero shortcuts, zero palm oil, zero added sugar. Handcrafted in Surat, Gujarat.">
+  <meta name="keywords" content="organic nut butter India, stone ground nut butter, artisanal nut butter, pure pistachio butter India, palm oil free peanut butter, healthy almond butter, Surat handcrafted nut delicacy, luxury breakfast spreads India">
+  <link rel="canonical" href="https://nutdelicacy.in/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nutdelicacy.in/">
+  <meta property="og:title" content="Njoy by Nut Delicacy | Real is Worth the Wait">
+  <meta property="og:description" content="100% Single-origin organic nuts stone-ground without shortcuts. No added sugar. No preservatives. No palm oil. Just pure nuts.">
+  <meta property="og:image" content="https://nutdelicacy.in/product-preview.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://nutdelicacy.in/">
+  <meta property="twitter:title" content="Njoy by Nut Delicacy | Real is Worth the Wait">
+  <meta property="twitter:description" content="100% Pure stone-ground artisanal nut butters. Zero palm oil, zero added sugar.">
+  <meta property="twitter:image" content="https://nutdelicacy.in/product-preview.webp">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,30 +37,84 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-  <style>
-    :root {
-      --cream: #f7f1e5;
-      --paper: #efe4cf;
-      --brown: #462613;
-      --brown-light: #6e4e3a;
-      --olive: #4d5b2b;
-      --olive-dark: #37441c;
-      --gold: #b28a45;
-      --gold-light: #d8ad5a;
-      --dark: #1b2413;
-      --white: #fffdf9;
-      --frame-bg: #bfbfbf;
-      --glass-border: rgba(90, 53, 31, 0.14);
-      --glass-bg: rgba(255, 253, 249, 0.85);
-      --shadow-sm: 0 4px 20px rgba(70, 38, 19, 0.06);
-      --shadow-md: 0 12px 35px rgba(50, 30, 15, 0.08);
-      --shadow-lg: 0 20px 50px rgba(55, 68, 28, 0.15);
-      --radius-sm: 12px;
-      --radius-md: 20px;
-      --radius-lg: 32px;
-      --radius-full: 9999px;
-    }
+  <!-- Shared Luxury Styles -->
+  <link rel="stylesheet" href="shared.css">
 
+  <!-- JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nutdelicacy.in/#organization",
+        "name": "Nut Delicacy",
+        "alternateName": "Njoy by Nut Delicacy",
+        "url": "https://nutdelicacy.in/",
+        "logo": "https://nutdelicacy.in/brand-logo.webp",
+        "description": "Producer of ultra-premium, single-origin granite stone-ground organic nut butters with zero palm oil and zero preservatives.",
+        "telephone": "+919512512151",
+        "email": "hello@nutdelicacy.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Surat",
+          "addressRegion": "Gujarat",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://www.instagram.com/nut_delicacy/",
+          "https://www.facebook.com/profile.php?id=61593416630125"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nutdelicacy.in/#website",
+        "url": "https://nutdelicacy.in/",
+        "name": "Nut Delicacy",
+        "publisher": { "@id": "https://nutdelicacy.in/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is Nut Delicacy stone-ground nut butter different from store brands?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nut Delicacy uses traditional granite stone mills operating below 28°C with 100% whole organic nuts. We add zero palm oil, zero chemical preservatives, and zero refined sugars."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do you guarantee zero palm oil in all products?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Palm oil is added to industrial nut spreads solely to stop natural oil separation. We refuse to compromise your health; 100% of the fats in our jars come directly from pure whole roasted nuts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is there oil separation on top of the jar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Natural oil separation is proof of 100% pure nut butter with zero hydrogenated fats or chemical stabilizers. Simply stir with a dry spoon before enjoying."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I order Nut Delicacy nut butters in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Browse our Collection page, add items to your Tasting Bag, and click 'Order via WhatsApp'. Our concierge team (+91 95125 12151) handles express insured shipping across India."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -83,162 +159,26 @@
       background-size: 14px 14px;
     }
 
-    /* Fixed Header Navigation */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 18px 0;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    header.scrolled {
-      background: rgba(247, 241, 229, 0.9);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 12px 0;
-      box-shadow: 0 10px 30px rgba(50, 30, 15, 0.06);
-    }
-
-    .header-inner {
-      width: min(1240px, 92%);
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-    }
-
-    .brand-mark {
-      width: 46px;
-      height: 46px;
-      border: 1px solid rgba(90, 53, 31, 0.25);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--white);
-      overflow: hidden;
-      padding: 3px;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.3s ease;
-    }
-
-    .brand:hover .brand-mark {
-      transform: scale(1.06) rotate(3deg);
-    }
-
-    .brand-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .brand-text strong {
-      display: block;
-      font-family: 'Fraunces', serif;
-      font-size: 25px;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      color: var(--brown);
-    }
-
-    .brand-text span {
-      display: block;
-      font-size: 10.5px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--olive);
-      margin-top: 2px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    nav a {
-      color: var(--brown);
-      opacity: 0.82;
-      transition: opacity 0.2s, color 0.2s;
-      position: relative;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--olive);
-      transition: width 0.25s ease;
-      border-radius: 2px;
-    }
-
-    nav a:hover {
-      opacity: 1;
-      color: var(--olive);
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .header-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
-      border-radius: var(--radius-full);
-      background: var(--olive);
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      box-shadow: 0 6px 20px rgba(77, 91, 43, 0.25);
-      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .header-cta:hover {
-      transform: translateY(-2px);
-      background: var(--olive-dark);
-      box-shadow: 0 10px 25px rgba(77, 91, 43, 0.35);
-    }
-
     /* ===================================================
-       PAGE 1 HERO: APPLE-STYLE SCROLL-LINKED CANVAS SEQUENCE
+       PAGE 1 HERO: FULL-PAGE CINEMATIC SCROLL-LINKED SEQUENCE
        =================================================== */
     .hero-sequence-wrapper {
       position: relative;
       width: 100%;
-      background-color: var(--frame-bg);
+      background: linear-gradient(to bottom, #bfbfbf 0%, #dcdcdc 70%, #efe4cf 100%);
       z-index: 10;
+      overflow: hidden;
     }
 
     .hero-sequence-track {
       position: relative;
-      width: 100%;
+      width: 100vw;
       height: 100vh; /* Pinned by ScrollTrigger */
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--frame-bg);
+      background: transparent;
     }
 
     #sequence-canvas {
@@ -249,35 +189,30 @@
       height: 100%;
       display: block;
       z-index: 1;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-      filter: contrast(1.05) saturate(1.08) brightness(1.01);
     }
 
-    /* Subtle ambient vignette around edges */
     .sequence-vignette {
       position: absolute;
       inset: 0;
       pointer-events: none;
       z-index: 2;
-      background: radial-gradient(circle at center, transparent 40%, rgba(191, 191, 191, 0.25) 75%, rgba(175, 175, 175, 0.6) 100%);
+      background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.03) 100%);
     }
 
-    /* Bottom blend into the story section */
     .hero-sequence-wrapper::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 120px;
+      height: 50px;
       background: linear-gradient(to bottom, transparent, var(--cream));
       pointer-events: none;
       z-index: 15;
     }
 
     /* ===================================================
-       SIDE FLOATING SCROLLYTELLING CAPTIONS (NEVER IN CENTER)
+       FLOATING SCROLLYTELLING CAPTIONS
        =================================================== */
     .sequence-captions {
       position: absolute;
@@ -291,54 +226,45 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      max-width: 480px;
+      max-width: 460px;
       opacity: 0;
       pointer-events: none;
       will-change: transform, opacity;
-      background: rgba(255, 253, 249, 0.85);
-      border: 1px solid rgba(90, 53, 31, 0.16);
-      border-radius: var(--radius-md);
-      padding: 32px 34px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
       text-align: left;
     }
 
-    /* Step 0: Hero Initial Card on Left Side */
     .caption-step.hero-initial-step {
       opacity: 1;
-      left: 6%;
+      left: 6vw;
       right: auto;
-      max-width: 520px;
+      max-width: 480px;
     }
 
-    /* Left Side Steps */
     .caption-step.align-left {
-      left: 6%;
+      left: 6vw;
       right: auto;
     }
 
-    /* Right Side Steps */
     .caption-step.align-right {
-      right: 6%;
+      right: 6vw;
       left: auto;
+      text-align: right;
     }
 
     .caption-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 15px;
+      gap: 7px;
+      padding: 5px 14px;
       border-radius: var(--radius-full);
-      background: rgba(77, 91, 43, 0.09);
-      border: 1px solid rgba(77, 91, 43, 0.22);
-      color: var(--olive);
+      background: rgba(63, 75, 35, 0.12);
+      border: 1px solid rgba(63, 75, 35, 0.25);
+      color: var(--olive-dark);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.6px;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .caption-pill .dot {
@@ -349,13 +275,22 @@
       box-shadow: 0 0 6px var(--olive);
     }
 
-    .caption-step h1,
-    .caption-step h2 {
-      font-size: clamp(30px, 3.8vw, 48px);
-      line-height: 1.08;
+    .caption-step h1 {
+      font-size: clamp(36px, 4.5vw, 56px);
+      line-height: 1.04;
       letter-spacing: -0.03em;
       color: var(--brown);
-      margin-bottom: 14px;
+      margin-bottom: 0;
+      text-shadow: 0 2px 14px rgba(255, 253, 249, 0.95);
+    }
+
+    .caption-step h2 {
+      font-size: clamp(30px, 3.8vw, 46px);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: var(--brown);
+      margin-bottom: 0;
+      text-shadow: 0 2px 14px rgba(255, 253, 249, 0.95);
     }
 
     .caption-step h1 em,
@@ -365,56 +300,28 @@
       font-weight: 400;
     }
 
-    .caption-step p {
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--brown-light);
-      margin-bottom: 0;
-    }
-
-    .hero-badges-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .hero-badge-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: var(--paper);
-      border: 1px solid rgba(90, 53, 31, 0.12);
-      border-radius: var(--radius-full);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--brown);
-    }
-
-    /* Bottom HUD Scrubber Progress Bar */
+    /* Bottom HUD Scrubber */
     .sequence-hud {
       position: absolute;
-      bottom: 30px;
+      bottom: 25px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 8;
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 9px 22px;
-      background: rgba(255, 253, 249, 0.85);
-      border: 1px solid rgba(90, 53, 31, 0.18);
+      gap: 14px;
+      padding: 8px 20px;
+      background: rgba(255, 253, 250, 0.88);
+      border: 1px solid rgba(62, 36, 21, 0.14);
       border-radius: var(--radius-full);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 10px 30px rgba(50, 30, 15, 0.1);
+      box-shadow: 0 8px 25px rgba(46, 26, 17, 0.08);
       pointer-events: auto;
     }
 
     .hud-label {
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 1.8px;
       text-transform: uppercase;
       font-weight: 700;
@@ -423,10 +330,10 @@
     }
 
     .hud-progress-track {
-      width: 130px;
-      height: 5px;
+      width: 120px;
+      height: 4px;
       border-radius: 999px;
-      background: rgba(90, 53, 31, 0.12);
+      background: rgba(62, 36, 21, 0.12);
       overflow: hidden;
       position: relative;
     }
@@ -440,14 +347,14 @@
     }
 
     .hud-counter {
-      font-size: 12px;
+      font-size: 11px;
       font-family: monospace;
       font-weight: 700;
       color: var(--brown);
       white-space: nowrap;
     }
 
-    /* Preloader Overlay */
+    /* Preloader */
     .sequence-loader {
       position: absolute;
       inset: 0;
@@ -468,10 +375,10 @@
     }
 
     .loader-ring {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      border: 3px solid rgba(77, 91, 43, 0.2);
+      border: 3px solid rgba(63, 75, 35, 0.2);
       border-top-color: var(--olive);
       animation: spin 1s infinite linear;
     }
@@ -496,13 +403,12 @@
     .loader-info span {
       font-size: 13px;
       color: var(--brown-light);
-      letter-spacing: 0.5px;
     }
 
     .loader-bar-wrap {
       width: 220px;
-      height: 5px;
-      background: rgba(90, 53, 31, 0.12);
+      height: 4px;
+      background: rgba(62, 36, 21, 0.12);
       border-radius: 999px;
       overflow: hidden;
       margin-top: 10px;
@@ -516,7 +422,6 @@
       transition: width 0.2s ease-out;
     }
 
-    /* Scroll Prompt Indicator */
     .scroll-hint {
       position: absolute;
       bottom: 85px;
@@ -533,7 +438,7 @@
     }
 
     .scroll-hint span {
-      font-size: 11px;
+      font-size: 10.5px;
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 700;
@@ -541,9 +446,9 @@
     }
 
     .mouse-icon {
-      width: 22px;
-      height: 36px;
-      border: 2px solid rgba(90, 53, 31, 0.5);
+      width: 20px;
+      height: 32px;
+      border: 2px solid rgba(62, 36, 21, 0.5);
       border-radius: 12px;
       position: relative;
     }
@@ -562,389 +467,408 @@
 
     @keyframes wheelBounce {
       0% { transform: translate(-50%, 0); opacity: 1; }
-      80% { transform: translate(-50%, 14px); opacity: 0; }
+      80% { transform: translate(-50%, 12px); opacity: 0; }
       100% { transform: translate(-50%, 0); opacity: 0; }
     }
 
     /* ===================================================
-       PAGE 2: THE PRODUCT SHOWCASE & THE NJOY STORY
+       PAGE 2: THE BRAND MANIFESTO & SIGNATURE HIGHLIGHTS
        =================================================== */
     .about {
-      padding: 100px 4% 90px;
+      padding: 100px 4% 80px;
       background: var(--cream);
       position: relative;
       z-index: 2;
     }
 
     .about-inner {
-      width: min(1180px, 100%);
+      width: min(1200px, 100%);
       margin: auto;
     }
 
-    /* Featured Product Spotlight Card on Page 2 */
-    .product-spotlight-card {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      align-items: center;
-      gap: 50px;
-      background: var(--white);
-      border: 1px solid var(--glass-border);
+    /* Manifesto Marquee Card */
+    .manifesto-flagship-card {
+      background: linear-gradient(135deg, #1d2813 0%, #11180b 100%);
+      color: #fffaf0;
       border-radius: var(--radius-lg);
-      padding: 60px clamp(28px, 5vw, 64px);
+      padding: 60px clamp(28px, 6vw, 75px);
       margin-bottom: 90px;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 25px 70px rgba(17, 24, 11, 0.25);
       position: relative;
       overflow: hidden;
     }
 
-    .product-spotlight-card::before {
-      content: '';
+    .manifesto-flagship-card::after {
+      content: 'PURITY';
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(223, 184, 112, 0.15) 0%, transparent 70%);
+      right: -20px;
+      bottom: -40px;
+      font-family: 'Fraunces', serif;
+      font-size: 220px;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.02);
       pointer-events: none;
     }
 
-    .product-spotlight-copy {
+    .manifesto-flagship-copy {
       position: relative;
       z-index: 2;
+      max-width: 860px;
     }
 
-    .eyebrow-badge {
+    .manifesto-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 15px;
+      padding: 6px 16px;
       border-radius: var(--radius-full);
-      background: rgba(77, 91, 43, 0.08);
-      border: 1px solid rgba(77, 91, 43, 0.2);
-      color: var(--olive);
-      font-size: 12px;
+      background: rgba(214, 175, 98, 0.15);
+      border: 1px solid rgba(214, 175, 98, 0.3);
+      color: var(--gold-light);
+      font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: 1.8px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .product-spotlight-copy h2 {
-      font-size: clamp(38px, 5vw, 62px);
-      line-height: 1.04;
+    .manifesto-flagship-copy h2 {
+      font-size: clamp(36px, 5.2vw, 58px);
+      line-height: 1.06;
       letter-spacing: -0.03em;
       margin-bottom: 20px;
-      color: var(--brown);
+      color: #fffdfa;
     }
 
-    .product-spotlight-copy h2 em {
+    .manifesto-flagship-copy h2 em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .manifesto-flagship-copy p {
+      font-size: 18px;
+      line-height: 1.75;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+
+    .manifesto-pillars-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .manifesto-pillar-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-full);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #fffaf0;
+    }
+
+    .manifesto-pillar-pill.golden {
+      background: rgba(179, 139, 71, 0.25);
+      border-color: var(--gold);
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    /* Featured Flight Carousel / Tasting Grid */
+    .featured-collection-section {
+      margin: 80px 0;
+    }
+
+    .section-headline-bar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .section-headline-bar h2 {
+      font-size: clamp(34px, 4.5vw, 50px);
+      color: var(--brown);
+      line-height: 1.1;
+    }
+
+    .section-headline-bar h2 em {
       color: var(--olive);
       font-style: italic;
     }
 
-    .product-spotlight-copy p {
-      font-size: 18px;
-      line-height: 1.75;
-      color: var(--brown-light);
-      margin-bottom: 14px;
-    }
-
-    .product-spotlight-pills {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 26px;
-    }
-
-    .product-spotlight-pill {
+    .btn-view-all-store {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      background: var(--paper);
-      border: 1px solid rgba(90, 53, 31, 0.14);
+      gap: 8px;
+      padding: 12px 26px;
       border-radius: var(--radius-full);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--brown);
-    }
-
-    /* Product Preview Visual */
-    .product-spotlight-visual {
-      position: relative;
-      display: grid;
-      place-items: center;
-    }
-
-    .product-spotlight-glow {
-      position: absolute;
-      width: min(380px, 90%);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(223, 184, 112, 0.4) 0%, rgba(77, 91, 43, 0.18) 50%, transparent 70%);
-      filter: blur(25px);
-    }
-
-    .product-preview-img {
-      position: relative;
-      width: min(390px, 92%);
-      border-radius: var(--radius-md);
-      filter: drop-shadow(0 25px 30px rgba(69, 44, 26, 0.2));
-      animation: floatProduct 5s ease-in-out infinite;
-      z-index: 2;
-    }
-
-    @keyframes floatProduct {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    /* Story Sections */
-    .story-block {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 32px;
-      padding: 55px 0;
-      border-top: 1px solid rgba(90, 53, 31, 0.15);
-    }
-
-    .story-number {
-      font-family: 'Fraunces', serif;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--gold);
-      padding-top: 4px;
-    }
-
-    .story-block h3 {
-      font-size: 32px;
-      font-weight: 500;
-      margin-bottom: 16px;
-      color: var(--brown);
-    }
-
-    .story-block p {
-      font-size: 17px;
-      line-height: 1.8;
-      color: var(--brown-light);
-      max-width: 840px;
-      margin-bottom: 14px;
-    }
-
-    .difference-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px 48px;
-      margin-top: 28px;
-    }
-
-    .difference-card {
-      padding-top: 20px;
-      border-top: 1px solid rgba(90, 53, 31, 0.14);
-    }
-
-    .difference-card strong {
-      display: block;
-      font-size: 19px;
-      color: var(--brown);
-      margin-bottom: 8px;
-    }
-
-    .difference-card p {
-      font-size: 15px;
-      line-height: 1.65;
-      color: var(--brown-light);
-      margin: 0;
-    }
-
-    /* Promise Banner */
-    .promise {
-      margin-top: 48px;
-      padding: 48px;
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 36px;
-      align-items: center;
-      background: #e8dfcc;
-      border-radius: var(--radius-lg);
+      background: var(--brown);
+      color: var(--white);
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: var(--transition);
       box-shadow: var(--shadow-sm);
     }
 
-    .promise-mark {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
+    .btn-view-all-store:hover {
+      background: var(--olive-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
+    }
+
+    .featured-card {
       background: var(--white);
-      padding: 10px;
-      display: grid;
-      place-items: center;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
       box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      text-decoration: none;
+      color: inherit;
     }
 
-    .promise-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    .featured-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(63, 75, 35, 0.25);
     }
 
-    .promise h3 {
-      font-size: 30px;
-      color: var(--brown);
+    .featured-card-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--gold);
       margin-bottom: 12px;
     }
 
-    .promise p {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--brown-light);
+    .featured-card-img-wrap {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--radius-sm);
+      background: radial-gradient(circle, rgba(239, 228, 207, 0.5) 0%, transparent 70%);
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      overflow: hidden;
     }
 
-    .family {
-      text-align: center;
-      max-width: 760px;
-      margin: 75px auto 0;
+    .featured-card-img {
+      width: 86%;
+      height: 86%;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      transition: transform 0.4s ease;
     }
 
-    .family p {
-      font-size: 19px;
-      line-height: 1.75;
-      color: var(--brown-light);
-      margin: 14px 0 20px;
+    .featured-card:hover .featured-card-img {
+      transform: scale(1.06);
     }
 
-    .family strong {
-      font-size: 17px;
+    .featured-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: 4px;
+    }
+
+    .featured-card-sub {
+      font-size: 12px;
+      color: var(--olive);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .featured-card-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid rgba(62, 36, 21, 0.08);
+    }
+
+    .featured-card-price {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 700;
       color: var(--brown);
     }
 
-    /* Values Section */
-    .values {
+    .featured-card-cta {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--olive);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Stone Ground Ritual Section */
+    .ritual-section {
       background: var(--white);
       border-top: 1px solid var(--glass-border);
       border-bottom: 1px solid var(--glass-border);
-      padding: 110px 4%;
-      position: relative;
-      z-index: 2;
+      padding: 100px 4%;
     }
 
-    .section-head {
+    .ritual-inner {
+      width: min(1200px, 100%);
+      margin: auto;
+    }
+
+    .ritual-header {
       text-align: center;
       max-width: 740px;
       margin: 0 auto 60px;
     }
 
-    .section-head h2 {
-      font-size: clamp(38px, 5vw, 56px);
+    .ritual-header h2 {
+      font-size: clamp(36px, 5vw, 54px);
       margin-bottom: 16px;
       color: var(--brown);
     }
 
-    .section-head p {
-      font-size: 18px;
+    .ritual-header h2 em {
+      color: var(--olive);
+      font-style: italic;
+    }
+
+    .ritual-header p {
+      font-size: 17px;
       color: var(--brown-light);
     }
 
-    .grid {
-      width: min(1120px, 100%);
-      margin: auto;
+    .ritual-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 24px;
     }
 
-    .card {
-      background: rgba(247, 241, 229, 0.6);
+    .ritual-card {
+      background: rgba(247, 241, 229, 0.5);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
-      padding: 40px 26px;
+      padding: 36px 24px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      transition: var(--transition);
     }
 
-    .card:hover {
+    .ritual-card:hover {
       transform: translateY(-6px);
       background: var(--white);
       box-shadow: var(--shadow-lg);
-      border-color: rgba(77, 91, 43, 0.25);
+      border-color: rgba(63, 75, 35, 0.25);
     }
 
-    .icon-wrap {
-      width: 64px;
-      height: 64px;
+    .ritual-icon {
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      margin: 0 auto 24px;
+      margin: 0 auto 20px;
       display: grid;
       place-items: center;
       background: var(--paper);
-      font-size: 28px;
-      transition: transform 0.3s ease;
+      font-size: 26px;
     }
 
-    .card:hover .icon-wrap {
-      transform: scale(1.12);
-      background: #e5dac2;
-    }
-
-    .card h3 {
-      font-size: 21px;
+    .ritual-card h3 {
+      font-size: 20px;
       color: var(--brown);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .card p {
-      font-size: 14px;
-      line-height: 1.65;
+    .ritual-card p {
+      font-size: 13.5px;
+      line-height: 1.6;
       color: var(--brown-light);
     }
 
-    /* Signup / Newsletter Section */
+    /* FAQ Section */
+    .faq-home-section {
+      padding: 100px 4% 60px;
+      background: var(--cream);
+    }
+    .faq-home-inner {
+      width: min(1200px, 100%);
+      margin: auto;
+    }
+    .faq-home-inner h2 {
+      font-size: clamp(34px, 4.5vw, 48px);
+      color: var(--brown);
+      margin-bottom: 40px;
+    }
+    .faq-home-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .faq-home-card {
+      background: var(--white);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-home-card h3 {
+      font-size: 19px;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+    .faq-home-card p {
+      font-size: 14.5px;
+      color: var(--brown-light);
+      line-height: 1.65;
+    }
+
+    /* Newsletter / Priority Tasting List */
     .signup {
-      width: min(1180px, 92%);
-      margin: 100px auto;
-      padding: 80px clamp(28px, 6vw, 90px);
+      width: min(1200px, 92%);
+      margin: 80px auto 100px;
+      padding: 80px clamp(28px, 6vw, 85px);
       border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, #1f2a15 0%, #131b0c 100%);
+      background: linear-gradient(135deg, #1c2612 0%, #10170a 100%);
       color: #fffaf0;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(20, 28, 15, 0.25);
-      z-index: 2;
-    }
-
-    .signup::after {
-      content: "N";
-      position: absolute;
-      right: 2%;
-      bottom: -100px;
-      font-family: 'Fraunces', serif;
-      font-size: 340px;
-      line-height: 1;
-      color: rgba(255, 255, 255, 0.03);
-      pointer-events: none;
-    }
-
-    .signup-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
+      box-shadow: 0 25px 60px rgba(16, 23, 10, 0.25);
     }
 
     .signup h2 {
-      font-size: clamp(38px, 5.2vw, 62px);
-      margin-bottom: 16px;
-      color: #fffdf9;
+      font-size: clamp(36px, 5vw, 56px);
+      margin-bottom: 14px;
+      color: #fffdfa;
     }
 
     .signup p {
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.65;
       opacity: 0.85;
-      margin-bottom: 34px;
+      margin-bottom: 30px;
+      max-width: 640px;
     }
 
     .form {
       display: flex;
-      max-width: 620px;
+      max-width: 600px;
       background: var(--white);
       border-radius: var(--radius-full);
       padding: 6px;
@@ -955,81 +879,90 @@
       flex: 1;
       border: 0;
       outline: 0;
-      padding: 16px 22px;
+      padding: 15px 22px;
       border-radius: var(--radius-full);
-      font-size: 15px;
+      font-size: 14px;
       font-family: inherit;
       color: var(--brown);
       min-width: 0;
     }
 
-    .form button,
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .form button {
       border: 0;
       border-radius: var(--radius-full);
       background: var(--gold);
       color: var(--white);
-      padding: 14px 28px;
+      padding: 13px 26px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13.5px;
       font-family: inherit;
-      letter-spacing: 0.3px;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(178, 138, 69, 0.3);
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-gold);
+      transition: var(--transition);
     }
 
-    .form button:hover,
-    .btn-primary:hover {
+    .form button:hover {
       background: #c3984c;
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(178, 138, 69, 0.45);
-    }
-
-    .note {
-      font-size: 12px;
-      opacity: 0.65;
-      margin-top: 14px;
-      letter-spacing: 0.3px;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--glass-border);
-      padding: 70px 4% 40px;
-      font-size: 14px;
+      padding: 80px 4% 40px;
       background: var(--cream);
-      position: relative;
-      z-index: 2;
     }
 
     .footer-inner {
-      width: min(1180px, 100%);
+      width: min(1200px, 100%);
       margin: auto;
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 48px;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 40px;
     }
 
-    footer strong {
+    .footer-brand strong {
       font-family: 'Fraunces', serif;
       font-size: 28px;
       color: var(--brown);
     }
 
-    footer p {
+    .footer-brand p {
       font-size: 14px;
       line-height: 1.7;
       color: var(--brown-light);
-      margin-top: 14px;
-      max-width: 380px;
+      margin-top: 12px;
+      max-width: 360px;
     }
 
-    footer h4 {
-      font-size: 12px;
+    .footer-social-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .footer-social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--glass-border);
+      display: grid;
+      place-items: center;
+      color: var(--brown);
+      font-size: 16px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-social-btn:hover {
+      background: var(--olive);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .footer-col h4 {
+      font-size: 11.5px;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-weight: 700;
@@ -1037,91 +970,143 @@
       margin-bottom: 18px;
     }
 
-    .links a {
+    .footer-col a {
       display: block;
       font-size: 14px;
       margin: 10px 0;
       color: var(--brown-light);
-      transition: color 0.2s, transform 0.2s;
+      text-decoration: none;
+      transition: color 0.2s;
     }
 
-    .links a:hover {
+    .footer-col a:hover {
       color: var(--olive);
-      transform: translateX(3px);
     }
 
-    .copyright {
-      width: min(1180px, 100%);
+    .footer-bottom {
+      width: min(1200px, 100%);
       margin: 50px auto 0;
       padding-top: 24px;
-      border-top: 1px solid rgba(90, 53, 31, 0.1);
-      font-size: 12px;
-      color: #8c735d;
+      border-top: 1px solid rgba(62, 36, 21, 0.1);
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      font-size: 12px;
+      color: var(--brown-muted);
     }
 
     /* Responsive Breakpoints */
     @media (max-width: 900px) {
-      .product-spotlight-card {
-        grid-template-columns: 1fr;
-        padding: 40px 24px;
-        text-align: center;
-        gap: 36px;
-      }
-      .product-spotlight-visual {
-        order: -1;
-      }
-      .product-preview-img {
-        width: min(300px, 80%);
-      }
-      .product-spotlight-pills {
-        justify-content: center;
-      }
-      .grid { grid-template-columns: 1fr 1fr; }
+      .ritual-grid { grid-template-columns: 1fr 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
       .footer-inner > div:first-child { grid-column: 1 / -1; }
+      .faq-home-grid { grid-template-columns: 1fr; }
       
       .caption-step,
       .caption-step.hero-initial-step,
       .caption-step.align-left,
       .caption-step.align-right {
-        left: 4% !important;
-        right: 4% !important;
-        max-width: 92% !important;
-        top: 20%;
-        transform: translateY(0);
-        padding: 22px 24px;
+        left: 5% !important;
+        right: 5% !important;
+        width: 90% !important;
+        max-width: 480px !important;
+        margin: 0 auto !important;
+        top: 51% !important;
+        bottom: auto !important;
+        transform: translateY(0) !important;
+        padding: 0 !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
-      .caption-step h1, .caption-step h2 {
-        font-size: 28px;
-        margin-bottom: 10px;
+
+      .caption-pill {
+        padding: 5px 14px !important;
+        font-size: 10.5px !important;
+        margin-bottom: 8px !important;
+        background: rgba(255, 253, 249, 0.9) !important;
+        border: 1px solid rgba(63, 75, 35, 0.25) !important;
       }
-      .caption-step p {
-        font-size: 14px;
+
+      .caption-step h1 {
+        font-size: clamp(25px, 6.2vw, 36px) !important;
+        line-height: 1.15 !important;
+        text-shadow: 0 2px 12px rgba(255, 253, 249, 0.95) !important;
+      }
+
+      .caption-step h2 {
+        font-size: clamp(21px, 5.2vw, 30px) !important;
+        line-height: 1.18 !important;
+        text-shadow: 0 2px 12px rgba(255, 253, 249, 0.95) !important;
       }
     }
 
     @media (max-width: 650px) {
-      nav { display: none; }
+      nav.main-nav { display: none; }
       .header-inner { justify-content: space-between; }
-      .brand-mark { width: 40px; height: 40px; }
-      .brand-text strong { font-size: 21px; }
-      .story-block { grid-template-columns: 1fr; gap: 12px; }
-      .difference-grid { grid-template-columns: 1fr; }
-      .promise { grid-template-columns: 1fr; text-align: center; padding: 36px 24px; }
-      .promise-mark { margin: 0 auto; }
-      .grid { grid-template-columns: 1fr; }
-      .signup { margin: 60px auto; padding: 50px 24px; border-radius: var(--radius-md); }
+      .ritual-grid { grid-template-columns: 1fr; }
+      .manifesto-flagship-card { padding: 40px 20px; }
+      .manifesto-pillars-row { flex-direction: column; }
+      
+      /* Mobile 2-column featured flight */
+      .featured-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+      .featured-card {
+        padding: 14px 10px !important;
+        border-radius: var(--radius-sm) !important;
+      }
+      .featured-card-tag {
+        font-size: 8.5px !important;
+        margin-bottom: 6px !important;
+      }
+      .featured-card-img-wrap {
+        margin-bottom: 8px !important;
+      }
+      .featured-card h3 {
+        font-size: 14.5px !important;
+        line-height: 1.15 !important;
+        margin-bottom: 3px !important;
+      }
+      .featured-card-sub {
+        font-size: 10px !important;
+        margin-bottom: 8px !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .featured-card-footer {
+        padding-top: 8px !important;
+      }
+      .featured-card-price {
+        font-size: 14.5px !important;
+      }
+      .featured-card-cta {
+        font-size: 10.5px !important;
+      }
+
       .form { flex-direction: column; background: transparent; gap: 10px; padding: 0; }
-      .form input, .form button { height: 50px; border-radius: var(--radius-full); }
+      .form input, .form button { height: 46px; border-radius: var(--radius-full); }
       .form button { padding: 0; justify-content: center; }
-      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-      .copyright { flex-direction: column; gap: 10px; text-align: center; }
-      .sequence-hud { bottom: 20px; padding: 8px 16px; }
-      .hud-progress-track { width: 75px; }
-      .scroll-hint { bottom: 80px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      
+      .caption-step,
+      .caption-step.hero-initial-step,
+      .caption-step.align-left,
+      .caption-step.align-right {
+        top: 50% !important;
+      }
+      .caption-step h1 { font-size: clamp(23px, 6.4vw, 30px) !important; }
+      .caption-step h2 { font-size: clamp(19px, 5.2vw, 25px) !important; }
+      .sequence-hud { bottom: 12px; padding: 6px 14px; gap: 8px; }
+      .hud-label { font-size: 9.5px; }
+      .hud-progress-track { width: 70px; height: 3px; }
+      .hud-counter { font-size: 10.5px; }
+      .scroll-hint { bottom: 52px; }
     }
   </style>
 </head>
@@ -1133,9 +1118,9 @@
   <!-- Header Navigation -->
   <header id="site-header">
     <div class="header-inner">
-      <a class="brand" href="#" aria-label="Njoy by Nut Delicacy Home">
+      <a class="brand" href="index.html" aria-label="Njoy by Nut Delicacy Home">
         <div class="brand-mark">
-          <img src="brand-logo.png" alt="Njoy Monogram" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23efe4cf\' stroke=\'%235a351f\' stroke-width=\'3\'/%3E%3Ctext x=\'50\' y=\'62\' font-size=\'38\' font-family=\'serif\' font-weight=\'bold\' fill=\'%235a351f\' text-anchor=\'middle\'%3EN%3C/text%3E%3C/svg%3E'">
+          <img src="brand-logo.webp" alt="Njoy Monogram" onerror="this.src='brand-logo.png'">
         </div>
         <div class="brand-text">
           <strong>Njoy</strong>
@@ -1143,24 +1128,37 @@
         </div>
       </a>
 
-      <nav>
-        <a href="#experience">The Process</a>
-        <a href="#story">Our Story</a>
-        <a href="#values">Our Promise</a>
-        <a href="#notify">Get Notified</a>
+      <nav class="main-nav">
+        <a href="index.html" class="active">The Experience</a>
+        <a href="products.html">The Collection</a>
+        <a href="blog.html">Blog</a>
+        <a href="#story">Our Manifesto</a>
+        <a href="#values">The Ritual</a>
+        <a href="#contact">Contact</a>
       </nav>
 
-      <a href="#notify" class="header-cta">
-        <span>Join Launch</span>
-        <span>→</span>
-      </a>
+      <div class="header-actions">
+        <a href="https://www.instagram.com/nut_delicacy/" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Instagram" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61593416630125" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Facebook" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <button class="cart-toggle-btn" onclick="Cart.openDrawer()" aria-label="Open Shopping Bag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span>Cart</span>
+          <span class="cart-badge-count" style="display:none;">0</span>
+        </button>
+        <a href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer" class="header-whatsapp-cta" title="WhatsApp Concierge">
+          <span>WhatsApp</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <main>
     <!-- ===================================================
          PAGE 1: FULLSCREEN APPLE-STYLE SCROLL-LINKED HERO SEQUENCE
-         (Animation is centered; Text is positioned cleanly on the SIDES)
          =================================================== -->
     <section class="hero-sequence-wrapper" id="experience">
       <div class="hero-sequence-track" id="sequence-track">
@@ -1170,7 +1168,7 @@
           <div class="loader-ring"></div>
           <div class="loader-info">
             <strong>Crafting Visual Sequence</strong>
-            <span>Preloading high-resolution frames (<span id="loader-pct">0%</span>)</span>
+            <span>Preloading high-resolution WebP frames (<span id="loader-pct">0%</span>)</span>
             <div class="loader-bar-wrap">
               <div class="loader-bar-inner" id="loader-bar"></div>
             </div>
@@ -1181,23 +1179,16 @@
         <canvas id="sequence-canvas"></canvas>
         <div class="sequence-vignette"></div>
 
-        <!-- Floating Scrollytelling Side Captions (Center remains completely unobstructed) -->
+        <!-- Floating Scrollytelling Headings -->
         <div class="sequence-captions">
           
           <!-- Step 0: Opening Hero Landing Title (Side Left) -->
           <div class="caption-step hero-initial-step" id="hero-title-step">
             <div class="caption-pill">
               <span class="dot"></span>
-              <span>We're crafting something wholesome</span>
+              <span>Single-Origin Stone-Ground</span>
             </div>
             <h1>Real is<br><em>Worth the Wait.</em></h1>
-            <p>100% Organic, stone-ground nut butters crafted slowly in small batches. Pure ingredients with nothing hidden.</p>
-            
-            <div class="hero-badges-row">
-              <div class="hero-badge-item">✦ Launching Soon</div>
-              <div class="hero-badge-item">🌿 100% Organic</div>
-              <div class="hero-badge-item">⚙️ Stone-Ground</div>
-            </div>
           </div>
 
           <!-- Step 1 (Early Sequence: Side Left) -->
@@ -1206,18 +1197,16 @@
               <span class="dot"></span>
               <span>Artisanal Sourcing</span>
             </div>
-            <h2>100% Whole<br><em>Organic Nuts.</em></h2>
-            <p>From sun-drenched organic groves directly to our stone mills. Every single nut is carefully inspected for supreme purity.</p>
+            <h2>100% Single-Origin<br><em>Whole Organic Nuts.</em></h2>
           </div>
 
           <!-- Step 2 (Mid-Early Sequence: Side Left) -->
           <div class="caption-step step-2 align-left">
             <div class="caption-pill">
               <span class="dot"></span>
-              <span>Stone-Ground Slowly</span>
+              <span>Cold Granite Milled</span>
             </div>
-            <h2>Preserving Every Drop<br><em>of Natural Vitality.</em></h2>
-            <p>Traditional stone milling protects the delicate natural oils, healthy fats, and rich aromas that high-speed factory blades destroy.</p>
+            <h2>Stone-Ground Below 28°C<br><em>Preserving Natural Vitality.</em></h2>
           </div>
 
           <!-- Step 3 (Mid-Late Sequence: Side Right) -->
@@ -1227,20 +1216,15 @@
               <span>Zero Additives</span>
             </div>
             <h2>No Added Sugar.<br><em>Zero Palm Oil.</em></h2>
-            <p>What's on the label is what's in the jar. No stabilizers, no preservatives, and no artificial sweeteners — ever.</p>
           </div>
 
-          <!-- Step 4 (Finale Sequence: Side Right, Product Revealed) -->
+          <!-- Step 4 (Finale Sequence: Side Right) -->
           <div class="caption-step step-4 align-right">
             <div class="caption-pill">
               <span class="dot"></span>
               <span>The Perfection of Njoy</span>
             </div>
             <h2>Pure Ingredients.<br><em>Real Joy.</em></h2>
-            <p>Velvety, nutrient-dense, and crafted with uncompromising integrity.</p>
-            <div style="margin-top: 20px; pointer-events: auto;">
-              <a href="#notify" class="btn-primary">Reserve Early Access →</a>
-            </div>
           </div>
 
         </div>
@@ -1266,159 +1250,327 @@
     </section>
 
     <!-- ===================================================
-         PAGE 2: PRODUCT PREVIEW SPOTLIGHT & THE STORY
+         PAGE 2: THE BRAND MANIFESTO & THE NJOY STORY
          =================================================== -->
     <section class="about" id="story">
       <div class="about-inner">
         
-        <!-- Featured Product Showcase on Page 2 -->
-        <div class="product-spotlight-card">
-          <div class="product-spotlight-copy">
-            <div class="eyebrow-badge">
-              <span class="dot"></span>
-              <span>The Signature Jar</span>
+        <!-- Manifesto Flagship Banner -->
+        <div class="manifesto-flagship-card">
+          <div class="manifesto-flagship-copy">
+            <div class="manifesto-eyebrow">
+              <span>The Nut Delicacy Manifesto</span>
             </div>
-            <h2>Real Ingredients.<br><em>Real Joy.</em></h2>
-            <p>At Njoy by Nut Delicacy, we believe a jar of nut butter should be exactly what it looks like — nothing more, nothing hidden.</p>
-            <p>No added sugar. No preservatives. No palm oil. Just organic nuts, stone-ground in small batches, the way nourishing food is meant to be made.</p>
+            <h2>Why Nut Delicacy?<br><em>Because there are NO shortcuts.</em></h2>
+            <p>At Nut Delicacy, we believe real goodness should come from the nuts themselves — not from unnecessary additives, hydrogenated oils, or emulsifiers dressed up on a supermarket shelf.</p>
+            <p>Our nuts are hand-selected from single-origin terroirs and stone-ground using a traditional granite process designed to preserve their natural oils, velvety texture, deep aroma, and rich vitality.</p>
             
-            <div class="product-spotlight-pills">
-              <div class="product-spotlight-pill">🌿 100% Organic</div>
-              <div class="product-spotlight-pill">⚙️ Slow Stone-Ground</div>
-              <div class="product-spotlight-pill">🫙 Small-Batch Handcrafted</div>
-            </div>
-          </div>
-
-          <div class="product-spotlight-visual">
-            <div class="product-spotlight-glow"></div>
-            <img class="product-preview-img" src="product-preview.png" alt="Njoy Signature Jar Preview" onerror="this.style.display='none'">
-          </div>
-        </div>
-
-        <!-- Story Chapter 01 -->
-        <div class="story-block">
-          <span class="story-number">01</span>
-          <div>
-            <h3>Why We Started</h3>
-            <p>We started Nut Delicacy with a simple frustration: most “healthy” snacks on the shelf aren't actually healthy. They're dressed up with sugar and stabilizers to last longer and taste sweeter — at the cost of the very nutrition they promise.</p>
-            <p>We believed there was a better way. So we went back to basics: real nuts, stone-ground slowly to protect their natural oils and texture, made in small batches instead of mass-produced. No shortcuts. No fillers. Just food that nourishes the way it should.</p>
-          </div>
-        </div>
-
-        <!-- Story Chapter 02 -->
-        <div class="story-block">
-          <span class="story-number">02</span>
-          <div>
-            <h3>What Makes Us Different</h3>
-            <div class="difference-grid">
-              <div class="difference-card">
-                <strong>100% Organic</strong>
-                <p>Every nut we use is organic, sustainably sourced with uncompromising care.</p>
-              </div>
-              <div class="difference-card">
-                <strong>Nothing Extra</strong>
-                <p>Zero sugar. Zero preservatives. Zero palm oil. What's on the label is in the jar — nothing else.</p>
-              </div>
-              <div class="difference-card">
-                <strong>Stone-Ground, Small-Batch</strong>
-                <p>We mill slowly and in small quantities to protect natural nutrition and velvety texture.</p>
-              </div>
-              <div class="difference-card">
-                <strong>Made With Intention</strong>
-                <p>Every jar is crafted with honest care — from sourcing to grinding to packing.</p>
-              </div>
+            <div class="manifesto-pillars-row">
+              <div class="manifesto-pillar-pill">❌ No Shortcuts</div>
+              <div class="manifesto-pillar-pill">❌ No Compromise</div>
+              <div class="manifesto-pillar-pill">❌ No Added Sugar</div>
+              <div class="manifesto-pillar-pill">❌ No Preservatives</div>
+              <div class="manifesto-pillar-pill">❌ No Palm Oil</div>
+              <div class="manifesto-pillar-pill golden">✨ Just Pure Nuts. Nothing Else.</div>
             </div>
           </div>
         </div>
 
-        <!-- Promise Banner -->
-        <div class="promise">
-          <div class="promise-mark">
-            <img src="brand-logo.png" alt="Njoy Promise" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23efe4cf\' stroke=\'%235a351f\' stroke-width=\'3\'/%3E%3Ctext x=\'50\' y=\'62\' font-size=\'38\' font-family=\'serif\' font-weight=\'bold\' fill=\'%235a351f\' text-anchor=\'middle\'%3EN%3C/text%3E%3C/svg%3E'">
+        <!-- Curated Tasting Flight / Featured Reserve -->
+        <div class="featured-collection-section">
+          <div class="section-headline-bar">
+            <div>
+              <div class="caption-pill" style="margin-bottom:8px;">
+                <span class="dot"></span>
+                <span>The Master Roaster's Flight</span>
+              </div>
+              <h2>Curated <em>Reserve Jars.</em></h2>
+            </div>
+            <a href="products.html" class="btn-view-all-store">
+              <span>Explore All 10 Varieties</span>
+              <span>→</span>
+            </a>
           </div>
-          <div>
-            <h3>Wellness shouldn't mean compromise.</h3>
-            <p>We believe eating well should feel like a daily joy — not a discipline. Every jar of Njoy carries that promise: honest ingredients, honest labels, and a rich taste you'll genuinely look forward to every morning.</p>
+
+          <div class="featured-grid">
+            <!-- Pistachio -->
+            <a href="products.html#product-pistachio-butter" class="featured-card" title="View Imperial Pistachio Butter">
+              <div class="featured-card-tag">Grand Reserve • Crown Jewel</div>
+              <div class="featured-card-img-wrap">
+                <img src="pistachio-butter.webp" alt="Imperial Pistachio Butter Luxury Jar" class="featured-card-img" loading="lazy" onerror="this.src='product-preview.webp'">
+              </div>
+              <h3>Imperial Pistachio Butter</h3>
+              <div class="featured-card-sub">100% Royal Emerald Pistachios</div>
+              <div class="featured-card-footer">
+                <span class="featured-card-price">₹1,199</span>
+                <span class="featured-card-cta">Explore Jar →</span>
+              </div>
+            </a>
+
+            <!-- Hazelnut Chocolate -->
+            <a href="products.html#product-hazelnut-chocolate" class="featured-card" title="View Hazelnut Dark Chocolate">
+              <div class="featured-card-tag">Grand Reserve • Gianduja</div>
+              <div class="featured-card-img-wrap">
+                <img src="hazelnut-chocolate.webp" alt="Hazelnut Dark Chocolate Spread Luxury Jar" class="featured-card-img" loading="lazy" onerror="this.src='product-preview.webp'">
+              </div>
+              <h3>Hazelnut Chocolate Spread</h3>
+              <div class="featured-card-sub">75% Hazelnuts + Pure Single-Origin Cacao</div>
+              <div class="featured-card-footer">
+                <span class="featured-card-price">₹1,099</span>
+                <span class="featured-card-cta">Explore Jar →</span>
+              </div>
+            </a>
+
+            <!-- Almond Butter -->
+            <a href="products.html#product-almond-butter" class="featured-card" title="View Mamra Almond Butter">
+              <div class="featured-card-tag">Artisanal • Cold Milled</div>
+              <div class="featured-card-img-wrap">
+                <img src="almond-butter.webp" alt="Stone Ground Almond Butter Luxury Jar" class="featured-card-img" loading="lazy" onerror="this.src='product-preview.webp'">
+              </div>
+              <h3>Stone-Ground Almond Butter</h3>
+              <div class="featured-card-sub">Californian & Mamra Slow-Roasted</div>
+              <div class="featured-card-footer">
+                <span class="featured-card-price">₹599</span>
+                <span class="featured-card-cta">Explore Jar →</span>
+              </div>
+            </a>
+
+            <!-- Peanut Dark Chocolate -->
+            <a href="products.html#product-peanut-dark-chocolate" class="featured-card" title="View Peanut Dark Chocolate">
+              <div class="featured-card-tag">Classic • 70% Dark Cacao</div>
+              <div class="featured-card-img-wrap">
+                <img src="peanut-dark-chocolate.webp" alt="Peanut Dark Chocolate Luxury Jar" class="featured-card-img" loading="lazy" onerror="this.src='product-preview.webp'">
+              </div>
+              <h3>Peanut Dark Chocolate</h3>
+              <div class="featured-card-sub">Bold Roast Peanuts & Dark Truffle Cacao</div>
+              <div class="featured-card-footer">
+                <span class="featured-card-price">₹379</span>
+                <span class="featured-card-cta">Explore Jar →</span>
+              </div>
+            </a>
           </div>
         </div>
 
-        <!-- Community Callout -->
-        <div class="family">
-          <div class="eyebrow-badge">Join the Njoy Family</div>
-          <p>Whether it's your morning toast, a post-workout spoonful, or a gift for someone you love — we hope every jar brings a little more nourishment and joy into your day.</p>
-          <strong>Njoy by Nut Delicacy — home-crafted, stone-ground, organic nut butters.</strong>
+      </div>
+    </section>
+
+    <!-- The Stone-Ground Ritual Section -->
+    <section class="ritual-section" id="values">
+      <div class="ritual-inner">
+        <div class="ritual-header">
+          <div class="caption-pill" style="margin-bottom:10px;">
+            <span class="dot"></span>
+            <span>Uncompromising Craft</span>
+          </div>
+          <h2>Made the right way.<br><em>For the right reasons.</em></h2>
+          <p>We believe wellness should never mean compromise. Every jar begins with single-origin honest nuts and ends with a taste you'll genuinely look forward to every morning.</p>
+        </div>
+
+        <div class="ritual-grid">
+          <article class="ritual-card">
+            <div class="ritual-icon">🌿</div>
+            <h3>100% Organic</h3>
+            <p>Single-origin, hand-selected organic whole nuts with absolute batch traceability.</p>
+          </article>
+          <article class="ritual-card">
+            <div class="ritual-icon">🚫</div>
+            <h3>Zero Palm Oil</h3>
+            <p>No hydrogenated fats, zero emulsifiers, and no refined sugars. Ever.</p>
+          </article>
+          <article class="ritual-card">
+            <div class="ritual-icon">⚙️</div>
+            <h3>Cold Stone-Ground</h3>
+            <p>Milled slowly at low temperatures to protect delicate oils, aromas, and enzymes.</p>
+          </article>
+          <article class="ritual-card">
+            <div class="ritual-icon">🫙</div>
+            <h3>Micro-Batches</h3>
+            <p>Handcrafted in limited small batches and sealed in 100% recyclable glass jars.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Values Section -->
-    <section class="values" id="values">
-      <div class="section-head">
-        <h2>Made the right way.<br>For the right reasons.</h2>
-        <p>We believe wellness shouldn't mean compromise. Every jar starts with honest ingredients and ends with something you'll genuinely look forward to.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="icon-wrap">🌿</div>
-          <h3>100% Organic</h3>
-          <p>Carefully sourced certified organic nuts with full traceability.</p>
-        </article>
-        <article class="card">
-          <div class="icon-wrap">🚫</div>
-          <h3>Nothing Extra</h3>
-          <p>No added sugars, zero preservatives, and zero palm oil.</p>
-        </article>
-        <article class="card">
-          <div class="icon-wrap">⚙️</div>
-          <h3>Stone-Ground</h3>
-          <p>Slowly ground at low temperatures to preserve natural texture.</p>
-        </article>
-        <article class="card">
-          <div class="icon-wrap">🫙</div>
-          <h3>Small-Batch</h3>
-          <p>Crafted in micro-batches with love, passion and intention.</p>
-        </article>
+    <!-- Homepage FAQ Section -->
+    <section class="faq-home-section" id="faq">
+      <div class="faq-home-inner">
+        <div class="caption-pill" style="margin-bottom:12px;">
+          <span class="dot"></span>
+          <span>Knowledge & Transparency</span>
+        </div>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-home-grid">
+          <div class="faq-home-card">
+            <h3>How is Nut Delicacy different from regular supermarket nut butters?</h3>
+            <p>Most commercial nut butters use high-speed steel blades that heat nuts above 60°C and add hydrogenated palm oil, preservatives, and cane sugar to cut costs. Nut Delicacy uses traditional granite stone mills operating below 28°C with exactly 100% whole organic nuts and zero shortcuts.</p>
+          </div>
+          <div class="faq-home-card">
+            <h3>Why do you have a zero palm oil guarantee?</h3>
+            <p>Palm oil is added to commercial spreads only to chemically prevent natural oil separation and maximize shelf longevity. We refuse to compromise your health. 100% of the healthy fats in our jars come directly from the whole roasted nuts.</p>
+          </div>
+          <div class="faq-home-card">
+            <h3>Why is there oil separation on top of my jar?</h3>
+            <p>Natural oil separation is the ultimate proof of pure, unadulterated nut butter. Because there are no hydrogenated stabilizers or chemical emulsifiers, the natural nut oil rises over time. Simply give it a gentle stir with a dry spoon.</p>
+          </div>
+          <div class="faq-home-card">
+            <h3>How can I place an order for delivery across India?</h3>
+            <p>You can explore all 10 creations on our Collection page, add your desired jars to the Tasting Bag, and click 'Order via WhatsApp'. Our dedicated concierge (+91 95125 12151) will immediately confirm your order and coordinate express insured dispatch.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Notification / Signup Section -->
+    <!-- Priority Tasting Club Allocation -->
     <section class="signup" id="notify">
       <div class="signup-inner">
-        <h2>Be the first to know.</h2>
-        <p>Join our priority list for launch updates, private tasting batches, and exclusive early-bird offers from Njoy by Nut Delicacy.</p>
+        <h2>Join the Private Tasting Club.</h2>
+        <p>Receive priority allocation for micro-batch releases, seasonal single-origin harvest drops, and exclusive tasting invitations from Nut Delicacy.</p>
         <form class="form" id="notify-form" onsubmit="handleNotifySubmit(event)">
           <input type="email" id="email-input" required placeholder="Enter your email address" aria-label="Email address">
-          <button type="submit" id="notify-btn">Notify Me</button>
+          <button type="submit" id="notify-btn">Request Access</button>
         </form>
-        <div class="note">No spam. Ever. Just pure Njoy.</div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer>
+  <footer id="contact">
     <div class="footer-inner">
-      <div>
+      <div class="footer-brand">
         <strong>Njoy</strong>
         <p><b>by Nut Delicacy</b><br>Real ingredients. Real joy. Honest, stone-ground organic nut butters made with pure intention.</p>
+        <div class="footer-social-row">
+          <a href="https://www.instagram.com/nut_delicacy/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Follow on Instagram" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61593416630125" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="Follow on Facebook" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="WhatsApp Business" style="background:#25d366; color:#fff; border-color:#25d366;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="links">
-        <h4>Explore</h4>
-        <a href="#experience">The Process</a>
-        <a href="#story">Our Story</a>
-        <a href="#values">Our Promise</a>
-        <a href="#notify">Get Notified</a>
+      <div class="footer-col">
+        <h4>The Collection</h4>
+        <a href="products.html">All 10 Varieties</a>
+        <a href="products.html#reserve">Grand Reserve Edition</a>
+        <a href="products.html#artisanal">Artisanal Stone-Ground</a>
+        <a href="products.html#classics">Classics & Indulgence</a>
       </div>
-      <div>
-        <h4>Contact</h4>
-        <p>Surat, Gujarat, India<br><a href="mailto:hello@nutdelicacy.com" style="color: var(--olive); font-weight: 600;">hello@nutdelicacy.com</a></p>
+      <div class="footer-col">
+        <h4>The Journal</h4>
+        <a href="blog/what-is-pistachio-butter.html">What Is Pistachio Butter?</a>
+        <a href="blog/pistachio-butter-vs-peanut-butter.html">Pistachio vs Peanut Butter</a>
+        <a href="blog/what-does-stone-ground-nut-butter-mean.html">The Stone-Ground Ritual</a>
+        <a href="blog.html">All Articles</a>
+      </div>
+      <div class="footer-col">
+        <h4>Orders & Concierge</h4>
+        <p style="font-size: 14px; color: var(--brown-light); line-height: 1.7;">
+          Surat, Gujarat, India<br>
+          WhatsApp: <a href="https://wa.me/919512512151" style="color: var(--olive); font-weight: 700;">+91 95125 12151</a><br>
+          Email: <a href="mailto:hello@nutdelicacy.com" style="color: var(--olive); font-weight: 600;">hello@nutdelicacy.com</a>
+        </p>
       </div>
     </div>
-    <div class="copyright">
+    <div class="footer-bottom">
       <span>© 2026 Nut Delicacy. All Rights Reserved.</span>
-      <span>Crafted with real ingredients & pure joy.</span>
+      <span>Single-Origin • Cold Stone-Ground • Zero Palm Oil</span>
     </div>
   </footer>
+
+  <!-- Cart Slide-out Drawer -->
+  <div class="cart-overlay" id="cart-overlay" onclick="Cart.closeDrawer()"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Your Tasting Bag</h3>
+      <button class="cart-drawer-close" onclick="Cart.closeDrawer()" aria-label="Close Cart">✕</button>
+    </div>
+    <div class="cart-drawer-body">
+      <div class="cart-empty-state" id="cart-empty-state">
+        <div class="cart-empty-icon">🫙</div>
+        <h4>Your Bag is Empty</h4>
+        <p>Explore our stone-ground single-origin collection to add artisanal jars.</p>
+        <a href="products.html" class="btn-primary" style="margin-top:12px; display:inline-block;">Explore Collection</a>
+      </div>
+      <div id="cart-items-container"></div>
+    </div>
+    <div class="cart-drawer-footer" id="cart-drawer-footer" style="display:none;">
+      <div class="cart-subtotal-row">
+        <span>Estimated Subtotal</span>
+        <strong id="cart-subtotal">₹0</strong>
+      </div>
+      <div class="cart-shipping-note">
+        <span>✓</span><span>Dispatched in eco-friendly protective glass packaging</span>
+      </div>
+      <button class="btn-whatsapp-checkout" onclick="Cart.checkoutWhatsApp()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg><span>Order Directly via WhatsApp</span>
+        <span>→</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Floating WhatsApp Concierge Widget -->
+  <div class="whatsapp-concierge-wrap">
+    <div class="whatsapp-concierge-popup" id="whatsapp-concierge-popup">
+      <div class="concierge-popup-header">
+        <div class="concierge-header-info">
+          <strong>Nut Delicacy Concierge</strong>
+          <span>Online • Master Roaster</span>
+        </div>
+        <button class="concierge-close-btn" onclick="toggleWhatsAppConcierge()">✕</button>
+      </div>
+      <div class="concierge-popup-body">
+        <p class="concierge-intro-text">Welcome to Nut Delicacy! How may we assist with your artisanal nut butter order?</p>
+        <button class="concierge-option-btn" onclick="sendConciergeInquiry('order')">
+          <span>📦 Place / Customize Order</span>
+          <span>→</span>
+        </button>
+        <button class="concierge-option-btn" onclick="sendConciergeInquiry('gifting')">
+          <span>🎁 Luxury Corporate / Wedding Gifting</span>
+          <span>→</span>
+        </button>
+        <button class="concierge-option-btn" onclick="sendConciergeInquiry('tasting')">
+          <span>🌿 Flavor Pairings & Tasting Advice</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+    <button class="whatsapp-concierge-btn" onclick="toggleWhatsAppConcierge()" aria-label="Contact WhatsApp Concierge" title="Chat on WhatsApp">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+    <a href="index.html" class="mobile-nav-item active" id="mob-nav-home">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Home</span>
+    </a>
+    <a href="products.html" class="mobile-nav-item" id="mob-nav-shop">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+      <span>Collection</span>
+    </a>
+    <button type="button" class="mobile-nav-item" onclick="Cart.openDrawer()" id="mob-nav-cart" aria-label="Open Shopping Bag">
+      <div class="mob-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="cart-badge-count mob-badge" style="display:none;">0</span>
+      </div>
+      <span>Tasting Bag</span>
+    </button>
+    <a href="blog.html" class="mobile-nav-item" id="mob-nav-blog">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      <span>Journal</span>
+    </a>
+    <a href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer" class="mobile-nav-item mob-whatsapp" id="mob-nav-whatsapp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+  </nav>
+
+  <!-- Shared Products & Cart Script -->
+  <script src="products.js"></script>
 
   <!-- ===================================================
        GSAP SCROLL-LINKED SEQUENCE LOGIC SCRIPT
@@ -1440,9 +1592,10 @@
       const btn = document.getElementById('notify-btn');
       const input = document.getElementById('email-input');
       if (!input.value) return;
-      btn.textContent = "You're on the list ✓";
-      btn.style.background = "#4d5b2b";
+      btn.textContent = "Allocation Requested ✓";
+      btn.style.background = "#3f4b23";
       input.disabled = true;
+      Cart.showToast("Welcome to the Private Tasting Club");
     }
 
     // ==========================================
@@ -1463,13 +1616,14 @@
       const PART2_COUNT = 283;
       const TOTAL_FRAMES = PART1_COUNT + PART2_COUNT; // 521 frames
 
+      // Load ultra-optimized WebP frames for ultra-fast, smooth performance
       function getFrameUrl(index) {
         if (index < PART1_COUNT) {
           const frameNum = String(index + 1).padStart(3, '0');
-          return `images%20frame%20part-01/ezgif-frame-${frameNum}.jpg`;
+          return `images%20frame%20part-01/ezgif-frame-${frameNum}.webp`;
         } else {
           const frameNum = String(index - PART1_COUNT + 1).padStart(3, '0');
-          return `images%20frame%20part-02/ezgif-frame-${frameNum}.jpg`;
+          return `images%20frame%20part-02/ezgif-frame-${frameNum}.webp`;
         }
       }
 
@@ -1479,7 +1633,7 @@
       let currentFrameIndex = 0;
       let isFirstFrameDrawn = false;
 
-      // Draw image with crisp pixel-perfect scaling, high-quality interpolation & no mobile blur
+      // Adaptive responsive rendering with studio lighting gradient and soft edge feathering
       function renderImage(img) {
         if (!img || !img.complete || img.naturalWidth === 0) return;
 
@@ -1491,52 +1645,117 @@
 
         const imgW = img.naturalWidth;   // 1920
         const imgH = img.naturalHeight;  // 1080
-        const imgRatio = imgW / imgH;    // 16 / 9
-        const screenRatio = cssW / cssH;
-
-        let renderW, renderH, offsetX, offsetY;
-
-        // Intelligent Crisp Framing:
-        // Center animation stays crisp and properly framed on all devices
-        if (screenRatio >= imgRatio) {
-          renderW = cssW;
-          renderH = cssW / imgRatio;
-          offsetX = 0;
-          offsetY = (cssH - renderH) / 2;
-        } else {
-          const maxZoom = 1.32; // Prevents blur on vertical viewports
-          const idealW = cssH * imgRatio;
-          if (idealW / cssW > maxZoom) {
-            renderW = cssW * maxZoom;
-            renderH = renderW / imgRatio;
-            offsetX = (cssW - renderW) / 2;
-            offsetY = (cssH - renderH) / 2;
-          } else {
-            renderH = cssH;
-            renderW = cssH * imgRatio;
-            offsetY = 0;
-            offsetX = (cssW - renderW) / 2;
-          }
-        }
 
         ctx.save();
-        ctx.setTransform(1, 0, 0, 1, 0, 0); // operate in physical device pixel space
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        // High-Quality bicubic/lanczos interpolation
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = 'high';
 
-        // Clear canvas with the exact studio gray of the source frames
-        ctx.fillStyle = '#bfbfbf';
-        ctx.fillRect(0, 0, canvasW, canvasH);
+        const isMobile = cssW <= 900 || (cssH / cssW) > 1.05;
 
-        // Render image in device pixels
-        const pX = Math.round(offsetX * dpr);
-        const pY = Math.round(offsetY * dpr);
-        const pW = Math.round(renderW * dpr);
-        const pH = Math.round(renderH * dpr);
+        let renderW, renderH, offsetX, offsetY;
 
-        ctx.drawImage(img, pX, pY, pW, pH);
+        if (isMobile) {
+          // Mobile View: Proportional ultrawide presentation in upper half
+          const maxBottleHeight = Math.max(200, cssH * 0.48);
+          const targetWidth = cssW * 1.15;
+          
+          const scale = Math.min(targetWidth / imgW, maxBottleHeight / imgH);
+          renderW = imgW * scale;
+          renderH = imgH * scale;
+
+          offsetX = (cssW - renderW) / 2;
+
+          const headerOffset = cssW <= 650 ? 46 : 58;
+          const topZone = (cssH * 0.49) - headerOffset;
+          offsetY = headerOffset + Math.max(0, (topZone - renderH) / 2);
+
+          // 1. Draw smooth vertical canvas gradient matching 3D studio lighting
+          const bgGrad = ctx.createLinearGradient(0, 0, 0, cssH);
+          bgGrad.addColorStop(0, '#bfbfbf');
+          const pTop = Math.max(0, Math.min(1, offsetY / cssH));
+          bgGrad.addColorStop(pTop, '#bfbfbf');
+          const pMid = Math.max(0, Math.min(1, (offsetY + renderH * 0.55) / cssH));
+          bgGrad.addColorStop(pMid, '#cbcbcb');
+          const pBottom = Math.max(0, Math.min(1, (offsetY + renderH) / cssH));
+          bgGrad.addColorStop(pBottom, '#dcdcdc');
+          bgGrad.addColorStop(1, '#efe4cf');
+
+          ctx.fillStyle = bgGrad;
+          ctx.fillRect(0, 0, cssW, cssH);
+
+          // 2. Draw 3D sequence frame
+          ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
+
+          // 3. Seamless gradient feathering over bottom edge
+          const featherH = Math.min(26, renderH * 0.12);
+          const featherY = offsetY + renderH - featherH;
+          const bottomBlend = ctx.createLinearGradient(0, featherY, 0, offsetY + renderH);
+          bottomBlend.addColorStop(0, 'rgba(220, 220, 220, 0)');
+          bottomBlend.addColorStop(0.5, 'rgba(220, 220, 220, 0.4)');
+          bottomBlend.addColorStop(1, '#dcdcdc');
+
+          ctx.fillStyle = bottomBlend;
+          ctx.fillRect(0, featherY, cssW, featherH + 2);
+        } else {
+          // Desktop Wideangle View:
+          // Proportionally sized (scale <= 0.86) to fit cleanly within viewport with native sharpness.
+          // This keeps the 3D bottle and flying ingredients ultra-crisp while seamlessly blending into the studio backdrop.
+          const maxH = cssH * 0.84;
+          const maxW = cssW * 0.86;
+          const scale = Math.min(maxW / imgW, maxH / imgH);
+          renderW = imgW * scale;
+          renderH = imgH * scale;
+
+          offsetX = (cssW - renderW) / 2;
+          offsetY = (cssH - renderH) / 2;
+
+          // 1. Draw smooth vertical canvas gradient matching 3D studio background
+          const bgGrad = ctx.createLinearGradient(0, 0, 0, cssH);
+          bgGrad.addColorStop(0, '#bfbfbf');
+          const pTop = Math.max(0, Math.min(1, offsetY / cssH));
+          bgGrad.addColorStop(pTop, '#bfbfbf');
+          const pMid = Math.max(0, Math.min(1, (offsetY + renderH * 0.5) / cssH));
+          bgGrad.addColorStop(pMid, '#cbcbcb');
+          const pBottom = Math.max(0, Math.min(1, (offsetY + renderH) / cssH));
+          bgGrad.addColorStop(pBottom, '#dcdcdc');
+          bgGrad.addColorStop(1, '#efe4cf');
+
+          ctx.fillStyle = bgGrad;
+          ctx.fillRect(0, 0, cssW, cssH);
+
+          // 2. Draw crisp 3D frame
+          ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
+
+          // 3. Multi-directional soft edge blending
+          // Left feather blend
+          if (offsetX > 0) {
+            const leftGrad = ctx.createLinearGradient(offsetX - 2, 0, offsetX + 35, 0);
+            leftGrad.addColorStop(0, '#bfbfbf');
+            leftGrad.addColorStop(1, 'rgba(191, 191, 191, 0)');
+            ctx.fillStyle = leftGrad;
+            ctx.fillRect(offsetX - 2, offsetY, 38, renderH);
+          }
+          // Right feather blend
+          if (offsetX + renderW < cssW) {
+            const rightGrad = ctx.createLinearGradient(offsetX + renderW - 35, 0, offsetX + renderW + 2, 0);
+            rightGrad.addColorStop(0, 'rgba(191, 191, 191, 0)');
+            rightGrad.addColorStop(1, '#bfbfbf');
+            ctx.fillStyle = rightGrad;
+            ctx.fillRect(offsetX + renderW - 35, offsetY, 38, renderH);
+          }
+          // Bottom soft feather blend
+          const featherH = Math.min(35, renderH * 0.12);
+          const featherY = offsetY + renderH - featherH;
+          const bottomBlend = ctx.createLinearGradient(0, featherY, 0, offsetY + renderH);
+          bottomBlend.addColorStop(0, 'rgba(220, 220, 220, 0)');
+          bottomBlend.addColorStop(0.5, 'rgba(220, 220, 220, 0.5)');
+          bottomBlend.addColorStop(1, '#dcdcdc');
+          ctx.fillStyle = bottomBlend;
+          ctx.fillRect(0, featherY, cssW, featherH + 4);
+        }
+
         ctx.restore();
       }
 
@@ -1551,7 +1770,7 @@
         if (hudCounter) hudCounter.textContent = `${String(index + 1).padStart(3, '0')} / ${TOTAL_FRAMES}`;
 
         // Fade scroll hint once scrolling starts
-        if (index > 15 && scrollHint) {
+        if (index > 10 && scrollHint) {
           scrollHint.style.opacity = '0';
         } else if (index <= 5 && scrollHint) {
           scrollHint.style.opacity = '0.85';
@@ -1578,7 +1797,7 @@
         }
       }
 
-      // Responsive Canvas Resizing with Crisp Retina DPR Sizing
+      // Responsive Canvas Resizing with Retina DPR
       function resizeCanvas() {
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         const w = window.innerWidth;
@@ -1627,7 +1846,7 @@
             if (loaderPct) loaderPct.textContent = pct + '%';
             if (loaderBar) loaderBar.style.width = pct + '%';
 
-            if (loadedCount >= Math.min(45, TOTAL_FRAMES)) {
+            if (loadedCount >= Math.min(30, TOTAL_FRAMES)) {
               if (loader && !loader.classList.contains('loaded')) {
                 loader.classList.add('loaded');
               }
@@ -1646,20 +1865,19 @@
         }
       }
 
-      // Setup GSAP and ScrollTrigger (Side-Aligned Captions Animation)
+      // Setup GSAP and ScrollTrigger
       function initScrollTrigger() {
         gsap.registerPlugin(ScrollTrigger);
 
         const sequenceData = { frame: 0 };
 
-        // Main Timeline pinned over 450vh for smooth scrub
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: "#experience",
             start: "top top",
-            end: "+=450%", // 4.5x viewport height
+            end: "+=450%",
             pin: true,
-            scrub: 0.8, // Apple momentum smoothing
+            scrub: 0.8,
             anticipatePin: 1
           }
         });
@@ -1675,50 +1893,50 @@
           }
         }, 0);
 
-        // Step 0: Hero Opening Title (Fades out to the left as animation starts)
+        // Step 0: Hero Opening Title
         tl.fromTo("#hero-title-step", 
-          { opacity: 1, x: 0 }, 
-          { opacity: 0, x: -50, duration: 0.12, ease: "power2.in" }, 
-          0.02
+          { opacity: 1, y: 0 }, 
+          { opacity: 0, y: -20, duration: 0.03, ease: "power2.in" }, 
+          0.005
         );
 
-        // Step 1: 18% - 36% (Side Left)
+        // Step 1: 18% - 36%
         tl.fromTo(".step-1", 
-          { opacity: 0, x: -50 }, 
-          { opacity: 1, x: 0, duration: 0.08, ease: "power2.out" }, 
+          { opacity: 0, y: 25 }, 
+          { opacity: 1, y: 0, duration: 0.08, ease: "power2.out" }, 
           0.18
         ).to(".step-1", 
-          { opacity: 0, x: -50, duration: 0.08, ease: "power2.in" }, 
+          { opacity: 0, y: -25, duration: 0.08, ease: "power2.in" }, 
           0.36
         );
 
-        // Step 2: 42% - 60% (Side Left)
+        // Step 2: 42% - 60%
         tl.fromTo(".step-2", 
-          { opacity: 0, x: -50 }, 
-          { opacity: 1, x: 0, duration: 0.08, ease: "power2.out" }, 
+          { opacity: 0, y: 25 }, 
+          { opacity: 1, y: 0, duration: 0.08, ease: "power2.out" }, 
           0.42
         ).to(".step-2", 
-          { opacity: 0, x: -50, duration: 0.08, ease: "power2.in" }, 
+          { opacity: 0, y: -25, duration: 0.08, ease: "power2.in" }, 
           0.60
         );
 
-        // Step 3: 65% - 82% (Side Right)
+        // Step 3: 65% - 82%
         tl.fromTo(".step-3", 
-          { opacity: 0, x: 50 }, 
-          { opacity: 1, x: 0, duration: 0.08, ease: "power2.out" }, 
+          { opacity: 0, y: 25 }, 
+          { opacity: 1, y: 0, duration: 0.08, ease: "power2.out" }, 
           0.65
         ).to(".step-3", 
-          { opacity: 0, x: 50, duration: 0.08, ease: "power2.in" }, 
+          { opacity: 0, y: -25, duration: 0.08, ease: "power2.in" }, 
           0.82
         );
 
-        // Step 4: 86% - 98% (Side Right)
+        // Step 4: 86% - 98%
         tl.fromTo(".step-4", 
-          { opacity: 0, x: 50 }, 
-          { opacity: 1, x: 0, duration: 0.10, ease: "power2.out" }, 
+          { opacity: 0, y: 25 }, 
+          { opacity: 1, y: 0, duration: 0.10, ease: "power2.out" }, 
           0.86
         ).to(".step-4", 
-          { opacity: 1, x: 0, duration: 0.12 }, 
+          { opacity: 1, y: 0, duration: 0.12 }, 
           0.90
         );
       }

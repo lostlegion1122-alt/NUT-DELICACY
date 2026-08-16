@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Journal | Artisanal Nut Butter Guides & Recipes | Nut Delicacy</title>
+  <meta name="description" content="Explore culinary guides, nutrition breakdowns, and pairing recipes by Nut Delicacy. Learn about single-origin pistachio butter, cold stone grinding, and zero palm oil purity.">
+  <meta name="keywords" content="nut butter blog, pistachio butter guide, organic almond butter benefits, stone ground nut butter articles India, healthy breakfast recipes nut butter, Nut Delicacy journal">
+  <link rel="canonical" href="https://nutdelicacy.in/blog.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nutdelicacy.in/blog.html">
+  <meta property="og:title" content="The Journal | Nut Delicacy Artisanal Guides">
+  <meta property="og:description" content="Discover gourmet recipes, nutritional comparisons, and the craft of traditional stone-ground nut butters.">
+  <meta property="og:image" content="https://nutdelicacy.in/pistachio-butter.webp">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Nut Delicacy Culinary Journal",
+    "url": "https://nutdelicacy.in/blog.html",
+    "description": "Culinary stories, single-origin terroir notes, and stone-ground nut butter wellness articles.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Nut Delicacy",
+      "logo": "https://nutdelicacy.in/brand-logo.webp"
+    }
+  }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); color: var(--brown); line-height: 1.6; }
+    h1, h2, h3, h4, .serif { font-family: 'Fraunces', Georgia, serif; }
+
+    .blog-hero {
+      padding: 130px 4% 50px;
+      text-align: center;
+      background: linear-gradient(180deg, #eae1ce 0%, var(--cream) 100%);
+    }
+    .blog-hero-inner {
+      width: min(840px, 92%);
+      margin: auto;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(63, 75, 35, 0.08);
+      border: 1px solid rgba(63, 75, 35, 0.2);
+      color: var(--olive-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .blog-hero h1 {
+      font-size: clamp(36px, 5.5vw, 60px);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+    .blog-hero h1 em {
+      font-style: italic;
+      color: var(--olive);
+    }
+    .blog-hero p {
+      font-size: 17px;
+      color: var(--brown-light);
+      max-width: 640px;
+      margin: auto;
+    }
+
+    .blog-container {
+      width: min(1240px, 92%);
+      margin: 40px auto 100px;
+    }
+
+    /* Featured Spotlight Card */
+    .spotlight-article-card {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 40px clamp(24px, 5vw, 50px);
+      margin-bottom: 60px;
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    .spotlight-article-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(63, 75, 35, 0.25);
+    }
+    .spotlight-img-wrap {
+      width: 100%;
+      aspect-ratio: 16/10;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .spotlight-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .spotlight-article-card:hover .spotlight-img {
+      transform: scale(1.04);
+    }
+    .spotlight-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .spotlight-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(26px, 3.5vw, 36px);
+      color: var(--brown);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .spotlight-desc {
+      font-size: 15px;
+      color: var(--brown-light);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .spotlight-meta {
+      font-size: 12.5px;
+      color: var(--brown-muted);
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Articles Grid */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 32px;
+    }
+    .article-card {
+      background: var(--white);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    .article-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(63, 75, 35, 0.25);
+    }
+    .article-card-img-wrap {
+      width: 100%;
+      aspect-ratio: 16/10;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: var(--paper);
+    }
+    .article-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .article-card:hover .article-card-img {
+      transform: scale(1.05);
+    }
+    .article-card-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .article-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      color: var(--brown);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .article-card p {
+      font-size: 13.5px;
+      color: var(--brown-light);
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+    .article-card-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--brown-muted);
+      padding-top: 12px;
+      border-top: 1px solid rgba(62, 36, 21, 0.08);
+    }
+    .read-more-link {
+      font-weight: 700;
+      color: var(--olive);
+    }
+
+    @media (max-width: 850px) {
+      .spotlight-article-card { grid-template-columns: 1fr; }
+      nav.main-nav { display: none; }
+      .articles-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Nut Delicacy Home">
+        <div class="brand-mark">
+          <img src="brand-logo.webp" alt="Njoy Monogram" onerror="this.src='brand-logo.png'">
+        </div>
+        <div class="brand-text">
+          <strong>Njoy</strong>
+          <span>by Nut Delicacy</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">The Experience</a>
+        <a href="products.html">The Collection</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html#story">Our Manifesto</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://www.instagram.com/nut_delicacy/" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Instagram" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <button class="cart-toggle-btn" onclick="Cart.openDrawer()" aria-label="Open Shopping Bag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span>Cart</span>
+          <span class="cart-badge-count" style="display:none;">0</span>
+        </button>
+        <a href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer" class="header-whatsapp-cta" title="WhatsApp Concierge">
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-hero">
+      <div class="blog-hero-inner">
+        <div class="hero-eyebrow">
+          <span>The Nut Delicacy Journal</span>
+        </div>
+        <h1>Stories in Pure <em>Nutrition & Craft.</em></h1>
+        <p>In-depth culinary guides, nutritional breakdowns, and recipes from our master roasters and nutrition specialists in Surat, Gujarat.</p>
+      </div>
+    </section>
+
+    <div class="blog-container">
+      
+      <!-- Spotlight Featured Article -->
+      <a href="blog/what-is-pistachio-butter.html" class="spotlight-article-card">
+        <div class="spotlight-img-wrap">
+          <img src="pistachio-butter.webp" alt="Pistachio Butter on Marble" class="spotlight-img">
+        </div>
+        <div>
+          <div class="spotlight-tag">Featured Master Guide</div>
+          <h2 class="spotlight-title">What Is Pistachio Butter? The Connoisseur's Complete Guide</h2>
+          <p class="spotlight-desc">Explore the culinary art of 100% pure stone-ground pistachio butter: origin terroir, health benefits, and how to use it in luxury breakfast dishes.</p>
+          <div class="spotlight-meta">
+            <span>August 16, 2026</span>
+            <span>•</span>
+            <span>5 min read</span>
+            <span>•</span>
+            <span style="color:var(--olive); font-weight:700;">Read Guide →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Articles Grid -->
+      <div class="articles-grid">
+        
+        <!-- Article 2: Pistachio vs Peanut -->
+        <a href="blog/pistachio-butter-vs-peanut-butter.html" class="article-card">
+          <div class="article-card-img-wrap">
+            <img src="pistachio-butter.webp" alt="Pistachio Butter vs Peanut Butter" class="article-card-img" loading="lazy">
+          </div>
+          <div class="article-card-tag">Nutritional Face-off</div>
+          <h3>Pistachio Butter vs Peanut Butter: Which Is Healthier?</h3>
+          <p>A detailed head-to-head comparison in protein, healthy fats, antioxidants, calories, and culinary versatility.</p>
+          <div class="article-card-footer">
+            <span>6 min read</span>
+            <span class="read-more-link">Read Story →</span>
+          </div>
+        </a>
+
+        <!-- Article 3: What Does Stone Ground Mean -->
+        <a href="blog/what-does-stone-ground-nut-butter-mean.html" class="article-card">
+          <div class="article-card-img-wrap">
+            <img src="product-preview.webp" alt="Granite Stone Milling" class="article-card-img" loading="lazy">
+          </div>
+          <div class="article-card-tag">Traditional Craft</div>
+          <h3>What Does Stone-Ground Nut Butter Mean? The Granite Ritual</h3>
+          <p>Why traditional granite stone-milling below 28°C protects nutrients, texture, and natural roasted aroma.</p>
+          <div class="article-card-footer">
+            <span>5 min read</span>
+            <span class="read-more-link">Read Story →</span>
+          </div>
+        </a>
+
+        <!-- Article 4: Benefits of Almond Butter -->
+        <a href="blog/benefits-of-organic-almond-butter.html" class="article-card">
+          <div class="article-card-img-wrap">
+            <img src="almond-butter.webp" alt="Almond Butter Health" class="article-card-img" loading="lazy">
+          </div>
+          <div class="article-card-tag">Artisanal Superfoods</div>
+          <h3>The Connoisseur's Guide to Pure Almond Butter & Mamra Almonds</h3>
+          <p>How stone-ground Mamra almonds deliver essential Vitamin E, magnesium, and sustained cellular energy.</p>
+          <div class="article-card-footer">
+            <span>5 min read</span>
+            <span class="read-more-link">Read Story →</span>
+          </div>
+        </a>
+
+        <!-- Article 5: Why Zero Palm Oil Matters -->
+        <a href="blog/why-zero-palm-oil-matters.html" class="article-card">
+          <div class="article-card-img-wrap">
+            <img src="peanut-butter.webp" alt="Zero Palm Oil Purity" class="article-card-img" loading="lazy">
+          </div>
+          <div class="article-card-tag">Ingredient Purity</div>
+          <h3>Why Zero Palm Oil & No Added Sugar Matter in Nut Butters</h3>
+          <p>The truth about commercial additives and why whole stone-ground nuts are vastly superior for your heart.</p>
+          <div class="article-card-footer">
+            <span>4 min read</span>
+            <span class="read-more-link">Read Story →</span>
+          </div>
+        </a>
+
+        <!-- Article 6: Gourmet Breakfast Ideas -->
+        <a href="blog/healthy-breakfast-ideas-nut-butter.html" class="article-card">
+          <div class="article-card-img-wrap">
+            <img src="hazelnut-chocolate.webp" alt="Gourmet Breakfast Recipes" class="article-card-img" loading="lazy">
+          </div>
+          <div class="article-card-tag">Culinary Recipes</div>
+          <h3>7 Gourmet Breakfast & Toast Ideas with Artisanal Nut Butters</h3>
+          <p>Elevate your morning ritual with chef-inspired recipes for pistachio sourdough, chia parfaits, and gianduja crepes.</p>
+          <div class="article-card-footer">
+            <span>5 min read</span>
+            <span class="read-more-link">Read Story →</span>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>Njoy</strong>
+        <p><b>by Nut Delicacy</b><br>Real ingredients. Real joy. Honest, stone-ground organic nut butters made with pure intention.</p>
+      </div>
+      <div class="footer-col">
+        <h4>The Collection</h4>
+        <a href="products.html">All 10 Varieties</a>
+        <a href="products.html#reserve">Grand Reserve Edition</a>
+        <a href="products.html#artisanal">Artisanal Stone-Ground</a>
+      </div>
+      <div class="footer-col">
+        <h4>The Brand</h4>
+        <a href="index.html">The 3D Experience</a>
+        <a href="index.html#story">Our Manifesto</a>
+        <a href="index.html#values">The Granite Ritual</a>
+      </div>
+      <div class="footer-col">
+        <h4>Orders & Concierge</h4>
+        <p style="font-size: 14px; color: var(--brown-light); line-height: 1.7;">
+          Surat, Gujarat, India<br>
+          WhatsApp: <a href="https://wa.me/919512512151" style="color: var(--olive); font-weight: 700;">+91 95125 12151</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Nut Delicacy. All Rights Reserved.</span>
+      <span>Single-Origin • Stone-Ground • Zero Palm Oil</span>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay" onclick="Cart.closeDrawer()"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Your Tasting Bag</h3>
+      <button class="cart-drawer-close" onclick="Cart.closeDrawer()" aria-label="Close Cart">✕</button>
+    </div>
+    <div class="cart-drawer-body">
+      <div class="cart-empty-state" id="cart-empty-state">
+        <div class="cart-empty-icon">🫙</div>
+        <h4>Your Bag is Empty</h4>
+        <p>Explore our single-origin stone-ground collection to add artisanal jars.</p>
+        <a href="products.html" class="btn-primary" style="margin-top:12px; display:inline-block;">Explore Collection</a>
+      </div>
+      <div id="cart-items-container"></div>
+    </div>
+    <div class="cart-drawer-footer" id="cart-drawer-footer" style="display:none;">
+      <div class="cart-subtotal-row">
+        <span>Estimated Subtotal</span>
+        <strong id="cart-subtotal">₹0</strong>
+      </div>
+      <button class="btn-whatsapp-checkout" onclick="Cart.checkoutWhatsApp()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg><span>Order Directly via WhatsApp</span>
+        <span>→</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Floating WhatsApp Concierge Widget -->
+  <div class="whatsapp-concierge-wrap">
+    <button class="whatsapp-concierge-btn" onclick="window.open('https://wa.me/919512512151', '_blank')" aria-label="Contact WhatsApp Concierge" title="Chat on WhatsApp">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+    <a href="index.html" class="mobile-nav-item" id="mob-nav-home">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Home</span>
+    </a>
+    <a href="products.html" class="mobile-nav-item" id="mob-nav-shop">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+      <span>Collection</span>
+    </a>
+    <button type="button" class="mobile-nav-item" onclick="Cart.openDrawer()" id="mob-nav-cart" aria-label="Open Shopping Bag">
+      <div class="mob-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="cart-badge-count mob-badge" style="display:none;">0</span>
+      </div>
+      <span>Tasting Bag</span>
+    </button>
+    <a href="blog.html" class="mobile-nav-item active" id="mob-nav-blog">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      <span>Journal</span>
+    </a>
+    <a href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer" class="mobile-nav-item mob-whatsapp" id="mob-nav-whatsapp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+  </nav>
+
+  <script src="products.js"></script>
+</body>
+</html>

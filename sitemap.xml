@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://nutdelicacy.in/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/product-preview.webp</image:loc>
+      <image:title>Njoy by Nut Delicacy Signature Stone Ground Nut Butter</image:title>
+    </image:image>
+  </url>
+
+  <!-- The Collection (Products Page) -->
+  <url>
+    <loc>https://nutdelicacy.in/products.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/pistachio-butter.webp</image:loc>
+      <image:title>Imperial Pistachio Butter Grand Reserve</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/hazelnut-chocolate.webp</image:loc>
+      <image:title>Hazelnut Dark Chocolate Spread</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/almond-butter.webp</image:loc>
+      <image:title>Stone Ground Mamra Almond Butter</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog Index -->
+  <url>
+    <loc>https://nutdelicacy.in/blog.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Article 1: What Is Pistachio Butter -->
+  <url>
+    <loc>https://nutdelicacy.in/blog/what-is-pistachio-butter.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/pistachio-butter.webp</image:loc>
+      <image:title>What Is Pistachio Butter - Nut Delicacy Guide</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog Article 2: Pistachio Butter vs Peanut Butter -->
+  <url>
+    <loc>https://nutdelicacy.in/blog/pistachio-butter-vs-peanut-butter.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/pistachio-butter.webp</image:loc>
+      <image:title>Pistachio Butter vs Peanut Butter Nutritional Comparison</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog Article 3: What Does Stone-Ground Mean -->
+  <url>
+    <loc>https://nutdelicacy.in/blog/what-does-stone-ground-nut-butter-mean.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/product-preview.webp</image:loc>
+      <image:title>Traditional Granite Stone-Ground Milling Process</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog Article 4: Benefits of Pure Almond Butter -->
+  <url>
+    <loc>https://nutdelicacy.in/blog/benefits-of-organic-almond-butter.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/almond-butter.webp</image:loc>
+      <image:title>Health Benefits of Pure Stone-Ground Almond Butter</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog Article 5: Why Zero Palm Oil Matters -->
+  <url>
+    <loc>https://nutdelicacy.in/blog/why-zero-palm-oil-matters.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/peanut-butter.webp</image:loc>
+      <image:title>Why Palm Oil Free Nut Butters Matter for Health</image:title>
+    </image:image>
+  </url>
+
+  <!-- Blog Article 6: Gourmet Breakfast Ideas with Nut Butter -->
+  <url>
+    <loc>https://nutdelicacy.in/blog/healthy-breakfast-ideas-nut-butter.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/hazelnut-chocolate.webp</image:loc>
+      <image:title>Healthy Breakfast and Toast Ideas with Artisanal Nut Butter</image:title>
+    </image:image>
+  </url>
+
+</urlset>

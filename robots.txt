@@ -1,0 +1,15 @@
+# Nut Delicacy Robots.txt
+# Production Domain: https://nutdelicacy.in/
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /products.html
+Allow: /blog.html
+Allow: /blog/
+Allow: /*.webp
+Allow: /*.js
+Allow: /*.css
+
+# Sitemaps
+Sitemap: https://nutdelicacy.in/sitemap.xml
