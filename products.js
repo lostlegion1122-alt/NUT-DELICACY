@@ -554,7 +554,7 @@ function renderCatalogGrid(category = 'all') {
         ${product.isReserve ? '<span class="card-badge-reserve">Reserve</span>' : ''}
         
         <div class="card-img-wrap" onclick="openProductModal('${product.id}')" title="Click to view details of ${product.name}">
-          <img src="${product.image}" alt="${product.name} Luxury Stone Ground Jar" class="card-img" loading="lazy" onerror="this.src='product-preview.webp'">
+          <img src="${product.image}" alt="${product.name} Luxury Stone Ground Jar" class="card-img" width="280" height="280" loading="lazy" onerror="this.src='product-preview.webp'">
         </div>
 
         <div class="card-category-label">${product.categoryLabel}</div>
@@ -647,7 +647,7 @@ function openProductModal(productId) {
     <div class="modal-product-layout">
       <div class="modal-product-gallery">
         <div class="modal-img-glow"></div>
-        <img src="${product.image}" alt="${product.name} Luxury Jar" class="modal-product-img" onerror="this.src='product-preview.webp'">
+        <img src="${product.image}" alt="${product.name} Luxury Jar" class="modal-product-img" width="340" height="340" onerror="this.src='product-preview.webp'">
         <div class="modal-purity-stamp">
           <span>🌿 100% PURE</span>
           <span>NO PALM OIL</span>

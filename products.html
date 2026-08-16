@@ -28,7 +28,8 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"></noscript>
 
   <!-- Shared CSS & Page Specific Styles -->
   <link rel="stylesheet" href="shared.css">
@@ -611,12 +612,12 @@
       color: var(--white);
       transform: translateY(-2px);
     }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 11.5px;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-weight: 700;
-      color: var(--olive);
+      color: var(--olive-dark);
       margin-bottom: 18px;
     }
     .footer-col a {
@@ -638,7 +639,7 @@
       display: flex;
       justify-content: space-between;
       font-size: 12px;
-      color: var(--brown-muted);
+      color: #3f3127;
     }
 
     /* ===================================================
@@ -741,7 +742,7 @@
     <div class="header-inner">
       <a class="brand" href="index.html" aria-label="Nut Delicacy Home">
         <div class="brand-mark">
-          <img src="brand-logo.webp" alt="Njoy Monogram" onerror="this.src='brand-logo.png'">
+          <img src="brand-logo.webp" alt="Njoy Monogram" width="44" height="44" onerror="this.src='brand-logo.png'">
         </div>
         <div class="brand-text">
           <strong>Njoy</strong>
@@ -874,21 +875,21 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Collection</h4>
+        <h3>Collection</h3>
         <a href="products.html">All 10 Varieties</a>
         <a href="products.html#reserve" onclick="filterCategory('reserve')">Grand Reserve Edition</a>
         <a href="products.html#artisanal" onclick="filterCategory('artisanal')">Artisanal Stone-Ground</a>
         <a href="products.html#classics" onclick="filterCategory('classics')">Classics & Indulgence</a>
       </div>
       <div class="footer-col">
-        <h4>Journal & Guides</h4>
+        <h3>Journal & Guides</h3>
         <a href="blog/what-is-pistachio-butter.html">What Is Pistachio Butter?</a>
         <a href="blog/pistachio-butter-vs-peanut-butter.html">Pistachio vs Peanut Butter</a>
         <a href="blog/what-does-stone-ground-nut-butter-mean.html">The Stone-Ground Ritual</a>
         <a href="blog.html">All Journal Articles</a>
       </div>
       <div class="footer-col">
-        <h4>Orders & Concierge</h4>
+        <h3>Orders & Concierge</h3>
         <p style="font-size: 14px; color: var(--brown-light); line-height: 1.7;">
           Surat, Gujarat, India<br>
           WhatsApp: <a href="https://wa.me/919512512151" style="color: var(--olive); font-weight: 700;">+91 95125 12151</a><br>
