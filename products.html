@@ -96,16 +96,23 @@
       width: min(1280px, 92%);
       margin: 20px auto 0;
       background: linear-gradient(135deg, #1c2612 0%, #111a0b 100%);
-      border: 1px solid rgba(179, 139, 71, 0.35);
+      border: 1.5px solid rgba(214, 175, 98, 0.45);
       border-radius: var(--radius-md);
-      padding: 14px 20px;
+      padding: 14px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       color: var(--white);
-      box-shadow: 0 10px 30px rgba(28, 38, 18, 0.15);
+      box-shadow: 0 10px 30px rgba(28, 38, 18, 0.2), 0 0 20px rgba(179, 139, 71, 0.15);
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .launch-offer-bar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(28, 38, 18, 0.28), 0 0 25px rgba(214, 175, 98, 0.25);
+      border-color: var(--gold);
     }
     .launch-offer-text {
       display: flex;
@@ -122,19 +129,21 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: var(--radius-full);
-      background: var(--gold);
+      background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
       color: var(--brown-deep);
       font-size: 12px;
       font-weight: 800;
       cursor: pointer;
       border: 0;
+      box-shadow: 0 4px 14px rgba(179, 139, 71, 0.35);
       transition: var(--transition);
     }
     .launch-offer-cta:hover {
-      background: var(--gold-light);
-      transform: scale(1.04);
+      background: linear-gradient(135deg, #ffe082 0%, #e5c158 100%);
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(179, 139, 71, 0.5);
     }
 
     /* Filter & Controls */
@@ -208,6 +217,10 @@
       display: flex;
       flex-direction: column;
       box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(63, 75, 35, 0.15);
+      user-select: none;
       transition: var(--transition);
       position: relative;
     }
@@ -575,16 +588,17 @@
       </div>
 
       <!-- Milad un Nabi Launch Offer Banner -->
-      <div class="launch-offer-bar">
+      <div class="launch-offer-bar" onclick="MiladCelebration.launchCelebration()" title="Click to view Milad Celebration 10% Offer & Fireworks">
         <div class="launch-offer-text">
-          <div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#ffd700; box-shadow:0 0 8px #ffd700;"></span>
             <strong>Milad un Nabi Launch Celebration</strong>
-            <span style="opacity:0.85; margin-left:6px;">— Enjoy 10% off on retail orders with code MILAD10</span>
+            <span style="opacity:0.85; margin-left:4px;">— Exclusive 10% Off with Code <b>MILAD10</b></span>
           </div>
         </div>
-        <button class="launch-offer-cta" onclick="Cart.applyPromo('MILAD10'); Cart.openDrawer();">
-          <span>Use Code: MILAD10</span>
-          <span>→</span>
+        <button class="launch-offer-cta" type="button" onclick="event.stopPropagation(); MiladCelebration.launchCelebration();" aria-label="Claim Milad Celebration 10% Offer">
+          <span>Claim 10% Offer</span>
+          <span>✨</span>
         </button>
       </div>
     </section>
@@ -592,10 +606,10 @@
     <!-- Filter & Categories -->
     <div class="catalog-controls-wrap">
       <div class="category-filter-nav">
-        <button class="filter-tab-btn active" onclick="filterCategory('all', this)">All Offerings (31)</button>
+        <button class="filter-tab-btn active" onclick="filterCategory('all', this)">All Offerings (32)</button>
         <button class="filter-tab-btn" onclick="filterCategory('combos', this)">Curated Combos (12)</button>
         <button class="filter-tab-btn" onclick="filterCategory('artisan', this)">Super Premium & Artisan (5)</button>
-        <button class="filter-tab-btn" onclick="filterCategory('classics', this)">Classic Nut Butters (9)</button>
+        <button class="filter-tab-btn" onclick="filterCategory('classics', this)">Classic Nut Butters (10)</button>
         <button class="filter-tab-btn" onclick="filterCategory('seeds', this)">Seed & Peanut Spreads (4)</button>
         <button class="filter-tab-btn" onclick="filterCategory('energy', this)">Energy Bites (1)</button>
       </div>

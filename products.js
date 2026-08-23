@@ -119,9 +119,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(995, 1380),
     ingredients: "100% Slow-Roasted Golden Hazelnuts.",
@@ -143,9 +143,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(995, 1380),
     ingredients: "100% Slow-Roasted Whole Macadamia Nuts.",
@@ -219,9 +219,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(455, 630),
     ingredients: "Roasted Almonds, Pure Single-Origin Dark Cacao, Organic Coconut Sugar.",
@@ -229,6 +229,30 @@ const PRODUCTS = [
     nutrition: { calories: "565 kcal", protein: "17.8g", fats: "46.2g", carbs: "26.4g" },
     tastingNotes: ["Dark Chocolate", "Nutty Almond", "Caramel Finish"],
     pills: ["Zero Palm Oil", "Dark Cacao", "Stone-Ground", "Coming Soon"]
+  },
+  {
+    id: "almond-dark-chocolate-butter",
+    name: "Almond Dark Chocolate Butter",
+    slug: "almond-dark-chocolate-butter",
+    category: "classics",
+    categoryLabel: "Classic Nut Butters",
+    tag: "Gourmet • 70% Dark Cacao",
+    subtitle: "Slow-Roasted Mamra & Californian Almonds folded with 70% Single-Origin Dark Chocolate.",
+    origin: "Terroir: Kashmir Almonds & Kerala Estate Cacao",
+    coldMilledTemp: "Milled below 26°C",
+    shelfLife: "6 Months",
+    hasImages: false,
+    images: {
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
+    },
+    sizes: createSizes(465, 645),
+    ingredients: "100% Roasted Whole Almonds, Single-Origin 70% Dark Cacao, Organic Coconut Blossom Sugar.",
+    description: "Slow-roasted whole almonds stone-ground with rich 70% single-origin dark chocolate and organic coconut nectar. A deep, decadent, antioxidant-rich spread with zero palm oil.",
+    nutrition: { calories: "572 kcal", protein: "18.4g", fats: "47.5g", carbs: "25.1g" },
+    tastingNotes: ["Intense Dark Cacao", "Roasted Almond Crunch", "Velvety Dark Ganache"],
+    pills: ["70% Dark Cacao", "Zero Palm Oil", "Stone-Ground", "Coming Soon"]
   },
   {
     id: "walnut-almond-butter",
@@ -243,9 +267,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(485, 675),
     ingredients: "50% Himalayan Snow Walnuts, 50% Mamra Almonds.",
@@ -267,9 +291,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(525, 730),
     ingredients: "Himalayan Snow Walnuts, Single-Origin Dark Cacao, Coconut Nectar.",
@@ -291,9 +315,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(525, 730),
     ingredients: "Roasted Pecans, Single-Origin Dark Cacao, Organic Coconut Sugar.",
@@ -315,9 +339,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(545, 755),
     ingredients: "100% Cold-Milled Himalayan Snow Walnuts.",
@@ -339,9 +363,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(545, 755),
     ingredients: "100% Roasted Pecan Nuts.",
@@ -363,9 +387,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(605, 840),
     ingredients: "Himalayan Walnuts, Mamra Almonds, Single-Origin Cacao, Coconut Nectar.",
@@ -439,9 +463,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(120, 165),
     ingredients: "100% Roasted Organic Sunflower Seeds.",
@@ -463,9 +487,9 @@ const PRODUCTS = [
     shelfLife: "6 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(120, 165),
     ingredients: "100% Slow-Milled Organic Pumpkin Seeds.",
@@ -491,9 +515,9 @@ const PRODUCTS = [
     shelfLife: "3 Months",
     hasImages: false,
     images: {
-      front: "coming-soon-butter.webp",
-      left: "coming-soon-butter.webp",
-      right: "coming-soon-butter.webp"
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
     },
     sizes: createSizes(120),
     ingredients: "Almonds, Cashews, Pumpkin Seeds, Sunflower Seeds, Medjool Dates, Raw Cacao.",
@@ -523,8 +547,8 @@ const PRODUCTS = [
     includedProductIds: ["peanut-butter", "peanut-chocolate-butter"],
     images: {
       front: "combo/everyday duo.webp",
-      left: "combo/everyday duo.webp",
-      right: "combo/everyday duo.webp"
+      left: "mockups/peanut-butter/front.webp",
+      right: "mockups/peanut-chocolate-butter/front.webp"
     },
     sizes: createComboSizes(399),
     ingredients: "1× 180g Pure Bold Peanut Butter, 1× 180g Peanut Chocolate Butter.",
@@ -550,8 +574,8 @@ const PRODUCTS = [
     includedProductIds: ["almond-butter", "cashew-butter"],
     images: {
       front: "combo/clasic.webp",
-      left: "combo/clasic.webp",
-      right: "combo/clasic.webp"
+      left: "mockups/almond-butter/front.webp",
+      right: "mockups/cashew-butter/front.webp"
     },
     sizes: createComboSizes(595),
     ingredients: "1× 180g Pure Roasted Almond Butter, 1× 180g Creamy Cashew Butter.",
@@ -577,8 +601,8 @@ const PRODUCTS = [
     includedProductIds: ["zafran-gold-butter", "hazelnut-chocolate-butter", "pistachio-butter"],
     images: {
       front: "combo/trio.webp",
-      left: "combo/trio.webp",
-      right: "combo/trio.webp"
+      left: "mockups/zafran-gold-butter/front.webp",
+      right: "mockups/hazelnut-chocolate-butter/front.webp"
     },
     sizes: createComboSizes(2299),
     ingredients: "1× 180g Almond Pista Saffron, 1× 180g 75% Hazelnut Chocolate, 1× 180g 100% Pure Pistachio Butter.",
@@ -604,8 +628,8 @@ const PRODUCTS = [
     includedProductIds: ["peanut-butter", "peanut-chocolate-butter", "almond-butter", "cashew-butter", "zafran-gold-butter", "hazelnut-chocolate-butter", "pistachio-butter"],
     images: {
       front: "combo/complete.webp",
-      left: "combo/complete.webp",
-      right: "combo/complete.webp"
+      left: "mockups/zafran-gold-butter/front.webp",
+      right: "mockups/pistachio-butter/front.webp"
     },
     sizes: createComboSizes(2999),
     ingredients: "Peanut Butter, Peanut Chocolate, Almond Butter, Cashew Butter, Almond Pista Saffron, Hazelnut Chocolate, Pistachio Butter (180g each).",
@@ -631,8 +655,8 @@ const PRODUCTS = [
     includedProductIds: ["peanut-chocolate-butter", "hazelnut-chocolate-butter"],
     images: {
       front: "combo/choclate.webp",
-      left: "combo/choclate.webp",
-      right: "combo/choclate.webp"
+      left: "mockups/peanut-chocolate-butter/front.webp",
+      right: "mockups/hazelnut-chocolate-butter/front.webp"
     },
     sizes: createComboSizes(999),
     ingredients: "1× 180g Peanut Chocolate Butter, 1× 180g 75% Hazelnut Chocolate Gianduja.",
@@ -658,8 +682,8 @@ const PRODUCTS = [
     includedProductIds: ["peanut-butter", "almond-butter", "cashew-butter"],
     images: {
       front: "combo/nutty trio.webp",
-      left: "combo/nutty trio.webp",
-      right: "combo/nutty trio.webp"
+      left: "mockups/almond-butter/front.webp",
+      right: "mockups/cashew-butter/front.webp"
     },
     sizes: createComboSizes(799),
     ingredients: "1× 180g Peanut Butter, 1× 180g Almond Butter, 1× 180g Cashew Butter.",
@@ -685,8 +709,8 @@ const PRODUCTS = [
     includedProductIds: ["zafran-gold-butter", "pistachio-butter"],
     images: {
       front: "combo/zafran pista.webp",
-      left: "combo/zafran pista.webp",
-      right: "combo/zafran pista.webp"
+      left: "mockups/zafran-gold-butter/front.webp",
+      right: "mockups/pistachio-butter/front.webp"
     },
     sizes: createComboSizes(1692),
     ingredients: "1× 180g Almond Pista Saffron Butter, 1× 180g 100% Pure Pistachio Butter.",
@@ -712,8 +736,8 @@ const PRODUCTS = [
     includedProductIds: ["peanut-butter", "zafran-gold-butter"],
     images: {
       front: "combo/evryday.webp",
-      left: "combo/evryday.webp",
-      right: "combo/evryday.webp"
+      left: "mockups/peanut-butter/front.webp",
+      right: "mockups/zafran-gold-butter/front.webp"
     },
     sizes: createComboSizes(999),
     ingredients: "1× 180g Pure Peanut Butter, 1× 180g Almond Pista Saffron Butter.",
@@ -739,8 +763,8 @@ const PRODUCTS = [
     includedProductIds: ["peanut-butter", "almond-butter", "cashew-butter", "hazelnut-chocolate-butter", "pistachio-butter"],
     images: {
       front: "combo/pure nut.webp",
-      left: "combo/pure nut.webp",
-      right: "combo/pure nut.webp"
+      left: "mockups/pistachio-butter/front.webp",
+      right: "mockups/hazelnut-chocolate-butter/front.webp"
     },
     sizes: createComboSizes(2199),
     ingredients: "Peanut Butter, Almond Butter, Cashew Butter, Hazelnut Chocolate Butter, Pistachio Butter (180g each).",
@@ -766,8 +790,8 @@ const PRODUCTS = [
     includedProductIds: ["zafran-gold-butter", "pistachio-butter", "hazelnut-chocolate-butter"],
     images: {
       front: "combo/trio.webp",
-      left: "combo/trio.webp",
-      right: "combo/trio.webp"
+      left: "mockups/zafran-gold-butter/front.webp",
+      right: "mockups/pistachio-butter/front.webp"
     },
     sizes: createComboSizes(null),
     ingredients: "Any 3 Jars of your choice from our single-origin stone-ground collection.",
@@ -793,8 +817,8 @@ const PRODUCTS = [
     includedProductIds: ["zafran-gold-butter", "hazelnut-chocolate-butter", "pistachio-butter", "almond-butter", "cashew-butter", "peanut-chocolate-butter", "peanut-butter"],
     images: {
       front: "combo/complete.webp",
-      left: "combo/complete.webp",
-      right: "combo/complete.webp"
+      left: "mockups/zafran-gold-butter/front.webp",
+      right: "mockups/hazelnut-chocolate-butter/front.webp"
     },
     sizes: createComboSizes(null),
     ingredients: "10 Custom Selected Jars (180g) in bespoke presentation gift box.",
@@ -820,8 +844,8 @@ const PRODUCTS = [
     includedProductIds: ["peanut-chocolate-butter", "hazelnut-chocolate-butter", "zafran-gold-butter"],
     images: {
       front: "combo/milad.webp",
-      left: "combo/milad.webp",
-      right: "combo/milad.webp"
+      left: "mockups/zafran-gold-butter/front.webp",
+      right: "mockups/hazelnut-chocolate-butter/front.webp"
     },
     sizes: createComboSizes(1999),
     ingredients: "1× 180g Peanut Chocolate, 1× 180g Hazelnut Chocolate Gianduja, 1× 180g Almond Pista Saffron.",
@@ -948,6 +972,10 @@ const Cart = {
     } else {
       this.showToast("Invalid code. Use MILAD10 for 10% off.");
     }
+  },
+
+  applyPromoCode(code) {
+    return this.applyPromo(code);
   },
 
   removePromo() {
@@ -1485,23 +1513,48 @@ function openProductModal(productId) {
   } else if (isCombo) {
     activeImage = "hero banner image.webp";
   } else {
-    activeImage = "coming-soon-butter.webp";
+    activeImage = "upcoming products.webp";
   }
 
   let angleGalleryHtml = "";
-  if (product.hasImages) {
+  if (isCombo && product.hasImages) {
+    let jar1Label = "Jar 1";
+    let jar2Label = "Jar 2";
+    if (product.includedProductIds && product.includedProductIds.length >= 2) {
+      const p1 = PRODUCTS.find(p => p.id === product.includedProductIds[0]);
+      const p2 = PRODUCTS.find(p => p.id === product.includedProductIds[1]);
+      if (p1) jar1Label = p1.name.replace(" Butter", "").replace(" (100% Pure)", "");
+      if (p2) jar2Label = p2.name.replace(" Butter", "").replace(" (100% Pure)", "");
+    }
+    angleGalleryHtml = `
+      <div class="modal-angle-gallery">
+        <button class="modal-angle-btn active" onclick="switchModalAngle('${product.id}', 'front', this)" title="View Combo Box">
+          <img src="${product.images.front}" alt="Combo Box">
+          <span>Combo Box</span>
+        </button>
+        <button class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'left', this)" title="View ${jar1Label}">
+          <img src="${product.images.left}" alt="${jar1Label}">
+          <span>${jar1Label}</span>
+        </button>
+        <button class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'right', this)" title="View ${jar2Label}">
+          <img src="${product.images.right}" alt="${jar2Label}">
+          <span>${jar2Label}</span>
+        </button>
+      </div>
+    `;
+  } else if (product.hasImages) {
     angleGalleryHtml = `
       <div class="modal-angle-gallery">
         <button class="modal-angle-btn active" onclick="switchModalAngle('${product.id}', 'front', this)">
-          <img src="${product.images.front}" alt="Front">
+          <img src="${product.images.front}" alt="Front View">
           <span>Front</span>
         </button>
         <button class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'left', this)">
-          <img src="${product.images.left}" alt="Left">
+          <img src="${product.images.left}" alt="Left Angle">
           <span>Left</span>
         </button>
         <button class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'right', this)">
-          <img src="${product.images.right}" alt="Right">
+          <img src="${product.images.right}" alt="Right Angle">
           <span>Right</span>
         </button>
       </div>
@@ -1610,19 +1663,24 @@ function openProductModal(productId) {
           <strong>Wholesale / Bulk / Custom Order Selected:</strong> Pricing is tailored based on quantity. When you click below, your inquiry will be sent directly to our WhatsApp concierge.
         </div>
 
-        <div class="modal-action-row" id="modal-action-row">
-          <div class="modal-qty-ctrl">
-            <button onclick="changeModalQty(-1)" aria-label="Decrease quantity">−</button>
-            <input type="text" id="modal-qty-input" value="1" readonly>
-            <button onclick="changeModalQty(1)" aria-label="Increase quantity">+</button>
+        <div class="modal-purchase-container" id="modal-action-row">
+          <div class="modal-tier1-row">
+            <div class="modal-qty-ctrl">
+              <button type="button" onclick="changeModalQty(-1)" aria-label="Decrease quantity">−</button>
+              <input type="text" id="modal-qty-input" value="1" readonly>
+              <button type="button" onclick="changeModalQty(1)" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="btn-primary modal-add-btn" id="modal-main-add-btn" onclick="addModalToBag()">
+              <span>Add to Tasting Bag</span>
+              <strong id="modal-total-price">${product.sizes[0].price !== null ? '₹' + product.sizes[0].price.toLocaleString("en-IN") : 'Price on Request'}</strong>
+            </button>
           </div>
-          <button class="btn-primary modal-add-btn" id="modal-main-add-btn" onclick="addModalToBag()">
-            <span>Add to Tasting Bag</span>
-            <strong id="modal-total-price">${product.sizes[0].price !== null ? '₹' + product.sizes[0].price.toLocaleString("en-IN") : 'Price on Request'}</strong>
-          </button>
-          <button class="btn-whatsapp-direct" id="modal-direct-wa-btn" onclick="orderModalDirectWhatsApp()" title="Direct Concierge Order">
-            <span>Order via WhatsApp</span>
-          </button>
+          <div class="modal-tier2-row">
+            <button type="button" class="btn-whatsapp-direct modal-wa-full-btn" id="modal-direct-wa-btn" onclick="orderModalDirectWhatsApp()" title="Direct Concierge Order on WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+              <span>Order via WhatsApp</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1755,7 +1813,7 @@ function renderCatalogGrid(category = "all") {
     } else if (product.category === "combos") {
       frontImg = "hero banner image.webp";
     } else {
-      frontImg = "coming-soon-butter.webp";
+      frontImg = "upcoming products.webp";
     }
 
     const priceText = defaultSize.price !== null
@@ -1763,7 +1821,7 @@ function renderCatalogGrid(category = "all") {
       : "Price on Request";
 
     return `
-      <article class="product-card" id="product-${product.id}" onclick="openProductModal('${product.id}')" title="Click to view details of ${product.name}">
+      <article class="product-card" id="product-${product.id}" data-product-id="${product.id}" role="button" tabindex="0" onclick="openProductModal('${product.id}')" title="Click to view details of ${product.name}">
         <div class="card-img-wrap">
           <img src="${frontImg}" alt="${product.name}" class="card-img" loading="lazy" onerror="this.src='product-preview.webp'">
         </div>
@@ -1774,6 +1832,48 @@ function renderCatalogGrid(category = "all") {
       </article>
     `;
   }).join("");
+
+  // Attach touch/click listeners to container for bulletproof mobile responsiveness
+  if (!container.dataset.hasTouchListener) {
+    container.dataset.hasTouchListener = "true";
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    container.addEventListener("touchstart", (e) => {
+      if (e.touches.length > 0) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+      }
+    }, { passive: true });
+
+    container.addEventListener("touchend", (e) => {
+      if (e.changedTouches.length > 0) {
+        const touch = e.changedTouches[0];
+        const distX = Math.abs(touch.clientX - touchStartX);
+        const distY = Math.abs(touch.clientY - touchStartY);
+        const elapsed = Date.now() - touchStartTime;
+        if (distX < 14 && distY < 14 && elapsed < 450) {
+          const card = e.target.closest(".product-card");
+          if (card && card.dataset.productId) {
+            e.preventDefault();
+            openProductModal(card.dataset.productId);
+          }
+        }
+      }
+    }, { passive: false });
+
+    container.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        const card = e.target.closest(".product-card");
+        if (card && card.dataset.productId) {
+          e.preventDefault();
+          openProductModal(card.dataset.productId);
+        }
+      }
+    });
+  }
 }
 
 function filterCategory(cat, btn) {
@@ -1844,12 +1944,12 @@ const MiladCelebration = {
   particles: [],
   animId: null,
   startTime: null,
-  duration: 10000, // 10 seconds fireworks & confetti
+  duration: 11000, // 11 seconds festive celebration
   isActive: false,
   hasTriggeredOnHomeClimax: false,
 
   init() {
-    let modal = document.getElementById("milad-celebration-modal");
+    let modal = document.getElementById("milad-modal-backdrop");
     if (!modal) {
       this.injectModalHtml();
     }
@@ -1914,7 +2014,7 @@ const MiladCelebration = {
   },
 
   applyPromoAndShop() {
-    Cart.applyPromoCode("MILAD10");
+    Cart.applyPromo("MILAD10");
     this.closeModal();
     if (!window.location.pathname.includes("products.html")) {
       window.location.href = "products.html";
@@ -1951,89 +2051,89 @@ const MiladCelebration = {
       return;
     }
 
-    const colors = [
-      "#ffd700", "#d4af37", "#b38b47", "#f3e5ab", // Rich Golds
-      "#0f703c", "#1b4332", "#2d6a4f", // Royal Emeralds
-      "#ffffff", "#fffdfa", "#f7f1e5", // Shimmering Pearls
-      "#e0a96d", "#c5a059", "#b87333"  // Rose Gold & Bronze
-    ];
     const w = window.innerWidth;
     const h = window.innerHeight;
 
-    // High volume: 24 ribbons per burst from left & right sides with slow floating flutter physics
-    for (let i = 0; i < 24; i++) {
-      // Left side burst
-      const angleL = -Math.PI / 3 + (Math.random() * 0.7 - 0.35);
-      const speedL = 9 + Math.random() * 11;
-      this.particles.push({
-        x: Math.random() * 60,
-        y: h - Math.random() * 30,
-        vx: Math.cos(angleL) * speedL,
-        vy: Math.sin(angleL) * speedL,
-        w: 9 + Math.random() * 8,
-        h: 14 + Math.random() * 12,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        tilt: Math.random() * 10,
-        tiltSpeed: 0.04 + Math.random() * 0.07,
-        wobble: 0,
-        wobbleSpeed: 0.03 + Math.random() * 0.05,
-        gravity: 0.11 + Math.random() * 0.07, // Slow, majestic floating drift
-        drag: 0.98,
-        alpha: 1,
-        fade: 0.0035 + Math.random() * 0.003,
-        isRibbon: true
-      });
+    // 1. ELEGANT GOLDEN SHINY CONFETTI FALLING FROM TOP (0.5x half-speed gentle floating flutter)
+    const goldConfettiColors = [
+      { base: "#ffd700", highlight: "#fffde7" }, // Brilliant Yellow Gold
+      { base: "#ffdf00", highlight: "#ffffff" }, // Pure Gold
+      { base: "#e5c158", highlight: "#fff8e1" }, // Soft Warm Gold
+      { base: "#d4af37", highlight: "#fffdf0" }, // Metallic Antique Gold
+      { base: "#f5d061", highlight: "#fffef5" }, // Champagne Gold
+      { base: "#e0a96d", highlight: "#ffe8d6" }, // Rose Gold
+      { base: "#c5a059", highlight: "#fff9c4" }  // Sovereign Gold
+    ];
 
-      // Right side burst
-      const angleR = -2 * Math.PI / 3 + (Math.random() * 0.7 - 0.35);
-      const speedR = 9 + Math.random() * 11;
+    // Controlled elegant quantity: 6-8 fluttering ribbons per burst from the top
+    const confettiCount = 7;
+    for (let i = 0; i < confettiCount; i++) {
+      const col = goldConfettiColors[Math.floor(Math.random() * goldConfettiColors.length)];
       this.particles.push({
-        x: w - Math.random() * 60,
-        y: h - Math.random() * 30,
-        vx: Math.cos(angleR) * speedR,
-        vy: Math.sin(angleR) * speedR,
-        w: 9 + Math.random() * 8,
-        h: 14 + Math.random() * 12,
-        color: colors[Math.floor(Math.random() * colors.length)],
+        x: Math.random() * w,
+        y: -15 - Math.random() * 30, // Fall from top of page
+        vx: (Math.random() - 0.5) * 1.4,
+        vy: 0.9 + Math.random() * 1.3, // 0.5x speed: slow, graceful drift
+        w: 8 + Math.random() * 7,
+        h: 13 + Math.random() * 10,
+        color: col.base,
+        highlight: col.highlight,
         tilt: Math.random() * 10,
-        tiltSpeed: 0.04 + Math.random() * 0.07,
-        wobble: 0,
-        wobbleSpeed: 0.03 + Math.random() * 0.05,
-        gravity: 0.11 + Math.random() * 0.07,
-        drag: 0.98,
+        tiltSpeed: 0.025 + Math.random() * 0.035,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: 0.025 + Math.random() * 0.035,
+        gravity: 0.035 + Math.random() * 0.025, // Gentle floating gravity
+        drag: 0.992,
         alpha: 1,
-        fade: 0.0035 + Math.random() * 0.003,
+        fade: 0.0018 + Math.random() * 0.0015,
         isRibbon: true
       });
     }
 
-    // Majestic Fireworks Rockets exploding in the sky
-    if (Math.random() < 0.75) {
-      const originX = Math.random() < 0.5 ? (w * 0.18 + Math.random() * (w * 0.28)) : (w * 0.54 + Math.random() * (w * 0.28));
-      const originY = h * 0.15 + Math.random() * (h * 0.32);
-      const fireworkColor = colors[Math.floor(Math.random() * colors.length)];
-      for (let s = 0; s < 42; s++) {
-        const starAngle = (s / 42) * Math.PI * 2 + Math.random() * 0.15;
-        const starSpeed = 2.5 + Math.random() * 6.5;
+    // 2. MAJESTIC CRACKERS / FIREWORKS POPPING TILL THE TOP OF THE PAGE (Shiny Golden, Red, and Green)
+    if (Math.random() < 0.65) {
+      const crackerThemes = [
+        // Shiny Golden Cracker
+        { primary: "#ffd700", glow: "#ffea00", sparkle: "#fffde7" },
+        { primary: "#ffc107", glow: "#ffd54f", sparkle: "#ffffff" },
+        // Shiny Red Cracker
+        { primary: "#ff1744", glow: "#ff5252", sparkle: "#ffebee" },
+        { primary: "#d50000", glow: "#ff3d00", sparkle: "#fff0f0" },
+        // Shiny Green Cracker
+        { primary: "#00e676", glow: "#69f0ae", sparkle: "#e8f5e9" },
+        { primary: "#00c853", glow: "#10b981", sparkle: "#ffffff" }
+      ];
+
+      const theme = crackerThemes[Math.floor(Math.random() * crackerThemes.length)];
+      // Pop right at the top of the viewport (6% to 24% from top of page)
+      const originX = w * 0.12 + Math.random() * (w * 0.76);
+      const originY = h * 0.06 + Math.random() * (h * 0.20);
+      const sparkCount = 42;
+
+      for (let s = 0; s < sparkCount; s++) {
+        const starAngle = (s / sparkCount) * Math.PI * 2 + (Math.random() * 0.2 - 0.1);
+        const starSpeed = 2.4 + Math.random() * 5.2;
         this.particles.push({
           x: originX,
           y: originY,
           vx: Math.cos(starAngle) * starSpeed,
           vy: Math.sin(starAngle) * starSpeed,
-          size: 2.5 + Math.random() * 2.5,
-          color: fireworkColor,
-          gravity: 0.06,
-          drag: 0.955,
+          size: 2.4 + Math.random() * 2.6,
+          color: theme.primary,
+          glow: theme.glow,
+          sparkle: theme.sparkle,
+          gravity: 0.038,
+          drag: 0.962,
           alpha: 1,
-          fade: 0.012 + Math.random() * 0.01,
+          fade: 0.011 + Math.random() * 0.009,
           isSpark: true
         });
       }
     }
 
-    // Schedule next spawn burst while active (<10s)
+    // Schedule next spawn burst while active (<11s)
     if (this.isActive) {
-      setTimeout(() => this.spawnBursts(), 250);
+      setTimeout(() => this.spawnBursts(), 220);
     }
   },
 
@@ -2052,10 +2152,10 @@ const MiladCelebration = {
       if (p.isRibbon) {
         p.tilt += p.tiltSpeed;
         p.wobble += p.wobbleSpeed;
-        p.x += Math.sin(p.wobble) * 0.8;
+        p.x += Math.sin(p.wobble) * 1.1; // Gentle horizontal sway
       }
 
-      if (p.alpha <= 0 || p.y > this.canvas.height + 60) {
+      if (p.alpha <= 0 || p.y > this.canvas.height + 40) {
         this.particles.splice(i, 1);
         continue;
       }
@@ -2066,14 +2166,29 @@ const MiladCelebration = {
       if (p.isRibbon) {
         this.ctx.translate(p.x, p.y);
         const currentWidth = p.w * Math.cos(p.tilt);
-        this.ctx.fillStyle = p.color;
+        
+        // Shiny specular metallic ribbon gradient
+        const grad = this.ctx.createLinearGradient(-currentWidth / 2, 0, currentWidth / 2, 0);
+        grad.addColorStop(0, p.color);
+        grad.addColorStop(0.5, p.highlight || "#ffffff");
+        grad.addColorStop(1, p.color);
+
+        this.ctx.fillStyle = grad;
+        this.ctx.shadowColor = "#ffd700";
+        this.ctx.shadowBlur = 4;
         this.ctx.fillRect(-currentWidth / 2, -p.h / 2, currentWidth, p.h);
       } else if (p.isSpark) {
         this.ctx.fillStyle = p.color;
-        this.ctx.shadowColor = p.color;
-        this.ctx.shadowBlur = 8;
+        this.ctx.shadowColor = p.glow || p.color;
+        this.ctx.shadowBlur = 10;
         this.ctx.beginPath();
         this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        this.ctx.fill();
+
+        // Extra sparkling core
+        this.ctx.fillStyle = p.sparkle || "#ffffff";
+        this.ctx.beginPath();
+        this.ctx.arc(p.x, p.y, Math.max(1, p.size * 0.45), 0, Math.PI * 2);
         this.ctx.fill();
       }
       this.ctx.restore();
@@ -2120,6 +2235,17 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCatalogGrid("all");
   checkUrlProductHash();
   MiladCelebration.init();
+
+  // If on collection page (products.html), auto-launch Milad festive celebration on first visit in session
+  if (window.location.pathname.includes("products.html")) {
+    if (!sessionStorage.getItem("milad_collection_shown")) {
+      sessionStorage.setItem("milad_collection_shown", "true");
+      setTimeout(() => {
+        MiladCelebration.launchCelebration();
+      }, 750);
+    }
+  }
 });
 
 window.addEventListener("hashchange", checkUrlProductHash);
+
