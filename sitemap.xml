@@ -21,16 +21,24 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
+      <image:loc>https://nutdelicacy.in/zafran-gold-butter.webp</image:loc>
+      <image:title>Zafran Gold Butter Grand Reserve Kashmiri Saffron</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://nutdelicacy.in/pistachio-butter.webp</image:loc>
       <image:title>Imperial Pistachio Butter Grand Reserve</image:title>
     </image:image>
     <image:image>
       <image:loc>https://nutdelicacy.in/hazelnut-chocolate.webp</image:loc>
-      <image:title>Hazelnut Dark Chocolate Spread</image:title>
+      <image:title>Hazelnut Chocolate Butter Spread</image:title>
     </image:image>
     <image:image>
       <image:loc>https://nutdelicacy.in/almond-butter.webp</image:loc>
       <image:title>Stone Ground Mamra Almond Butter</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/cashew-butter.webp</image:loc>
+      <image:title>Velvet Stone Ground Cashew Butter</image:title>
     </image:image>
   </url>
 

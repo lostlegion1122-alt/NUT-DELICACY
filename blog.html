@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="shared.css?v=3.0">
 
   <script type="application/ld+json">
   {
@@ -241,6 +241,15 @@
 </head>
 <body>
 
+  <!-- Elegant Brand Page Preloader (Deletes immediately on load) -->
+  <div id="page-preloader">
+    <div class="preloader-box">
+      <img src="brand-logo.webp" alt="Nut Delicacy" class="preloader-brand-img" width="60" height="60" onerror="this.src='brand-logo.png'">
+      <div class="preloader-spinner"></div>
+      <span class="preloader-brand-title">Njoy by Nut Delicacy</span>
+    </div>
+  </div>
+
   <!-- Header Navigation -->
   <header id="site-header">
     <div class="header-inner">
@@ -397,9 +406,11 @@
       </div>
       <div class="footer-col">
         <h3>The Collection</h3>
-        <a href="products.html">All 10 Varieties</a>
-        <a href="products.html#reserve">Grand Reserve Edition</a>
-        <a href="products.html#artisanal">Artisanal Stone-Ground</a>
+        <a href="products.html">All Offerings (31)</a>
+        <a href="products.html">Curated Combos & Sets</a>
+        <a href="products.html">Super Premium & Artisan</a>
+        <a href="products.html">Classic Nut Butters</a>
+        <a href="products.html">Seed & Peanut Spreads</a>
       </div>
       <div class="footer-col">
         <h3>The Brand</h3>
@@ -430,24 +441,22 @@
     </div>
     <div class="cart-drawer-body">
       <div class="cart-empty-state" id="cart-empty-state">
-        <div class="cart-empty-icon">🫙</div>
         <h4>Your Bag is Empty</h4>
         <p>Explore our single-origin stone-ground collection to add artisanal jars.</p>
         <a href="products.html" class="btn-primary" style="margin-top:12px; display:inline-block;">Explore Collection</a>
       </div>
       <div id="cart-items-container"></div>
     </div>
-    <div class="cart-drawer-footer" id="cart-drawer-footer" style="display:none;">
-      <div class="cart-subtotal-row">
-        <span>Estimated Subtotal</span>
-        <strong id="cart-subtotal">₹0</strong>
-      </div>
-      <button class="btn-whatsapp-checkout" onclick="Cart.checkoutWhatsApp()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg><span>Order Directly via WhatsApp</span>
-        <span>→</span>
-      </button>
-    </div>
+    <div class="cart-drawer-footer" id="cart-drawer-footer" style="display:none;"></div>
   </aside>
+
+  <!-- Product Modal Dialog Container -->
+  <div class="product-modal-backdrop" id="product-modal-backdrop" onclick="if(event.target===this) closeProductModal()">
+    <div class="product-modal-card" id="product-modal-content"></div>
+  </div>
+
+  <!-- High-Resolution Lightbox Zoom Container -->
+  <div id="image-zoom-lightbox"></div>
 
   <!-- Floating WhatsApp Concierge Widget -->
   <div class="whatsapp-concierge-wrap">
@@ -483,6 +492,6 @@
     </a>
   </nav>
 
-  <script src="products.js"></script>
+  <script src="products.js?v=3.0"></script>
 </body>
 </html>
