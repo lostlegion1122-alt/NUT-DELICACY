@@ -1493,14 +1493,21 @@ function initLightboxPan() {
 let currentModalProductId = null;
 let currentModalSize = "180g";
 let currentModalQty = 1;
+let lastModalOpenTime = 0;
 
 function openProductModal(productId) {
+  // Prevent duplicate execution within 200ms
+  if (Date.now() - lastModalOpenTime < 200 && currentModalProductId === productId) {
+    return;
+  }
+
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return;
 
   currentModalProductId = productId;
   currentModalSize = product.sizes[0].size;
   currentModalQty = 1;
+  lastModalOpenTime = Date.now();
 
   let backdrop = document.getElementById("product-modal-backdrop");
   let content = document.getElementById("product-modal-content");
@@ -1508,7 +1515,6 @@ function openProductModal(productId) {
     backdrop = document.createElement("div");
     backdrop.className = "product-modal-backdrop";
     backdrop.id = "product-modal-backdrop";
-    backdrop.onclick = (e) => { if (e.target === backdrop) closeProductModal(); };
     document.body.appendChild(backdrop);
   }
   if (!content) {
@@ -1540,15 +1546,15 @@ function openProductModal(productId) {
     }
     angleGalleryHtml = `
       <div class="modal-angle-gallery">
-        <button class="modal-angle-btn active" onclick="switchModalAngle('${product.id}', 'front', this)" title="View Combo Box">
+        <button type="button" class="modal-angle-btn active" onclick="switchModalAngle('${product.id}', 'front', this)" title="View Combo Box">
           <img src="${product.images.front}" alt="Combo Box">
           <span>Combo Box</span>
         </button>
-        <button class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'left', this)" title="View ${jar1Label}">
+        <button type="button" class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'left', this)" title="View ${jar1Label}">
           <img src="${product.images.left}" alt="${jar1Label}">
           <span>${jar1Label}</span>
         </button>
-        <button class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'right', this)" title="View ${jar2Label}">
+        <button type="button" class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'right', this)" title="View ${jar2Label}">
           <img src="${product.images.right}" alt="${jar2Label}">
           <span>${jar2Label}</span>
         </button>
@@ -1557,15 +1563,15 @@ function openProductModal(productId) {
   } else if (product.hasImages) {
     angleGalleryHtml = `
       <div class="modal-angle-gallery">
-        <button class="modal-angle-btn active" onclick="switchModalAngle('${product.id}', 'front', this)">
+        <button type="button" class="modal-angle-btn active" onclick="switchModalAngle('${product.id}', 'front', this)">
           <img src="${product.images.front}" alt="Front View">
           <span>Front</span>
         </button>
-        <button class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'left', this)">
+        <button type="button" class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'left', this)">
           <img src="${product.images.left}" alt="Left Angle">
           <span>Left</span>
         </button>
-        <button class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'right', this)">
+        <button type="button" class="modal-angle-btn" onclick="switchModalAngle('${product.id}', 'right', this)">
           <img src="${product.images.right}" alt="Right Angle">
           <span>Right</span>
         </button>
@@ -1579,7 +1585,7 @@ function openProductModal(productId) {
       const frontSrc = (p.images && p.images.front) ? p.images.front : "product-preview.webp";
       const shortName = p.name.replace(" Butter", "").replace(" (100% Pure)", "");
       return `
-        <button class="modal-angle-btn" onclick="switchModalImage('${frontSrc}', '${p.name}', this, '${p.id}')" title="Inspect ${p.name}">
+        <button type="button" class="modal-angle-btn" onclick="switchModalImage('${frontSrc}', '${p.name}', this, '${p.id}')" title="Inspect ${p.name}">
           <img src="${frontSrc}" alt="${p.name}">
           <span>${shortName}</span>
         </button>
@@ -1589,7 +1595,7 @@ function openProductModal(productId) {
     angleGalleryHtml = `
       <div class="combo-included-nav-label" style="font-size:10.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--brown-muted); margin-top:14px; text-align:center;">Inspect Included Jars:</div>
       <div class="modal-angle-gallery" style="flex-wrap:wrap; max-width:420px; margin-top:6px;">
-        <button class="modal-angle-btn active" onclick="switchModalImage('${comboHeroSrc}', '${product.name} (Combo Set)', this, '${product.id}')" title="View Full Combo Box">
+        <button type="button" class="modal-angle-btn active" onclick="switchModalImage('${comboHeroSrc}', '${product.name} (Combo Set)', this, '${product.id}')" title="View Full Combo Box">
           <img src="${comboHeroSrc}" alt="${product.name}">
           <span>Combo Box</span>
         </button>
@@ -1635,7 +1641,7 @@ function openProductModal(productId) {
   `;
 
   content.innerHTML = `
-    <button class="modal-close-btn" onclick="closeProductModal()" aria-label="Close Product View">✕</button>
+    <button type="button" class="modal-close-btn" onclick="event.stopPropagation(); closeProductModal();" aria-label="Close Product View">✕</button>
     <div class="modal-product-layout">
       <div class="modal-product-gallery">
         <div class="modal-img-container" onclick="openImageZoom(document.getElementById('modal-jar-img').src, document.getElementById('modal-jar-img').dataset.currentTitle || '${product.name}', document.getElementById('modal-jar-img').dataset.currentAngle || 'front', document.getElementById('modal-jar-img').dataset.currentProdId || '${product.id}')" title="Click to inspect jar label in high resolution">
@@ -1664,7 +1670,7 @@ function openProductModal(productId) {
         <div class="size-selection-label" style="font-size:11px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--brown-muted); margin-bottom:8px;">${isCombo ? 'Select Packaging Option:' : 'Select Pack Size:'}</div>
         <div class="modal-size-selector" id="modal-size-selector-grid">
           ${product.sizes.map((s, idx) => `
-            <button class="size-btn ${idx === 0 ? 'selected' : ''} ${s.isBulk || s.price === null ? 'bulk-opt' : ''}" onclick="selectModalSize('${s.size}', this)">
+            <button type="button" class="size-btn ${idx === 0 ? 'selected' : ''} ${s.isBulk || s.price === null ? 'bulk-opt' : ''}" onclick="selectModalSize('${s.size}', this)">
               <span class="size-name">${s.size}</span>
               <span class="size-price">${s.isBulk || s.price === null ? 'Price on Request' : '₹' + s.price.toLocaleString("en-IN")}</span>
             </button>
@@ -1682,7 +1688,7 @@ function openProductModal(productId) {
               <input type="text" id="modal-qty-input" value="1" readonly>
               <button type="button" onclick="changeModalQty(1)" aria-label="Increase quantity">+</button>
             </div>
-            <button class="btn-primary modal-add-btn" id="modal-main-add-btn" onclick="addModalToBag()">
+            <button type="button" class="btn-primary modal-add-btn" id="modal-main-add-btn" onclick="addModalToBag()">
               <span>Add to Tasting Bag</span>
               <strong id="modal-total-price">${product.sizes[0].price !== null ? '₹' + product.sizes[0].price.toLocaleString("en-IN") : 'Price on Request'}</strong>
             </button>
@@ -1699,6 +1705,10 @@ function openProductModal(productId) {
   `;
 
   backdrop.classList.add("active");
+  backdrop.style.display = "flex";
+  backdrop.style.opacity = "1";
+  backdrop.style.visibility = "visible";
+  backdrop.style.pointerEvents = "auto";
   if (document.body && document.body.style) document.body.style.overflow = "hidden";
   
   // Update browser URL hash cleanly without viewport jump
@@ -1791,8 +1801,16 @@ function orderModalDirectWhatsApp() {
 }
 
 function closeProductModal() {
+  // Prevent phantom click on mobile from immediately dismissing the modal
+  if (Date.now() - lastModalOpenTime < 350) return;
+
   const backdrop = document.getElementById("product-modal-backdrop");
-  if (backdrop) backdrop.classList.remove("active");
+  if (backdrop) {
+    backdrop.classList.remove("active");
+    backdrop.style.opacity = "0";
+    backdrop.style.visibility = "hidden";
+    backdrop.style.pointerEvents = "none";
+  }
   if (document.body && document.body.style) document.body.style.overflow = "";
   try {
     if (window.location.hash && window.location.hash.startsWith("#product-")) {
@@ -1871,8 +1889,18 @@ function checkUrlProductHash() {
   }
 }
 
-// Global Bulletproof Click / Tap Delegator for ALL product cards (desktop & mobile)
+// Universal Bulletproof Click & Tap Delegator for ALL product cards (desktop & mobile)
 document.addEventListener("click", function(e) {
+  // Backdrop dismiss
+  const backdrop = document.getElementById("product-modal-backdrop");
+  if (e.target === backdrop) {
+    closeProductModal();
+    return;
+  }
+
+  // Ignore clicks inside open modal card
+  if (e.target.closest(".product-modal-card")) return;
+
   const card = e.target.closest(".product-card, .featured-card-luxury");
   if (!card) return;
 
@@ -1886,6 +1914,50 @@ document.addEventListener("click", function(e) {
     openProductModal(prodId);
   }
 });
+
+// Touchstart & Touchend Tap Tracker for Mobile Devices
+let touchStartX = 0;
+let touchStartY = 0;
+let touchStartTime = 0;
+
+document.addEventListener("touchstart", function(e) {
+  if (e.touches.length === 1) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchStartTime = Date.now();
+  }
+}, { passive: true });
+
+document.addEventListener("touchend", function(e) {
+  if (e.changedTouches.length === 1) {
+    const target = e.target;
+
+    // Check if tapped on backdrop to close
+    const backdrop = document.getElementById("product-modal-backdrop");
+    if (target === backdrop) {
+      closeProductModal();
+      return;
+    }
+
+    if (target.closest(".product-modal-card")) return;
+
+    const card = target.closest(".product-card, .featured-card-luxury");
+    if (!card) return;
+    if (target.closest(".btn-card-inspect, .angle-pill, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) return;
+
+    const distX = Math.abs(e.changedTouches[0].clientX - touchStartX);
+    const distY = Math.abs(e.changedTouches[0].clientY - touchStartY);
+    const elapsed = Date.now() - touchStartTime;
+
+    // If it was a clean tap (not a scroll gesture)
+    if (distX < 14 && distY < 14 && elapsed < 450) {
+      const prodId = card.dataset.productId || (card.id && card.id.startsWith("product-") ? card.id.replace("product-", "") : null);
+      if (prodId) {
+        openProductModal(prodId);
+      }
+    }
+  }
+}, { passive: true });
 
 // ==========================================
 // 7. BRAND PAGE PRELOADER CONTROLLER

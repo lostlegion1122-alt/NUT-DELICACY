@@ -35,7 +35,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"></noscript>
 
   <!-- Shared Luxury Styles -->
-  <link rel="stylesheet" href="shared.css?v=3.0">
+  <link rel="stylesheet" href="shared.css?v=3.1">
 
   <!-- JSON-LD Structured Data for SEO -->
   <script type="application/ld+json">
@@ -1339,8 +1339,8 @@
   </aside>
 
   <!-- Product Modal Dialog Container -->
-  <div class="product-modal-backdrop" id="product-modal-backdrop" onclick="if(event.target===this) closeProductModal()">
-    <div class="product-modal-card" id="product-modal-content"></div>
+  <div class="product-modal-backdrop" id="product-modal-backdrop">
+    <div class="product-modal-card" id="product-modal-content" onclick="event.stopPropagation();"></div>
   </div>
 
   <!-- High-Resolution Lightbox Zoom Container -->
@@ -1413,7 +1413,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Shared Products & Cart Script -->
-  <script src="products.js?v=3.0"></script>
+  <script src="products.js?v=3.1"></script>
 
   <!-- ===================================================
        GSAP SCROLL-LINKED SEQUENCE LOGIC SCRIPT (ZERO BLACK BACKGROUND)

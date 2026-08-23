@@ -32,7 +32,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"></noscript>
 
   <!-- Shared CSS & Page Specific Styles -->
-  <link rel="stylesheet" href="shared.css?v=3.0">
+  <link rel="stylesheet" href="shared.css?v=3.1">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -739,8 +739,8 @@
   </aside>
 
   <!-- Product Modal Dialog Container -->
-  <div class="product-modal-backdrop" id="product-modal-backdrop" onclick="if(event.target===this) closeProductModal()">
-    <div class="product-modal-card" id="product-modal-content"></div>
+  <div class="product-modal-backdrop" id="product-modal-backdrop">
+    <div class="product-modal-card" id="product-modal-content" onclick="event.stopPropagation();"></div>
   </div>
 
   <!-- High-Resolution Lightbox Zoom Container -->
@@ -809,6 +809,6 @@
   </nav>
 
   <!-- Master Products JS -->
-  <script src="products.js?v=3.0"></script>
+  <script src="products.js?v=3.1"></script>
 </body>
 </html>
