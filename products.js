@@ -28,7 +28,7 @@ function createComboSizes(price) {
 }
 
 // ==========================================
-// 1. MASTER PRODUCT CATALOG (19 PRODUCTS)
+// 1. MASTER PRODUCT CATALOG (32 PRODUCTS: 20 SINGLE-ORIGIN + 12 CURATED COMBOS)
 // ==========================================
 const PRODUCTS = [
   // ----------------------------------------------------
@@ -1502,9 +1502,21 @@ function openProductModal(productId) {
   currentModalSize = product.sizes[0].size;
   currentModalQty = 1;
 
-  const backdrop = document.getElementById("product-modal-backdrop");
-  const content = document.getElementById("product-modal-content");
-  if (!backdrop || !content) return;
+  let backdrop = document.getElementById("product-modal-backdrop");
+  let content = document.getElementById("product-modal-content");
+  if (!backdrop) {
+    backdrop = document.createElement("div");
+    backdrop.className = "product-modal-backdrop";
+    backdrop.id = "product-modal-backdrop";
+    backdrop.onclick = (e) => { if (e.target === backdrop) closeProductModal(); };
+    document.body.appendChild(backdrop);
+  }
+  if (!content) {
+    content = document.createElement("div");
+    content.className = "product-modal-card";
+    content.id = "product-modal-content";
+    backdrop.appendChild(content);
+  }
 
   const isCombo = product.category === "combos";
   let activeImage = "product-preview.webp";
@@ -1688,7 +1700,13 @@ function openProductModal(productId) {
 
   backdrop.classList.add("active");
   if (document.body && document.body.style) document.body.style.overflow = "hidden";
-  window.location.hash = `product-${productId}`;
+  
+  // Update browser URL hash cleanly without viewport jump
+  try {
+    history.replaceState(null, null, "#product-" + productId);
+  } catch (e) {
+    window.location.hash = "product-" + productId;
+  }
   updateModalPriceDisplay();
 }
 
@@ -1776,9 +1794,11 @@ function closeProductModal() {
   const backdrop = document.getElementById("product-modal-backdrop");
   if (backdrop) backdrop.classList.remove("active");
   if (document.body && document.body.style) document.body.style.overflow = "";
-  if (window.location.hash.startsWith("#product-")) {
-    history.replaceState(null, null, " ");
-  }
+  try {
+    if (window.location.hash && window.location.hash.startsWith("#product-")) {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+  } catch (e) {}
 }
 
 // ==========================================
@@ -1832,48 +1852,6 @@ function renderCatalogGrid(category = "all") {
       </article>
     `;
   }).join("");
-
-  // Attach touch/click listeners to container for bulletproof mobile responsiveness
-  if (!container.dataset.hasTouchListener) {
-    container.dataset.hasTouchListener = "true";
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchStartTime = 0;
-
-    container.addEventListener("touchstart", (e) => {
-      if (e.touches.length > 0) {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        touchStartTime = Date.now();
-      }
-    }, { passive: true });
-
-    container.addEventListener("touchend", (e) => {
-      if (e.changedTouches.length > 0) {
-        const touch = e.changedTouches[0];
-        const distX = Math.abs(touch.clientX - touchStartX);
-        const distY = Math.abs(touch.clientY - touchStartY);
-        const elapsed = Date.now() - touchStartTime;
-        if (distX < 14 && distY < 14 && elapsed < 450) {
-          const card = e.target.closest(".product-card");
-          if (card && card.dataset.productId) {
-            e.preventDefault();
-            openProductModal(card.dataset.productId);
-          }
-        }
-      }
-    }, { passive: false });
-
-    container.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        const card = e.target.closest(".product-card");
-        if (card && card.dataset.productId) {
-          e.preventDefault();
-          openProductModal(card.dataset.productId);
-        }
-      }
-    });
-  }
 }
 
 function filterCategory(cat, btn) {
@@ -1892,6 +1870,22 @@ function checkUrlProductHash() {
     }, 150);
   }
 }
+
+// Global Bulletproof Click / Tap Delegator for ALL product cards (desktop & mobile)
+document.addEventListener("click", function(e) {
+  const card = e.target.closest(".product-card, .featured-card-luxury");
+  if (!card) return;
+
+  // Ignore clicks on inner buttons that handle their own events
+  if (e.target.closest(".btn-card-inspect, .angle-pill, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) {
+    return;
+  }
+
+  const prodId = card.dataset.productId || (card.id && card.id.startsWith("product-") ? card.id.replace("product-", "") : null);
+  if (prodId) {
+    openProductModal(prodId);
+  }
+});
 
 // ==========================================
 // 7. BRAND PAGE PRELOADER CONTROLLER
@@ -1944,7 +1938,7 @@ const MiladCelebration = {
   particles: [],
   animId: null,
   startTime: null,
-  duration: 11000, // 11 seconds festive celebration
+  duration: 3500, // Exactly 3.5 seconds celebration, then cleanly disappears
   isActive: false,
   hasTriggeredOnHomeClimax: false,
 
@@ -1971,7 +1965,7 @@ const MiladCelebration = {
           </div>
           <div class="milad-banner-frame">
             <img src="hero banner image.webp" alt="Njoy by Nut Delicacy Pure Collection" class="milad-banner-img" onerror="this.src='product-preview.webp'">
-            <div class="milad-banner-badge">100% Single-Origin Stone-Ground • All 19 Artisanal Varieties</div>
+            <div class="milad-banner-badge">100% Single-Origin Stone-Ground • All 32 Artisanal Offerings</div>
           </div>
           <div class="milad-modal-body">
             <p class="milad-offer-text">
@@ -2046,7 +2040,7 @@ const MiladCelebration = {
   spawnBursts() {
     if (!this.isActive) return;
     const elapsed = performance.now() - this.startTime;
-    if (elapsed > this.duration) {
+    if (elapsed >= this.duration) {
       this.isActive = false;
       return;
     }
@@ -2065,33 +2059,33 @@ const MiladCelebration = {
       { base: "#c5a059", highlight: "#fff9c4" }  // Sovereign Gold
     ];
 
-    // Controlled elegant quantity: 6-8 fluttering ribbons per burst from the top
-    const confettiCount = 7;
+    // Controlled elegant quantity per burst
+    const confettiCount = 6;
     for (let i = 0; i < confettiCount; i++) {
       const col = goldConfettiColors[Math.floor(Math.random() * goldConfettiColors.length)];
       this.particles.push({
         x: Math.random() * w,
-        y: -15 - Math.random() * 30, // Fall from top of page
-        vx: (Math.random() - 0.5) * 1.4,
-        vy: 0.9 + Math.random() * 1.3, // 0.5x speed: slow, graceful drift
-        w: 8 + Math.random() * 7,
-        h: 13 + Math.random() * 10,
+        y: -10 - Math.random() * 20, // Fall from top of page
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: 1.0 + Math.random() * 1.2, // 0.5x speed: slow, graceful drift
+        w: 7 + Math.random() * 6,
+        h: 12 + Math.random() * 8,
         color: col.base,
         highlight: col.highlight,
         tilt: Math.random() * 10,
-        tiltSpeed: 0.025 + Math.random() * 0.035,
+        tiltSpeed: 0.03 + Math.random() * 0.04,
         wobble: Math.random() * Math.PI * 2,
-        wobbleSpeed: 0.025 + Math.random() * 0.035,
-        gravity: 0.035 + Math.random() * 0.025, // Gentle floating gravity
-        drag: 0.992,
+        wobbleSpeed: 0.03 + Math.random() * 0.04,
+        gravity: 0.035 + Math.random() * 0.02, // Gentle floating gravity
+        drag: 0.99,
         alpha: 1,
-        fade: 0.0018 + Math.random() * 0.0015,
+        fade: 0.007 + Math.random() * 0.005, // Disappears within 3-4s
         isRibbon: true
       });
     }
 
     // 2. MAJESTIC CRACKERS / FIREWORKS POPPING TILL THE TOP OF THE PAGE (Shiny Golden, Red, and Green)
-    if (Math.random() < 0.65) {
+    if (Math.random() < 0.60) {
       const crackerThemes = [
         // Shiny Golden Cracker
         { primary: "#ffd700", glow: "#ffea00", sparkle: "#fffde7" },
@@ -2105,35 +2099,37 @@ const MiladCelebration = {
       ];
 
       const theme = crackerThemes[Math.floor(Math.random() * crackerThemes.length)];
-      // Pop right at the top of the viewport (6% to 24% from top of page)
+      // Pop right at the top of the viewport (6% to 22% from top of page)
       const originX = w * 0.12 + Math.random() * (w * 0.76);
-      const originY = h * 0.06 + Math.random() * (h * 0.20);
-      const sparkCount = 42;
+      const originY = h * 0.06 + Math.random() * (h * 0.18);
+      const sparkCount = 36;
 
       for (let s = 0; s < sparkCount; s++) {
         const starAngle = (s / sparkCount) * Math.PI * 2 + (Math.random() * 0.2 - 0.1);
-        const starSpeed = 2.4 + Math.random() * 5.2;
+        const starSpeed = 2.2 + Math.random() * 4.5;
         this.particles.push({
           x: originX,
           y: originY,
           vx: Math.cos(starAngle) * starSpeed,
           vy: Math.sin(starAngle) * starSpeed,
-          size: 2.4 + Math.random() * 2.6,
+          size: 2.2 + Math.random() * 2.4,
           color: theme.primary,
           glow: theme.glow,
           sparkle: theme.sparkle,
-          gravity: 0.038,
-          drag: 0.962,
+          gravity: 0.04,
+          drag: 0.96,
           alpha: 1,
-          fade: 0.011 + Math.random() * 0.009,
+          fade: 0.016 + Math.random() * 0.012, // Quickly vanishes within 3-4s
           isSpark: true
         });
       }
     }
 
-    // Schedule next spawn burst while active (<11s)
-    if (this.isActive) {
-      setTimeout(() => this.spawnBursts(), 220);
+    // Schedule next spawn burst while active (<3.5s)
+    if (this.isActive && (performance.now() - this.startTime) < this.duration) {
+      setTimeout(() => this.spawnBursts(), 240);
+    } else {
+      this.isActive = false;
     }
   },
 
@@ -2195,11 +2191,13 @@ const MiladCelebration = {
     }
 
     const elapsed = now - this.startTime;
-    if (elapsed < this.duration || this.particles.length > 0) {
+    if ((elapsed < this.duration || this.particles.length > 0) && (this.isActive || this.particles.length > 0)) {
       this.animId = requestAnimationFrame((t) => this.animate(t));
     } else {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       if (this.animId) cancelAnimationFrame(this.animId);
+      this.isActive = false;
+      this.particles = [];
     }
   }
 };
