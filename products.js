@@ -1641,7 +1641,7 @@ function openProductModal(productId) {
   `;
 
   content.innerHTML = `
-    <button type="button" class="modal-close-btn" onclick="event.stopPropagation(); closeProductModal();" aria-label="Close Product View">✕</button>
+    <button type="button" class="modal-close-btn" onclick="event.stopPropagation(); closeProductModal(true);" aria-label="Close Product View">✕</button>
     <div class="modal-product-layout">
       <div class="modal-product-gallery">
         <div class="modal-img-container" onclick="openImageZoom(document.getElementById('modal-jar-img').src, document.getElementById('modal-jar-img').dataset.currentTitle || '${product.name}', document.getElementById('modal-jar-img').dataset.currentAngle || 'front', document.getElementById('modal-jar-img').dataset.currentProdId || '${product.id}')" title="Click to inspect jar label in high resolution">
@@ -1704,6 +1704,13 @@ function openProductModal(productId) {
     </div>
   `;
 
+  // Explicit backdrop dismiss handler attached directly to backdrop
+  backdrop.onclick = function(e) {
+    if (e.target === backdrop && (Date.now() - lastModalOpenTime > 450)) {
+      closeProductModal(true);
+    }
+  };
+
   backdrop.classList.add("active");
   backdrop.style.cssText = "display: flex !important; opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; z-index: 100000 !important;";
   if (document.body && document.body.style) document.body.style.overflow = "hidden";
@@ -1764,7 +1771,7 @@ function updateModalPriceDisplay() {
 function addModalToBag() {
   if (!currentModalProductId) return;
   Cart.add(currentModalProductId, currentModalSize, currentModalQty);
-  closeProductModal();
+  closeProductModal(true);
 }
 
 function orderModalDirectWhatsApp() {
@@ -1774,7 +1781,6 @@ function orderModalDirectWhatsApp() {
 
   let message = "";
   if (sizeOpt.isBulk || sizeOpt.price === null) {
-    // Bulk / Custom WhatsApp message — PRICE NOT DISCLOSED!
     message = `NUT DELICACY — ORDER & WHOLESALE INQUIRY\n\n` +
       `Hello Concierge, I would like to inquire about pricing and availability for:\n` +
       `• Product: ${product.name}\n` +
@@ -1784,7 +1790,6 @@ function orderModalDirectWhatsApp() {
       `Business / Contact Name: [Please enter your Name]\n\n` +
       `Please share your quotation, packaging details, and dispatch timeline. Thank you.`;
   } else {
-    // Retail Order WhatsApp message
     const total = sizeOpt.price * currentModalQty;
     message = `NUT DELICACY — ORDER INQUIRY\n\n` +
       `Hello Concierge, I would like to order:\n` +
@@ -1797,9 +1802,9 @@ function orderModalDirectWhatsApp() {
   window.open(`https://wa.me/919512512151?text=${encodeURIComponent(message)}`, "_blank");
 }
 
-function closeProductModal() {
-  // Prevent phantom click on mobile from immediately dismissing the modal
-  if (Date.now() - lastModalOpenTime < 350) return;
+function closeProductModal(force = false) {
+  // If not explicitly forced by close button or user action, guard against phantom taps
+  if (!force && (Date.now() - lastModalOpenTime < 450)) return;
 
   const backdrop = document.getElementById("product-modal-backdrop");
   if (backdrop) {
@@ -1825,15 +1830,11 @@ function renderCatalogGrid(category = "all") {
     ? PRODUCTS
     : PRODUCTS.filter(p => p.category === category);
 
-  // Sort by availability:
-  // 1. In-Stock Single-Origin Jars (hasImages: true)
-  // 2. Curated Combo Offers (category === 'combos')
-  // 3. Coming Soon / Artisanal Reserves (hasImages: false)
   const sorted = [...filtered].sort((a, b) => {
     const getAvailabilityTier = (p) => {
-      if (p.hasImages) return 1; // Live single-origin products
-      if (p.category === "combos") return 2; // Live curated combos
-      return 3; // Coming soon reserves
+      if (p.hasImages) return 1;
+      if (p.category === "combos") return 2;
+      return 3;
     };
     return getAvailabilityTier(a) - getAvailabilityTier(b);
   });
@@ -1868,48 +1869,6 @@ function renderCatalogGrid(category = "all") {
       </div>
     `;
   }).join("");
-
-  bindProductCardEvents();
-}
-
-function bindProductCardEvents() {
-  document.querySelectorAll(".product-card, .featured-card-luxury").forEach(card => {
-    const prodId = card.dataset.productId || (card.id && card.id.startsWith("product-") ? card.id.replace("product-", "") : null);
-    if (!prodId) return;
-
-    // Direct click handler
-    card.onclick = function(e) {
-      if (e.target.closest(".btn-card-inspect, .btn-card-quick-view, .card-explore-more a, .btn-explore-catalog")) return;
-      openProductModal(prodId);
-    };
-
-    // Direct touch gesture handler with tap tolerance
-    let startX = 0;
-    let startY = 0;
-    let startTime = 0;
-
-    card.ontouchstart = function(e) {
-      if (e.touches.length === 1) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        startTime = Date.now();
-      }
-    };
-
-    card.ontouchend = function(e) {
-      if (e.changedTouches.length === 1) {
-        if (e.target.closest(".btn-card-inspect, .btn-card-quick-view, .card-explore-more a, .btn-explore-catalog")) return;
-        const dx = Math.abs(e.changedTouches[0].clientX - startX);
-        const dy = Math.abs(e.changedTouches[0].clientY - startY);
-        const dt = Date.now() - startTime;
-        // Up to 28px movement and 600ms elapsed covers natural mobile thumb tap
-        if (dx < 28 && dy < 28 && dt < 600) {
-          e.preventDefault();
-          openProductModal(prodId);
-        }
-      }
-    };
-  });
 }
 
 function filterCategory(cat, btn) {
@@ -1929,74 +1888,20 @@ function checkUrlProductHash() {
   }
 }
 
-// Universal Bulletproof Click & Tap Delegator for ALL product cards (desktop & mobile)
+// Global click delegator as robust fallback for statically rendered cards (e.g. index.html)
 document.addEventListener("click", function(e) {
-  // Backdrop dismiss
-  const backdrop = document.getElementById("product-modal-backdrop");
-  if (e.target === backdrop) {
-    closeProductModal();
+  if (e.target.closest(".product-modal-card, .btn-card-inspect, .btn-card-quick-view, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) {
     return;
   }
-
-  // Ignore clicks inside open modal card
-  if (e.target.closest(".product-modal-card")) return;
 
   const card = e.target.closest(".product-card, .featured-card-luxury");
   if (!card) return;
-
-  // Ignore clicks on inner buttons that handle their own events
-  if (e.target.closest(".btn-card-inspect, .btn-card-quick-view, .angle-pill, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) {
-    return;
-  }
 
   const prodId = card.dataset.productId || (card.id && card.id.startsWith("product-") ? card.id.replace("product-", "") : null);
   if (prodId) {
     openProductModal(prodId);
   }
 });
-
-// Global touch tracker fallback for elements outside standard grids
-let globalTouchStartX = 0;
-let globalTouchStartY = 0;
-let globalTouchStartTime = 0;
-
-document.addEventListener("touchstart", function(e) {
-  if (e.touches.length === 1) {
-    globalTouchStartX = e.touches[0].clientX;
-    globalTouchStartY = e.touches[0].clientY;
-    globalTouchStartTime = Date.now();
-  }
-}, { passive: true });
-
-document.addEventListener("touchend", function(e) {
-  if (e.changedTouches.length === 1) {
-    const target = e.target;
-
-    // Check if tapped on backdrop to close
-    const backdrop = document.getElementById("product-modal-backdrop");
-    if (target === backdrop) {
-      closeProductModal();
-      return;
-    }
-
-    if (target.closest(".product-modal-card")) return;
-
-    const card = target.closest(".product-card, .featured-card-luxury");
-    if (!card) return;
-    if (target.closest(".btn-card-inspect, .btn-card-quick-view, .angle-pill, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) return;
-
-    const distX = Math.abs(e.changedTouches[0].clientX - globalTouchStartX);
-    const distY = Math.abs(e.changedTouches[0].clientY - globalTouchStartY);
-    const elapsed = Date.now() - globalTouchStartTime;
-
-    if (distX < 28 && distY < 28 && elapsed < 600) {
-      const prodId = card.dataset.productId || (card.id && card.id.startsWith("product-") ? card.id.replace("product-", "") : null);
-      if (prodId) {
-        openProductModal(prodId);
-      }
-    }
-  }
-}, { passive: true });
 
 // ==========================================
 // 7. BRAND PAGE PRELOADER CONTROLLER
@@ -2397,7 +2302,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initPagePreloader();
   Cart.init();
   renderCatalogGrid("all");
-  bindProductCardEvents();
   checkUrlProductHash();
   MiladCelebration.init();
 });
