@@ -32,7 +32,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"></noscript>
 
   <!-- Shared CSS & Page Specific Styles -->
-  <link rel="stylesheet" href="shared.css?v=4.0">
+  <link rel="stylesheet" href="shared.css?v=8.0">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -601,12 +601,12 @@
   </aside>
 
   <!-- Product Modal Dialog Container -->
-  <div class="product-modal-backdrop" id="product-modal-backdrop">
+  <div class="product-modal-backdrop" id="product-modal-backdrop" style="display:none;">
     <div class="product-modal-card" id="product-modal-content" onclick="event.stopPropagation();"></div>
   </div>
 
   <!-- High-Resolution Lightbox Zoom Container -->
-  <div id="image-zoom-lightbox"></div>
+  <div id="image-zoom-lightbox" style="display:none;"></div>
 
   <!-- Floating WhatsApp Concierge Widget -->
   <div class="whatsapp-concierge-wrap">
@@ -671,6 +671,6 @@
   </nav>
 
   <!-- Master Products JS -->
-  <script src="products.js?v=4.0"></script>
+  <script src="products.js?v=8.0"></script>
 </body>
 </html>

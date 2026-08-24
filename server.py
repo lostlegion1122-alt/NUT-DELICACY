@@ -4,11 +4,10 @@ import socket
 
 class FastStaticServer(SimpleHTTPRequestHandler):
     def end_headers(self):
-        path = self.path.lower()
-        if path.endswith('.html') or path == '/' or path.endswith('/'):
-            self.send_header('Cache-Control', 'no-cache, must-revalidate')
-        else:
-            self.send_header('Cache-Control', 'public, max-age=604800, immutable')
+        # Force no-cache across all files (JS, CSS, HTML) so mobile browsers never serve stale cache
+        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
         self.send_header('Access-Control-Allow-Origin', '*')
         super().end_headers()
 

@@ -987,8 +987,11 @@ const Cart = {
   openDrawer() {
     const drawer = document.getElementById("cart-drawer");
     const overlay = document.getElementById("cart-overlay");
+    if (overlay) {
+      overlay.style.display = "block";
+      overlay.classList.add("active");
+    }
     if (drawer) drawer.classList.add("active");
-    if (overlay) overlay.classList.add("active");
     if (document.body && document.body.style) document.body.style.overflow = "hidden";
   },
 
@@ -996,7 +999,10 @@ const Cart = {
     const drawer = document.getElementById("cart-drawer");
     const overlay = document.getElementById("cart-overlay");
     if (drawer) drawer.classList.remove("active");
-    if (overlay) overlay.classList.remove("active");
+    if (overlay) {
+      overlay.classList.remove("active");
+      overlay.style.display = "none";
+    }
     if (document.body && document.body.style) document.body.style.overflow = "";
   },
 
@@ -1285,7 +1291,7 @@ function navigateModalImage(direction, e) {
 // ==========================================
 // 4. FULLSCREEN HIGH-RESOLUTION LIGHTBOX ZOOM & PAN ENGINE
 // ==========================================
-let currentZoomScale = 1.6;
+let currentZoomScale = 1.0;
 let isZoomDragging = false;
 let zoomStartX = 0, zoomStartY = 0;
 let zoomTranslateX = 0, zoomTranslateY = 0;
@@ -1300,16 +1306,18 @@ function openImageZoom(imageUrl, title, angle = "front", productId = null) {
     document.body.appendChild(lightbox);
   }
 
-  currentZoomScale = 1.6;
+  // Always reset zoom state completely
+  currentZoomScale = 1.0;
   zoomTranslateX = 0;
   zoomTranslateY = 0;
+  isZoomDragging = false;
 
   const product = PRODUCTS.find(p => p.id === productId);
   const angleBarHtml = (product && product.hasImages) ? `
     <div class="lightbox-angle-bar">
-      <button class="angle-pill ${angle === 'front' ? 'active' : ''}" onclick="switchLightboxAngle('${productId}', 'front', this)">Front View</button>
-      <button class="angle-pill ${angle === 'left' ? 'active' : ''}" onclick="switchLightboxAngle('${productId}', 'left', this)">Left Angle</button>
-      <button class="angle-pill ${angle === 'right' ? 'active' : ''}" onclick="switchLightboxAngle('${productId}', 'right', this)">Right Angle</button>
+      <button type="button" class="angle-pill ${angle === 'front' ? 'active' : ''}" onclick="switchLightboxAngle('${productId}', 'front', this)">Front View</button>
+      <button type="button" class="angle-pill ${angle === 'left' ? 'active' : ''}" onclick="switchLightboxAngle('${productId}', 'left', this)">Left Angle</button>
+      <button type="button" class="angle-pill ${angle === 'right' ? 'active' : ''}" onclick="switchLightboxAngle('${productId}', 'right', this)">Right Angle</button>
     </div>
   ` : '';
 
@@ -1319,23 +1327,23 @@ function openImageZoom(imageUrl, title, angle = "front", productId = null) {
         <strong>${title || 'Artisanal Jar Inspection'}</strong>
         <span>100% Stone-Ground Organic • High-Resolution Label Inspection</span>
       </div>
-      <button class="lightbox-close-btn" onclick="closeImageZoom()" title="Close (Esc)" aria-label="Close Lightbox">✕</button>
+      <button type="button" class="lightbox-close-btn" onclick="closeImageZoom()" title="Close (Esc)" aria-label="Close Lightbox">✕</button>
     </div>
     
     ${angleBarHtml}
 
-    <div class="lightbox-viewport" id="lightbox-viewport" onclick="handleViewportClick(event)">
-      <img src="${imageUrl}" alt="${title}" id="lightbox-img" class="lightbox-zoom-img" style="transform: translate(0px, 0px) scale(1.6);">
+    <div class="lightbox-viewport" id="lightbox-viewport">
+      <img src="${imageUrl}" alt="${title}" id="lightbox-img" class="lightbox-zoom-img" style="transform: translate(0px, 0px) scale(1);">
     </div>
 
     <!-- Floating Zoom Controls Toolbar -->
     <div class="lightbox-floating-toolbar">
-      <button class="lightbox-toolbar-btn" onclick="zoomOut()" title="Zoom Out (−)" aria-label="Zoom Out">−</button>
-      <span class="lightbox-zoom-level" id="lightbox-zoom-level">160%</span>
-      <button class="lightbox-toolbar-btn" onclick="zoomIn()" title="Zoom In (+)" aria-label="Zoom In">+</button>
-      <button class="lightbox-toolbar-btn" onclick="resetZoom()" title="Reset (1:1)" style="font-size:11px; font-weight:800;">1:1</button>
-      <span class="lightbox-hint">Drag, scroll or pinch to pan across label</span>
-      <button class="lightbox-toolbar-btn" onclick="closeImageZoom()" title="Close Lightbox" style="margin-left:6px; background:rgba(255,255,255,0.25);">✕</button>
+      <button type="button" class="lightbox-toolbar-btn" onclick="zoomOut()" title="Zoom Out (−)" aria-label="Zoom Out">−</button>
+      <span class="lightbox-zoom-level" id="lightbox-zoom-level">100%</span>
+      <button type="button" class="lightbox-toolbar-btn" onclick="zoomIn()" title="Zoom In (+)" aria-label="Zoom In">+</button>
+      <button type="button" class="lightbox-toolbar-btn" onclick="resetZoom()" title="Reset (1:1)" style="font-size:11px; font-weight:800;">1:1</button>
+      <span class="lightbox-hint">Drag to pan or use + / −</span>
+      <button type="button" class="lightbox-toolbar-btn" onclick="closeImageZoom()" title="Close Lightbox" style="margin-left:6px; background:rgba(255,255,255,0.25);">✕</button>
     </div>
   `;
 
@@ -1353,6 +1361,7 @@ function switchLightboxAngle(productId, angle, btn) {
   const img = document.getElementById("lightbox-img");
   if (img) {
     img.src = targetSrc;
+    resetZoom();
   }
   document.querySelectorAll(".lightbox-angle-bar .angle-pill").forEach(b => b.classList.remove("active"));
   if (btn) btn.classList.add("active");
@@ -1362,6 +1371,8 @@ function updateZoomTransform() {
   const img = document.getElementById("lightbox-img");
   const levelEl = document.getElementById("lightbox-zoom-level");
   if (!img) return;
+  // Strict clamp between 1.0 and 3.5
+  currentZoomScale = Math.max(1.0, Math.min(3.5, currentZoomScale));
   img.style.transform = `translate(${zoomTranslateX}px, ${zoomTranslateY}px) scale(${currentZoomScale.toFixed(2)})`;
   if (levelEl) {
     levelEl.textContent = `${Math.round(currentZoomScale * 100)}%`;
@@ -1369,12 +1380,16 @@ function updateZoomTransform() {
 }
 
 function zoomIn() {
-  currentZoomScale = Math.min(4.5, currentZoomScale + 0.35);
+  currentZoomScale = Math.min(3.5, currentZoomScale + 0.35);
   updateZoomTransform();
 }
 
 function zoomOut() {
-  currentZoomScale = Math.max(0.6, currentZoomScale - 0.35);
+  currentZoomScale = Math.max(1.0, currentZoomScale - 0.35);
+  if (currentZoomScale <= 1.0) {
+    zoomTranslateX = 0;
+    zoomTranslateY = 0;
+  }
   updateZoomTransform();
 }
 
@@ -1382,29 +1397,17 @@ function resetZoom() {
   currentZoomScale = 1.0;
   zoomTranslateX = 0;
   zoomTranslateY = 0;
+  isZoomDragging = false;
   updateZoomTransform();
 }
 
-function handleViewportClick(e) {
-  if (e.target.id !== "lightbox-img") return;
-  // Double-tap / single-tap toggle
-  if (currentZoomScale > 1.8) {
-    resetZoom();
-  } else {
-    currentZoomScale = 2.6;
-    updateZoomTransform();
-  }
-}
-
 function closeImageZoom() {
+  resetZoom();
   const lightbox = document.getElementById("image-zoom-lightbox");
   if (lightbox) {
     lightbox.classList.remove("active");
-    setTimeout(() => {
-      if (!lightbox.classList.contains("active")) {
-        lightbox.style.display = "none";
-      }
-    }, 300);
+    lightbox.style.display = "none";
+    lightbox.innerHTML = "";
   }
   const modalBackdrop = document.getElementById("product-modal-backdrop");
   if (!modalBackdrop || !modalBackdrop.classList.contains("active")) {
@@ -1414,10 +1417,12 @@ function closeImageZoom() {
 
 function initLightboxPan() {
   const viewport = document.getElementById("lightbox-viewport");
-  if (!viewport) return;
+  if (!viewport || viewport.dataset.panBound) return;
+  viewport.dataset.panBound = "true";
 
   // Mouse pan handlers
   viewport.addEventListener("mousedown", (e) => {
+    if (currentZoomScale <= 1.0) return;
     isZoomDragging = true;
     viewport.classList.add("is-dragging");
     zoomStartX = e.clientX - zoomTranslateX;
@@ -1442,9 +1447,11 @@ function initLightboxPan() {
 
   viewport.addEventListener("touchstart", (e) => {
     if (e.touches.length === 1) {
-      isZoomDragging = true;
-      zoomStartX = e.touches[0].clientX - zoomTranslateX;
-      zoomStartY = e.touches[0].clientY - zoomTranslateY;
+      if (currentZoomScale > 1.0) {
+        isZoomDragging = true;
+        zoomStartX = e.touches[0].clientX - zoomTranslateX;
+        zoomStartY = e.touches[0].clientY - zoomTranslateY;
+      }
     } else if (e.touches.length === 2) {
       isZoomDragging = false;
       initialPinchDist = Math.hypot(
@@ -1465,7 +1472,7 @@ function initLightboxPan() {
         e.touches[0].clientX - e.touches[1].clientX,
         e.touches[0].clientY - e.touches[1].clientY
       );
-      currentZoomScale = Math.max(0.6, Math.min(4.5, initialPinchScale * (dist / initialPinchDist)));
+      currentZoomScale = Math.max(1.0, Math.min(3.5, initialPinchScale * (dist / initialPinchDist)));
       updateZoomTransform();
     }
   }, { passive: true });
@@ -1473,18 +1480,12 @@ function initLightboxPan() {
   viewport.addEventListener("touchend", () => {
     isZoomDragging = false;
     initialPinchDist = 0;
-  });
-
-  // Smooth mouse wheel zoom
-  viewport.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    if (e.deltaY < 0) {
-      currentZoomScale = Math.min(4.5, currentZoomScale + 0.25);
-    } else {
-      currentZoomScale = Math.max(0.6, currentZoomScale - 0.25);
+    if (currentZoomScale <= 1.0) {
+      zoomTranslateX = 0;
+      zoomTranslateY = 0;
+      updateZoomTransform();
     }
-    updateZoomTransform();
-  }, { passive: false });
+  });
 }
 
 // ==========================================
@@ -1493,21 +1494,24 @@ function initLightboxPan() {
 let currentModalProductId = null;
 let currentModalSize = "180g";
 let currentModalQty = 1;
-let lastModalOpenTime = 0;
+
+// SINGLE GLOBAL ENTRY POINT FOR OPENING PRODUCTS
+function handleProductOpen(productId) {
+  if (!productId) return;
+  window.location.hash = "#product-" + productId;
+}
 
 function openProductModal(productId) {
-  // Prevent duplicate execution within 200ms
-  if (Date.now() - lastModalOpenTime < 200 && currentModalProductId === productId) {
-    return;
-  }
-
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return;
 
+  // Cleanly close any open zoom before opening modal
+  closeImageZoom();
+
+  // Completely reset modal state
   currentModalProductId = productId;
   currentModalSize = product.sizes[0].size;
   currentModalQty = 1;
-  lastModalOpenTime = Date.now();
 
   let backdrop = document.getElementById("product-modal-backdrop");
   let content = document.getElementById("product-modal-content");
@@ -1704,23 +1708,17 @@ function openProductModal(productId) {
     </div>
   `;
 
-  // Explicit backdrop dismiss handler attached directly to backdrop
+  // Explicit backdrop dismiss handler
   backdrop.onclick = function(e) {
-    if (e.target === backdrop && (Date.now() - lastModalOpenTime > 450)) {
+    if (e.target === backdrop) {
       closeProductModal(true);
     }
   };
 
+  backdrop.style.display = "flex";
   backdrop.classList.add("active");
-  backdrop.style.cssText = "display: flex !important; opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; z-index: 100000 !important;";
   if (document.body && document.body.style) document.body.style.overflow = "hidden";
   
-  // Update browser URL hash cleanly without viewport jump
-  try {
-    history.replaceState(null, null, "#product-" + productId);
-  } catch (e) {
-    window.location.hash = "product-" + productId;
-  }
   updateModalPriceDisplay();
 }
 
@@ -1802,21 +1800,26 @@ function orderModalDirectWhatsApp() {
   window.open(`https://wa.me/919512512151?text=${encodeURIComponent(message)}`, "_blank");
 }
 
-function closeProductModal(force = false) {
-  // If not explicitly forced by close button or user action, guard against phantom taps
-  if (!force && (Date.now() - lastModalOpenTime < 450)) return;
-
+function closeProductModal(fromUserAction = false) {
   const backdrop = document.getElementById("product-modal-backdrop");
   if (backdrop) {
     backdrop.classList.remove("active");
-    backdrop.style.cssText = "display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important;";
+    backdrop.style.display = "none";
   }
   if (document.body && document.body.style) document.body.style.overflow = "";
-  try {
+
+  closeImageZoom();
+  currentModalProductId = null;
+
+  if (fromUserAction) {
     if (window.location.hash && window.location.hash.startsWith("#product-")) {
-      history.replaceState(null, null, window.location.pathname + window.location.search);
+      if (window.history && window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.hash = "";
+      }
     }
-  } catch (e) {}
+  }
 }
 
 // ==========================================
@@ -1855,26 +1858,45 @@ function renderCatalogGrid(category = "all") {
       : "Price on Request";
 
     return `
-      <div class="product-card" id="product-${product.id}" data-product-id="${product.id}" role="button" tabindex="0" onclick="openProductModal('${product.id}')" title="Click to view details of ${product.name}">
-        <div class="card-img-wrap">
-          <img src="${frontImg}" alt="${product.name}" class="card-img" loading="lazy" onerror="this.src='product-preview.webp'">
-        </div>
-        <div class="card-info">
-          <h3 class="card-title">${product.name}</h3>
-          <div class="card-price">${priceText}</div>
-        </div>
-        <button type="button" class="btn-card-quick-view" onclick="event.stopPropagation(); openProductModal('${product.id}');" aria-label="Quick View ${product.name}">
+      <article class="product-card" id="product-${product.id}">
+        <a class="card-link" href="#product-${product.id}" data-product-id="${product.id}" aria-label="View details of ${product.name}">
+          <div class="card-img-wrap">
+            <img src="${frontImg}" alt="${product.name}" class="card-img" loading="lazy" onerror="this.src='product-preview.webp'">
+          </div>
+          <div class="card-info">
+            <h3 class="card-title">${product.name}</h3>
+            <div class="card-price">${priceText}</div>
+          </div>
+        </a>
+        <button type="button" class="btn-card-quick-view" data-product-id="${product.id}" onclick="event.preventDefault(); window.location.hash = '#product-' + this.dataset.productId;" aria-label="Quick View ${product.name}">
           <span>View Details →</span>
         </button>
-      </div>
+      </article>
     `;
   }).join("");
 }
 
 function filterCategory(cat, btn) {
-  document.querySelectorAll(".filter-tab-btn").forEach(b => b.classList.remove("active"));
-  if (btn) btn.classList.add("active");
+  const allBtns = document.querySelectorAll(".filter-tab-btn");
+  allBtns.forEach(b => b.classList.remove("active"));
+  if (btn) {
+    btn.classList.add("active");
+  } else {
+    const matchedBtn = Array.from(allBtns).find(b => {
+      const oc = b.getAttribute("onclick") || "";
+      return oc.includes(`'${cat}'`) || oc.includes(`"${cat}"`);
+    });
+    if (matchedBtn) matchedBtn.classList.add("active");
+  }
   renderCatalogGrid(cat);
+}
+
+function initCategoryFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const catParam = urlParams.get("category");
+  if (catParam && ['combos', 'artisan', 'classics', 'seeds', 'energy'].includes(catParam)) {
+    filterCategory(catParam);
+  }
 }
 
 // Deep linking to product modal via URL hash (#product-pistachio-butter)
@@ -1882,26 +1904,9 @@ function checkUrlProductHash() {
   const hash = window.location.hash;
   if (hash && hash.startsWith("#product-")) {
     const id = hash.replace("#product-", "");
-    setTimeout(() => {
-      openProductModal(id);
-    }, 150);
+    openProductModal(id);
   }
 }
-
-// Global click delegator as robust fallback for statically rendered cards (e.g. index.html)
-document.addEventListener("click", function(e) {
-  if (e.target.closest(".product-modal-card, .btn-card-inspect, .btn-card-quick-view, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) {
-    return;
-  }
-
-  const card = e.target.closest(".product-card, .featured-card-luxury");
-  if (!card) return;
-
-  const prodId = card.dataset.productId || (card.id && card.id.startsWith("product-") ? card.id.replace("product-", "") : null);
-  if (prodId) {
-    openProductModal(prodId);
-  }
-});
 
 // ==========================================
 // 7. BRAND PAGE PRELOADER CONTROLLER
@@ -1925,87 +1930,6 @@ function initPagePreloader() {
     // Safety fallback: dismiss after 700ms max
     setTimeout(dismiss, 700);
   }
-}
-
-// ==========================================
-// 8. HIGH-RESOLUTION LIGHTBOX ZOOM CONTROLLER
-// ==========================================
-function openImageZoom(imgSrc, title, angle, prodId) {
-  const lightbox = document.getElementById("image-zoom-lightbox");
-  if (!lightbox) return;
-
-  const product = PRODUCTS.find(p => p.id === (prodId || currentModalProductId));
-  const productName = title || (product ? product.name : "Artisanal Reserve Jar");
-
-  lightbox.innerHTML = `
-    <button type="button" class="lightbox-close-btn" onclick="closeImageZoom()" aria-label="Close Zoom View">✕</button>
-    <div class="lightbox-content-box" onclick="event.stopPropagation()">
-      <div class="lightbox-img-wrapper" id="zoom-interactive-wrap">
-        <img src="${imgSrc}" alt="${productName}" class="lightbox-zoomed-img" id="lightbox-main-img" onerror="this.src='product-preview.webp'">
-      </div>
-      <div class="lightbox-caption">
-        <h4>${productName}</h4>
-        <p>Ultra High-Definition Label & Terroir Inspection • Pure Stone-Ground Reserve</p>
-      </div>
-    </div>
-  `;
-
-  lightbox.classList.add("active");
-  lightbox.onclick = (e) => { if (e.target === lightbox) closeImageZoom(); };
-}
-
-function closeImageZoom() {
-  const lightbox = document.getElementById("image-zoom-lightbox");
-  if (lightbox) {
-    lightbox.classList.remove("active");
-    lightbox.innerHTML = "";
-  }
-}
-
-// Modal angle / image switchers
-function switchModalAngle(productId, angle, btn) {
-  const product = PRODUCTS.find(p => p.id === productId);
-  if (!product || !product.images) return;
-  const imgEl = document.getElementById("modal-jar-img");
-  if (imgEl && product.images[angle]) {
-    imgEl.src = product.images[angle];
-    imgEl.dataset.currentAngle = angle;
-    imgEl.dataset.currentTitle = product.name;
-    imgEl.dataset.currentProdId = product.id;
-  }
-  document.querySelectorAll(".modal-angle-btn").forEach(b => b.classList.remove("active"));
-  if (btn) btn.classList.add("active");
-}
-
-function switchModalImage(imgSrc, title, btn, prodId) {
-  const imgEl = document.getElementById("modal-jar-img");
-  if (imgEl) {
-    imgEl.src = imgSrc;
-    imgEl.dataset.currentAngle = "custom";
-    imgEl.dataset.currentTitle = title;
-    imgEl.dataset.currentProdId = prodId;
-  }
-  document.querySelectorAll(".modal-angle-btn").forEach(b => b.classList.remove("active"));
-  if (btn) btn.classList.add("active");
-}
-
-function navigateModalImage(direction, event) {
-  if (event) event.stopPropagation();
-  const product = PRODUCTS.find(p => p.id === currentModalProductId);
-  if (!product || !product.images) return;
-
-  const angles = ['front', 'left', 'right'];
-  const imgEl = document.getElementById("modal-jar-img");
-  const currentAngle = (imgEl && imgEl.dataset.currentAngle) || 'front';
-  let currentIndex = angles.indexOf(currentAngle);
-  if (currentIndex === -1) currentIndex = 0;
-
-  let nextIndex = (currentIndex + direction + angles.length) % angles.length;
-  const nextAngle = angles[nextIndex];
-
-  const btns = document.querySelectorAll(".modal-angle-btn");
-  const targetBtn = btns[nextIndex] || null;
-  switchModalAngle(product.id, nextAngle, targetBtn);
 }
 
 // Floating WhatsApp Concierge
@@ -2057,34 +1981,59 @@ const MiladCelebration = {
         <div class="milad-modal-card" onclick="event.stopPropagation()">
           <button type="button" class="milad-modal-close" onclick="MiladCelebration.closeModal()" aria-label="Close celebration modal">✕</button>
           
-          <div class="milad-badge-shine">
-            <span>Festive Launch Celebration</span>
+          <!-- Celebratory Festive Header -->
+          <div class="milad-festive-header">
+            <div class="milad-badge-shine">
+              <span class="milad-sparkle-icon">✨</span>
+              <span>Festive Launch Celebration</span>
+              <span class="milad-sparkle-icon">✨</span>
+            </div>
+
+            <h2 class="milad-title">
+              Milad un Nabi <span class="milad-mubarak-text">Mubarak</span>
+            </h2>
+
+            <div class="milad-ornament-divider">
+              <span class="ornament-line"></span>
+              <span class="ornament-symbol">✦ ☪ ✦</span>
+              <span class="ornament-line"></span>
+            </div>
           </div>
 
-          <h2 class="milad-title">
-            Milad un Nabi <em>Mubarak</em>
-          </h2>
+          <!-- Festive 7-Jar Hero Showcase Banner -->
+          <div class="milad-banner-frame">
+            <img src="hero banner image.webp" alt="Njoy by Nut Delicacy Festive Collection" class="milad-banner-img" onerror="this.src='product-preview.webp'">
+            <div class="milad-banner-badge">100% Single-Origin Stone-Ground • All 32 Artisanal Offerings</div>
+          </div>
 
           <p class="milad-desc">
-            To commemorate this blessed occasion, indulge in the pure, unadulterated luxury of traditional stone-ground nut butters with an exclusive <b>10% launch discount</b> across our entire artisanal collection.
+            To commemorate this blessed occasion, indulge in the pure, unadulterated luxury of traditional stone-ground nut butters with an exclusive <strong class="milad-highlight">10% launch discount</strong> across our entire artisanal collection.
           </p>
 
+          <!-- Luxury Golden Coupon Ticket Box -->
           <div class="milad-code-box">
-            <span class="code-label">Your Exclusive Coupon Code</span>
-            <div class="code-display" onclick="Cart.applyPromo('MILAD10'); alert('Promo code MILAD10 copied and applied to your bag!');">
-              <code>MILAD10</code>
+            <div class="code-box-header">
+              <span class="code-label">YOUR EXCLUSIVE COUPON CODE</span>
+              <span class="code-status-pill">Tap to Apply</span>
+            </div>
+            <div class="code-display" onclick="Cart.applyPromo('MILAD10'); MiladCelebration.showCopyFeedback();" title="Click to copy & auto-apply coupon code">
+              <div class="code-value-wrap">
+                <svg class="code-copy-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <code id="milad-code-text">MILAD10</code>
+              </div>
               <span class="code-tag">10% OFF</span>
             </div>
-            <span class="code-hint">Click code to apply automatically • Valid across all 32 reserve jars & combo boxes</span>
+            <span class="code-hint" id="milad-code-feedback">Click code to apply automatically • Valid across all 32 reserve jars & combo boxes</span>
           </div>
 
+          <!-- Luxury Responsive Action Buttons -->
           <div class="milad-actions">
             <button type="button" class="btn-milad-apply" onclick="MiladCelebration.applyPromoAndShop()">
               <span>Apply Code & Explore Collection</span>
-              <span>→</span>
+              <span class="btn-arrow">→</span>
             </button>
-            <a href="https://wa.me/919512512151?text=Hello%20Nut%20Delicacy%2C%20I%20would%20like%20to%20claim%20my%2010%25%20Milad%20un%20Nabi%20launch%20offer%20(Code%3A%20MILAD10)." target="_blank" rel="noopener noreferrer" class="btn-milad-wa">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
+            <a href="https://wa.me/919512512151?text=Hello%20Nut%20Delicacy%2C%20I%20would%20like%20to%20claim%20my%2010%25%20Milad%20un%20Nabi%20launch%20offer%20(Code%3A%20MILAD10)." target="_blank" rel="noopener noreferrer" class="btn-milad-wa" title="Direct Concierge Claim on WhatsApp">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
               <span>Claim Offer on WhatsApp</span>
             </a>
           </div>
@@ -2094,16 +2043,29 @@ const MiladCelebration = {
     document.body.appendChild(wrap);
   },
 
+  showCopyFeedback() {
+    const feedback = document.getElementById("milad-code-feedback");
+    if (feedback) {
+      feedback.innerHTML = `<strong style="color: #2e6930; font-size:12px; display:inline-block; animation: pulse 0.3s ease;">✓ Code MILAD10 Copied & Applied (10% OFF at Checkout)!</strong>`;
+    }
+  },
+
   launchCelebration() {
     this.injectModalHtml();
     const backdrop = document.getElementById("milad-modal-backdrop");
-    if (backdrop) backdrop.classList.add("active");
+    if (backdrop) {
+      backdrop.style.display = "flex";
+      backdrop.classList.add("active");
+    }
     this.startParticles();
   },
 
   closeModal() {
     const backdrop = document.getElementById("milad-modal-backdrop");
-    if (backdrop) backdrop.classList.remove("active");
+    if (backdrop) {
+      backdrop.classList.remove("active");
+      backdrop.style.display = "none";
+    }
     sessionStorage.setItem("milad_modal_dismissed", "true");
   },
 
@@ -2297,14 +2259,41 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+// ==========================================
+// PURE NATIVE HASH-BASED MODAL CONTROLLER
+// ==========================================
+function syncModalFromHash() {
+  const hash = window.location.hash || "";
+  if (hash.startsWith("#product-")) {
+    const productId = hash.replace("#product-", "");
+    openProductModal(productId);
+  } else {
+    closeProductModal(false);
+  }
+}
+
+window.addEventListener("hashchange", syncModalFromHash);
+
 // Initialize on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
   initPagePreloader();
   Cart.init();
   renderCatalogGrid("all");
-  checkUrlProductHash();
+  initCategoryFromUrl();
+  syncModalFromHash();
   MiladCelebration.init();
 });
 
-window.addEventListener("hashchange", checkUrlProductHash);
+// Popstate handler for Zoom / Milad modals
+window.addEventListener("popstate", () => {
+  const zoom = document.getElementById("image-zoom-lightbox");
+  if (zoom && zoom.classList.contains("active")) {
+    closeImageZoom();
+    return;
+  }
+  if (typeof MiladCelebration !== "undefined" && MiladCelebration.isActive) {
+    MiladCelebration.closeModal();
+    return;
+  }
+});
 

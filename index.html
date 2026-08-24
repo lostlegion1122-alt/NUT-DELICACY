@@ -35,7 +35,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"></noscript>
 
   <!-- Shared Luxury Styles -->
-  <link rel="stylesheet" href="shared.css?v=4.0">
+  <link rel="stylesheet" href="shared.css?v=8.0">
 
   <!-- JSON-LD Structured Data for SEO -->
   <script type="application/ld+json">
@@ -888,7 +888,7 @@
             <span>↓</span>
           </a>
           <a href="products.html" class="btn-hero-shop">
-            <span>Shop All 19 Varieties</span>
+            <span>Explore All 32 Varieties</span>
             <span>→</span>
           </a>
           <a href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer" class="btn-hero-wa" title="Chat on WhatsApp">
@@ -1339,12 +1339,12 @@
   </aside>
 
   <!-- Product Modal Dialog Container -->
-  <div class="product-modal-backdrop" id="product-modal-backdrop">
+  <div class="product-modal-backdrop" id="product-modal-backdrop" style="display:none;">
     <div class="product-modal-card" id="product-modal-content" onclick="event.stopPropagation();"></div>
   </div>
 
   <!-- High-Resolution Lightbox Zoom Container -->
-  <div id="image-zoom-lightbox"></div>
+  <div id="image-zoom-lightbox" style="display:none;"></div>
 
   <!-- Floating WhatsApp Concierge Widget -->
   <div class="whatsapp-concierge-wrap">
@@ -1413,7 +1413,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Shared Products & Cart Script -->
-  <script src="products.js?v=4.0"></script>
+  <script src="products.js?v=8.0"></script>
 
   <!-- ===================================================
        GSAP SCROLL-LINKED SEQUENCE LOGIC SCRIPT (ZERO BLACK BACKGROUND)
@@ -1903,15 +1903,10 @@
         }
       }
 
-      // Auto-scroll to 3D Experience when hero banner video finishes playing
+      // Loop hero banner video smoothly
       const heroVideo = document.getElementById("hero-banner-video");
       if (heroVideo) {
-        heroVideo.addEventListener("ended", () => {
-          const exp = document.getElementById("experience");
-          if (exp) {
-            exp.scrollIntoView({ behavior: "smooth" });
-          }
-        });
+        heroVideo.loop = true;
       }
 
       if (document.readyState === 'loading') {
