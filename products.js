@@ -1705,10 +1705,7 @@ function openProductModal(productId) {
   `;
 
   backdrop.classList.add("active");
-  backdrop.style.display = "flex";
-  backdrop.style.opacity = "1";
-  backdrop.style.visibility = "visible";
-  backdrop.style.pointerEvents = "auto";
+  backdrop.style.cssText = "display: flex !important; opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; z-index: 100000 !important;";
   if (document.body && document.body.style) document.body.style.overflow = "hidden";
   
   // Update browser URL hash cleanly without viewport jump
@@ -1807,9 +1804,7 @@ function closeProductModal() {
   const backdrop = document.getElementById("product-modal-backdrop");
   if (backdrop) {
     backdrop.classList.remove("active");
-    backdrop.style.opacity = "0";
-    backdrop.style.visibility = "hidden";
-    backdrop.style.pointerEvents = "none";
+    backdrop.style.cssText = "display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important;";
   }
   if (document.body && document.body.style) document.body.style.overflow = "";
   try {
@@ -1859,7 +1854,7 @@ function renderCatalogGrid(category = "all") {
       : "Price on Request";
 
     return `
-      <article class="product-card" id="product-${product.id}" data-product-id="${product.id}" role="button" tabindex="0" onclick="openProductModal('${product.id}')" title="Click to view details of ${product.name}">
+      <div class="product-card" id="product-${product.id}" data-product-id="${product.id}" role="button" tabindex="0" onclick="openProductModal('${product.id}')" title="Click to view details of ${product.name}">
         <div class="card-img-wrap">
           <img src="${frontImg}" alt="${product.name}" class="card-img" loading="lazy" onerror="this.src='product-preview.webp'">
         </div>
@@ -1867,9 +1862,54 @@ function renderCatalogGrid(category = "all") {
           <h3 class="card-title">${product.name}</h3>
           <div class="card-price">${priceText}</div>
         </div>
-      </article>
+        <button type="button" class="btn-card-quick-view" onclick="event.stopPropagation(); openProductModal('${product.id}');" aria-label="Quick View ${product.name}">
+          <span>View Details →</span>
+        </button>
+      </div>
     `;
   }).join("");
+
+  bindProductCardEvents();
+}
+
+function bindProductCardEvents() {
+  document.querySelectorAll(".product-card, .featured-card-luxury").forEach(card => {
+    const prodId = card.dataset.productId || (card.id && card.id.startsWith("product-") ? card.id.replace("product-", "") : null);
+    if (!prodId) return;
+
+    // Direct click handler
+    card.onclick = function(e) {
+      if (e.target.closest(".btn-card-inspect, .btn-card-quick-view, .card-explore-more a, .btn-explore-catalog")) return;
+      openProductModal(prodId);
+    };
+
+    // Direct touch gesture handler with tap tolerance
+    let startX = 0;
+    let startY = 0;
+    let startTime = 0;
+
+    card.ontouchstart = function(e) {
+      if (e.touches.length === 1) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTime = Date.now();
+      }
+    };
+
+    card.ontouchend = function(e) {
+      if (e.changedTouches.length === 1) {
+        if (e.target.closest(".btn-card-inspect, .btn-card-quick-view, .card-explore-more a, .btn-explore-catalog")) return;
+        const dx = Math.abs(e.changedTouches[0].clientX - startX);
+        const dy = Math.abs(e.changedTouches[0].clientY - startY);
+        const dt = Date.now() - startTime;
+        // Up to 28px movement and 600ms elapsed covers natural mobile thumb tap
+        if (dx < 28 && dy < 28 && dt < 600) {
+          e.preventDefault();
+          openProductModal(prodId);
+        }
+      }
+    };
+  });
 }
 
 function filterCategory(cat, btn) {
@@ -1905,7 +1945,7 @@ document.addEventListener("click", function(e) {
   if (!card) return;
 
   // Ignore clicks on inner buttons that handle their own events
-  if (e.target.closest(".btn-card-inspect, .angle-pill, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) {
+  if (e.target.closest(".btn-card-inspect, .btn-card-quick-view, .angle-pill, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) {
     return;
   }
 
@@ -1915,16 +1955,16 @@ document.addEventListener("click", function(e) {
   }
 });
 
-// Touchstart & Touchend Tap Tracker for Mobile Devices
-let touchStartX = 0;
-let touchStartY = 0;
-let touchStartTime = 0;
+// Global touch tracker fallback for elements outside standard grids
+let globalTouchStartX = 0;
+let globalTouchStartY = 0;
+let globalTouchStartTime = 0;
 
 document.addEventListener("touchstart", function(e) {
   if (e.touches.length === 1) {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    touchStartTime = Date.now();
+    globalTouchStartX = e.touches[0].clientX;
+    globalTouchStartY = e.touches[0].clientY;
+    globalTouchStartTime = Date.now();
   }
 }, { passive: true });
 
@@ -1943,14 +1983,13 @@ document.addEventListener("touchend", function(e) {
 
     const card = target.closest(".product-card, .featured-card-luxury");
     if (!card) return;
-    if (target.closest(".btn-card-inspect, .angle-pill, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) return;
+    if (target.closest(".btn-card-inspect, .btn-card-quick-view, .angle-pill, .modal-angle-btn, .btn-explore-catalog, .card-explore-more a")) return;
 
-    const distX = Math.abs(e.changedTouches[0].clientX - touchStartX);
-    const distY = Math.abs(e.changedTouches[0].clientY - touchStartY);
-    const elapsed = Date.now() - touchStartTime;
+    const distX = Math.abs(e.changedTouches[0].clientX - globalTouchStartX);
+    const distY = Math.abs(e.changedTouches[0].clientY - globalTouchStartY);
+    const elapsed = Date.now() - globalTouchStartTime;
 
-    // If it was a clean tap (not a scroll gesture)
-    if (distX < 14 && distY < 14 && elapsed < 450) {
+    if (distX < 28 && distY < 28 && elapsed < 600) {
       const prodId = card.dataset.productId || (card.id && card.id.startsWith("product-") ? card.id.replace("product-", "") : null);
       if (prodId) {
         openProductModal(prodId);
@@ -1984,40 +2023,122 @@ function initPagePreloader() {
 }
 
 // ==========================================
-// 8. GLOBAL CONCIERGE HELPERS & INITIALIZATION
+// 8. HIGH-RESOLUTION LIGHTBOX ZOOM CONTROLLER
 // ==========================================
+function openImageZoom(imgSrc, title, angle, prodId) {
+  const lightbox = document.getElementById("image-zoom-lightbox");
+  if (!lightbox) return;
+
+  const product = PRODUCTS.find(p => p.id === (prodId || currentModalProductId));
+  const productName = title || (product ? product.name : "Artisanal Reserve Jar");
+
+  lightbox.innerHTML = `
+    <button type="button" class="lightbox-close-btn" onclick="closeImageZoom()" aria-label="Close Zoom View">✕</button>
+    <div class="lightbox-content-box" onclick="event.stopPropagation()">
+      <div class="lightbox-img-wrapper" id="zoom-interactive-wrap">
+        <img src="${imgSrc}" alt="${productName}" class="lightbox-zoomed-img" id="lightbox-main-img" onerror="this.src='product-preview.webp'">
+      </div>
+      <div class="lightbox-caption">
+        <h4>${productName}</h4>
+        <p>Ultra High-Definition Label & Terroir Inspection • Pure Stone-Ground Reserve</p>
+      </div>
+    </div>
+  `;
+
+  lightbox.classList.add("active");
+  lightbox.onclick = (e) => { if (e.target === lightbox) closeImageZoom(); };
+}
+
+function closeImageZoom() {
+  const lightbox = document.getElementById("image-zoom-lightbox");
+  if (lightbox) {
+    lightbox.classList.remove("active");
+    lightbox.innerHTML = "";
+  }
+}
+
+// Modal angle / image switchers
+function switchModalAngle(productId, angle, btn) {
+  const product = PRODUCTS.find(p => p.id === productId);
+  if (!product || !product.images) return;
+  const imgEl = document.getElementById("modal-jar-img");
+  if (imgEl && product.images[angle]) {
+    imgEl.src = product.images[angle];
+    imgEl.dataset.currentAngle = angle;
+    imgEl.dataset.currentTitle = product.name;
+    imgEl.dataset.currentProdId = product.id;
+  }
+  document.querySelectorAll(".modal-angle-btn").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+}
+
+function switchModalImage(imgSrc, title, btn, prodId) {
+  const imgEl = document.getElementById("modal-jar-img");
+  if (imgEl) {
+    imgEl.src = imgSrc;
+    imgEl.dataset.currentAngle = "custom";
+    imgEl.dataset.currentTitle = title;
+    imgEl.dataset.currentProdId = prodId;
+  }
+  document.querySelectorAll(".modal-angle-btn").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+}
+
+function navigateModalImage(direction, event) {
+  if (event) event.stopPropagation();
+  const product = PRODUCTS.find(p => p.id === currentModalProductId);
+  if (!product || !product.images) return;
+
+  const angles = ['front', 'left', 'right'];
+  const imgEl = document.getElementById("modal-jar-img");
+  const currentAngle = (imgEl && imgEl.dataset.currentAngle) || 'front';
+  let currentIndex = angles.indexOf(currentAngle);
+  if (currentIndex === -1) currentIndex = 0;
+
+  let nextIndex = (currentIndex + direction + angles.length) % angles.length;
+  const nextAngle = angles[nextIndex];
+
+  const btns = document.querySelectorAll(".modal-angle-btn");
+  const targetBtn = btns[nextIndex] || null;
+  switchModalAngle(product.id, nextAngle, targetBtn);
+}
+
+// Floating WhatsApp Concierge
 function toggleWhatsAppConcierge() {
   const popup = document.getElementById("whatsapp-concierge-popup");
   if (popup) popup.classList.toggle("active");
 }
 
 function sendConciergeInquiry(type) {
-  let text = "Hello Nut Delicacy! I would like to inquire about your artisanal stone-ground nut butters.";
-  if (type === "order") text = "Hello Nut Delicacy! I would like to customize an artisanal nut butter order.";
-  if (type === "bulk") text = "Hello! I would like to request wholesale / bulk packaging and pricing.";
-  if (type === "gifting") text = "Hello! I am inquiring about luxury corporate and wedding gifting jars.";
-  if (type === "tasting") text = "Hello! I would love recommendations on flavor pairings and single-origin reserve jars.";
-  window.open(`https://wa.me/919512512151?text=${encodeURIComponent(text)}`, "_blank");
-  toggleWhatsAppConcierge();
+  let msg = "";
+  if (type === "order") {
+    msg = "Hello Nut Delicacy Concierge, I would like to place a retail order for your stone-ground nut butters.";
+  } else if (type === "bulk") {
+    msg = "Hello Nut Delicacy Concierge, I am interested in wholesale/bulk quotation (5kg/10kg) for my business.";
+  } else if (type === "gifting") {
+    msg = "Hello Nut Delicacy Concierge, I would like information regarding corporate & wedding bespoke gifting sets.";
+  }
+  window.open(`https://wa.me/919512512151?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
 // ==========================================
-// 9. MILAD UN NABI CELEBRATION & FIREWORKS ENGINE
+// 9. MILAD UN NABI 10% CELEBRATION CONTROLLER (GOLDEN CONFETTI & FIREWORKS)
 // ==========================================
 const MiladCelebration = {
   canvas: null,
   ctx: null,
   particles: [],
   animId: null,
-  startTime: null,
-  duration: 3500, // Exactly 3.5 seconds celebration, then cleanly disappears
   isActive: false,
+  startTime: 0,
+  duration: 3500, // 3.5s duration
   hasTriggeredOnHomeClimax: false,
 
   init() {
-    let modal = document.getElementById("milad-modal-backdrop");
-    if (!modal) {
-      this.injectModalHtml();
+    // Inject celebration banner triggers if present
+    const bannerBtn = document.getElementById("launch-claim-btn");
+    if (bannerBtn) {
+      bannerBtn.addEventListener("click", () => this.launchCelebration());
     }
   },
 
@@ -2028,35 +2149,37 @@ const MiladCelebration = {
     wrap.innerHTML = `
       <canvas id="celebration-canvas" class="celebration-canvas"></canvas>
       <div class="milad-modal-backdrop" id="milad-modal-backdrop" onclick="if(event.target===this) MiladCelebration.closeModal()">
-        <div class="milad-modal-card" id="milad-modal-card">
-          <button class="milad-modal-close" onclick="MiladCelebration.closeModal()" aria-label="Close Celebration View">✕</button>
-          <div class="milad-modal-header">
-            <div class="milad-eyebrow">Milad un Nabi Mubarak • Grand Launch Offer</div>
-            <h2 class="milad-title">Milad Mubarak</h2>
-            <div class="milad-subtitle">Celebrating Purity, Health & Real Artisanal Joy</div>
+        <div class="milad-modal-card" onclick="event.stopPropagation()">
+          <button type="button" class="milad-modal-close" onclick="MiladCelebration.closeModal()" aria-label="Close celebration modal">✕</button>
+          
+          <div class="milad-badge-shine">
+            <span>Festive Launch Celebration</span>
           </div>
-          <div class="milad-banner-frame">
-            <img src="hero banner image.webp" alt="Njoy by Nut Delicacy Pure Collection" class="milad-banner-img" onerror="this.src='product-preview.webp'">
-            <div class="milad-banner-badge">100% Single-Origin Stone-Ground • All 32 Artisanal Offerings</div>
-          </div>
-          <div class="milad-modal-body">
-            <p class="milad-offer-text">
-              On the auspicious occasion of <strong>Milad un Nabi</strong>, enjoy an exclusive <strong>10% Launch Celebration Discount</strong> across our entire pure stone-ground nut butter collection.
-            </p>
-            <div class="milad-promo-box" onclick="MiladCelebration.applyPromoAndShop()">
-              <div class="milad-promo-info">
-                <span class="milad-promo-label">Special Festive Promo Code</span>
-                <span class="milad-promo-code">MILAD10</span>
-              </div>
-              <button class="milad-promo-btn" type="button">Apply 10% Off</button>
+
+          <h2 class="milad-title">
+            Milad un Nabi <em>Mubarak</em>
+          </h2>
+
+          <p class="milad-desc">
+            To commemorate this blessed occasion, indulge in the pure, unadulterated luxury of traditional stone-ground nut butters with an exclusive <b>10% launch discount</b> across our entire artisanal collection.
+          </p>
+
+          <div class="milad-code-box">
+            <span class="code-label">Your Exclusive Coupon Code</span>
+            <div class="code-display" onclick="Cart.applyPromo('MILAD10'); alert('Promo code MILAD10 copied and applied to your bag!');">
+              <code>MILAD10</code>
+              <span class="code-tag">10% OFF</span>
             </div>
+            <span class="code-hint">Click code to apply automatically • Valid across all 32 reserve jars & combo boxes</span>
           </div>
-          <div class="milad-modal-actions">
-            <a href="products.html" class="btn-primary milad-action-shop" onclick="MiladCelebration.applyPromoAndShop()">
-              <span>Explore Festive Collection</span>
+
+          <div class="milad-actions">
+            <button type="button" class="btn-milad-apply" onclick="MiladCelebration.applyPromoAndShop()">
+              <span>Apply Code & Explore Collection</span>
               <span>→</span>
-            </a>
-            <a href="https://wa.me/919512512151?text=Milad%20Mubarak!%20I%20would%20like%20to%20order%20artisanal%20nut%20butters%20with%20the%20MILAD10%2010%25%20launch%20discount." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-direct milad-action-wa" title="Order via WhatsApp">
+            </button>
+            <a href="https://wa.me/919512512151?text=Hello%20Nut%20Delicacy%2C%20I%20would%20like%20to%20claim%20my%2010%25%20Milad%20un%20Nabi%20launch%20offer%20(Code%3A%20MILAD10)." target="_blank" rel="noopener noreferrer" class="btn-milad-wa">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
               <span>Claim Offer on WhatsApp</span>
             </a>
           </div>
@@ -2098,7 +2221,6 @@ const MiladCelebration = {
     this.startTime = performance.now();
     this.isActive = true;
     
-    // Launch bursts
     this.spawnBursts();
     this.animate(performance.now());
   },
@@ -2111,8 +2233,8 @@ const MiladCelebration = {
 
   spawnBursts() {
     if (!this.isActive) return;
-    const elapsed = performance.now() - this.startTime;
-    if (elapsed >= this.duration) {
+    const now = performance.now();
+    if (now - this.startTime >= this.duration) {
       this.isActive = false;
       return;
     }
@@ -2120,88 +2242,64 @@ const MiladCelebration = {
     const w = window.innerWidth;
     const h = window.innerHeight;
 
-    // 1. ELEGANT GOLDEN SHINY CONFETTI FALLING FROM TOP (0.5x half-speed gentle floating flutter)
-    const goldConfettiColors = [
-      { base: "#ffd700", highlight: "#fffde7" }, // Brilliant Yellow Gold
-      { base: "#ffdf00", highlight: "#ffffff" }, // Pure Gold
-      { base: "#e5c158", highlight: "#fff8e1" }, // Soft Warm Gold
-      { base: "#d4af37", highlight: "#fffdf0" }, // Metallic Antique Gold
-      { base: "#f5d061", highlight: "#fffef5" }, // Champagne Gold
-      { base: "#e0a96d", highlight: "#ffe8d6" }, // Rose Gold
-      { base: "#c5a059", highlight: "#fff9c4" }  // Sovereign Gold
+    // 1. ELEGANT GOLDEN SHINY CONFETTI
+    const goldColors = [
+      { base: "#ffd700", highlight: "#fffde7" },
+      { base: "#e5c158", highlight: "#fff8e1" },
+      { base: "#d4af37", highlight: "#fffdf0" }
     ];
 
-    // Controlled elegant quantity per burst
-    const confettiCount = 6;
-    for (let i = 0; i < confettiCount; i++) {
-      const col = goldConfettiColors[Math.floor(Math.random() * goldConfettiColors.length)];
+    for (let i = 0; i < 4; i++) {
+      const col = goldColors[Math.floor(Math.random() * goldColors.length)];
       this.particles.push({
-        x: Math.random() * w,
-        y: -10 - Math.random() * 20, // Fall from top of page
-        vx: (Math.random() - 0.5) * 1.2,
-        vy: 1.0 + Math.random() * 1.2, // 0.5x speed: slow, graceful drift
-        w: 7 + Math.random() * 6,
-        h: 12 + Math.random() * 8,
-        color: col.base,
-        highlight: col.highlight,
-        tilt: Math.random() * 10,
-        tiltSpeed: 0.03 + Math.random() * 0.04,
-        wobble: Math.random() * Math.PI * 2,
-        wobbleSpeed: 0.03 + Math.random() * 0.04,
-        gravity: 0.035 + Math.random() * 0.02, // Gentle floating gravity
-        drag: 0.99,
-        alpha: 1,
-        fade: 0.007 + Math.random() * 0.005, // Disappears within 3-4s
-        isRibbon: true
+        x: Math.random() * w, y: -10,
+        vx: (Math.random() - 0.5) * 1.5, vy: 1.5 + Math.random() * 1.5,
+        w: 6 + Math.random() * 4, h: 10 + Math.random() * 6,
+        color: col.base, highlight: col.highlight,
+        tilt: Math.random() * 10, tiltSpeed: 0.05,
+        wobble: Math.random() * Math.PI * 2, wobbleSpeed: 0.05,
+        gravity: 0.04, drag: 0.99, alpha: 1, fade: 0.008, isRibbon: true
       });
     }
 
     // 2. MAJESTIC CRACKERS / FIREWORKS POPPING TILL THE TOP OF THE PAGE (Shiny Golden, Red, and Green)
     if (Math.random() < 0.60) {
-      const crackerThemes = [
-        // Shiny Golden Cracker
-        { primary: "#ffd700", glow: "#ffea00", sparkle: "#fffde7" },
-        { primary: "#ffc107", glow: "#ffd54f", sparkle: "#ffffff" },
-        // Shiny Red Cracker
-        { primary: "#ff1744", glow: "#ff5252", sparkle: "#ffebee" },
-        { primary: "#d50000", glow: "#ff3d00", sparkle: "#fff0f0" },
-        // Shiny Green Cracker
-        { primary: "#00e676", glow: "#69f0ae", sparkle: "#e8f5e9" },
-        { primary: "#00c853", glow: "#10b981", sparkle: "#ffffff" }
+      const burstX = w * (0.15 + Math.random() * 0.70);
+      const burstY = h * (0.05 + Math.random() * 0.40); // Reach till top of page
+      
+      const themeColors = [
+        { main: "#ffd700", glow: "#fff176", sparkle: "#ffffff" }, // Shiny Gold
+        { main: "#ff1744", glow: "#ff8a80", sparkle: "#ffffff" }, // Shiny Festive Red
+        { main: "#00e676", glow: "#b9f6ca", sparkle: "#ffffff" }, // Shiny Emerald Green
+        { main: "#ffab00", glow: "#ffe57f", sparkle: "#ffffff" }  // Amber Gold
       ];
-
-      const theme = crackerThemes[Math.floor(Math.random() * crackerThemes.length)];
-      // Pop right at the top of the viewport (6% to 22% from top of page)
-      const originX = w * 0.12 + Math.random() * (w * 0.76);
-      const originY = h * 0.06 + Math.random() * (h * 0.18);
-      const sparkCount = 36;
+      
+      const selectedTheme = themeColors[Math.floor(Math.random() * themeColors.length)];
+      const sparkCount = 20;
 
       for (let s = 0; s < sparkCount; s++) {
-        const starAngle = (s / sparkCount) * Math.PI * 2 + (Math.random() * 0.2 - 0.1);
-        const starSpeed = 2.2 + Math.random() * 4.5;
+        const angle = (Math.PI * 2 * s) / sparkCount + (Math.random() * 0.3);
+        const speed = 2.0 + Math.random() * 3.5;
         this.particles.push({
-          x: originX,
-          y: originY,
-          vx: Math.cos(starAngle) * starSpeed,
-          vy: Math.sin(starAngle) * starSpeed,
-          size: 2.2 + Math.random() * 2.4,
-          color: theme.primary,
-          glow: theme.glow,
-          sparkle: theme.sparkle,
+          x: burstX,
+          y: burstY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: 2.2 + Math.random() * 2.2,
+          color: selectedTheme.main,
+          glow: selectedTheme.glow,
+          sparkle: selectedTheme.sparkle,
           gravity: 0.04,
-          drag: 0.96,
+          drag: 0.97,
           alpha: 1,
-          fade: 0.016 + Math.random() * 0.012, // Quickly vanishes within 3-4s
+          fade: 0.016 + Math.random() * 0.008, // Quick, crisp fadeout
           isSpark: true
         });
       }
     }
 
-    // Schedule next spawn burst while active (<3.5s)
-    if (this.isActive && (performance.now() - this.startTime) < this.duration) {
-      setTimeout(() => this.spawnBursts(), 240);
-    } else {
-      this.isActive = false;
+    if (this.isActive) {
+      setTimeout(() => this.spawnBursts(), 250);
     }
   },
 
@@ -2213,15 +2311,10 @@ const MiladCelebration = {
       const p = this.particles[i];
       p.x += p.vx;
       p.y += p.vy;
+      p.vy += p.gravity;
       p.vx *= p.drag;
-      p.vy = p.vy * p.drag + p.gravity;
+      p.vy *= p.drag;
       p.alpha -= p.fade;
-
-      if (p.isRibbon) {
-        p.tilt += p.tiltSpeed;
-        p.wobble += p.wobbleSpeed;
-        p.x += Math.sin(p.wobble) * 1.1; // Gentle horizontal sway
-      }
 
       if (p.alpha <= 0 || p.y > this.canvas.height + 40) {
         this.particles.splice(i, 1);
@@ -2232,6 +2325,10 @@ const MiladCelebration = {
       this.ctx.globalAlpha = Math.max(0, p.alpha);
 
       if (p.isRibbon) {
+        p.tilt += p.tiltSpeed;
+        p.wobble += p.wobbleSpeed;
+        p.x += Math.sin(p.wobble) * 0.6;
+
         this.ctx.translate(p.x, p.y);
         const currentWidth = p.w * Math.cos(p.tilt);
         
@@ -2262,14 +2359,11 @@ const MiladCelebration = {
       this.ctx.restore();
     }
 
-    const elapsed = now - this.startTime;
-    if ((elapsed < this.duration || this.particles.length > 0) && (this.isActive || this.particles.length > 0)) {
+    if (this.isActive || this.particles.length > 0) {
       this.animId = requestAnimationFrame((t) => this.animate(t));
     } else {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      if (this.animId) cancelAnimationFrame(this.animId);
-      this.isActive = false;
-      this.particles = [];
+      cancelAnimationFrame(this.animId);
     }
   }
 };
@@ -2303,18 +2397,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initPagePreloader();
   Cart.init();
   renderCatalogGrid("all");
+  bindProductCardEvents();
   checkUrlProductHash();
   MiladCelebration.init();
-
-  // If on collection page (products.html), auto-launch Milad festive celebration on first visit in session
-  if (window.location.pathname.includes("products.html")) {
-    if (!sessionStorage.getItem("milad_collection_shown")) {
-      sessionStorage.setItem("milad_collection_shown", "true");
-      setTimeout(() => {
-        MiladCelebration.launchCelebration();
-      }, 750);
-    }
-  }
 });
 
 window.addEventListener("hashchange", checkUrlProductHash);
