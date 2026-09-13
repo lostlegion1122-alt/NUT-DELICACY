@@ -40,6 +40,8 @@ const PRODUCTS = [
     slug: "zafran-gold-butter",
     category: "artisan",
     categoryLabel: "Super Premium & Artisan",
+    productType: "individual",
+    discountEligible: true,
     tag: "Grand Reserve • Royal Saffron",
     subtitle: "Stone-Ground Mamra Almonds & Royal Pistachios Infused with Pure Kashmiri Mongra Saffron.",
     origin: "Terroir: Pampore Saffron & Kashmir Mamra",
@@ -64,6 +66,8 @@ const PRODUCTS = [
     slug: "hazelnut-chocolate-butter",
     category: "artisan",
     categoryLabel: "Super Premium & Artisan",
+    productType: "individual",
+    discountEligible: true,
     tag: "Grand Reserve • 75% Hazelnut Gianduja",
     subtitle: "75% Slow-Roasted Hazelnuts with Single-Origin Dark Cacao. Zero palm oil, zero shortcuts.",
     origin: "Terroir: Black Sea Hazelnuts & Kerala Estate Cacao",
@@ -88,6 +92,8 @@ const PRODUCTS = [
     slug: "pistachio-butter",
     category: "artisan",
     categoryLabel: "Super Premium & Artisan",
+    productType: "individual",
+    discountEligible: true,
     tag: "Grand Reserve • Crown Jewel",
     subtitle: "100% Royal Emerald Green Pistachios, stone-ground slowly below 28°C. Pure single ingredient.",
     origin: "Terroir: Kerman & Bronte Terroirs",
@@ -112,6 +118,8 @@ const PRODUCTS = [
     slug: "hazelnut-butter-pure",
     category: "artisan",
     categoryLabel: "Super Premium & Artisan",
+    productType: "individual",
+    discountEligible: true,
     tag: "Grand Reserve • 100% Pure Single Nut",
     subtitle: "100% Golden Roasted Hazelnuts, cold stone-ground without cocoa or sweetener. Pure single nut.",
     origin: "Terroir: Mountain Hazelnut Orchards",
@@ -136,6 +144,8 @@ const PRODUCTS = [
     slug: "macadamia-butter",
     category: "artisan",
     categoryLabel: "Super Premium & Artisan",
+    productType: "individual",
+    discountEligible: true,
     tag: "Grand Reserve • Sovereign Nut",
     subtitle: "100% Australian Style Roasted Macadamias, exceptionally buttery and high in monounsaturated fats.",
     origin: "Terroir: Certified Rainforest Macadamia Estates",
@@ -164,6 +174,8 @@ const PRODUCTS = [
     slug: "almond-butter",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "Artisanal • Cold Granite Milled",
     subtitle: "Californian & Mamra Slow-Roasted whole almonds, stone-ground with skins intact.",
     origin: "Terroir: Kashmir Valley & California",
@@ -188,6 +200,8 @@ const PRODUCTS = [
     slug: "cashew-butter",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "Artisanal • Velvet Milled",
     subtitle: "100% Whole Roasted Konkan Coast Cashews, ultra-creamy velvety stone-ground texture.",
     origin: "Terroir: Konkan Coast, Maharashtra",
@@ -212,6 +226,8 @@ const PRODUCTS = [
     slug: "almond-chocolate-butter",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "Gourmet Indulgence",
     subtitle: "Stone-Ground Roasted Almonds folded with single-origin raw cacao and organic coconut sugar.",
     origin: "Terroir: Kashmir Almonds & Kerala Cacao",
@@ -236,6 +252,8 @@ const PRODUCTS = [
     slug: "almond-dark-chocolate-butter",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "Gourmet • 70% Dark Cacao",
     subtitle: "Slow-Roasted Mamra & Californian Almonds folded with 70% Single-Origin Dark Chocolate.",
     origin: "Terroir: Kashmir Almonds & Kerala Estate Cacao",
@@ -260,6 +278,8 @@ const PRODUCTS = [
     slug: "walnut-almond-butter",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "Brain Synergy Dual-Nut",
     subtitle: "50% Cold-Milled Himalayan Snow Walnut + 50% Slow-Roasted Mamra Almond dual stone-ground blend.",
     origin: "Terroir: Kashmir & Himachal Valley",
@@ -284,6 +304,8 @@ const PRODUCTS = [
     slug: "walnut-chocolate-butter",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "Rich Omega Dark Truffle",
     subtitle: "Himalayan Walnuts blended with rich dark artisanal cacao for an unforgettable dessert spread.",
     origin: "Terroir: Himachal Pradesh Walnuts & Single-Estate Cacao",
@@ -308,6 +330,8 @@ const PRODUCTS = [
     slug: "pecan-chocolate",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "Buttery Pecan & Dark Truffle",
     subtitle: "Slow-Roasted Sweet Pecans stone-ground with velvety artisanal dark chocolate.",
     origin: "Terroir: Select Pecan Orchards & Kerala Cacao",
@@ -332,6 +356,8 @@ const PRODUCTS = [
     slug: "walnut-butter",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "100% Himalayan Snow Walnut",
     subtitle: "100% Cold-Milled Himalayan Snow Walnuts, exceptionally rich in plant ALA Omega-3.",
     origin: "Terroir: Kashmir Valley, India",
@@ -356,6 +382,8 @@ const PRODUCTS = [
     slug: "pecan-butter",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "100% Pure Pecan",
     subtitle: "100% Roasted Whole Pecan Halves, stone-ground to silky perfection with natural caramel undertones.",
     origin: "Terroir: Hand-Selected Whole Pecans",
@@ -380,6 +408,8 @@ const PRODUCTS = [
     slug: "walnut-almond-chocolate",
     category: "classics",
     categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
     tag: "Triple Fusion Reserve",
     subtitle: "Himalayan Walnut + Mamra Almond dual stone-ground blend unified with rich single-origin dark cacao.",
     origin: "Terroir: Kashmir & South Indian Single-Estate Cacao",
@@ -408,6 +438,8 @@ const PRODUCTS = [
     slug: "peanut-butter",
     category: "seeds",
     categoryLabel: "Seed & Peanut Spreads",
+    productType: "individual",
+    discountEligible: true,
     tag: "Classics • 100% Pure Peanut",
     subtitle: "100% Slow-Roasted Saurashtra Bold Peanuts. Zero palm oil, zero sugar.",
     origin: "Terroir: Saurashtra, Gujarat",
@@ -432,6 +464,8 @@ const PRODUCTS = [
     slug: "peanut-chocolate-butter",
     category: "seeds",
     categoryLabel: "Seed & Peanut Spreads",
+    productType: "individual",
+    discountEligible: true,
     tag: "Classics • Single-Origin Cacao",
     subtitle: "Roasted Peanuts with Pure Single-Origin Cacao and organic coconut blossom nectar.",
     origin: "Terroir: Saurashtra Peanuts & South Indian Cacao",
@@ -456,6 +490,8 @@ const PRODUCTS = [
     slug: "sunflower-seed-butter",
     category: "seeds",
     categoryLabel: "Seed & Peanut Spreads",
+    productType: "individual",
+    discountEligible: true,
     tag: "Nut-Free • Pure Seeds",
     subtitle: "100% Roasted Sunflower Kernels, stone-ground with zero additives. Allergen-free vitality.",
     origin: "Terroir: Maharashtra Organic Farms",
@@ -480,6 +516,8 @@ const PRODUCTS = [
     slug: "pumpkin-seed-butter",
     category: "seeds",
     categoryLabel: "Seed & Peanut Spreads",
+    productType: "individual",
+    discountEligible: true,
     tag: "Mineral Rich • Superfood",
     subtitle: "100% Slow-Milled Emerald Pumpkin Seeds rich in natural Zinc and Magnesium.",
     origin: "Terroir: Organic Certified Terroirs",
@@ -508,6 +546,8 @@ const PRODUCTS = [
     slug: "nuts-and-seeds-balls",
     category: "energy",
     categoryLabel: "Energy Bites",
+    productType: "individual",
+    discountEligible: true,
     tag: "Clean Fuel • Energy Bites",
     subtitle: "Hand-rolled artisanal bites crafted from crushed roasted nuts, pumpkin seeds, dates, and raw cacao.",
     origin: "Terroir: Handcrafted in Surat, Gujarat",
@@ -536,6 +576,8 @@ const PRODUCTS = [
     slug: "everyday-duo",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "duo",
+    discountEligible: false,
     tag: "15% Off • Daily Ritual Duo",
     subtitle: "Peanut Butter (180g) + Peanut Chocolate Butter (180g)",
     origin: "Terroir: Saurashtra Peanuts & Single-Estate Cacao",
@@ -563,6 +605,8 @@ const PRODUCTS = [
     slug: "classic-duo",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "duo",
+    discountEligible: false,
     tag: "15% Off • Artisanal Classics",
     subtitle: "Almond Butter (180g) + Cashew Butter (180g)",
     origin: "Terroir: Californian Almonds & Mangalore Cashews",
@@ -590,6 +634,8 @@ const PRODUCTS = [
     slug: "grand-reserve-trio",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "combo",
+    discountEligible: false,
     tag: "15% Off • Luxury Master Flight",
     subtitle: "Almond Pista Saffron (180g) + Hazelnut Chocolate (180g) + Pistachio Butter (180g)",
     origin: "Terroir: Kashmir Saffron, Bronte Pistachio & Italian Hazelnuts",
@@ -617,6 +663,8 @@ const PRODUCTS = [
     slug: "the-complete-collection",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "combo",
+    discountEligible: false,
     tag: "25% Off • Master Roaster's Vault",
     subtitle: "All 7 Signature Live Jars (180g each)",
     origin: "Terroir: Complete Single-Origin Reserve terroirs",
@@ -633,7 +681,7 @@ const PRODUCTS = [
     },
     sizes: createComboSizes(2999),
     ingredients: "Peanut Butter, Peanut Chocolate, Almond Butter, Cashew Butter, Almond Pista Saffron, Hazelnut Chocolate, Pistachio Butter (180g each).",
-    description: "The definitive tasting cellar. All 7 live handcrafted single-origin jars presented together at an exclusive 25% launch discount savings.",
+    description: "The definitive tasting cellar. All 7 live handcrafted single-origin jars presented together at an exclusive 25% discount savings.",
     nutrition: { calories: "580 kcal", protein: "20.0g", fats: "49.0g", carbs: "22.0g" },
     tastingNotes: ["Complete Flavor Spectrum", "Single-Origin Journey", "Master Flight"],
     pills: ["25% Off", "7 Jars Vault", "Complete Range", "Best Value"]
@@ -644,6 +692,8 @@ const PRODUCTS = [
     slug: "chocolate-lovers-duo",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "duo",
+    discountEligible: false,
     tag: "15% Off • Pure Dark Cacao Indulgence",
     subtitle: "Peanut Chocolate (180g) + Hazelnut Chocolate (180g)",
     origin: "Terroir: South Indian Single-Estate Cacao & Hazelnuts",
@@ -671,6 +721,8 @@ const PRODUCTS = [
     slug: "nutty-trio-starter",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "combo",
+    discountEligible: false,
     tag: "15% Off • Daily Vitality Trio",
     subtitle: "Peanut Butter (180g) + Almond Butter (180g) + Cashew Butter (180g)",
     origin: "Terroir: Saurashtra, California & Mangalore",
@@ -698,6 +750,8 @@ const PRODUCTS = [
     slug: "zafran-pista-duo",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "duo",
+    discountEligible: false,
     tag: "15% Off • Royal Reserve Pairing",
     subtitle: "Almond Pista Saffron (180g) + Pistachio Butter (180g)",
     origin: "Terroir: Kashmir Valley & Royal Pistachio Orchards",
@@ -725,6 +779,8 @@ const PRODUCTS = [
     slug: "everyday-to-exquisite",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "combo",
+    discountEligible: false,
     tag: "15% Off • Daily & Royal Contrast",
     subtitle: "Peanut Butter (180g) + Almond Pista Saffron Butter (180g)",
     origin: "Terroir: Saurashtra & Kashmiri Mongra Saffron",
@@ -752,6 +808,8 @@ const PRODUCTS = [
     slug: "pure-nut-flight",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "combo",
+    discountEligible: false,
     tag: "20% Off • Connoisseur Tasting Set",
     subtitle: "Peanut, Almond, Cashew, Hazelnut Chocolate & Pistachio (180g each)",
     origin: "Terroir: Multi-Terroir Artisanal Harvests",
@@ -779,6 +837,8 @@ const PRODUCTS = [
     slug: "build-your-own-trio",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "combo",
+    discountEligible: false,
     tag: "15% Off • Custom Trio Selection",
     subtitle: "Choose Any 3 Jars (180g) — 15% Automatic Bundle Discount",
     origin: "Terroir: Tailored to Your Selection",
@@ -806,6 +866,8 @@ const PRODUCTS = [
     slug: "corporate-bulk-set-10",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "combo",
+    discountEligible: false,
     tag: "20% Off • Bespoke Gifting Box",
     subtitle: "10 Custom Selected Jars in Luxury Gift Packaging",
     origin: "Terroir: Handcrafted in Surat, Gujarat",
@@ -833,10 +895,12 @@ const PRODUCTS = [
     slug: "milad-mithai-box",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
+    productType: "combo",
+    discountEligible: false,
     tag: "Festive Edition • Pure Sweet Luxury",
     subtitle: "Peanut Chocolate + Hazelnut Chocolate + Almond Pista Saffron (180g each)",
     origin: "Terroir: Kashmiri Saffron & Single-Estate Cacao",
-    coldMilledTemp: "10% Launch Celebration Special",
+    coldMilledTemp: "10% Celebration Special",
     shelfLife: "6 Months",
     hasImages: true,
     isCombo: true,
@@ -862,7 +926,10 @@ const PRODUCTS = [
 const Cart = {
   items: [],
   promoCode: null,
-  discountRate: 0.10, // 10% OFF for Milad un Nabi launch offer
+  discountRate: 0.10, // 10% OFF for Milad offer
+  deliveryDetails: {},
+  lockedScrollY: 0,
+  lockedBodyStyles: {},
 
   init() {
     try {
@@ -897,7 +964,6 @@ const Cart = {
     const sizeOpt = product.sizes.find(s => s.size === size) || product.sizes[0];
     const isBulk = Boolean(sizeOpt.isBulk);
 
-    // If it is a bulk size (500g, 5kg, 10kg, Bulk Order) added directly
     const cartItemId = `${productId}-${size}`;
     const existing = this.items.find(i => i.cartItemId === cartItemId);
 
@@ -942,20 +1008,34 @@ const Cart = {
     }
   },
 
-  subtotal() {
-    return this.items.reduce((sum, item) => {
+  calculateTotals() {
+    const subtotal = this.items.reduce((sum, item) => {
       if (item.isBulk || item.price === null) return sum;
       return sum + (item.price * item.quantity);
     }, 0);
-  },
 
-  discountAmount() {
-    if (!this.promoCode || this.items.length === 0) return 0;
-    return Math.round(this.subtotal() * this.discountRate);
-  },
+    const eligibleSubtotal = this.items.reduce((sum, item) => {
+      if (item.isBulk || item.price === null) return sum;
+      const product = PRODUCTS.find(p => p.id === item.productId);
+      if (product && product.discountEligible) {
+        return sum + (item.price * item.quantity);
+      }
+      return sum;
+    }, 0);
 
-  total() {
-    return Math.max(0, this.subtotal() - this.discountAmount());
+    let discount = 0;
+    if (this.promoCode && this.items.length > 0) {
+      discount = Math.round(eligibleSubtotal * this.discountRate);
+    }
+
+    const finalTotal = Math.max(0, subtotal - discount);
+
+    return {
+      subtotal,
+      eligibleSubtotal,
+      discount,
+      finalTotal
+    };
   },
 
   count() {
@@ -968,7 +1048,7 @@ const Cart = {
     if (validCodes.includes(clean)) {
       this.promoCode = clean;
       this.save();
-      this.showToast("Milad un Nabi 10% Launch Discount Applied");
+      this.showToast("Milad 10% Discount Applied");
     } else {
       this.showToast("Invalid code. Use MILAD10 for 10% off.");
     }
@@ -992,7 +1072,26 @@ const Cart = {
       overlay.classList.add("active");
     }
     if (drawer) drawer.classList.add("active");
-    if (document.body && document.body.style) document.body.style.overflow = "hidden";
+    
+    // Scroll Lock
+    if (document.body) {
+      this.lockedScrollY = window.scrollY;
+      this.lockedBodyStyles = {
+        position: document.body.style.position,
+        top: document.body.style.top,
+        left: document.body.style.left,
+        right: document.body.style.right,
+        width: document.body.style.width,
+        overflow: document.body.style.overflow
+      };
+      
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${this.lockedScrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+    }
   },
 
   closeDrawer() {
@@ -1003,7 +1102,22 @@ const Cart = {
       overlay.classList.remove("active");
       overlay.style.display = "none";
     }
-    if (document.body && document.body.style) document.body.style.overflow = "";
+    
+    // Restore Scroll
+    if (document.body) {
+      document.body.style.position = this.lockedBodyStyles.position || '';
+      document.body.style.top = this.lockedBodyStyles.top || '';
+      document.body.style.left = this.lockedBodyStyles.left || '';
+      document.body.style.right = this.lockedBodyStyles.right || '';
+      document.body.style.width = this.lockedBodyStyles.width || '';
+      document.body.style.overflow = this.lockedBodyStyles.overflow || '';
+      
+      window.scrollTo({
+        top: this.lockedScrollY,
+        left: 0,
+        behavior: 'instant'
+      });
+    }
   },
 
   updateBadges() {
@@ -1012,6 +1126,16 @@ const Cart = {
       badge.textContent = count;
       badge.style.display = count > 0 ? "inline-block" : "none";
     });
+  },
+
+  saveDeliveryField(id, value) {
+    this.deliveryDetails[id] = value;
+    
+    // Clear validation error if any
+    const errEl = document.getElementById(`err-${id}`);
+    if (errEl) {
+      errEl.style.display = 'none';
+    }
   },
 
   renderDrawer() {
@@ -1031,7 +1155,7 @@ const Cart = {
     if (emptyEl && emptyEl.style) emptyEl.style.display = "none";
     if (footerEl && footerEl.style) footerEl.style.display = "block";
 
-    container.innerHTML = items.map(item => {
+    let html = items.map(item => {
       const priceDisplay = item.isBulk || item.price === null
         ? `<div class="cart-item-price" style="color:var(--olive); font-size:12px; font-weight:700;">Price on Request (Wholesale)</div>`
         : `<div class="cart-item-price">₹${item.price.toLocaleString("en-IN")}</div>`;
@@ -1056,24 +1180,21 @@ const Cart = {
       `;
     }).join("");
 
-    // Render Promo Section & Subtotal / Discount Summary
-    const subtotal = this.subtotal();
-    const discount = this.discountAmount();
-    const total = this.total();
+    // Calculate totals
+    const totals = this.calculateTotals();
     const hasBulkItems = items.some(i => i.isBulk);
 
-    if (footerEl) {
-      footerEl.innerHTML = `
-        <!-- Milad un Nabi Launch Promo Box -->
+    html += `
+        <!-- Milad Promo Box -->
         <div class="cart-promo-section">
           ${this.promoCode ? `
             <div class="promo-applied-badge">
-              <span>Code <strong>${this.promoCode}</strong> applied (10% Off Retail)</span>
+              <span>Code <strong>${this.promoCode}</strong> applied (10% Off Eligible)</span>
               <button onclick="Cart.removePromo()" style="background:transparent; border:0; color:#882222; cursor:pointer; font-weight:700; font-size:11px;">Remove</button>
             </div>
           ` : `
             <div class="promo-offer-banner" onclick="Cart.applyPromo('MILAD10')">
-              <strong>Milad un Nabi Offer: 10% OFF</strong>
+              <strong>Milad Offer: 10% OFF</strong>
               <span class="promo-click-apply">Apply Code</span>
             </div>
             <div class="promo-input-row">
@@ -1083,43 +1204,109 @@ const Cart = {
           `}
         </div>
 
-        ${subtotal > 0 ? `
+        ${totals.subtotal > 0 ? `
           <div class="cart-summary-line">
-            <span>Retail Items Subtotal</span>
-            <span>₹${subtotal.toLocaleString("en-IN")}</span>
+            <span>Items Subtotal</span>
+            <span>₹${totals.subtotal.toLocaleString("en-IN")}</span>
           </div>
         ` : ''}
 
-        ${discount > 0 ? `
+        ${totals.discount > 0 ? `
           <div class="cart-discount-line">
-            <span>Launch Discount (10%)</span>
-            <span>-₹${discount.toLocaleString("en-IN")}</span>
+            <span>Milad Discount (10%)</span>
+            <span>-₹${totals.discount.toLocaleString("en-IN")}</span>
           </div>
         ` : ''}
+        
+        <br/>
 
-        ${subtotal > 0 ? `
-          <div class="cart-subtotal-row">
-            <span>Payable Total (Retail)</span>
-            <strong>₹${total.toLocaleString("en-IN")}</strong>
+        <div class="delivery-details-form">
+          <h4 style="margin-bottom: 12px; font-family: 'Fraunces', serif; color: var(--brown-deep);">Delivery Details</h4>
+          
+          <div style="margin-bottom: 10px;">
+            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Full Name *</label>
+            <input type="text" id="dlv-name" value="${this.deliveryDetails['dlv-name'] || ''}" oninput="Cart.saveDeliveryField('dlv-name', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="name" placeholder="John Doe">
+            <span id="err-dlv-name" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your full name.</span>
           </div>
-        ` : ''}
 
-        ${hasBulkItems ? `
-          <div style="font-size:11.5px; color:var(--brown-muted); background:rgba(63,75,35,0.06); border:1px solid rgba(63,75,35,0.18); padding:7px 10px; border-radius:6px; margin:8px 0;">
-            <strong>Wholesale / Bulk items included:</strong> Pricing will be quoted directly on WhatsApp based on requirement.
+          <div style="margin-bottom: 10px;">
+            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Mobile / WhatsApp Number *</label>
+            <input type="tel" inputmode="tel" id="dlv-phone" value="${this.deliveryDetails['dlv-phone'] || ''}" oninput="Cart.saveDeliveryField('dlv-phone', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="tel" placeholder="+91 99999 99999">
+            <span id="err-dlv-phone" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter a valid mobile number.</span>
           </div>
-        ` : ''}
 
-        <div class="cart-shipping-note">
-          <span>Single-origin stone-ground jars in protective packaging</span>
+          <div style="margin-bottom: 10px;">
+            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Address Line *</label>
+            <input type="text" id="dlv-address" value="${this.deliveryDetails['dlv-address'] || ''}" oninput="Cart.saveDeliveryField('dlv-address', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-line1" placeholder="House/Flat No., Building Name">
+            <span id="err-dlv-address" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your address.</span>
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Area / Locality *</label>
+            <input type="text" id="dlv-area" value="${this.deliveryDetails['dlv-area'] || ''}" oninput="Cart.saveDeliveryField('dlv-area', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-line2" placeholder="Street/Area Name">
+            <span id="err-dlv-area" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your locality.</span>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-bottom: 10px;">
+            <div style="flex:1;">
+              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">City *</label>
+              <input type="text" id="dlv-city" value="${this.deliveryDetails['dlv-city'] || ''}" oninput="Cart.saveDeliveryField('dlv-city', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-level2" placeholder="Surat">
+              <span id="err-dlv-city" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Required.</span>
+            </div>
+            <div style="flex:1;">
+              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">State *</label>
+              <input type="text" id="dlv-state" value="${this.deliveryDetails['dlv-state'] || ''}" oninput="Cart.saveDeliveryField('dlv-state', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-level1" placeholder="Gujarat">
+              <span id="err-dlv-state" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Required.</span>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">PIN Code *</label>
+            <input type="text" inputmode="numeric" id="dlv-pin" value="${this.deliveryDetails['dlv-pin'] || ''}" oninput="Cart.saveDeliveryField('dlv-pin', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="postal-code" placeholder="395007">
+            <span id="err-dlv-pin" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter PIN code.</span>
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Landmark (Optional)</label>
+            <input type="text" id="dlv-landmark" value="${this.deliveryDetails['dlv-landmark'] || ''}" oninput="Cart.saveDeliveryField('dlv-landmark', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Near...">
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Delivery Instructions (Optional)</label>
+            <input type="text" id="dlv-instructions" value="${this.deliveryDetails['dlv-instructions'] || ''}" oninput="Cart.saveDeliveryField('dlv-instructions', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Leave at the door, etc.">
+          </div>
         </div>
+    `;
 
-        <button class="btn-whatsapp-checkout" onclick="Cart.checkoutWhatsApp()">
+    container.innerHTML = html;
+
+    // Footer only contains final total and button
+    if (footerEl) {
+      let footerHtml = '';
+      if (totals.subtotal > 0) {
+        footerHtml += `
+          <div class="cart-subtotal-row" style="margin-bottom: 14px; font-size: 15px;">
+            <span>Payable Total</span>
+            <strong>₹${totals.finalTotal.toLocaleString("en-IN")}</strong>
+          </div>
+        `;
+      }
+      
+      if (hasBulkItems) {
+        footerHtml += `
+          <div style="font-size:11px; color:var(--brown-muted); margin-bottom:8px; text-align:center;">
+            Includes Wholesale/Bulk items (Quote to follow)
+          </div>
+        `;
+      }
+
+      footerHtml += `
+        <button class="btn-whatsapp-checkout" onclick="Cart.checkoutWhatsApp()" style="width: 100%;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
-          <span>Send Order to WhatsApp Concierge</span>
-          <span>→</span>
+          <span>Send Order to WhatsApp</span>
         </button>
       `;
+      footerEl.innerHTML = footerHtml;
     }
   },
 
@@ -1129,53 +1316,119 @@ const Cart = {
       return;
     }
 
+    // Validation
+    const required = ['dlv-name', 'dlv-phone', 'dlv-address', 'dlv-area', 'dlv-city', 'dlv-state', 'dlv-pin'];
+    let isValid = true;
+    let firstInvalid = null;
+
+    for (let id of required) {
+      const val = (this.deliveryDetails[id] || "").trim();
+      const errEl = document.getElementById(`err-${id}`);
+      if (!val) {
+        isValid = false;
+        if (errEl) errEl.style.display = 'block';
+        if (!firstInvalid) firstInvalid = document.getElementById(id);
+      } else {
+        if (errEl) errEl.style.display = 'none';
+      }
+    }
+
+    if (!isValid) {
+      this.showToast("Please complete all required delivery details.");
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstInvalid.focus();
+      }
+      return;
+    }
+
     const retailItems = this.items.filter(i => !i.isBulk);
     const bulkItems = this.items.filter(i => i.isBulk);
 
     let itemsText = "";
 
     if (retailItems.length > 0) {
-      itemsText += `Retail Selection:\n` +
-        retailItems.map((item, idx) =>
-          `${idx + 1}. ${item.name} (${item.size}) × ${item.quantity} = ₹${(item.price * item.quantity).toLocaleString("en-IN")}`
-        ).join("\n") + "\n";
+      itemsText += `ORDER DETAILS
+
+` +
+        retailItems.map((item) =>
+          `${item.name} — ${item.size}
+₹${item.price.toLocaleString("en-IN")} × ${item.quantity} = ₹${(item.price * item.quantity).toLocaleString("en-IN")}`
+        ).join("\n\n") + "\n\n";
     }
 
     if (bulkItems.length > 0) {
-      if (itemsText) itemsText += `\n`;
-      itemsText += `Wholesale / Bulk Inquiries:\n` +
-        bulkItems.map((item, idx) =>
-          `• ${item.name} (${item.size}) × ${item.quantity} units [Wholesale Quote Requested]`
-        ).join("\n") + "\n";
+      itemsText += `WHOLESALE / BULK INQUIRY
+
+` +
+        bulkItems.map((item) =>
+          `${item.name} — ${item.size}
+Quantity: ${item.quantity} units (Wholesale Quote Requested)`
+        ).join("\n\n") + "\n\n";
     }
 
-    const subtotal = this.subtotal();
-    const discount = this.discountAmount();
-    const total = this.total();
-
-    let promoMsg = "";
-    if (this.promoCode && discount > 0) {
-      promoMsg = `\nMilad un Nabi Launch Offer (Code: ${this.promoCode}): -₹${discount.toLocaleString("en-IN")} (10% OFF)`;
-    }
+    const totals = this.calculateTotals();
 
     let totalLine = "";
-    if (subtotal > 0) {
-      totalLine = `──────────────────\n` +
-        `Retail Subtotal: ₹${subtotal.toLocaleString("en-IN")}` +
-        `${promoMsg}\n` +
-        `Payable Total (Retail): ₹${total.toLocaleString("en-IN")}`;
-      if (bulkItems.length > 0) {
-        totalLine += `\n(Wholesale items will be quoted separately)`;
+    if (totals.subtotal > 0) {
+      totalLine = `--------------------
+` +
+        `Items Subtotal: ₹${totals.subtotal.toLocaleString("en-IN")}
+`;
+        
+      if (totals.discount > 0) {
+        totalLine += `Milad Eligible Amount: ₹${totals.eligibleSubtotal.toLocaleString("en-IN")}
+`;
+        totalLine += `Milad Discount (10%): -₹${totals.discount.toLocaleString("en-IN")}
+`;
       }
+      
+      totalLine += `Payable Total: ₹${totals.finalTotal.toLocaleString("en-IN")}
+` +
+        `--------------------
+
+`;
     }
 
-    const message = `NUT DELICACY — ORDER & BULK INQUIRY\n\n` +
-      `Hello Concierge, I would like to place an order from your collection:\n\n` +
+    let dlvText = `DELIVERY DETAILS
+
+`;
+    dlvText += `Name: ${this.deliveryDetails['dlv-name'].trim()}
+`;
+    dlvText += `Mobile: ${this.deliveryDetails['dlv-phone'].trim()}
+
+`;
+    dlvText += `Address:
+${this.deliveryDetails['dlv-address'].trim()}
+`;
+    dlvText += `${this.deliveryDetails['dlv-area'].trim()}
+`;
+    dlvText += `${this.deliveryDetails['dlv-city'].trim()}, ${this.deliveryDetails['dlv-state'].trim()} - ${this.deliveryDetails['dlv-pin'].trim()}
+`;
+    
+    if (this.deliveryDetails['dlv-landmark'] && this.deliveryDetails['dlv-landmark'].trim()) {
+      dlvText += `
+Landmark: ${this.deliveryDetails['dlv-landmark'].trim()}
+`;
+    }
+    
+    if (this.deliveryDetails['dlv-instructions'] && this.deliveryDetails['dlv-instructions'].trim()) {
+      dlvText += `Delivery Instructions: ${this.deliveryDetails['dlv-instructions'].trim()}
+`;
+    }
+
+    const message = `Hello Nut Delicacy,
+
+` +
+      `I would like to place an order.
+
+` +
       `${itemsText}` +
-      `${totalLine}\n\n` +
-      `Delivery City / Pincode: [Please enter your City/Pincode]\n` +
-      `Name / Business Name: [Please enter your Name]\n\n` +
-      `Please confirm availability, payment details, and dispatch timeline. Thank you.`;
+      `${totalLine}` +
+      `${dlvText}
+
+` +
+      `Please share the available payment options so I can complete my order.`;
 
     const encoded = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/919512512151?text=${encoded}`;
@@ -1608,7 +1861,7 @@ function openProductModal(productId) {
     `;
   } else {
     angleGalleryHtml = `
-      <div class="coming-soon-badge" style="position:static; margin-top:10px; display:inline-block;">Artisanal Reserve • Launching Soon</div>
+      <div class="coming-soon-badge" style="position:static; margin-top:10px; display:inline-block;">Artisanal Reserve • Coming Soon</div>
     `;
   }
 
@@ -1985,12 +2238,12 @@ const MiladCelebration = {
           <div class="milad-festive-header">
             <div class="milad-badge-shine">
               <span class="milad-sparkle-icon">✨</span>
-              <span>Festive Launch Celebration</span>
+              <span>Festive Celebration</span>
               <span class="milad-sparkle-icon">✨</span>
             </div>
 
             <h2 class="milad-title">
-              Milad un Nabi <span class="milad-mubarak-text">Mubarak</span>
+              Milad Mubarak <span class="milad-mubarak-text">Offer</span>
             </h2>
 
             <div class="milad-ornament-divider">
@@ -2007,7 +2260,7 @@ const MiladCelebration = {
           </div>
 
           <p class="milad-desc">
-            To commemorate this blessed occasion, indulge in the pure, unadulterated luxury of traditional stone-ground nut butters with an exclusive <strong class="milad-highlight">10% launch discount</strong> across our entire artisanal collection.
+            To commemorate this blessed occasion, indulge in the pure, unadulterated luxury of traditional stone-ground nut butters with an exclusive <strong class="milad-highlight">10% discount</strong> across our entire artisanal collection.
           </p>
 
           <!-- Luxury Golden Coupon Ticket Box -->
@@ -2032,7 +2285,7 @@ const MiladCelebration = {
               <span>Apply Code & Explore Collection</span>
               <span class="btn-arrow">→</span>
             </button>
-            <a href="https://wa.me/919512512151?text=Hello%20Nut%20Delicacy%2C%20I%20would%20like%20to%20claim%20my%2010%25%20Milad%20un%20Nabi%20launch%20offer%20(Code%3A%20MILAD10)." target="_blank" rel="noopener noreferrer" class="btn-milad-wa" title="Direct Concierge Claim on WhatsApp">
+            <a href="https://wa.me/919512512151?text=Hello%20Nut%20Delicacy%2C%20I%20would%20like%20to%20claim%20my%2010%25%20Milad%20Mubarak%20offer%20(Code%3A%20MILAD10)." target="_blank" rel="noopener noreferrer" class="btn-milad-wa" title="Direct Concierge Claim on WhatsApp">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
               <span>Claim Offer on WhatsApp</span>
             </a>
