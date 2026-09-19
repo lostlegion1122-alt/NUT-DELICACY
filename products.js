@@ -6,11 +6,14 @@
 // Helper to generate 2 packaging tiers for any product:
 // 1. 180g Standard Jar with published retail price
 // 2. Bulk Order with price on request
-function createSizes(price180) {
-  return [
-    { size: "180g", label: "180g Standard Jar", price: price180, isBulk: false },
-    { size: "Bulk Order", label: "Bulk / Wholesale Order", price: null, isBulk: true, bulkLabel: "Price on Request" }
-  ];
+function createSizes(price180, price100 = null) {
+  const sizes = [];
+  if (price100 !== null) {
+    sizes.push({ size: "100 ml", label: "100 ml Standard Jar", price: price100, isBulk: false });
+  }
+  sizes.push({ size: "180 ml", label: "180 ml Standard Jar", price: price180, isBulk: false });
+  sizes.push({ size: "Bulk Order", label: "Bulk / Wholesale Order", price: null, isBulk: true, bulkLabel: "Price on Request" });
+  return sizes;
 }
 
 // Helper to generate packaging tiers for Curated Combos & Sets:
@@ -53,7 +56,7 @@ const PRODUCTS = [
       left: "mockups/zafran-gold-butter/left.webp",
       right: "mockups/zafran-gold-butter/right.webp"
     },
-    sizes: createSizes(875, 1215),
+    sizes: createSizes(875, 550),
     ingredients: "100% Mamra Almonds, Royal Pistachios, Pure Kashmiri Mongra Saffron, Green Cardamom.",
     description: "Our crowning masterpiece. Hand-harvested Grade-A Kashmiri Mongra Saffron cold stone-milled into a silky blend of Mamra almonds and royal emerald pistachios. Absolutely no added sugars, preservatives, or palm oil.",
     nutrition: { calories: "585 kcal", protein: "21.2g", fats: "51.4g", carbs: "17.8g" },
@@ -79,7 +82,7 @@ const PRODUCTS = [
       left: "mockups/hazelnut-chocolate-butter/left.webp",
       right: "mockups/hazelnut-chocolate-butter/right.webp"
     },
-    sizes: createSizes(885, 1230),
+    sizes: createSizes(885, 440),
     ingredients: "75% Whole Roasted Hazelnuts, Single-Origin Dark Cacao, Organic Coconut Blossom Sugar.",
     description: "An authentic Italian Gianduja tribute with an unprecedented 75% hazelnut concentration. Milled on granite stones with pure single-estate cacao and unrefined coconut sugar. Clean, rich, and unforgettable.",
     nutrition: { calories: "610 kcal", protein: "14.5g", fats: "53.2g", carbs: "22.8g" },
@@ -105,7 +108,7 @@ const PRODUCTS = [
       left: "mockups/pistachio-butter/left.webp",
       right: "mockups/pistachio-butter/right.webp"
     },
-    sizes: createSizes(925, 1285),
+    sizes: createSizes(925, 590),
     ingredients: "100% Pure Roasted Royal Emerald Green Pistachios.",
     description: "Crafted exclusively from whole, vibrant emerald-green pistachios gently stone-ground for over 18 hours. Unadulterated luxury in every spoonful with zero added sugars, salt, or oils.",
     nutrition: { calories: "562 kcal", protein: "20.2g", fats: "45.3g", carbs: "27.5g" },
@@ -131,7 +134,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(995, 1380),
+    sizes: createSizes(995, 525),
     ingredients: "100% Slow-Roasted Golden Hazelnuts.",
     description: "Pure roasted golden hazelnuts stone-milled into a fragrant, velvety butter with zero cacao, zero sugar, and zero additives.",
     nutrition: { calories: "628 kcal", protein: "15.0g", fats: "60.8g", carbs: "16.7g" },
@@ -157,7 +160,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(995, 1380),
+    sizes: createSizes(995),
     ingredients: "100% Slow-Roasted Whole Macadamia Nuts.",
     description: "The world's richest nut butter. Cold-milled gently to preserve its extraordinary monounsaturated fat profile and melt-in-mouth richness.",
     nutrition: { calories: "718 kcal", protein: "7.9g", fats: "75.8g", carbs: "13.8g" },
@@ -187,7 +190,7 @@ const PRODUCTS = [
       left: "mockups/almond-butter/left.webp",
       right: "mockups/almond-butter/right.webp"
     },
-    sizes: createSizes(385, 535),
+    sizes: createSizes(385, 250),
     ingredients: "100% Whole Roasted Almonds with Prebiotic Skin Intact.",
     description: "Crafted from slow-roasted whole almonds milled with skin intact on granite stones. Maximizes natural prebiotic dietary fiber, Vitamin E, and clean plant protein.",
     nutrition: { calories: "579 kcal", protein: "21.2g", fats: "49.9g", carbs: "21.6g" },
@@ -213,12 +216,38 @@ const PRODUCTS = [
       left: "mockups/cashew-butter/left.webp",
       right: "mockups/cashew-butter/right.webp"
     },
-    sizes: createSizes(395, 550),
+    sizes: createSizes(395, 250),
     ingredients: "100% Whole Roasted Konkan W240 Cashews.",
     description: "Premium large whole cashews from the Konkan coast stone-milled into an ultra-creamy, naturally sweet butter with zero added sugars.",
     nutrition: { calories: "553 kcal", protein: "18.2g", fats: "43.8g", carbs: "30.2g" },
     tastingNotes: ["Natural Sweetness", "Velvety Cream", "Buttery Cashew"],
     pills: ["Naturally Sweet", "Zero Added Sugar", "Cold Milled", "Silky Smooth"]
+  },
+  {
+    id: "cashew-chocolate-butter",
+    name: "Cashew Chocolate Butter",
+    slug: "cashew-chocolate-butter",
+    category: "classics",
+    categoryLabel: "Classic Nut Butters",
+    productType: "individual",
+    discountEligible: true,
+    tag: "Gourmet Indulgence",
+    subtitle: "Stone-Ground Roasted Cashews folded with single-origin raw cacao.",
+    origin: "Terroir: Konkan Coast & Kerala Cacao",
+    coldMilledTemp: "Milled below 26°C",
+    shelfLife: "6 Months",
+    hasImages: false,
+    images: {
+      front: "upcoming products.webp",
+      left: "upcoming products.webp",
+      right: "upcoming products.webp"
+    },
+    sizes: createSizes(850, 525),
+    ingredients: "Roasted Cashews, Pure Single-Origin Dark Cacao, Organic Coconut Sugar.",
+    description: "Freshly roasted whole cashews stone-ground with dark raw cacao and unrefined coconut nectar.",
+    nutrition: { calories: "550 kcal", protein: "16.8g", fats: "44.2g", carbs: "28.4g" },
+    tastingNotes: ["Dark Chocolate", "Sweet Cashew", "Velvet Finish"],
+    pills: ["Zero Palm Oil", "Dark Cacao", "Stone-Ground", "Coming Soon"]
   },
   {
     id: "almond-chocolate-butter",
@@ -233,13 +262,13 @@ const PRODUCTS = [
     origin: "Terroir: Kashmir Almonds & Kerala Cacao",
     coldMilledTemp: "Milled below 26°C",
     shelfLife: "6 Months",
-    hasImages: false,
+    hasImages: true,
     images: {
-      front: "upcoming products.webp",
-      left: "upcoming products.webp",
-      right: "upcoming products.webp"
+      front: "mockups/almond-chocolate-butter/front.jpeg",
+      left: "mockups/almond-chocolate-butter/left.jpeg",
+      right: "mockups/almond-chocolate-butter/right.jpeg"
     },
-    sizes: createSizes(455, 630),
+    sizes: createSizes(455, 250),
     ingredients: "Roasted Almonds, Pure Single-Origin Dark Cacao, Organic Coconut Sugar.",
     description: "Freshly roasted whole almonds stone-ground with dark raw cacao and unrefined coconut nectar.",
     nutrition: { calories: "565 kcal", protein: "17.8g", fats: "46.2g", carbs: "26.4g" },
@@ -265,7 +294,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(465, 645),
+    sizes: createSizes(465),
     ingredients: "100% Roasted Whole Almonds, Single-Origin 70% Dark Cacao, Organic Coconut Blossom Sugar.",
     description: "Slow-roasted whole almonds stone-ground with rich 70% single-origin dark chocolate and organic coconut nectar. A deep, decadent, antioxidant-rich spread with zero palm oil.",
     nutrition: { calories: "572 kcal", protein: "18.4g", fats: "47.5g", carbs: "25.1g" },
@@ -291,7 +320,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(485, 675),
+    sizes: createSizes(485, 330),
     ingredients: "50% Himalayan Snow Walnuts, 50% Mamra Almonds.",
     description: "A functional dual-nut powerhouse pairing plant Omega-3 fatty acids from Himalayan snow walnuts with high-protein Mamra almonds.",
     nutrition: { calories: "615 kcal", protein: "18.5g", fats: "56.4g", carbs: "17.2g" },
@@ -317,7 +346,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(525, 730),
+    sizes: createSizes(525, 270),
     ingredients: "Himalayan Snow Walnuts, Single-Origin Dark Cacao, Coconut Nectar.",
     description: "Deep, earthy Himalayan walnuts unified with single-origin dark cacao for a luxurious guilt-free dessert butter.",
     nutrition: { calories: "605 kcal", protein: "14.2g", fats: "54.8g", carbs: "24.0g" },
@@ -343,7 +372,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(525, 730),
+    sizes: createSizes(525),
     ingredients: "Roasted Pecans, Single-Origin Dark Cacao, Organic Coconut Sugar.",
     description: "Sweet slow-roasted pecans stone-milled with single-origin dark cacao for a rich praline-style spread.",
     nutrition: { calories: "640 kcal", protein: "9.5g", fats: "62.0g", carbs: "21.5g" },
@@ -369,7 +398,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(545, 755),
+    sizes: createSizes(545, 320),
     ingredients: "100% Cold-Milled Himalayan Snow Walnuts.",
     description: "Pure Himalayan snow walnuts cold-milled below 24°C to preserve delicate Omega-3 fatty acids.",
     nutrition: { calories: "654 kcal", protein: "15.2g", fats: "65.2g", carbs: "13.7g" },
@@ -395,7 +424,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(545, 755),
+    sizes: createSizes(545),
     ingredients: "100% Roasted Pecan Nuts.",
     description: "100% Roasted whole pecan halves, stone-ground to silky perfection with natural maple and caramel notes.",
     nutrition: { calories: "690 kcal", protein: "9.2g", fats: "72.0g", carbs: "13.9g" },
@@ -421,7 +450,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(605, 840),
+    sizes: createSizes(605, 290),
     ingredients: "Himalayan Walnuts, Mamra Almonds, Single-Origin Cacao, Coconut Nectar.",
     description: "A signature blend of walnuts and almonds cold stone-milled with dark chocolate for a rich, nutrient-dense breakfast spread.",
     nutrition: { calories: "595 kcal", protein: "16.8g", fats: "52.5g", carbs: "23.0g" },
@@ -451,7 +480,7 @@ const PRODUCTS = [
       left: "mockups/peanut-butter/left.webp",
       right: "mockups/peanut-butter/right.webp"
     },
-    sizes: createSizes(175, 245),
+    sizes: createSizes(175, 75),
     ingredients: "100% Whole Roasted Saurashtra Bold Peanuts.",
     description: "Pure whole roasted peanuts stone-ground the traditional way. Packed with natural plant protein and healthy fats without hydrogenated oils or stabilizers.",
     nutrition: { calories: "588 kcal", protein: "25.8g", fats: "50.4g", carbs: "20.0g" },
@@ -477,7 +506,7 @@ const PRODUCTS = [
       left: "mockups/peanut-chocolate-butter/left.webp",
       right: "mockups/peanut-chocolate-butter/right.webp"
     },
-    sizes: createSizes(295, 410),
+    sizes: createSizes(295, 125),
     ingredients: "Whole Roasted Peanuts, Single-Origin Raw Cacao, Organic Coconut Sugar.",
     description: "Roasted peanuts blended with single-origin raw cacao and organic coconut sugar. Delicious, high-protein chocolate spread with zero palm oil.",
     nutrition: { calories: "572 kcal", protein: "22.5g", fats: "45.8g", carbs: "25.6g" },
@@ -503,7 +532,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(120, 165),
+    sizes: createSizes(120),
     ingredients: "100% Roasted Organic Sunflower Seeds.",
     description: "A completely nut-free, allergen-safe seed butter packed with natural Vitamin E and magnesium.",
     nutrition: { calories: "617 kcal", protein: "20.8g", fats: "51.5g", carbs: "20.0g" },
@@ -529,7 +558,7 @@ const PRODUCTS = [
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(120, 165),
+    sizes: createSizes(120),
     ingredients: "100% Slow-Milled Organic Pumpkin Seeds.",
     description: "Deep green whole pumpkin seeds cold-milled to protect essential minerals including natural Zinc and Magnesium.",
     nutrition: { calories: "559 kcal", protein: "30.2g", fats: "49.0g", carbs: "10.7g" },
@@ -1745,7 +1774,7 @@ function initLightboxPan() {
 // 5. PRODUCT QUICK-VIEW MODAL CONTROLLER (WITH BULK LOGIC)
 // ==========================================
 let currentModalProductId = null;
-let currentModalSize = "180g";
+let currentModalSize = "180 ml";
 let currentModalQty = 1;
 
 // SINGLE GLOBAL ENTRY POINT FOR OPENING PRODUCTS
