@@ -950,6 +950,38 @@ const PRODUCTS = [
 ];
 
 // ==========================================
+// 1b. CENTRALIZED SCROLL LOCK (prevents body scroll when overlays are open)
+// ==========================================
+let _scrollLockCount = 0;
+let _savedScrollY = 0;
+
+function _lockScroll() {
+  if (_scrollLockCount === 0) {
+    _savedScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${_savedScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+  }
+  _scrollLockCount++;
+}
+
+function _unlockScroll() {
+  _scrollLockCount = Math.max(0, _scrollLockCount - 1);
+  if (_scrollLockCount === 0) {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.scrollTo({ top: _savedScrollY, left: 0, behavior: 'instant' });
+  }
+}
+
+// ==========================================
 // 2. SHOPPING BAG, BULK ORDER & PROMO ENGINE
 // ==========================================
 const Cart = {
@@ -957,8 +989,7 @@ const Cart = {
   promoCode: null,
   discountRate: 0.10, // 10% OFF for Milad offer
   deliveryDetails: {},
-  lockedScrollY: 0,
-  lockedBodyStyles: {},
+  _drawerOpen: false,
 
   init() {
     try {
@@ -1101,26 +1132,8 @@ const Cart = {
       overlay.classList.add("active");
     }
     if (drawer) drawer.classList.add("active");
-    
-    // Scroll Lock
-    if (document.body) {
-      this.lockedScrollY = window.scrollY;
-      this.lockedBodyStyles = {
-        position: document.body.style.position,
-        top: document.body.style.top,
-        left: document.body.style.left,
-        right: document.body.style.right,
-        width: document.body.style.width,
-        overflow: document.body.style.overflow
-      };
-      
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${this.lockedScrollY}px`;
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
-    }
+    this._drawerOpen = true;
+    _lockScroll();
   },
 
   closeDrawer() {
@@ -1131,22 +1144,8 @@ const Cart = {
       overlay.classList.remove("active");
       overlay.style.display = "none";
     }
-    
-    // Restore Scroll
-    if (document.body) {
-      document.body.style.position = this.lockedBodyStyles.position || '';
-      document.body.style.top = this.lockedBodyStyles.top || '';
-      document.body.style.left = this.lockedBodyStyles.left || '';
-      document.body.style.right = this.lockedBodyStyles.right || '';
-      document.body.style.width = this.lockedBodyStyles.width || '';
-      document.body.style.overflow = this.lockedBodyStyles.overflow || '';
-      
-      window.scrollTo({
-        top: this.lockedScrollY,
-        left: 0,
-        behavior: 'instant'
-      });
-    }
+    this._drawerOpen = false;
+    _unlockScroll();
   },
 
   updateBadges() {
@@ -1631,7 +1630,7 @@ function openImageZoom(imageUrl, title, angle = "front", productId = null) {
 
   lightbox.style.display = "flex";
   lightbox.classList.add("active");
-  if (document.body && document.body.style) document.body.style.overflow = "hidden";
+  _lockScroll();
 
   initLightboxPan();
 }
@@ -1686,14 +1685,11 @@ function resetZoom() {
 function closeImageZoom() {
   resetZoom();
   const lightbox = document.getElementById("image-zoom-lightbox");
-  if (lightbox) {
+  if (lightbox && (lightbox.classList.contains("active") || lightbox.style.display !== "none")) {
     lightbox.classList.remove("active");
     lightbox.style.display = "none";
     lightbox.innerHTML = "";
-  }
-  const modalBackdrop = document.getElementById("product-modal-backdrop");
-  if (!modalBackdrop || !modalBackdrop.classList.contains("active")) {
-    if (document.body && document.body.style) document.body.style.overflow = "";
+    _unlockScroll();
   }
 }
 
@@ -1999,7 +1995,7 @@ function openProductModal(productId) {
 
   backdrop.style.display = "flex";
   backdrop.classList.add("active");
-  if (document.body && document.body.style) document.body.style.overflow = "hidden";
+  _lockScroll();
   
   updateModalPriceDisplay();
 }
@@ -2050,8 +2046,14 @@ function updateModalPriceDisplay() {
 
 function addModalToBag() {
   if (!currentModalProductId) return;
-  Cart.add(currentModalProductId, currentModalSize, currentModalQty);
+  const pid = currentModalProductId;
+  const psize = currentModalSize;
+  const pqty = currentModalQty;
   closeProductModal(true);
+  // Slight delay so the modal fully closes and body scroll is restored before the drawer re-locks it
+  requestAnimationFrame(() => {
+    Cart.add(pid, psize, pqty);
+  });
 }
 
 function orderModalDirectWhatsApp() {
@@ -2088,10 +2090,10 @@ function closeProductModal(fromUserAction = false) {
     backdrop.classList.remove("active");
     backdrop.style.display = "none";
   }
-  if (document.body && document.body.style) document.body.style.overflow = "";
 
   closeImageZoom();
   currentModalProductId = null;
+  _unlockScroll();
 
   if (fromUserAction) {
     if (window.location.hash && window.location.hash.startsWith("#product-")) {

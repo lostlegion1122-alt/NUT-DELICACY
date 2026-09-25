@@ -1262,34 +1262,27 @@ nav.main-nav a.active::after {
 }
 
 /* ===================================================
-   PINNED HORIZONTAL SCROLL SHOWCASE (HOME PAGE)
+   CURATED RESERVE JARS SHOWCASE (NATIVE HORIZONTAL SCROLL)
    =================================================== */
-.featured-horizontal-wrapper {
+.featured-horizontal-section {
   position: relative;
   width: 100%;
   background: var(--cream);
-  overflow: hidden;
+  padding: 80px 0 100px;
 }
 
-.featured-horizontal-pin {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  padding: 40px 0 24px;
-  box-sizing: border-box;
+.featured-horizontal-inner {
+  width: min(1280px, 92%);
+  margin: 0 auto;
 }
 
 .featured-horizontal-header {
-  width: min(1280px, 92%);
-  margin: 0 auto 20px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
+  margin-bottom: 36px;
 }
 
 .featured-horizontal-header h2 {
@@ -1305,34 +1298,34 @@ nav.main-nav a.active::after {
   color: var(--olive);
 }
 
-.featured-horizontal-nav-hint {
+/* Native Horizontal Scroll Container */
+.featured-native-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 24px;
+}
+.featured-native-scroll-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.featured-horizontal-track {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  gap: 28px;
+  width: max-content;
+  padding-left: calc(max(4vw, 50vw - 640px));
+  padding-right: 4vw;
 }
 
-.horizontal-scroll-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
-  background: rgba(63, 75, 35, 0.08);
-  border: 1px solid rgba(63, 75, 35, 0.2);
-  color: var(--olive-dark);
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.scroll-arrow-left, .scroll-arrow-right {
-  font-size: 14px;
-  animation: pulseArrow 1.5s infinite alternate ease-in-out;
-}
-
-@keyframes pulseArrow {
-  0% { transform: translateX(-2px); opacity: 0.6; }
-  100% { transform: translateX(2px); opacity: 1; }
+@media (max-width: 768px) {
+  .featured-horizontal-section {
+    padding: 50px 0 70px;
+  }
+  .featured-horizontal-track {
+    gap: 16px;
+  }
 }
 
 .btn-view-all-store {
@@ -1355,22 +1348,6 @@ nav.main-nav a.active::after {
   color: var(--white);
   border-color: var(--olive);
   transform: translateY(-2px);
-}
-
-.featured-horizontal-track-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 10px 0;
-}
-
-.featured-horizontal-track {
-  display: flex;
-  gap: 28px;
-  width: max-content;
-  padding: 10px max(4vw, 24px) 20px;
-  align-items: stretch;
-  will-change: transform;
 }
 
 .featured-card-luxury {
@@ -1396,6 +1373,7 @@ nav.main-nav a.active::after {
   box-shadow: 0 24px 50px rgba(46, 26, 17, 0.16), 0 0 25px rgba(179, 139, 71, 0.2);
   border-color: var(--gold);
 }
+
 
 .card-badge-top {
   position: absolute;
