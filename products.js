@@ -39,7 +39,7 @@ const PRODUCTS = [
   // ----------------------------------------------------
   {
     id: "zafran-gold-butter",
-    name: "Almond Pista Saffron Butter",
+    name: "Zafran Gold Butter",
     slug: "zafran-gold-butter",
     category: "artisan",
     categoryLabel: "Super Premium & Artisan",
@@ -796,7 +796,7 @@ const PRODUCTS = [
       right: "mockups/pistachio-butter/front.webp"
     },
     sizes: createComboSizes(1692),
-    ingredients: "1× 180g Almond Pista Saffron Butter, 1× 180g 100% Pure Pistachio Butter.",
+    ingredients: "1× 180g Zafran Gold Butter, 1× 180g 100% Pure Pistachio Butter.",
     description: "An opulent royal pairing of Kashmiri Mongra Saffron infused Mamra almond butter with 100% pure royal emerald green pistachio butter.",
     nutrition: { calories: "574 kcal", protein: "20.7g", fats: "48.4g", carbs: "22.6g" },
     tastingNotes: ["Floral Mongra Saffron", "Vibrant Emerald Pistachio", "Melt-in-Mouth Butterfat"],
@@ -811,7 +811,7 @@ const PRODUCTS = [
     productType: "combo",
     discountEligible: false,
     tag: "15% Off • Daily & Royal Contrast",
-    subtitle: "Peanut Butter (180g) + Almond Pista Saffron Butter (180g)",
+    subtitle: "Peanut Butter (180g) + Zafran Gold Butter (180g)",
     origin: "Terroir: Saurashtra & Kashmiri Mongra Saffron",
     coldMilledTemp: "15% Combo Savings",
     shelfLife: "6 Months",
@@ -825,8 +825,8 @@ const PRODUCTS = [
       right: "mockups/zafran-gold-butter/front.webp"
     },
     sizes: createComboSizes(999),
-    ingredients: "1× 180g Pure Peanut Butter, 1× 180g Almond Pista Saffron Butter.",
-    description: "From daily workout fuel to royal evening indulgence. Includes 1× 180g Bold Peanut Butter and 1× 180g Grand Reserve Almond Pista Saffron Butter.",
+    ingredients: "1× 180g Pure Peanut Butter, 1× 180g Zafran Gold Butter.",
+    description: "From daily workout fuel to royal evening indulgence. Includes 1× 180g Bold Peanut Butter and 1× 180g Grand Reserve Zafran Gold Butter.",
     nutrition: { calories: "586 kcal", protein: "23.5g", fats: "50.9g", carbs: "18.9g" },
     tastingNotes: ["Bold Roasted Peanut", "Kashmiri Saffron", "Mamra Almond"],
     pills: ["15% Off", "Everyday & Luxury", "Stone-Ground", "Signature Pair"]
