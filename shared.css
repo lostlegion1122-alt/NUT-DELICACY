@@ -3410,3 +3410,42 @@ nav.main-nav a.active::after {
     height: 26px;
   }
 }
+
+/* Footer Layout Overrides for Centered Button */
+.footer-bottom {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.developed-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  background: var(--olive);
+  color: var(--white) !important;
+  border-radius: var(--radius-full);
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(63, 75, 35, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.developed-btn:hover {
+  background: var(--olive-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(63, 75, 35, 0.4);
+}
+@media (max-width: 900px) {
+  .footer-bottom {
+    flex-direction: column !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 14px !important;
+  }
+}
