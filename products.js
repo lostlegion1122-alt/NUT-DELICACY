@@ -987,7 +987,8 @@ function _unlockScroll() {
 const Cart = {
   items: [],
   promoCode: null,
-  discountRate: 0.10, // 10% OFF for Milad offer
+  discountRate: 0, // No active discount
+  orderType: 'default', // 'default' or 'gift'
   deliveryDetails: {},
   _drawerOpen: false,
 
@@ -997,10 +998,22 @@ const Cart = {
       if (saved) this.items = JSON.parse(saved);
       const savedPromo = localStorage.getItem("nut_delicacy_promo");
       if (savedPromo) this.promoCode = savedPromo;
+      const savedType = localStorage.getItem("nut_delicacy_order_type");
+      if (savedType) this.orderType = savedType;
+      const savedDetails = localStorage.getItem("nut_delicacy_delivery_details");
+      if (savedDetails) this.deliveryDetails = JSON.parse(savedDetails);
     } catch (e) {
       this.items = [];
     }
     this.updateBadges();
+    this.renderDrawer();
+  },
+
+  setOrderType(type) {
+    this.orderType = type;
+    try {
+      localStorage.setItem("nut_delicacy_order_type", type);
+    } catch (e) {}
     this.renderDrawer();
   },
 
@@ -1012,9 +1025,18 @@ const Cart = {
       } else {
         localStorage.removeItem("nut_delicacy_promo");
       }
+      localStorage.setItem("nut_delicacy_order_type", this.orderType);
+      localStorage.setItem("nut_delicacy_delivery_details", JSON.stringify(this.deliveryDetails));
     } catch (e) {}
     this.updateBadges();
     this.renderDrawer();
+  },
+
+  addCustomItem(customItem) {
+    this.items.push(customItem);
+    this.save();
+    this.showToast(`Added ${customItem.name} to Tasting Bag`);
+    this.openDrawer();
   },
 
   add(productId, size = "180g", quantity = 1) {
@@ -1104,13 +1126,13 @@ const Cart = {
 
   applyPromo(code) {
     const clean = (code || "").trim().toUpperCase();
-    const validCodes = ["MILAD10", "MILAD", "LAUNCH10", "NJOY10", "WELCOME10"];
+    const validCodes = ["LAUNCH10", "NJOY10", "WELCOME10"];
     if (validCodes.includes(clean)) {
       this.promoCode = clean;
       this.save();
-      this.showToast("Milad 10% Discount Applied");
+      this.showToast(`${clean} Discount Applied`);
     } else {
-      this.showToast("Invalid code. Use MILAD10 for 10% off.");
+      this.showToast("Invalid code.");
     }
   },
 
@@ -1154,6 +1176,11 @@ const Cart = {
       badge.textContent = count;
       badge.style.display = count > 0 ? "inline-block" : "none";
     });
+    const moreBadge = document.getElementById("more-cart-badge");
+    if (moreBadge) {
+      moreBadge.textContent = count;
+      moreBadge.style.display = count > 0 ? "inline-block" : "none";
+    }
   },
 
   saveDeliveryField(id, value) {
@@ -1213,20 +1240,16 @@ const Cart = {
     const hasBulkItems = items.some(i => i.isBulk);
 
     html += `
-        <!-- Milad Promo Box -->
+        <!-- Promo Box -->
         <div class="cart-promo-section">
           ${this.promoCode ? `
             <div class="promo-applied-badge">
-              <span>Code <strong>${this.promoCode}</strong> applied (10% Off Eligible)</span>
+              <span>Code <strong>${this.promoCode}</strong> applied</span>
               <button onclick="Cart.removePromo()" style="background:transparent; border:0; color:#882222; cursor:pointer; font-weight:700; font-size:11px;">Remove</button>
             </div>
           ` : `
-            <div class="promo-offer-banner" onclick="Cart.applyPromo('MILAD10')">
-              <strong>Milad Offer: 10% OFF</strong>
-              <span class="promo-click-apply">Apply Code</span>
-            </div>
             <div class="promo-input-row">
-              <input type="text" id="cart-promo-input" placeholder="Promo code (MILAD10)" onkeydown="if(event.key==='Enter'){Cart.applyPromo(this.value); event.preventDefault();}">
+              <input type="text" id="cart-promo-input" placeholder="Promo code" onkeydown="if(event.key==='Enter'){Cart.applyPromo(this.value); event.preventDefault();}">
               <button onclick="Cart.applyPromo(document.getElementById('cart-promo-input').value)">Apply</button>
             </div>
           `}
@@ -1249,60 +1272,154 @@ const Cart = {
         <br/>
 
         <div class="delivery-details-form">
-          <h4 style="margin-bottom: 12px; font-family: 'Fraunces', serif; color: var(--brown-deep);">Delivery Details</h4>
-          
-          <div style="margin-bottom: 10px;">
-            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Full Name *</label>
-            <input type="text" id="dlv-name" value="${this.deliveryDetails['dlv-name'] || ''}" oninput="Cart.saveDeliveryField('dlv-name', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="name" placeholder="John Doe">
-            <span id="err-dlv-name" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your full name.</span>
-          </div>
-
-          <div style="margin-bottom: 10px;">
-            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Mobile / WhatsApp Number *</label>
-            <input type="tel" inputmode="tel" id="dlv-phone" value="${this.deliveryDetails['dlv-phone'] || ''}" oninput="Cart.saveDeliveryField('dlv-phone', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="tel" placeholder="+91 99999 99999">
-            <span id="err-dlv-phone" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter a valid mobile number.</span>
-          </div>
-
-          <div style="margin-bottom: 10px;">
-            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Address Line *</label>
-            <input type="text" id="dlv-address" value="${this.deliveryDetails['dlv-address'] || ''}" oninput="Cart.saveDeliveryField('dlv-address', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-line1" placeholder="House/Flat No., Building Name">
-            <span id="err-dlv-address" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your address.</span>
-          </div>
-
-          <div style="margin-bottom: 10px;">
-            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Area / Locality *</label>
-            <input type="text" id="dlv-area" value="${this.deliveryDetails['dlv-area'] || ''}" oninput="Cart.saveDeliveryField('dlv-area', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-line2" placeholder="Street/Area Name">
-            <span id="err-dlv-area" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your locality.</span>
-          </div>
-
-          <div style="display:flex; gap:10px; margin-bottom: 10px;">
-            <div style="flex:1;">
-              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">City *</label>
-              <input type="text" id="dlv-city" value="${this.deliveryDetails['dlv-city'] || ''}" oninput="Cart.saveDeliveryField('dlv-city', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-level2" placeholder="Surat">
-              <span id="err-dlv-city" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Required.</span>
+          <div class="gifting-selector-box">
+            <div class="gifting-selector-title">
+              <span>🎁</span> Delivery & Gifting Option
             </div>
-            <div style="flex:1;">
-              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">State *</label>
-              <input type="text" id="dlv-state" value="${this.deliveryDetails['dlv-state'] || ''}" oninput="Cart.saveDeliveryField('dlv-state', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-level1" placeholder="Gujarat">
-              <span id="err-dlv-state" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Required.</span>
+            <div class="gifting-toggle-group">
+              <label class="gift-radio-label ${this.orderType !== 'gift' ? 'active' : ''}">
+                <input type="radio" name="cart-order-type" value="default" ${this.orderType !== 'gift' ? 'checked' : ''} onchange="Cart.setOrderType('default')">
+                <span>🚚 Deliver to Me (Default)</span>
+              </label>
+              <label class="gift-radio-label ${this.orderType === 'gift' ? 'active' : ''}">
+                <input type="radio" name="cart-order-type" value="gift" ${this.orderType === 'gift' ? 'checked' : ''} onchange="Cart.setOrderType('gift')">
+                <span>🎁 Direct to Recipient</span>
+              </label>
             </div>
           </div>
 
-          <div style="margin-bottom: 10px;">
-            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">PIN Code *</label>
-            <input type="text" inputmode="numeric" id="dlv-pin" value="${this.deliveryDetails['dlv-pin'] || ''}" oninput="Cart.saveDeliveryField('dlv-pin', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="postal-code" placeholder="395007">
-            <span id="err-dlv-pin" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter PIN code.</span>
-          </div>
+          ${this.orderType === 'gift' ? `
+            <!-- Gift Direct Delivery Form -->
+            <div class="gift-details-card">
+              <div class="gift-card-note-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V22H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                <span>Recipient's Delivery Address (Where to send)</span>
+              </div>
 
-          <div style="margin-bottom: 10px;">
-            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Landmark (Optional)</label>
-            <input type="text" id="dlv-landmark" value="${this.deliveryDetails['dlv-landmark'] || ''}" oninput="Cart.saveDeliveryField('dlv-landmark', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Near...">
-          </div>
+              <div style="margin-bottom: 10px;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Recipient's Full Name *</label>
+                <input type="text" id="gift-rec-name" value="${this.deliveryDetails['gift-rec-name'] || ''}" oninput="Cart.saveDeliveryField('gift-rec-name', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="name" placeholder="Recipient's Full Name">
+                <span id="err-gift-rec-name" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter recipient's full name.</span>
+              </div>
 
-          <div style="margin-bottom: 10px;">
-            <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Delivery Instructions (Optional)</label>
-            <input type="text" id="dlv-instructions" value="${this.deliveryDetails['dlv-instructions'] || ''}" oninput="Cart.saveDeliveryField('dlv-instructions', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Leave at the door, etc.">
-          </div>
+              <div style="margin-bottom: 10px;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Recipient's Mobile / WhatsApp *</label>
+                <input type="tel" inputmode="tel" id="gift-rec-phone" value="${this.deliveryDetails['gift-rec-phone'] || ''}" oninput="Cart.saveDeliveryField('gift-rec-phone', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="tel" placeholder="+91 98765 43210">
+                <span id="err-gift-rec-phone" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter recipient's mobile number.</span>
+              </div>
+
+              <div style="margin-bottom: 10px;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Recipient's Address Line *</label>
+                <input type="text" id="gift-rec-address" value="${this.deliveryDetails['gift-rec-address'] || ''}" oninput="Cart.saveDeliveryField('gift-rec-address', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Flat / House No., Building Name">
+                <span id="err-gift-rec-address" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter delivery address.</span>
+              </div>
+
+              <div style="margin-bottom: 10px;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Area / Locality *</label>
+                <input type="text" id="gift-rec-area" value="${this.deliveryDetails['gift-rec-area'] || ''}" oninput="Cart.saveDeliveryField('gift-rec-area', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Street / Area Name">
+                <span id="err-gift-rec-area" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter area.</span>
+              </div>
+
+              <div style="display:flex; gap:10px; margin-bottom: 10px;">
+                <div style="flex:1;">
+                  <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">City *</label>
+                  <input type="text" id="gift-rec-city" value="${this.deliveryDetails['gift-rec-city'] || ''}" oninput="Cart.saveDeliveryField('gift-rec-city', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Surat">
+                  <span id="err-gift-rec-city" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Required.</span>
+                </div>
+                <div style="flex:1;">
+                  <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">State *</label>
+                  <input type="text" id="gift-rec-state" value="${this.deliveryDetails['gift-rec-state'] || ''}" oninput="Cart.saveDeliveryField('gift-rec-state', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Gujarat">
+                  <span id="err-gift-rec-state" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Required.</span>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 10px;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">PIN Code *</label>
+                <input type="text" inputmode="numeric" id="gift-rec-pin" value="${this.deliveryDetails['gift-rec-pin'] || ''}" oninput="Cart.saveDeliveryField('gift-rec-pin', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="395007">
+                <span id="err-gift-rec-pin" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter PIN code.</span>
+              </div>
+
+              <div style="border-top: 1px dashed rgba(62,36,21,0.15); margin: 14px 0 10px; padding-top: 10px;">
+                <div class="gift-card-note-badge">
+                  <span>💌 Sender Details & Greeting Card Note</span>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 10px;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Your Full Name (Sender) *</label>
+                <input type="text" id="gift-sender-name" value="${this.deliveryDetails['gift-sender-name'] || ''}" oninput="Cart.saveDeliveryField('gift-sender-name', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Your Name">
+                <span id="err-gift-sender-name" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your name.</span>
+              </div>
+
+              <div style="margin-bottom: 10px;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Your Mobile / WhatsApp Number *</label>
+                <input type="tel" inputmode="tel" id="gift-sender-phone" value="${this.deliveryDetails['gift-sender-phone'] || ''}" oninput="Cart.saveDeliveryField('gift-sender-phone', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="+91 99999 99999">
+                <span id="err-gift-sender-phone" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your phone number.</span>
+              </div>
+
+              <div style="margin-bottom: 10px;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Personalized Gift Greeting Message (Optional)</label>
+                <textarea id="gift-message" oninput="Cart.saveDeliveryField('gift-message', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:13px; min-height:60px; font-family:inherit;" placeholder="Wishing you a blessed and joyous festive season!">${this.deliveryDetails['gift-message'] || ''}</textarea>
+                <small style="font-size:10px; color:#8c6225; display:block; margin-top:2px;">Printed or handwritten on luxury gold-foiled festive card inside the box.</small>
+              </div>
+            </div>
+          ` : `
+            <!-- Default Self Delivery Form -->
+            <h4 style="margin-bottom: 12px; font-family: 'Fraunces', serif; color: var(--brown-deep); font-size: 15px;">Your Delivery Details</h4>
+            
+            <div style="margin-bottom: 10px;">
+              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Full Name *</label>
+              <input type="text" id="dlv-name" value="${this.deliveryDetails['dlv-name'] || ''}" oninput="Cart.saveDeliveryField('dlv-name', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="name" placeholder="John Doe">
+              <span id="err-dlv-name" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your full name.</span>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Mobile / WhatsApp Number *</label>
+              <input type="tel" inputmode="tel" id="dlv-phone" value="${this.deliveryDetails['dlv-phone'] || ''}" oninput="Cart.saveDeliveryField('dlv-phone', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="tel" placeholder="+91 99999 99999">
+              <span id="err-dlv-phone" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter a valid mobile number.</span>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Address Line *</label>
+              <input type="text" id="dlv-address" value="${this.deliveryDetails['dlv-address'] || ''}" oninput="Cart.saveDeliveryField('dlv-address', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-line1" placeholder="House/Flat No., Building Name">
+              <span id="err-dlv-address" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your address.</span>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Area / Locality *</label>
+              <input type="text" id="dlv-area" value="${this.deliveryDetails['dlv-area'] || ''}" oninput="Cart.saveDeliveryField('dlv-area', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-line2" placeholder="Street/Area Name">
+              <span id="err-dlv-area" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter your locality.</span>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-bottom: 10px;">
+              <div style="flex:1;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">City *</label>
+                <input type="text" id="dlv-city" value="${this.deliveryDetails['dlv-city'] || ''}" oninput="Cart.saveDeliveryField('dlv-city', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-level2" placeholder="Surat">
+                <span id="err-dlv-city" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Required.</span>
+              </div>
+              <div style="flex:1;">
+                <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">State *</label>
+                <input type="text" id="dlv-state" value="${this.deliveryDetails['dlv-state'] || ''}" oninput="Cart.saveDeliveryField('dlv-state', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="address-level1" placeholder="Gujarat">
+                <span id="err-dlv-state" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Required.</span>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">PIN Code *</label>
+              <input type="text" inputmode="numeric" id="dlv-pin" value="${this.deliveryDetails['dlv-pin'] || ''}" oninput="Cart.saveDeliveryField('dlv-pin', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" autocomplete="postal-code" placeholder="395007">
+              <span id="err-dlv-pin" style="display:none; color:#d93025; font-size:11px; margin-top:4px;">Please enter PIN code.</span>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Landmark (Optional)</label>
+              <input type="text" id="dlv-landmark" value="${this.deliveryDetails['dlv-landmark'] || ''}" oninput="Cart.saveDeliveryField('dlv-landmark', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Near...">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+              <label style="display:block; font-size:11px; font-weight:700; margin-bottom:4px; color:var(--brown);">Delivery Instructions (Optional)</label>
+              <input type="text" id="dlv-instructions" value="${this.deliveryDetails['dlv-instructions'] || ''}" oninput="Cart.saveDeliveryField('dlv-instructions', this.value)" style="width:100%; padding:8px 12px; border:1px solid rgba(62,36,21,0.2); border-radius:6px; font-size:14px;" placeholder="Leave at the door, etc.">
+            </div>
+          `}
         </div>
     `;
 
@@ -1344,8 +1461,12 @@ const Cart = {
       return;
     }
 
-    // Validation
-    const required = ['dlv-name', 'dlv-phone', 'dlv-address', 'dlv-area', 'dlv-city', 'dlv-state', 'dlv-pin'];
+    // Validation based on orderType
+    const isGift = this.orderType === 'gift';
+    const required = isGift
+      ? ['gift-rec-name', 'gift-rec-phone', 'gift-rec-address', 'gift-rec-area', 'gift-rec-city', 'gift-rec-state', 'gift-rec-pin', 'gift-sender-name', 'gift-sender-phone']
+      : ['dlv-name', 'dlv-phone', 'dlv-address', 'dlv-area', 'dlv-city', 'dlv-state', 'dlv-pin'];
+
     let isValid = true;
     let firstInvalid = null;
 
@@ -1362,7 +1483,7 @@ const Cart = {
     }
 
     if (!isValid) {
-      this.showToast("Please complete all required delivery details.");
+      this.showToast(isGift ? "Please complete recipient and sender details." : "Please complete all required delivery details.");
       if (firstInvalid) {
         firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
         firstInvalid.focus();
@@ -1405,9 +1526,7 @@ Quantity: ${item.quantity} units (Wholesale Quote Requested)`
 `;
         
       if (totals.discount > 0) {
-        totalLine += `Milad Eligible Amount: ₹${totals.eligibleSubtotal.toLocaleString("en-IN")}
-`;
-        totalLine += `Milad Discount (10%): -₹${totals.discount.toLocaleString("en-IN")}
+        totalLine += `Promo Discount: -₹${totals.discount.toLocaleString("en-IN")}
 `;
       }
       
@@ -1418,31 +1537,36 @@ Quantity: ${item.quantity} units (Wholesale Quote Requested)`
 `;
     }
 
-    let dlvText = `DELIVERY DETAILS
+    let dlvText = "";
+    if (isGift) {
+      dlvText += `🎁 *FESTIVE GIFT ORDER (DIRECT TO RECIPIENT)*\n\n`;
+      dlvText += `*RECIPIENT (DELIVER TO):*\n`;
+      dlvText += `• Name: ${(this.deliveryDetails['gift-rec-name'] || '').trim()}\n`;
+      dlvText += `• Mobile: ${(this.deliveryDetails['gift-rec-phone'] || '').trim()}\n`;
+      dlvText += `• Address: ${(this.deliveryDetails['gift-rec-address'] || '').trim()}, ${(this.deliveryDetails['gift-rec-area'] || '').trim()}\n`;
+      dlvText += `• City & PIN: ${(this.deliveryDetails['gift-rec-city'] || '').trim()}, ${(this.deliveryDetails['gift-rec-state'] || '').trim()} - ${(this.deliveryDetails['gift-rec-pin'] || '').trim()}\n\n`;
 
-`;
-    dlvText += `Name: ${this.deliveryDetails['dlv-name'].trim()}
-`;
-    dlvText += `Mobile: ${this.deliveryDetails['dlv-phone'].trim()}
+      dlvText += `*GIFT SENT BY (SENDER):*\n`;
+      dlvText += `• Sender Name: ${(this.deliveryDetails['gift-sender-name'] || '').trim()}\n`;
+      dlvText += `• Sender Mobile: ${(this.deliveryDetails['gift-sender-phone'] || '').trim()}\n`;
 
-`;
-    dlvText += `Address:
-${this.deliveryDetails['dlv-address'].trim()}
-`;
-    dlvText += `${this.deliveryDetails['dlv-area'].trim()}
-`;
-    dlvText += `${this.deliveryDetails['dlv-city'].trim()}, ${this.deliveryDetails['dlv-state'].trim()} - ${this.deliveryDetails['dlv-pin'].trim()}
-`;
-    
-    if (this.deliveryDetails['dlv-landmark'] && this.deliveryDetails['dlv-landmark'].trim()) {
-      dlvText += `
-Landmark: ${this.deliveryDetails['dlv-landmark'].trim()}
-`;
-    }
-    
-    if (this.deliveryDetails['dlv-instructions'] && this.deliveryDetails['dlv-instructions'].trim()) {
-      dlvText += `Delivery Instructions: ${this.deliveryDetails['dlv-instructions'].trim()}
-`;
+      const giftMsg = (this.deliveryDetails['gift-message'] || '').trim();
+      if (giftMsg) {
+        dlvText += `• Card Greeting Note: "${giftMsg}"\n`;
+      }
+    } else {
+      dlvText += `*DELIVERY DETAILS:*\n\n`;
+      dlvText += `• Name: ${(this.deliveryDetails['dlv-name'] || '').trim()}\n`;
+      dlvText += `• Mobile: ${(this.deliveryDetails['dlv-phone'] || '').trim()}\n\n`;
+      dlvText += `• Address: ${(this.deliveryDetails['dlv-address'] || '').trim()}, ${(this.deliveryDetails['dlv-area'] || '').trim()}\n`;
+      dlvText += `• City & PIN: ${(this.deliveryDetails['dlv-city'] || '').trim()}, ${(this.deliveryDetails['dlv-state'] || '').trim()} - ${(this.deliveryDetails['dlv-pin'] || '').trim()}\n`;
+      
+      if (this.deliveryDetails['dlv-landmark'] && this.deliveryDetails['dlv-landmark'].trim()) {
+        dlvText += `• Landmark: ${this.deliveryDetails['dlv-landmark'].trim()}\n`;
+      }
+      if (this.deliveryDetails['dlv-instructions'] && this.deliveryDetails['dlv-instructions'].trim()) {
+        dlvText += `• Delivery Instructions: ${this.deliveryDetails['dlv-instructions'].trim()}\n`;
+      }
     }
 
     const message = `Hello Nut Delicacy,
@@ -2113,9 +2237,18 @@ function renderCatalogGrid(category = "all") {
   const container = document.getElementById("products-grid-container");
   if (!container) return;
 
-  const filtered = category === "all"
-    ? PRODUCTS
-    : PRODUCTS.filter(p => p.category === category);
+  let filtered = [];
+  if (category === "all") {
+    filtered = PRODUCTS;
+  } else if (category === "under999") {
+    filtered = PRODUCTS.filter(p => p.sizes[0].price < 1000);
+  } else if (category === "1000to1999") {
+    filtered = PRODUCTS.filter(p => p.sizes[0].price >= 1000 && p.sizes[0].price < 2000);
+  } else if (category === "2000plus") {
+    filtered = PRODUCTS.filter(p => p.sizes[0].price >= 2000);
+  } else {
+    filtered = PRODUCTS.filter(p => p.category === category);
+  }
 
   const sorted = [...filtered].sort((a, b) => {
     const getAvailabilityTier = (p) => {
@@ -2235,91 +2368,52 @@ function sendConciergeInquiry(type) {
 }
 
 // ==========================================
-// 9. MILAD UN NABI 10% CELEBRATION CONTROLLER (GOLDEN CONFETTI & FIREWORKS)
+// 9. FESTIVE CELEBRATION (NAVRATRI & DIWALI POPUP)
 // ==========================================
-const MiladCelebration = {
-  canvas: null,
-  ctx: null,
-  particles: [],
-  animId: null,
-  isActive: false,
-  startTime: 0,
-  duration: 3500, // 3.5s duration
+const FestiveCelebration = {
   hasTriggeredOnHomeClimax: false,
-
-  init() {
-    // Inject celebration banner triggers if present
-    const bannerBtn = document.getElementById("launch-claim-btn");
-    if (bannerBtn) {
-      bannerBtn.addEventListener("click", () => this.launchCelebration());
-    }
-  },
+  isActive: false,
 
   injectModalHtml() {
-    if (document.getElementById("milad-celebration-wrap")) return;
+    if (document.getElementById("festive-celebration-wrap")) return;
     const wrap = document.createElement("div");
-    wrap.id = "milad-celebration-wrap";
+    wrap.id = "festive-celebration-wrap";
     wrap.innerHTML = `
-      <canvas id="celebration-canvas" class="celebration-canvas"></canvas>
-      <div class="milad-modal-backdrop" id="milad-modal-backdrop" onclick="if(event.target===this) MiladCelebration.closeModal()">
-        <div class="milad-modal-card" onclick="event.stopPropagation()">
-          <button type="button" class="milad-modal-close" onclick="MiladCelebration.closeModal()" aria-label="Close celebration modal">✕</button>
+      <div class="festive-modal-backdrop" id="festive-modal-backdrop" onclick="if(event.target===this) FestiveCelebration.closeModal()">
+        <div class="festive-modal-card" onclick="event.stopPropagation()">
+          <button type="button" class="festive-modal-close" onclick="FestiveCelebration.closeModal()" aria-label="Close celebration modal">✕</button>
           
-          <!-- Celebratory Festive Header -->
-          <div class="milad-festive-header">
-            <div class="milad-badge-shine">
-              <span class="milad-sparkle-icon">✨</span>
-              <span>Festive Celebration</span>
-              <span class="milad-sparkle-icon">✨</span>
+          <div class="festive-header">
+            <div class="festive-badge-shine">
+              <span class="festive-sparkle-icon">✨</span>
+              <span>Coming Soon</span>
+              <span class="festive-sparkle-icon">✨</span>
             </div>
 
-            <h2 class="milad-title">
-              Milad Mubarak <span class="milad-mubarak-text">Offer</span>
+            <h2 class="festive-title">
+              Navratri & Diwali <span class="festive-highlight-text">Collections</span>
             </h2>
-
-            <div class="milad-ornament-divider">
+            
+            <div class="festive-ornament-divider">
               <span class="ornament-line"></span>
-              <span class="ornament-symbol">✦ ☪ ✦</span>
+              <span class="ornament-symbol">✦ 🪔 ✦</span>
               <span class="ornament-line"></span>
             </div>
           </div>
 
-          <!-- Festive 7-Jar Hero Showcase Banner -->
-          <div class="milad-banner-frame">
-            <img src="hero banner image.webp" alt="Njoy by Nut Delicacy Festive Collection" class="milad-banner-img" onerror="this.src='product-preview.webp'">
-            <div class="milad-banner-badge">100% Single-Origin Stone-Ground • All 32 Artisanal Offerings</div>
+          <div class="festive-banner-frame">
+            <img src="hero banner image.webp" alt="Njoy by Nut Delicacy Festive Collection" class="festive-banner-img" onerror="this.src='product-preview.webp'">
+            <div class="festive-banner-badge">Upcoming Exclusive Hampers</div>
           </div>
 
-          <p class="milad-desc">
-            To commemorate this blessed occasion, indulge in the pure, unadulterated luxury of traditional stone-ground nut butters with an exclusive <strong class="milad-highlight">10% discount</strong> across our entire artisanal collection.
+          <p class="festive-desc">
+            Get ready for our limited-edition Navratri and Diwali festive hampers. Experience the joy of pure, stone-ground luxury nut butters crafted specially for the season.
           </p>
 
-          <!-- Luxury Golden Coupon Ticket Box -->
-          <div class="milad-code-box">
-            <div class="code-box-header">
-              <span class="code-label">YOUR EXCLUSIVE COUPON CODE</span>
-              <span class="code-status-pill">Tap to Apply</span>
-            </div>
-            <div class="code-display" onclick="Cart.applyPromo('MILAD10'); MiladCelebration.showCopyFeedback();" title="Click to copy & auto-apply coupon code">
-              <div class="code-value-wrap">
-                <svg class="code-copy-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                <code id="milad-code-text">MILAD10</code>
-              </div>
-              <span class="code-tag">10% OFF</span>
-            </div>
-            <span class="code-hint" id="milad-code-feedback">Click code to apply automatically • Valid across all 32 reserve jars & combo boxes</span>
-          </div>
-
-          <!-- Luxury Responsive Action Buttons -->
-          <div class="milad-actions">
-            <button type="button" class="btn-milad-apply" onclick="MiladCelebration.applyPromoAndShop()">
-              <span>Apply Code & Explore Collection</span>
-              <span class="btn-arrow">→</span>
+          <div class="festive-actions">
+            <button type="button" class="btn-festive-apply" onclick="FestiveCelebration.closeModal()">
+              <span>Stay Tuned</span>
             </button>
-            <a href="https://wa.me/919512512151?text=Hello%20Nut%20Delicacy%2C%20I%20would%20like%20to%20claim%20my%2010%25%20Milad%20Mubarak%20offer%20(Code%3A%20MILAD10)." target="_blank" rel="noopener noreferrer" class="btn-milad-wa" title="Direct Concierge Claim on WhatsApp">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
-              <span>Claim Offer on WhatsApp</span>
-            </a>
           </div>
         </div>
       </div>
@@ -2327,197 +2421,31 @@ const MiladCelebration = {
     document.body.appendChild(wrap);
   },
 
-  showCopyFeedback() {
-    const feedback = document.getElementById("milad-code-feedback");
-    if (feedback) {
-      feedback.innerHTML = `<strong style="color: #2e6930; font-size:12px; display:inline-block; animation: pulse 0.3s ease;">✓ Code MILAD10 Copied & Applied (10% OFF at Checkout)!</strong>`;
-    }
-  },
-
   launchCelebration() {
     this.injectModalHtml();
-    const backdrop = document.getElementById("milad-modal-backdrop");
+    const backdrop = document.getElementById("festive-modal-backdrop");
     if (backdrop) {
       backdrop.style.display = "flex";
+      // trigger reflow
+      void backdrop.offsetWidth;
       backdrop.classList.add("active");
     }
-    this.startParticles();
+    this.isActive = true;
   },
 
   closeModal() {
-    const backdrop = document.getElementById("milad-modal-backdrop");
+    const backdrop = document.getElementById("festive-modal-backdrop");
     if (backdrop) {
       backdrop.classList.remove("active");
-      backdrop.style.display = "none";
+      setTimeout(() => {
+        backdrop.style.display = "none";
+      }, 400); // Wait for transition
     }
-    sessionStorage.setItem("milad_modal_dismissed", "true");
-  },
-
-  applyPromoAndShop() {
-    Cart.applyPromo("MILAD10");
-    this.closeModal();
-    if (!window.location.pathname.includes("products.html")) {
-      window.location.href = "products.html";
-    }
-  },
-
-  startParticles() {
-    this.canvas = document.getElementById("celebration-canvas");
-    if (!this.canvas) return;
-    this.ctx = this.canvas.getContext("2d");
-    this.resizeCanvas();
-    window.addEventListener("resize", () => this.resizeCanvas());
-
-    this.particles = [];
-    this.startTime = performance.now();
-    this.isActive = true;
-    
-    this.spawnBursts();
-    this.animate(performance.now());
-  },
-
-  resizeCanvas() {
-    if (!this.canvas) return;
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
-  },
-
-  spawnBursts() {
-    if (!this.isActive) return;
-    const now = performance.now();
-    if (now - this.startTime >= this.duration) {
-      this.isActive = false;
-      return;
-    }
-
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-
-    // 1. ELEGANT GOLDEN SHINY CONFETTI
-    const goldColors = [
-      { base: "#ffd700", highlight: "#fffde7" },
-      { base: "#e5c158", highlight: "#fff8e1" },
-      { base: "#d4af37", highlight: "#fffdf0" }
-    ];
-
-    for (let i = 0; i < 4; i++) {
-      const col = goldColors[Math.floor(Math.random() * goldColors.length)];
-      this.particles.push({
-        x: Math.random() * w, y: -10,
-        vx: (Math.random() - 0.5) * 1.5, vy: 1.5 + Math.random() * 1.5,
-        w: 6 + Math.random() * 4, h: 10 + Math.random() * 6,
-        color: col.base, highlight: col.highlight,
-        tilt: Math.random() * 10, tiltSpeed: 0.05,
-        wobble: Math.random() * Math.PI * 2, wobbleSpeed: 0.05,
-        gravity: 0.04, drag: 0.99, alpha: 1, fade: 0.008, isRibbon: true
-      });
-    }
-
-    // 2. MAJESTIC CRACKERS / FIREWORKS POPPING TILL THE TOP OF THE PAGE (Shiny Golden, Red, and Green)
-    if (Math.random() < 0.60) {
-      const burstX = w * (0.15 + Math.random() * 0.70);
-      const burstY = h * (0.05 + Math.random() * 0.40); // Reach till top of page
-      
-      const themeColors = [
-        { main: "#ffd700", glow: "#fff176", sparkle: "#ffffff" }, // Shiny Gold
-        { main: "#ff1744", glow: "#ff8a80", sparkle: "#ffffff" }, // Shiny Festive Red
-        { main: "#00e676", glow: "#b9f6ca", sparkle: "#ffffff" }, // Shiny Emerald Green
-        { main: "#ffab00", glow: "#ffe57f", sparkle: "#ffffff" }  // Amber Gold
-      ];
-      
-      const selectedTheme = themeColors[Math.floor(Math.random() * themeColors.length)];
-      const sparkCount = 20;
-
-      for (let s = 0; s < sparkCount; s++) {
-        const angle = (Math.PI * 2 * s) / sparkCount + (Math.random() * 0.3);
-        const speed = 2.0 + Math.random() * 3.5;
-        this.particles.push({
-          x: burstX,
-          y: burstY,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          size: 2.2 + Math.random() * 2.2,
-          color: selectedTheme.main,
-          glow: selectedTheme.glow,
-          sparkle: selectedTheme.sparkle,
-          gravity: 0.04,
-          drag: 0.97,
-          alpha: 1,
-          fade: 0.016 + Math.random() * 0.008, // Quick, crisp fadeout
-          isSpark: true
-        });
-      }
-    }
-
-    if (this.isActive) {
-      setTimeout(() => this.spawnBursts(), 250);
-    }
-  },
-
-  animate(now) {
-    if (!this.ctx || !this.canvas) return;
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    for (let i = this.particles.length - 1; i >= 0; i--) {
-      const p = this.particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vy += p.gravity;
-      p.vx *= p.drag;
-      p.vy *= p.drag;
-      p.alpha -= p.fade;
-
-      if (p.alpha <= 0 || p.y > this.canvas.height + 40) {
-        this.particles.splice(i, 1);
-        continue;
-      }
-
-      this.ctx.save();
-      this.ctx.globalAlpha = Math.max(0, p.alpha);
-
-      if (p.isRibbon) {
-        p.tilt += p.tiltSpeed;
-        p.wobble += p.wobbleSpeed;
-        p.x += Math.sin(p.wobble) * 0.6;
-
-        this.ctx.translate(p.x, p.y);
-        const currentWidth = p.w * Math.cos(p.tilt);
-        
-        // Shiny specular metallic ribbon gradient
-        const grad = this.ctx.createLinearGradient(-currentWidth / 2, 0, currentWidth / 2, 0);
-        grad.addColorStop(0, p.color);
-        grad.addColorStop(0.5, p.highlight || "#ffffff");
-        grad.addColorStop(1, p.color);
-
-        this.ctx.fillStyle = grad;
-        this.ctx.shadowColor = "#ffd700";
-        this.ctx.shadowBlur = 4;
-        this.ctx.fillRect(-currentWidth / 2, -p.h / 2, currentWidth, p.h);
-      } else if (p.isSpark) {
-        this.ctx.fillStyle = p.color;
-        this.ctx.shadowColor = p.glow || p.color;
-        this.ctx.shadowBlur = 10;
-        this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        this.ctx.fill();
-
-        // Extra sparkling core
-        this.ctx.fillStyle = p.sparkle || "#ffffff";
-        this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, Math.max(1, p.size * 0.45), 0, Math.PI * 2);
-        this.ctx.fill();
-      }
-      this.ctx.restore();
-    }
-
-    if (this.isActive || this.particles.length > 0) {
-      this.animId = requestAnimationFrame((t) => this.animate(t));
-    } else {
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      cancelAnimationFrame(this.animId);
-    }
+    this.isActive = false;
+    sessionStorage.setItem("festive_modal_dismissed", "true");
   }
 };
+
 
 // Keyboard navigation for modals, lightboxes & image slider
 window.addEventListener("keydown", (e) => {
@@ -2527,7 +2455,9 @@ window.addEventListener("keydown", (e) => {
       closeImageZoom();
       return;
     }
-    MiladCelebration.closeModal();
+    if (typeof FestiveCelebration !== "undefined" && FestiveCelebration.isActive) {
+      FestiveCelebration.closeModal();
+    }
     closeProductModal();
     Cart.closeDrawer();
   } else if (e.key === "ArrowRight") {
@@ -2565,19 +2495,78 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCatalogGrid("all");
   initCategoryFromUrl();
   syncModalFromHash();
-  MiladCelebration.init();
+
 });
 
-// Popstate handler for Zoom / Milad modals
+// Popstate handler for Zoom
 window.addEventListener("popstate", () => {
   const zoom = document.getElementById("image-zoom-lightbox");
   if (zoom && zoom.classList.contains("active")) {
     closeImageZoom();
     return;
   }
-  if (typeof MiladCelebration !== "undefined" && MiladCelebration.isActive) {
-    MiladCelebration.closeModal();
+  if (typeof FestiveCelebration !== "undefined" && FestiveCelebration.isActive) {
+    FestiveCelebration.closeModal();
     return;
   }
 });
 
+
+
+// ==========================================
+// 3. MORE MENU DRAWER & GLOBAL CONTROLLER
+// ==========================================
+function openMoreMenu() {
+  const overlay = document.getElementById("more-menu-overlay");
+  const sheet = document.getElementById("more-menu-sheet");
+  if (overlay) {
+    overlay.style.display = "block";
+    setTimeout(() => overlay.classList.add("active"), 10);
+  }
+  if (sheet) {
+    sheet.style.display = "block";
+    sheet.style.visibility = "visible";
+    setTimeout(() => sheet.classList.add("active"), 10);
+  }
+  if (typeof Cart !== "undefined" && Cart.updateBadges) {
+    Cart.updateBadges();
+  }
+}
+
+function closeMoreMenu() {
+  const overlay = document.getElementById("more-menu-overlay");
+  const sheet = document.getElementById("more-menu-sheet");
+  if (sheet) {
+    sheet.classList.remove("active");
+    setTimeout(() => {
+      sheet.style.display = "none";
+      sheet.style.visibility = "hidden";
+    }, 380);
+  }
+  if (overlay) {
+    overlay.classList.remove("active");
+    setTimeout(() => { overlay.style.display = "none"; }, 300);
+  }
+}
+
+function toggleMoreMenu() {
+  const sheet = document.getElementById("more-menu-sheet");
+  if (sheet && sheet.classList.contains("active")) {
+    closeMoreMenu();
+  } else {
+    openMoreMenu();
+  }
+}
+
+function toggleNavDropdown(e) {
+  if (e) e.stopPropagation();
+  const wrap = document.querySelector(".nav-dropdown-wrap");
+  if (wrap) wrap.classList.toggle("open");
+}
+
+document.addEventListener("click", function(e) {
+  const wrap = document.querySelector(".nav-dropdown-wrap");
+  if (wrap && !wrap.contains(e.target)) {
+    wrap.classList.remove("open");
+  }
+});

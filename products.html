@@ -6,7 +6,7 @@
   
   <!-- Primary SEO Meta Tags -->
   <title>Artisanal Nut Butters & Spreads | The Complete Collection | Nut Delicacy</title>
-  <meta name="description" content="Explore Nut Delicacy's complete collection of 19 stone-ground organic nut & seed butters. Single-origin Saffron Almond Pista, Pistachio, Hazelnut Chocolate, Pecan, Walnut, and Cashew butters in 180g, 250g, 5kg bulk & 10kg commercial packs. Milad un Nabi 10% Launch Offer.">
+  <meta name="description" content="Explore Nut Delicacy's complete collection of 19 stone-ground organic nut & seed butters. Single-origin Saffron Almond Pista, Pistachio, Hazelnut Chocolate, Pecan, Walnut, and Cashew butters in 180g, 250g, 5kg bulk & 10kg commercial packs.">
   <meta name="keywords" content="buy organic nut butter India, stone ground almond butter, luxury pistachio butter India, almond pista saffron butter, pure hazelnut chocolate spread, zero palm oil peanut butter, Surat handcrafted nut delicacy, bulk nut butter 5kg 10kg India">
   <link rel="canonical" href="https://nutdelicacy.in/products.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nutdelicacy.in/products.html">
   <meta property="og:title" content="The Collection | Artisanal Stone-Ground Nut Butters | Nut Delicacy">
-  <meta property="og:description" content="100% Pure single-origin nuts, stone-ground below 28°C. Discover 19 handcrafted varieties in 180g, 250g, 5kg and 10kg wholesale. 10% Milad Mubarak Offer with code MILAD10.">
+  <meta property="og:description" content="100% Pure single-origin nuts, stone-ground below 28°C. Discover 19 handcrafted varieties in 180g, 250g, 5kg and 10kg wholesale.">
   <meta property="og:image" content="https://nutdelicacy.in/product-preview.webp">
 
   <!-- Twitter -->
@@ -416,14 +416,114 @@
         </div>
       </a>
 
-      <nav class="main-nav">
-        <a href="index.html">The Experience</a>
+            <nav class="main-nav">
+        <a href="index.html" >The Experience</a>
+        <a href="festive-gifting.html" class="nav-festive-badge">Festive Gifts <span class="nav-hot-pill">2026</span></a>
+        <a href="build-your-gift.html" >Build Your Gift</a>
+        <a href="corporate-gifting.html" >Corporate Gifting</a>
         <a href="products.html" class="active">The Collection</a>
-        <a href="blog.html">Blog</a>
-        <a href="index.html#story">Our Manifesto</a>
-        <a href="index.html#values">The Ritual</a>
-        <a href="contact.html">Contact</a>
+        <div class="nav-dropdown-wrap">
+          <button class="nav-dropdown-btn" onclick="toggleNavDropdown(event)">More ▾</button>
+          <div class="nav-dropdown-menu">
+            <div class="nav-dropdown-menu-inner">
+              <a href="blog.html">The Journal</a>
+              <a href="index.html#story">Our Manifesto</a>
+              <a href="contact.html">Contact Us</a>
+            </div>
+          </div>
+        </div>
       </nav>
+
+  <!-- More Menu Bottom Sheet -->
+  <div class="more-menu-overlay" id="more-menu-overlay" onclick="closeMoreMenu()"></div>
+  <div class="more-menu-sheet" id="more-menu-sheet">
+    <div class="more-menu-drag-handle"></div>
+    <div class="more-menu-header">
+      <div>
+        <span class="more-menu-eyebrow">Explore NJOY</span>
+        <h3>All Destinations</h3>
+      </div>
+      <button class="more-menu-close" onclick="closeMoreMenu()" aria-label="Close menu">✕</button>
+    </div>
+    <div class="more-menu-grid">
+      <a href="products.html" class="more-menu-card">
+        <div class="more-card-icon">🍯</div>
+        <div class="more-card-info">
+          <strong>The Collection</strong>
+          <span>All 32 stone-ground nut butters</span>
+        </div>
+        <span class="more-card-arrow">→</span>
+      </a>
+      <button type="button" class="more-menu-card" onclick="closeMoreMenu(); Cart.openDrawer();">
+        <div class="more-card-icon">👜</div>
+        <div class="more-card-info">
+          <strong>Tasting Bag (Cart)</strong>
+          <span>View your selected items</span>
+        </div>
+        <span class="more-badge-val" id="more-cart-badge" style="display:none;">0</span>
+      </button>
+      <a href="festive-gifting.html" class="more-menu-card">
+        <div class="more-card-icon">🪔</div>
+        <div class="more-card-info">
+          <strong>Festive Gifts 2026</strong>
+          <span>Navratri & Diwali gift collections</span>
+        </div>
+        <span class="more-card-arrow">→</span>
+      </a>
+      <a href="corporate-gifting.html" class="more-menu-card">
+        <div class="more-card-icon">🏢</div>
+        <div class="more-card-info">
+          <strong>Corporate Gifting</strong>
+          <span>Bespoke bulk hampers & client gifts</span>
+        </div>
+        <span class="more-card-arrow">→</span>
+      </a>
+      <a href="build-your-gift.html" class="more-menu-card">
+        <div class="more-card-icon">🎁</div>
+        <div class="more-card-info">
+          <strong>Build Your Own Box</strong>
+          <span>Handpick 2, 3 or 4 custom flavors</span>
+        </div>
+        <span class="more-card-arrow">→</span>
+      </a>
+      <a href="blog.html" class="more-menu-card">
+        <div class="more-card-icon">📖</div>
+        <div class="more-card-info">
+          <strong>The Journal</strong>
+          <span>Nutritional wisdom & stone-ground craft</span>
+        </div>
+        <span class="more-card-arrow">→</span>
+      </a>
+      <a href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer" class="more-menu-card more-card-whatsapp">
+        <div class="more-card-icon" style="background:#eaf8ef; color:#0f703c;">💬</div>
+        <div class="more-card-info">
+          <strong>WhatsApp Concierge</strong>
+          <span>Instant help & bespoke gifting quotes</span>
+        </div>
+        <span class="more-card-arrow" style="color:#0f703c;">↗</span>
+      </a>
+      <a href="index.html#experience" class="more-menu-card">
+        <div class="more-card-icon">✨</div>
+        <div class="more-card-info">
+          <strong>The Unboxing Ritual</strong>
+          <span>3D interactive jar exploration</span>
+        </div>
+        <span class="more-card-arrow">→</span>
+      </a>
+      <a href="contact.html" class="more-menu-card">
+        <div class="more-card-icon">📍</div>
+        <div class="more-card-info">
+          <strong>Contact & Studio</strong>
+          <span>Surat, Gujarat • Gifting Concierge</span>
+        </div>
+        <span class="more-card-arrow">→</span>
+      </a>
+    </div>
+    <div class="more-menu-footer">
+      <p>Single-Origin • Stone-Ground Below 28°C • Zero Palm Oil</p>
+    </div>
+  </div>
+
 
       <div class="header-actions">
         <a href="https://www.instagram.com/nut_delicacy/" target="_blank" rel="noopener noreferrer" class="social-nav-link" title="Follow us on Instagram" aria-label="Instagram">
@@ -455,20 +555,7 @@
         <p>100% Whole organic nuts and seeds, stone-ground slowly below 28°C. Discover all 20 handcrafted single-origin varieties and 12 exclusive curated combo boxes available in 180g standard jars and custom bulk wholesale packaging.</p>
       </div>
 
-      <!-- Milad un Nabi Launch Offer Banner -->
-      <div class="launch-offer-bar" onclick="MiladCelebration.launchCelebration()" title="Click to view Milad Celebration 10% Offer & Fireworks">
-        <div class="launch-offer-text">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#ffd700; box-shadow:0 0 8px #ffd700;"></span>
-            <strong>Milad Mubarak Celebration</strong>
-            <span style="opacity:0.85; margin-left:4px;">— Exclusive 10% Off with Code <b>MILAD10</b></span>
-          </div>
-        </div>
-        <button class="launch-offer-cta" type="button" onclick="event.stopPropagation(); MiladCelebration.launchCelebration();" aria-label="Claim Milad Celebration 10% Offer">
-          <span>Claim 10% Offer</span>
-          <span>✨</span>
-        </button>
-      </div>
+
     </section>
 
     <!-- Filter & Categories -->
@@ -484,7 +571,7 @@
       <div class="diet-pills-row">
         <span class="diet-pill">100% Organic</span>
         <span class="diet-pill">No Palm Oil</span>
-        <span class="diet-pill">Zero Added Sugar</span>
+
         <span class="diet-pill">Cold Stone-Milled</span>
         <span class="diet-pill">180g & Bulk Order</span>
         <span class="diet-pill">100% Vegan</span>
@@ -528,10 +615,7 @@
           <h3>How does bulk ordering work?</h3>
           <p>You can select Bulk Order on any product. Click 'Request Bulk Quote on WhatsApp' and our concierge team (+91 95125 12151) will immediately share customized wholesale pricing and logistics timelines based on your order quantity.</p>
         </div>
-        <div class="catalog-faq-card">
-          <h3>How do I redeem the 10% Milad un Nabi discount?</h3>
-          <p>Simply click 'Apply MILAD10' in your Tasting Bag or type promo code <strong>MILAD10</strong> in the promo box. 10% will be automatically deducted from your order subtotal before sending your quote on WhatsApp.</p>
-        </div>
+
         <div class="catalog-faq-card">
           <h3>What is the shelf life and storage recommendation?</h3>
           <p>Our stone-ground nut butters stay fresh for 6 months at cool room temperature. For a firmer, thicker texture, you may refrigerate your jar after giving it an initial stir.</p>
@@ -651,30 +735,28 @@
   </div>
 
   <!-- Mobile Bottom Navigation Bar -->
+    <!-- Mobile Bottom Navigation Bar -->
   <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
-    <a href="index.html" class="mobile-nav-item" id="mob-nav-home">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    <a href="index.html" class="mobile-nav-item " id="mob-nav-home">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
       <span>Home</span>
     </a>
-    <a href="products.html" class="mobile-nav-item active" id="mob-nav-shop">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-      <span>Collection</span>
+    <a href="festive-gifting.html" class="mobile-nav-item festive-item " id="mob-nav-festive">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+      <span>Festive</span>
     </a>
-    <button type="button" class="mobile-nav-item" onclick="Cart.openDrawer()" id="mob-nav-cart" aria-label="Open Shopping Bag">
-      <div class="mob-icon-wrap">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-        <span class="cart-badge-count mob-badge" style="display:none;">0</span>
-      </div>
-      <span>Tasting Bag</span>
+    <a href="build-your-gift.html" class="mobile-nav-item " id="mob-nav-build">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+      <span>Build Gift</span>
+    </a>
+    <a href="corporate-gifting.html" class="mobile-nav-item " id="mob-nav-corp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+      <span>Corporate</span>
+    </a>
+    <button type="button" class="mobile-nav-item" onclick="toggleMoreMenu()" id="mob-nav-more" aria-label="Open More Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+      <span>More</span>
     </button>
-    <a href="blog.html" class="mobile-nav-item" id="mob-nav-blog">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-      <span>Journal</span>
-    </a>
-    <a href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer" class="mobile-nav-item mob-whatsapp" id="mob-nav-whatsapp">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
-      <span>WhatsApp</span>
-    </a>
   </nav>
 
   <!-- Master Products JS -->
