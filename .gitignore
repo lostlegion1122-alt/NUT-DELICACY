@@ -8,3 +8,8 @@ node_modules/
 *.log
 scratch/
 .system_generated/
+
+# Local QA and source artwork
+output/
+.playwright-cli/
+assets/diwali/*.png

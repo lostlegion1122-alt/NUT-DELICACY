@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <title>Health Benefits of Pure Stone-Ground Almond Butter | Nut Delicacy</title>
   <meta name="description" content="Discover the extraordinary health benefits of 100% pure stone-ground almond butter made with Californian & Mamra almonds. High Vitamin E, magnesium, zero added sugar.">
   <meta name="keywords" content="benefits of almond butter, pure almond butter India, stone ground almond butter, Mamra almond butter, organic almond butter zero sugar, buy almond butter online India">
-  <link rel="canonical" href="https://nutdelicacy.in/blog/benefits-of-organic-almond-butter.html">
+  <link rel="canonical" href="https://nutdelicacy.in/blog/benefits-of-organic-almond-butter">
   <meta name="robots" content="index, follow, max-image-preview:large">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://nutdelicacy.in/blog/benefits-of-organic-almond-butter.html">
+  <meta property="og:url" content="https://nutdelicacy.in/blog/benefits-of-organic-almond-butter">
   <meta property="og:title" content="The Connoisseur's Guide to Pure Almond Butter & Mamra Almonds">
   <meta property="og:description" content="Why slow stone-ground roasted almond butter is the ultimate daily superfood for heart health, skin glow, and sustained energy.">
   <meta property="og:image" content="https://nutdelicacy.in/almond-butter.webp">
@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared.css?v=4.0">
+  <link rel="stylesheet" href="../shared.css?v=5">
 
   <script type="application/ld+json">
   {
@@ -28,7 +28,7 @@
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://nutdelicacy.in/blog/benefits-of-organic-almond-butter.html#article",
+        "@id": "https://nutdelicacy.in/blog/benefits-of-organic-almond-butter#article",
         "headline": "The Connoisseur's Guide to Pure Almond Butter & Mamra Almonds",
         "description": "Comprehensive nutritional breakdown of stone-ground almond butter, its high Vitamin E profile, and how to select authentic 1-ingredient almond butter in India.",
         "image": "https://nutdelicacy.in/almond-butter.webp",
@@ -42,7 +42,7 @@
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nutdelicacy.in/" },
           { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://nutdelicacy.in/blog.html" },
-          { "@type": "ListItem", "position": 3, "name": "Benefits of Almond Butter", "item": "https://nutdelicacy.in/blog/benefits-of-organic-almond-butter.html" }
+          { "@type": "ListItem", "position": 3, "name": "Benefits of Almond Butter", "item": "https://nutdelicacy.in/blog/benefits-of-organic-almond-butter" }
         ]
       }
     ]
@@ -75,18 +75,24 @@
         <div class="brand-mark"><img src="../brand-logo.webp" alt="Njoy Monogram"></div>
         <div class="brand-text"><strong>Njoy</strong><span>by Nut Delicacy</span></div>
       </a>
-      <nav class="main-nav">
-        <a href="../index.html">The Experience</a>
-        <a href="../products.html">The Collection</a>
-        <a href="../blog.html" class="active">Blog</a>
-        <a href="../index.html#story">Our Manifesto</a>
-      </nav>
+      <nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../products.html">The Collection</a><a href="../festive-gifting.html">Festive Gifts</a><a href="../build-your-gift.html">Build Your Gift</a><a href="../corporate-gifting.html">Corporate Gifting</a><button type="button" class="nav-dropdown-btn" onclick="toggleMoreMenu()" aria-controls="more-menu-sheet" aria-expanded="false">More <span aria-hidden="true">⌄</span></button></nav>
       <div class="header-actions">
         <button class="cart-toggle-btn" onclick="Cart.openDrawer()"><span>Cart</span><span class="cart-badge-count" style="display:none;">0</span></button>
         <a href="https://wa.me/919512512151" target="_blank" class="header-whatsapp-cta">WhatsApp</a>
       </div>
     </div>
   </header>
+<div class="more-menu-overlay" id="more-menu-overlay" onclick="closeMoreMenu()" hidden></div>
+  <aside class="more-menu-sheet" id="more-menu-sheet" role="dialog" aria-modal="true" aria-labelledby="more-menu-title" hidden tabindex="-1">
+    <div class="more-menu-header"><div><span class="more-menu-eyebrow">NJOY by Nut Delicacy</span><h3 id="more-menu-title">More from Njoy</h3></div><button type="button" class="more-menu-close" onclick="closeMoreMenu()" aria-label="Close menu">×</button></div>
+    <nav class="more-links" aria-label="Additional pages">
+      <a href="../blog.html"><span>The Journal<small>Stories, ingredients &amp; inspiration</small></span><span aria-hidden="true">↗</span></a>
+      <a href="../index.html#story"><span>Our Story<small>The care behind every jar</small></span><span aria-hidden="true">↗</span></a>
+      <a href="../contact.html"><span>Contact Us<small>Visit, call or send an inquiry</small></span><span aria-hidden="true">↗</span></a>
+    </nav>
+    <a class="more-contact" href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
+    <p class="more-location">Handcrafted in Surat, Gujarat</p>
+  </aside>
 
   <main class="article-wrap">
     <nav class="breadcrumbs">
@@ -94,7 +100,7 @@
     </nav>
     <div style="display:inline-block; padding:4px 12px; border-radius:999px; background:rgba(63,75,35,0.1); color:var(--olive-dark); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:14px;">Artisanal Wellness</div>
     <h1 class="article-title">The Connoisseur's Guide to Pure Almond Butter & Mamra Almonds</h1>
-    
+
     <div style="font-size:13px; color:var(--brown-muted); padding-bottom:20px; border-bottom:1px solid rgba(62,36,21,0.1); margin-bottom:30px;">
       By <strong>Nut Delicacy Culinary Lab</strong> • August 16, 2026 • 5 min read
     </div>
@@ -132,32 +138,8 @@
     </div>
   </footer>
     <!-- Mobile Bottom Navigation Bar -->
-  <nav class="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
-    <a href="../index.html" class="mobile-nav-item" id="mob-nav-home">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-      <span>Home</span>
-    </a>
-    <a href="../products.html" class="mobile-nav-item" id="mob-nav-shop">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-      <span>Collection</span>
-    </a>
-    <button type="button" class="mobile-nav-item" onclick="Cart.openDrawer()" id="mob-nav-cart" aria-label="Open Shopping Bag">
-      <div class="mob-icon-wrap">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-        <span class="cart-badge-count mob-badge" style="display:none;">0</span>
-      </div>
-      <span>Tasting Bag</span>
-    </button>
-    <a href="../blog.html" class="mobile-nav-item active" id="mob-nav-blog">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-      <span>Journal</span>
-    </a>
-    <a href="https://wa.me/919512512151" target="_blank" rel="noopener noreferrer" class="mobile-nav-item mob-whatsapp" id="mob-nav-whatsapp">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
-      <span>WhatsApp</span>
-    </a>
-  </nav>
-  <script src="../products.js"></script>
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation"><a href="../index.html" class="mobile-nav-item"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></a><a href="../products.html" class="mobile-nav-item"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Collection</span></a><a href="../festive-gifting.html" class="mobile-nav-item"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14h16c-1 5-4 7-8 7s-7-2-8-7Z"/><path d="M12 3c-2 3-3 4-3 6a3 3 0 0 0 6 0c0-2-1-3-3-6Z"/></svg><span>Festive Gifts</span></a><a href="../build-your-gift.html" class="mobile-nav-item"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 13h18M12 8C5 8 4 3 7 3s5 5 5 5Zm0 0s2-5 5-5 2 5-5 5Z"/></svg><span>Build a Gift</span></a><a href="../corporate-gifting.html" class="mobile-nav-item"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12c5 3 13 3 18 0M12 12v4"/></svg><span>Corporate</span></a><button type="button" class="mobile-nav-item" onclick="toggleMoreMenu()" aria-controls="more-menu-sheet" aria-expanded="false"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg><span>More</span></button></nav>
+  <script src="../products.js?v=diwali-review-7"></script>
 <script>setTimeout(function(){var p=document.getElementById('page-preloader');if(p)p.remove();},5000);</script>
 </body>
 </html>

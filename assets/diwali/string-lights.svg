@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" fill="none">
+ <path d="M0 10Q150 88 300 10Q450 88 600 10Q750 88 900 10Q1050 88 1200 10" stroke="#ba9451" stroke-width="1"/>
+ <g fill="#ffd78b" stroke="#d1ac65" stroke-width="1.2">
+ <ellipse id="lamp" cx="75" cy="51" rx="5" ry="9"/><use href="#lamp" x="75" y="7"/><use href="#lamp" x="150"/><use href="#lamp" x="300"/><use href="#lamp" x="375" y="7"/><use href="#lamp" x="450"/><use href="#lamp" x="600"/><use href="#lamp" x="675" y="7"/><use href="#lamp" x="750"/><use href="#lamp" x="900"/><use href="#lamp" x="975" y="7"/><use href="#lamp" x="1050"/>
+ </g>
+</svg>

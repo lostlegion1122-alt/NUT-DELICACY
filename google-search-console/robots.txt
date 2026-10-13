@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /output/
+Disallow: /.git/
+Disallow: /.openai/
+Disallow: /google-search-console/
+
+Sitemap: https://nutdelicacy.in/sitemap.xml

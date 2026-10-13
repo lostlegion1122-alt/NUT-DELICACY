@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none" stroke="#b38b47" stroke-width=".8">
+ <g transform="translate(140 20)"><circle r="62"/><circle r="54" stroke-dasharray="1 5"/><circle r="34"/>
+ <path id="petal" d="M0 0C-20-25-16-42 0-54C16-42 20-25 0 0Z"/>
+ <use href="#petal" transform="rotate(45)"/><use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/><use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/><use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+ <circle r="9"/><circle r="3" fill="#b38b47"/>
+ </g><path d="M14 115v13m-7 8h14c-1 5-3 7-7 7s-6-2-7-7Zm7-7c-4 5-4 7 0 7s4-2 0-7Z"/>
+</svg>

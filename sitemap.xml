@@ -1,125 +1,339 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Homepage -->
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://nutdelicacy.in/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://nutdelicacy.in/blog/almond-butter-vs-peanut-butter-flavour-uses</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://nutdelicacy.in/product-preview.webp</image:loc>
-      <image:title>Njoy by Nut Delicacy Signature Stone Ground Nut Butter</image:title>
+      <image:loc>https://nutdelicacy.in/assets/catalog/almond-butter-800.webp</image:loc>
     </image:image>
   </url>
-
-  <!-- The Collection (Products Page) -->
   <url>
-    <loc>https://nutdelicacy.in/products.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://nutdelicacy.in/blog/benefits-of-organic-almond-butter</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://nutdelicacy.in/zafran-gold-butter.webp</image:loc>
-      <image:title>Zafran Gold Butter Grand Reserve Kashmiri Saffron</image:title>
+      <image:loc>https://nutdelicacy.in/almond-butter.webp</image:loc>
     </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/buy-peanut-butter-india-comparison-checklist</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://nutdelicacy.in/pistachio-butter.webp</image:loc>
-      <image:title>Imperial Pistachio Butter Grand Reserve</image:title>
+      <image:loc>https://nutdelicacy.in/assets/catalog/peanut-butter-800.webp</image:loc>
     </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/chocolate-nut-butter-pairing-dessert-guide</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/hazelnut-chocolate-butter-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/diwali-corporate-gift-hamper-planning-checklist</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/combo-corporate-bulk-set-10-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/healthiest-nut-butter-for-weight-loss</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/pure-almond-butter/front.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/healthy-breakfast-ideas-nut-butter</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://nutdelicacy.in/hazelnut-chocolate.webp</image:loc>
-      <image:title>Hazelnut Chocolate Butter Spread</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nutdelicacy.in/almond-butter.webp</image:loc>
-      <image:title>Stone Ground Mamra Almond Butter</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://nutdelicacy.in/cashew-butter.webp</image:loc>
-      <image:title>Velvet Stone Ground Cashew Butter</image:title>
     </image:image>
   </url>
-
-  <!-- Blog Index -->
   <url>
-    <loc>https://nutdelicacy.in/blog.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nutdelicacy.in/blog/how-to-read-nut-butter-labels</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/pure-peanut-butter/front.webp</image:loc>
+    </image:image>
   </url>
-
-  <!-- Blog Article 1: What Is Pistachio Butter -->
   <url>
-    <loc>https://nutdelicacy.in/blog/what-is-pistachio-butter.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nutdelicacy.in/blog/istifada-ilmiya-1448</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/zafran-gold-butter/front.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/natural-peanut-butter-oil-separation-stirring</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/almond-butter-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/nut-butter-storage-indian-kitchen</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/almond-butter-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/peanut-butter-protein-serving-size-guide</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/peanut-butter-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/peanut-butter-toast-ideas-texture-toppings</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/combo-everyday-duo-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/pistachio-butter-savoury-sauce-dessert-ideas</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/pistachio-butter-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/pistachio-butter-vs-peanut-butter</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://nutdelicacy.in/pistachio-butter.webp</image:loc>
-      <image:title>What Is Pistachio Butter - Nut Delicacy Guide</image:title>
     </image:image>
   </url>
-
-  <!-- Blog Article 2: Pistachio Butter vs Peanut Butter -->
   <url>
-    <loc>https://nutdelicacy.in/blog/pistachio-butter-vs-peanut-butter.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nutdelicacy.in/blog/plain-flavoured-nut-butter-ingredient-preferences</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://nutdelicacy.in/pistachio-butter.webp</image:loc>
-      <image:title>Pistachio Butter vs Peanut Butter Nutritional Comparison</image:title>
+      <image:loc>https://nutdelicacy.in/assets/catalog/combo-pure-nut-flight-800.webp</image:loc>
     </image:image>
   </url>
-
-  <!-- Blog Article 3: What Does Stone-Ground Mean -->
   <url>
-    <loc>https://nutdelicacy.in/blog/what-does-stone-ground-nut-butter-mean.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nutdelicacy.in/blog/reuse-nut-butter-glass-jars-less-waste</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/combo-classic-duo-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/smooth-vs-crunchy-peanut-butter-kitchen-guide</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/peanut-butter-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/blog/what-does-stone-ground-nut-butter-mean</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://nutdelicacy.in/product-preview.webp</image:loc>
-      <image:title>Traditional Granite Stone-Ground Milling Process</image:title>
     </image:image>
   </url>
-
-  <!-- Blog Article 4: Benefits of Pure Almond Butter -->
   <url>
-    <loc>https://nutdelicacy.in/blog/benefits-of-organic-almond-butter.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nutdelicacy.in/blog/what-is-pistachio-butter</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://nutdelicacy.in/almond-butter.webp</image:loc>
-      <image:title>Health Benefits of Pure Stone-Ground Almond Butter</image:title>
+      <image:loc>https://nutdelicacy.in/pistachio-butter.webp</image:loc>
     </image:image>
   </url>
-
-  <!-- Blog Article 5: Why Zero Palm Oil Matters -->
   <url>
-    <loc>https://nutdelicacy.in/blog/why-zero-palm-oil-matters.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nutdelicacy.in/blog/why-zero-palm-oil-matters</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://nutdelicacy.in/peanut-butter.webp</image:loc>
-      <image:title>Why Palm Oil Free Nut Butters Matter for Health</image:title>
     </image:image>
   </url>
-
-  <!-- Blog Article 6: Gourmet Breakfast Ideas with Nut Butter -->
   <url>
-    <loc>https://nutdelicacy.in/blog/healthy-breakfast-ideas-nut-butter.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nutdelicacy.in/blog</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://nutdelicacy.in/hazelnut-chocolate.webp</image:loc>
-      <image:title>Healthy Breakfast and Toast Ideas with Artisanal Nut Butter</image:title>
+      <image:loc>https://nutdelicacy.in/assets/catalog/peanut-butter-800.webp</image:loc>
     </image:image>
   </url>
-
+  <url>
+    <loc>https://nutdelicacy.in/build-your-gift</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/diwali/editorial-banner-1600.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/contact</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/brand-logo.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/corporate-gifting</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/diwali/editorial-banner-1600.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/festive-gifting</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/diwali/editorial-banner-1600.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/diwali/editorial-banner-1600.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/products</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/catalog/peanut-butter-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/almond-butter</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/almond-butter/front.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/almond-chocolate-butter</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/almond-chocolate-butter/front.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/build-your-own-trio</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/trio.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/cashew-butter</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/cashew-butter/front.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/chocolate-lovers-duo</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/choclate.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/classic-duo</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/clasic.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/corporate-bulk-set-10</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/complete.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/diwali-mithai-box</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/assets/diwali/greeting-800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/everyday-duo</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/everyday duo.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/everyday-to-exquisite</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/evryday.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/grand-reserve-trio</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/trio.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/hazelnut-chocolate-butter</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/hazelnut-chocolate-butter/front.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/nutty-trio-starter</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/nutty trio.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/peanut-butter</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/peanut-butter/front.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/peanut-chocolate-butter</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/peanut-chocolate-butter/front.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/pistachio-butter</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/pistachio-butter/front.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/pure-nut-flight</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/pure nut.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/the-complete-collection</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/complete.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/zafran-gold-butter</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/mockups/zafran-gold-butter/front.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nutdelicacy.in/shop/zafran-pista-duo</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://nutdelicacy.in/combo/zafran pista.webp</image:loc>
+    </image:image>
+  </url>
 </urlset>

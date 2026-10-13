@@ -12,21 +12,16 @@ function createSizes(price180, price100 = null) {
     sizes.push({ size: "100 ml", label: "100 ml Standard Jar", price: price100, isBulk: false });
   }
   sizes.push({ size: "180 ml", label: "180 ml Standard Jar", price: price180, isBulk: false });
-  sizes.push({ size: "Bulk Order", label: "Bulk / Wholesale Order", price: null, isBulk: true, bulkLabel: "Price on Request" });
+  sizes.push({ size: "Bulk Order", label: "Bulk / Wholesale Order", price: null, isBulk: true, bulkLabel: "Click to get quote" });
   return sizes;
 }
 
 // Helper to generate packaging tiers for Curated Combos & Sets:
-function createComboSizes(price) {
-  if (price === null || price === undefined || price === "") {
-    return [
-      { size: "Combo Set", label: "Custom Selection", price: null, isBulk: true, bulkLabel: "Price on Request" },
-      { size: "Bulk Order", label: "Corporate / Bulk Gifting", price: null, isBulk: true, bulkLabel: "Price on Request" }
-    ];
-  }
+function createComboSizes(price = null) {
+  const quoted = price === null || price === undefined;
   return [
-    { size: "Combo Set", label: "Curated Combo Box", price: Number(price), isBulk: false },
-    { size: "Bulk Order", label: "Corporate / Bulk Gifting", price: null, isBulk: true, bulkLabel: "Price on Request" }
+    { size: "Combo Set", label: "Curated Gift Set", price: quoted ? null : Number(price), isBulk: quoted, bulkLabel: "Price on request" },
+    { size: "Bulk Order", label: "Corporate / Bulk Gifting", price: null, isBulk: true, bulkLabel: "Price on request" }
   ];
 }
 
@@ -46,10 +41,10 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Grand Reserve • Royal Saffron",
-    subtitle: "Stone-Ground Mamra Almonds & Royal Pistachios Infused with Pure Kashmiri Mongra Saffron.",
-    origin: "Terroir: Pampore Saffron & Kashmir Mamra",
+    subtitle: "Stone-Ground Almonds & Royal Pistachios Infused with Pure Kashmiri Mongra Saffron.",
+    origin: "Terroir: Pampore Saffron & Kashmir Almonds",
     coldMilledTemp: "Milled below 24°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: true,
     images: {
       front: "mockups/zafran-gold-butter/front.webp",
@@ -57,11 +52,11 @@ const PRODUCTS = [
       right: "mockups/zafran-gold-butter/right.webp"
     },
     sizes: createSizes(875, 550),
-    ingredients: "100% Mamra Almonds, Royal Pistachios, Pure Kashmiri Mongra Saffron, Green Cardamom.",
-    description: "Our crowning masterpiece. Hand-harvested Grade-A Kashmiri Mongra Saffron cold stone-milled into a silky blend of Mamra almonds and royal emerald pistachios. Absolutely no added sugars, preservatives, or palm oil.",
+    ingredients: "100% Almonds, Royal Pistachios, Pure Kashmiri Mongra Saffron, Green Cardamom.",
+    description: "Our crowning masterpiece. Hand-harvested Grade-A Kashmiri Mongra Saffron cold stone-milled into a silky blend of almonds and royal emerald pistachios. Absolutely no added sugars, preservatives, or palm oil.",
     nutrition: { calories: "585 kcal", protein: "21.2g", fats: "51.4g", carbs: "17.8g" },
-    tastingNotes: ["Kashmiri Saffron Floral", "Sweet Mamra Almond", "Royal Pistachio Depth", "Velvety Finish"],
-    pills: ["Pure Kashmiri Saffron", "Mamra Almonds", "Cold Stone-Ground", "Zero Palm Oil"]
+    tastingNotes: ["Kashmiri Saffron Floral", "Sweet Almond", "Royal Pistachio Depth", "Velvety Finish"],
+    pills: ["Pure Kashmiri Saffron", "Almonds", "Cold Stone-Ground", "Zero Palm Oil"]
   },
   {
     id: "hazelnut-chocolate-butter",
@@ -72,10 +67,10 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Grand Reserve • 75% Hazelnut Gianduja",
-    subtitle: "75% Slow-Roasted Hazelnuts with Single-Origin Dark Cacao. Zero palm oil, zero shortcuts.",
-    origin: "Terroir: Black Sea Hazelnuts & Kerala Estate Cacao",
+    subtitle: "75% roasted hazelnuts with cocoa.",
+    origin: "Terroir: Hazelnuts & Cocoa",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: true,
     images: {
       front: "mockups/hazelnut-chocolate-butter/front.webp",
@@ -83,11 +78,11 @@ const PRODUCTS = [
       right: "mockups/hazelnut-chocolate-butter/right.webp"
     },
     sizes: createSizes(885, 440),
-    ingredients: "75% Whole Roasted Hazelnuts, Single-Origin Dark Cacao, Organic Coconut Blossom Sugar.",
-    description: "An authentic Italian Gianduja tribute with an unprecedented 75% hazelnut concentration. Milled on granite stones with pure single-estate cacao and unrefined coconut sugar. Clean, rich, and unforgettable.",
+    ingredients: "75% Whole Roasted Hazelnuts, Cocoa, Organic Coconut Blossom Sugar.",
+    description: "Roasted hazelnuts stone-ground with cocoa for a rich, creamy chocolate spread.",
     nutrition: { calories: "610 kcal", protein: "14.5g", fats: "53.2g", carbs: "22.8g" },
-    tastingNotes: ["Dark Truffle Cacao", "Warm Roasted Hazelnut", "Toffee Undertones", "Creamy Spread"],
-    pills: ["75% Hazelnut Content", "Zero Palm Oil", "Single-Origin Cacao", "Grand Reserve"]
+    tastingNotes: ["Dark Truffle Cocoa", "Warm Roasted Hazelnut", "Toffee Undertones", "Creamy Spread"],
+    pills: ["75% Hazelnut Content", "Zero Palm Oil", "Cocoa", "Grand Reserve"]
   },
   {
     id: "pistachio-butter",
@@ -101,7 +96,7 @@ const PRODUCTS = [
     subtitle: "100% Royal Emerald Green Pistachios, stone-ground slowly below 28°C. Pure single ingredient.",
     origin: "Terroir: Kerman & Bronte Terroirs",
     coldMilledTemp: "Milled below 24°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: true,
     images: {
       front: "mockups/pistachio-butter/front.webp",
@@ -127,16 +122,16 @@ const PRODUCTS = [
     subtitle: "100% Golden Roasted Hazelnuts, cold stone-ground without cocoa or sweetener. Pure single nut.",
     origin: "Terroir: Mountain Hazelnut Orchards",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(995, 525),
+    sizes: createSizes(null),
     ingredients: "100% Slow-Roasted Golden Hazelnuts.",
-    description: "Pure roasted golden hazelnuts stone-milled into a fragrant, velvety butter with zero cacao, zero sugar, and zero additives.",
+    description: "Pure roasted golden hazelnuts stone-milled into a fragrant, velvety butter with zero cocoa, zero sugar, and zero additives.",
     nutrition: { calories: "628 kcal", protein: "15.0g", fats: "60.8g", carbs: "16.7g" },
     tastingNotes: ["Pure Nutty Aroma", "Natural Sweetness", "Liquid Velvet"],
     pills: ["100% Pure Hazelnut", "Zero Sugar", "Cold Milled", "Coming Soon"]
@@ -153,14 +148,14 @@ const PRODUCTS = [
     subtitle: "100% Australian Style Roasted Macadamias, exceptionally buttery and high in monounsaturated fats.",
     origin: "Terroir: Certified Rainforest Macadamia Estates",
     coldMilledTemp: "Milled below 24°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(995),
+    sizes: createSizes(null),
     ingredients: "100% Slow-Roasted Whole Macadamia Nuts.",
     description: "The world's richest nut butter. Cold-milled gently to preserve its extraordinary monounsaturated fat profile and melt-in-mouth richness.",
     nutrition: { calories: "718 kcal", protein: "7.9g", fats: "75.8g", carbs: "13.8g" },
@@ -180,10 +175,10 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Artisanal • Cold Granite Milled",
-    subtitle: "Californian & Mamra Slow-Roasted whole almonds, stone-ground with skins intact.",
+    subtitle: "Slow-roasted whole almonds, stone-ground with skins intact.",
     origin: "Terroir: Kashmir Valley & California",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: true,
     images: {
       front: "mockups/almond-butter/front.webp",
@@ -206,10 +201,10 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Artisanal • Velvet Milled",
-    subtitle: "100% Whole Roasted Konkan Coast Cashews, ultra-creamy velvety stone-ground texture.",
-    origin: "Terroir: Konkan Coast, Maharashtra",
+    subtitle: "Whole roasted cashews, stone-ground for a smooth, creamy texture.",
+    origin: "Terroir: Cashews",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: true,
     images: {
       front: "mockups/cashew-butter/front.webp",
@@ -217,8 +212,8 @@ const PRODUCTS = [
       right: "mockups/cashew-butter/right.webp"
     },
     sizes: createSizes(395, 250),
-    ingredients: "100% Whole Roasted Konkan W240 Cashews.",
-    description: "Premium large whole cashews from the Konkan coast stone-milled into an ultra-creamy, naturally sweet butter with zero added sugars.",
+    ingredients: "Whole Roasted Cashews.",
+    description: "Whole roasted cashews, stone-ground into a smooth, creamy butter.",
     nutrition: { calories: "553 kcal", protein: "18.2g", fats: "43.8g", carbs: "30.2g" },
     tastingNotes: ["Natural Sweetness", "Velvety Cream", "Buttery Cashew"],
     pills: ["Naturally Sweet", "Zero Added Sugar", "Cold Milled", "Silky Smooth"]
@@ -232,22 +227,22 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Gourmet Indulgence",
-    subtitle: "Stone-Ground Roasted Cashews folded with single-origin raw cacao.",
-    origin: "Terroir: Konkan Coast & Kerala Cacao",
+    subtitle: "Stone-Ground Roasted Cashews folded with Cocoa.",
+    origin: "Terroir: Konkan Coast & Cocoa",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(850, 525),
-    ingredients: "Roasted Cashews, Pure Single-Origin Dark Cacao, Organic Coconut Sugar.",
-    description: "Freshly roasted whole cashews stone-ground with dark raw cacao and unrefined coconut nectar.",
+    sizes: createSizes(null),
+    ingredients: "Roasted Cashews, Cocoa, Organic Coconut Sugar.",
+    description: "Freshly roasted whole cashews stone-ground with dark raw cocoa and unrefined coconut nectar.",
     nutrition: { calories: "550 kcal", protein: "16.8g", fats: "44.2g", carbs: "28.4g" },
     tastingNotes: ["Dark Chocolate", "Sweet Cashew", "Velvet Finish"],
-    pills: ["Zero Palm Oil", "Dark Cacao", "Stone-Ground", "Coming Soon"]
+    pills: ["Zero Palm Oil", "Dark Cocoa", "Stone-Ground", "Coming Soon"]
   },
   {
     id: "almond-chocolate-butter",
@@ -258,10 +253,10 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Gourmet Indulgence",
-    subtitle: "Stone-Ground Roasted Almonds folded with single-origin raw cacao and organic coconut sugar.",
-    origin: "Terroir: Kashmir Almonds & Kerala Cacao",
+    subtitle: "Stone-Ground Roasted Almonds folded with Cocoa and organic coconut sugar.",
+    origin: "Terroir: Kashmir Almonds & Cocoa",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: true,
     images: {
       front: "mockups/almond-chocolate-butter/front.jpeg",
@@ -269,11 +264,11 @@ const PRODUCTS = [
       right: "mockups/almond-chocolate-butter/right.jpeg"
     },
     sizes: createSizes(455, 250),
-    ingredients: "Roasted Almonds, Pure Single-Origin Dark Cacao, Organic Coconut Sugar.",
-    description: "Freshly roasted whole almonds stone-ground with dark raw cacao and unrefined coconut nectar.",
+    ingredients: "Roasted Almonds, Cocoa, Organic Coconut Sugar.",
+    description: "Freshly roasted whole almonds stone-ground with dark raw cocoa and unrefined coconut nectar.",
     nutrition: { calories: "565 kcal", protein: "17.8g", fats: "46.2g", carbs: "26.4g" },
     tastingNotes: ["Dark Chocolate", "Nutty Almond", "Caramel Finish"],
-    pills: ["Zero Palm Oil", "Dark Cacao", "Stone-Ground", "Coming Soon"]
+    pills: ["Zero Palm Oil", "Dark Cocoa", "Stone-Ground", "Coming Soon"]
   },
   {
     id: "almond-dark-chocolate-butter",
@@ -283,23 +278,23 @@ const PRODUCTS = [
     categoryLabel: "Classic Nut Butters",
     productType: "individual",
     discountEligible: true,
-    tag: "Gourmet • 70% Dark Cacao",
-    subtitle: "Slow-Roasted Mamra & Californian Almonds folded with 70% Single-Origin Dark Chocolate.",
-    origin: "Terroir: Kashmir Almonds & Kerala Estate Cacao",
+    tag: "Gourmet • 70% Dark Cocoa",
+    subtitle: "Slow-Roasted & Californian Almonds folded with 70% Single-Origin Dark Chocolate.",
+    origin: "Terroir: Kashmir Almonds & Cocoa",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(465),
-    ingredients: "100% Roasted Whole Almonds, Single-Origin 70% Dark Cacao, Organic Coconut Blossom Sugar.",
+    sizes: createSizes(null),
+    ingredients: "100% Roasted Whole Almonds, Single-Origin 70% Dark Cocoa, Organic Coconut Blossom Sugar.",
     description: "Slow-roasted whole almonds stone-ground with rich 70% single-origin dark chocolate and organic coconut nectar. A deep, decadent, antioxidant-rich spread with zero palm oil.",
     nutrition: { calories: "572 kcal", protein: "18.4g", fats: "47.5g", carbs: "25.1g" },
-    tastingNotes: ["Intense Dark Cacao", "Roasted Almond Crunch", "Velvety Dark Ganache"],
-    pills: ["70% Dark Cacao", "Zero Palm Oil", "Stone-Ground", "Coming Soon"]
+    tastingNotes: ["Intense Dark Cocoa", "Roasted Almond Crunch", "Velvety Dark Ganache"],
+    pills: ["70% Dark Cocoa", "Zero Palm Oil", "Stone-Ground", "Coming Soon"]
   },
   {
     id: "walnut-almond-butter",
@@ -310,19 +305,19 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Brain Synergy Dual-Nut",
-    subtitle: "50% Cold-Milled Himalayan Snow Walnut + 50% Slow-Roasted Mamra Almond dual stone-ground blend.",
+    subtitle: "50% Cold-Milled Himalayan Snow Walnut + 50% Slow-Roasted Almond dual stone-ground blend.",
     origin: "Terroir: Kashmir & Himachal Valley",
     coldMilledTemp: "Milled below 25°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(485, 330),
-    ingredients: "50% Himalayan Snow Walnuts, 50% Mamra Almonds.",
-    description: "A functional dual-nut powerhouse pairing plant Omega-3 fatty acids from Himalayan snow walnuts with high-protein Mamra almonds.",
+    sizes: createSizes(null),
+    ingredients: "50% Himalayan Snow Walnuts, 50% Almonds.",
+    description: "A functional dual-nut powerhouse pairing plant Omega-3 fatty acids from Himalayan snow walnuts with high-protein almonds.",
     nutrition: { calories: "615 kcal", protein: "18.5g", fats: "56.4g", carbs: "17.2g" },
     tastingNotes: ["Rich Walnut Depth", "Crisp Almond Sweetness", "Brain Boosting"],
     pills: ["Plant Omega-3", "Brain Fuel", "Dual-Stone Ground", "Coming Soon"]
@@ -336,19 +331,19 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Rich Omega Dark Truffle",
-    subtitle: "Himalayan Walnuts blended with rich dark artisanal cacao for an unforgettable dessert spread.",
-    origin: "Terroir: Himachal Pradesh Walnuts & Single-Estate Cacao",
+    subtitle: "Himalayan Walnuts blended with rich dark artisanal cocoa for an unforgettable dessert spread.",
+    origin: "Terroir: Himachal Pradesh Walnuts & Cocoa",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(525, 270),
-    ingredients: "Himalayan Snow Walnuts, Single-Origin Dark Cacao, Coconut Nectar.",
-    description: "Deep, earthy Himalayan walnuts unified with single-origin dark cacao for a luxurious guilt-free dessert butter.",
+    sizes: createSizes(null),
+    ingredients: "Himalayan Snow Walnuts, Cocoa, Coconut Nectar.",
+    description: "Deep, earthy Himalayan walnuts unified with Cocoa for a luxurious guilt-free dessert butter.",
     nutrition: { calories: "605 kcal", protein: "14.2g", fats: "54.8g", carbs: "24.0g" },
     tastingNotes: ["Dark Truffle", "Rich Walnut", "Silky Spread"],
     pills: ["Omega-3 Rich", "Decadent", "Zero Palm Oil", "Coming Soon"]
@@ -363,18 +358,18 @@ const PRODUCTS = [
     discountEligible: true,
     tag: "Buttery Pecan & Dark Truffle",
     subtitle: "Slow-Roasted Sweet Pecans stone-ground with velvety artisanal dark chocolate.",
-    origin: "Terroir: Select Pecan Orchards & Kerala Cacao",
+    origin: "Terroir: Select Pecan Orchards & Cocoa",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(525),
-    ingredients: "Roasted Pecans, Single-Origin Dark Cacao, Organic Coconut Sugar.",
-    description: "Sweet slow-roasted pecans stone-milled with single-origin dark cacao for a rich praline-style spread.",
+    sizes: createSizes(null),
+    ingredients: "Roasted Pecans, Cocoa, Organic Coconut Sugar.",
+    description: "Sweet slow-roasted pecans stone-milled with Cocoa for a rich praline-style spread.",
     nutrition: { calories: "640 kcal", protein: "9.5g", fats: "62.0g", carbs: "21.5g" },
     tastingNotes: ["Caramel Pecan", "Dark Cocoa", "Praline Finish"],
     pills: ["Zero Palm Oil", "Artisanal Batch", "Gourmet", "Coming Soon"]
@@ -391,14 +386,14 @@ const PRODUCTS = [
     subtitle: "100% Cold-Milled Himalayan Snow Walnuts, exceptionally rich in plant ALA Omega-3.",
     origin: "Terroir: Kashmir Valley, India",
     coldMilledTemp: "Milled below 24°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(545, 320),
+    sizes: createSizes(null),
     ingredients: "100% Cold-Milled Himalayan Snow Walnuts.",
     description: "Pure Himalayan snow walnuts cold-milled below 24°C to preserve delicate Omega-3 fatty acids.",
     nutrition: { calories: "654 kcal", protein: "15.2g", fats: "65.2g", carbs: "13.7g" },
@@ -417,14 +412,14 @@ const PRODUCTS = [
     subtitle: "100% Roasted Whole Pecan Halves, stone-ground to silky perfection with natural caramel undertones.",
     origin: "Terroir: Hand-Selected Whole Pecans",
     coldMilledTemp: "Milled below 25°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(545),
+    sizes: createSizes(null),
     ingredients: "100% Roasted Pecan Nuts.",
     description: "100% Roasted whole pecan halves, stone-ground to silky perfection with natural maple and caramel notes.",
     nutrition: { calories: "690 kcal", protein: "9.2g", fats: "72.0g", carbs: "13.9g" },
@@ -440,18 +435,18 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Triple Fusion Reserve",
-    subtitle: "Himalayan Walnut + Mamra Almond dual stone-ground blend unified with rich single-origin dark cacao.",
-    origin: "Terroir: Kashmir & South Indian Single-Estate Cacao",
+    subtitle: "Himalayan Walnut + Almond dual stone-ground blend unified with rich Cocoa.",
+    origin: "Terroir: Kashmir & Cocoa",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(605, 290),
-    ingredients: "Himalayan Walnuts, Mamra Almonds, Single-Origin Cacao, Coconut Nectar.",
+    sizes: createSizes(null),
+    ingredients: "Himalayan Walnuts, Almonds, Cocoa, Coconut Nectar.",
     description: "A signature blend of walnuts and almonds cold stone-milled with dark chocolate for a rich, nutrient-dense breakfast spread.",
     nutrition: { calories: "595 kcal", protein: "16.8g", fats: "52.5g", carbs: "23.0g" },
     tastingNotes: ["Dark Chocolate Ganache", "Walnut Depth", "Almond Crunch"],
@@ -473,7 +468,7 @@ const PRODUCTS = [
     subtitle: "100% Slow-Roasted Saurashtra Bold Peanuts. Zero palm oil, zero sugar.",
     origin: "Terroir: Saurashtra, Gujarat",
     coldMilledTemp: "Milled below 28°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: true,
     images: {
       front: "mockups/peanut-butter/front.webp",
@@ -495,11 +490,11 @@ const PRODUCTS = [
     categoryLabel: "Seed & Peanut Spreads",
     productType: "individual",
     discountEligible: true,
-    tag: "Classics • Single-Origin Cacao",
-    subtitle: "Roasted Peanuts with Pure Single-Origin Cacao and organic coconut blossom nectar.",
-    origin: "Terroir: Saurashtra Peanuts & South Indian Cacao",
+    tag: "Classics • Dark Chocolate",
+    subtitle: "Roasted peanuts and dark chocolate.",
+    origin: "Terroir: Peanuts & Dark Chocolate",
     coldMilledTemp: "Milled below 28°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: true,
     images: {
       front: "mockups/peanut-chocolate-butter/front.webp",
@@ -507,11 +502,11 @@ const PRODUCTS = [
       right: "mockups/peanut-chocolate-butter/right.webp"
     },
     sizes: createSizes(295, 125),
-    ingredients: "Whole Roasted Peanuts, Single-Origin Raw Cacao, Organic Coconut Sugar.",
-    description: "Roasted peanuts blended with single-origin raw cacao and organic coconut sugar. Delicious, high-protein chocolate spread with zero palm oil.",
+    ingredients: "Roasted Peanuts, Dark Chocolate.",
+    description: "Roasted peanuts blended with dark chocolate, stone-ground into a smooth spread.",
     nutrition: { calories: "572 kcal", protein: "22.5g", fats: "45.8g", carbs: "25.6g" },
     tastingNotes: ["Dark Chocolate Peanut", "Toasted Caramel", "Smooth Spread"],
-    pills: ["Zero Palm Oil", "Natural Cacao", "Stone-Ground", "Guilt-Free"]
+    pills: ["Zero Palm Oil", "Dark Chocolate", "Stone-Ground", "Smooth Spread"]
   },
   {
     id: "sunflower-seed-butter",
@@ -525,14 +520,14 @@ const PRODUCTS = [
     subtitle: "100% Roasted Sunflower Kernels, stone-ground with zero additives. Allergen-free vitality.",
     origin: "Terroir: Maharashtra Organic Farms",
     coldMilledTemp: "Milled below 26°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(120),
+    sizes: createSizes(null),
     ingredients: "100% Roasted Organic Sunflower Seeds.",
     description: "A completely nut-free, allergen-safe seed butter packed with natural Vitamin E and magnesium.",
     nutrition: { calories: "617 kcal", protein: "20.8g", fats: "51.5g", carbs: "20.0g" },
@@ -551,14 +546,14 @@ const PRODUCTS = [
     subtitle: "100% Slow-Milled Emerald Pumpkin Seeds rich in natural Zinc and Magnesium.",
     origin: "Terroir: Organic Certified Terroirs",
     coldMilledTemp: "Milled below 25°C",
-    shelfLife: "6 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(120),
+    sizes: createSizes(null),
     ingredients: "100% Slow-Milled Organic Pumpkin Seeds.",
     description: "Deep green whole pumpkin seeds cold-milled to protect essential minerals including natural Zinc and Magnesium.",
     nutrition: { calories: "559 kcal", protein: "30.2g", fats: "49.0g", carbs: "10.7g" },
@@ -578,18 +573,18 @@ const PRODUCTS = [
     productType: "individual",
     discountEligible: true,
     tag: "Clean Fuel • Energy Bites",
-    subtitle: "Hand-rolled artisanal bites crafted from crushed roasted nuts, pumpkin seeds, dates, and raw cacao.",
+    subtitle: "Hand-rolled artisanal bites crafted from crushed roasted nuts, pumpkin seeds, dates, and raw cocoa.",
     origin: "Terroir: Handcrafted in Surat, Gujarat",
     coldMilledTemp: "No Added Sugar",
-    shelfLife: "3 Months",
+    shelfLife: "2 Months",
     hasImages: false,
     images: {
       front: "upcoming products.webp",
       left: "upcoming products.webp",
       right: "upcoming products.webp"
     },
-    sizes: createSizes(120),
-    ingredients: "Almonds, Cashews, Pumpkin Seeds, Sunflower Seeds, Medjool Dates, Raw Cacao.",
+    sizes: createSizes(null),
+    ingredients: "Almonds, Cashews, Pumpkin Seeds, Sunflower Seeds, Medjool Dates, Raw Cocoa.",
     description: "Wholesome on-the-go snack balls rolled with honest nuts, seeds, and soft dates. Free from artificial sweeteners or chemical preservatives.",
     nutrition: { calories: "420 kcal", protein: "12.0g", fats: "22.0g", carbs: "48.0g" },
     tastingNotes: ["Chewy Date Sweetness", "Crunchy Nut Texture", "Dark Cocoa Dusting"],
@@ -607,11 +602,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "duo",
     discountEligible: false,
-    tag: "15% Off • Daily Ritual Duo",
+    tag: "Daily Ritual Duo",
     subtitle: "Peanut Butter (180g) + Peanut Chocolate Butter (180g)",
-    origin: "Terroir: Saurashtra Peanuts & Single-Estate Cacao",
-    coldMilledTemp: "15% Combo Savings",
-    shelfLife: "6 Months",
+    origin: "Terroir: Saurashtra Peanuts & Cocoa",
+    coldMilledTemp: "Published set price",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -623,10 +618,10 @@ const PRODUCTS = [
     },
     sizes: createComboSizes(399),
     ingredients: "1× 180g Pure Bold Peanut Butter, 1× 180g Peanut Chocolate Butter.",
-    description: "The essential daily duo for clean plant protein and wholesome dark cacao indulgence. Contains 1× 180g Pure Roasted Peanut Butter and 1× 180g Peanut Chocolate Butter with zero palm oil.",
+    description: "The essential daily duo for clean plant protein and wholesome dark cocoa indulgence. Contains 1× 180g Pure Roasted Peanut Butter and 1× 180g Peanut Chocolate Butter with zero palm oil.",
     nutrition: { calories: "580 kcal", protein: "24.0g", fats: "48.0g", carbs: "22.5g" },
     tastingNotes: ["Roasted Peanut", "Dark Chocolate", "Silky Texture"],
-    pills: ["15% Off", "Daily Protein", "Zero Palm Oil", "Curated Duo"]
+    pills: ["Curated Gift Set", "Daily Protein", "Zero Palm Oil", "Curated Duo"]
   },
   {
     id: "combo-classic-duo",
@@ -636,11 +631,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "duo",
     discountEligible: false,
-    tag: "15% Off • Artisanal Classics",
+    tag: "Artisanal Classics",
     subtitle: "Almond Butter (180g) + Cashew Butter (180g)",
     origin: "Terroir: Californian Almonds & Mangalore Cashews",
-    coldMilledTemp: "15% Combo Savings",
-    shelfLife: "6 Months",
+    coldMilledTemp: "Published set price",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -655,7 +650,7 @@ const PRODUCTS = [
     description: "Two foundational stone-ground staples unified in an elegant tasting set. Contains 1× 180g Roasted Almond Butter and 1× 180g Sweet Mangalore Cashew Butter with zero added oils.",
     nutrition: { calories: "575 kcal", protein: "19.5g", fats: "48.5g", carbs: "24.0g" },
     tastingNotes: ["Toasted Almond", "Natural Cashew Cream", "Clean Finish"],
-    pills: ["15% Off", "Stone-Ground", "Zero Added Sugar", "Artisanal Duo"]
+    pills: ["Curated Gift Set", "Stone-Ground", "Zero Added Sugar", "Artisanal Duo"]
   },
   {
     id: "combo-grand-reserve-trio",
@@ -665,11 +660,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "combo",
     discountEligible: false,
-    tag: "15% Off • Luxury Master Flight",
+    tag: "Luxury Master Flight",
     subtitle: "Almond Pista Saffron (180g) + Hazelnut Chocolate (180g) + Pistachio Butter (180g)",
     origin: "Terroir: Kashmir Saffron, Bronte Pistachio & Italian Hazelnuts",
-    coldMilledTemp: "15% Combo Savings",
-    shelfLife: "6 Months",
+    coldMilledTemp: "Published set price",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -684,7 +679,7 @@ const PRODUCTS = [
     description: "Our crowning trio of artisan master reserves in one luxury box. Experience Kashmiri Mongra Saffron, 75% hazelnut Gianduja, and 100% royal emerald pistachio butter.",
     nutrition: { calories: "585 kcal", protein: "18.5g", fats: "50.0g", carbs: "22.5g" },
     tastingNotes: ["Kashmiri Saffron", "Gianduja Truffle", "Emerald Pistachio"],
-    pills: ["15% Off", "Grand Reserve", "Royal Edition", "Ultra-Premium"]
+    pills: ["Curated Gift Set", "Grand Reserve", "Royal Edition", "Ultra-Premium"]
   },
   {
     id: "combo-complete-collection",
@@ -694,11 +689,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "combo",
     discountEligible: false,
-    tag: "25% Off • Master Roaster's Vault",
+    tag: "Master Roaster's Vault",
     subtitle: "All 7 Signature Live Jars (180g each)",
     origin: "Terroir: Complete Single-Origin Reserve terroirs",
-    coldMilledTemp: "25% Maximum Bundle Savings",
-    shelfLife: "6 Months",
+    coldMilledTemp: "Published set price",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -710,10 +705,10 @@ const PRODUCTS = [
     },
     sizes: createComboSizes(2999),
     ingredients: "Peanut Butter, Peanut Chocolate, Almond Butter, Cashew Butter, Almond Pista Saffron, Hazelnut Chocolate, Pistachio Butter (180g each).",
-    description: "The definitive tasting cellar. All 7 live handcrafted single-origin jars presented together at an exclusive 25% discount savings.",
+    description: "The definitive tasting cellar. All 7 live handcrafted single-origin jars presented together with pricing shared by the owner.",
     nutrition: { calories: "580 kcal", protein: "20.0g", fats: "49.0g", carbs: "22.0g" },
     tastingNotes: ["Complete Flavor Spectrum", "Single-Origin Journey", "Master Flight"],
-    pills: ["25% Off", "7 Jars Vault", "Complete Range", "Best Value"]
+    pills: ["Curated Gift Set", "7 Jars Vault", "Complete Range", "Best Value"]
   },
   {
     id: "combo-chocolate-lovers-duo",
@@ -723,11 +718,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "duo",
     discountEligible: false,
-    tag: "15% Off • Pure Dark Cacao Indulgence",
+    tag: "Pure Dark Cocoa Indulgence",
     subtitle: "Peanut Chocolate (180g) + Hazelnut Chocolate (180g)",
-    origin: "Terroir: South Indian Single-Estate Cacao & Hazelnuts",
-    coldMilledTemp: "15% Combo Savings",
-    shelfLife: "6 Months",
+    origin: "Terroir: Cocoa & Hazelnuts",
+    coldMilledTemp: "Published set price",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -742,7 +737,7 @@ const PRODUCTS = [
     description: "For true dark chocolate lovers who demand zero palm oil. Combines robust roasted peanut chocolate with velvety Italian-style 75% hazelnut Gianduja.",
     nutrition: { calories: "590 kcal", protein: "18.5g", fats: "49.5g", carbs: "24.0g" },
     tastingNotes: ["Dark Cocoa Truffle", "Roasted Hazelnut", "Toffee Caramel"],
-    pills: ["15% Off", "Zero Palm Oil", "Single-Estate Cacao", "Gourmet Duo"]
+    pills: ["Curated Gift Set", "Zero Palm Oil", "Cocoa", "Gourmet Duo"]
   },
   {
     id: "combo-nutty-trio-starter",
@@ -752,11 +747,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "combo",
     discountEligible: false,
-    tag: "15% Off • Daily Vitality Trio",
+    tag: "Daily Vitality Trio",
     subtitle: "Peanut Butter (180g) + Almond Butter (180g) + Cashew Butter (180g)",
     origin: "Terroir: Saurashtra, California & Mangalore",
-    coldMilledTemp: "15% Combo Savings",
-    shelfLife: "6 Months",
+    coldMilledTemp: "Published set price",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -771,7 +766,7 @@ const PRODUCTS = [
     description: "The quintessential starter set for high-protein breakfasts and clean snacking. 100% whole roasted nuts with zero added sugars or hydrogenated oils.",
     nutrition: { calories: "570 kcal", protein: "20.5g", fats: "49.0g", carbs: "21.0g" },
     tastingNotes: ["Classic Peanut", "Rich Roasted Almond", "Sweet Velvety Cashew"],
-    pills: ["15% Off", "High Protein", "100% Vegan", "Breakfast Trio"]
+    pills: ["Curated Gift Set", "High Protein", "100% Vegan", "Breakfast Trio"]
   },
   {
     id: "combo-zafran-pista-duo",
@@ -781,11 +776,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "duo",
     discountEligible: false,
-    tag: "15% Off • Royal Reserve Pairing",
+    tag: "Royal Reserve Pairing",
     subtitle: "Almond Pista Saffron (180g) + Pistachio Butter (180g)",
     origin: "Terroir: Kashmir Valley & Royal Pistachio Orchards",
-    coldMilledTemp: "15% Combo Savings",
-    shelfLife: "6 Months",
+    coldMilledTemp: "Published set price",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -797,10 +792,10 @@ const PRODUCTS = [
     },
     sizes: createComboSizes(1692),
     ingredients: "1× 180g Zafran Gold Butter, 1× 180g 100% Pure Pistachio Butter.",
-    description: "An opulent royal pairing of Kashmiri Mongra Saffron infused Mamra almond butter with 100% pure royal emerald green pistachio butter.",
+    description: "An opulent royal pairing of Kashmiri Mongra Saffron infused almond butter with 100% pure royal emerald green pistachio butter.",
     nutrition: { calories: "574 kcal", protein: "20.7g", fats: "48.4g", carbs: "22.6g" },
     tastingNotes: ["Floral Mongra Saffron", "Vibrant Emerald Pistachio", "Melt-in-Mouth Butterfat"],
-    pills: ["15% Off", "Kashmiri Saffron", "100% Pistachio", "Crown Reserve"]
+    pills: ["Curated Gift Set", "Kashmiri Saffron", "100% Pistachio", "Crown Reserve"]
   },
   {
     id: "combo-everyday-to-exquisite",
@@ -810,11 +805,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "combo",
     discountEligible: false,
-    tag: "15% Off • Daily & Royal Contrast",
+    tag: "Daily & Royal Contrast",
     subtitle: "Peanut Butter (180g) + Zafran Gold Butter (180g)",
     origin: "Terroir: Saurashtra & Kashmiri Mongra Saffron",
-    coldMilledTemp: "15% Combo Savings",
-    shelfLife: "6 Months",
+    coldMilledTemp: "Published set price",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -828,8 +823,8 @@ const PRODUCTS = [
     ingredients: "1× 180g Pure Peanut Butter, 1× 180g Zafran Gold Butter.",
     description: "From daily workout fuel to royal evening indulgence. Includes 1× 180g Bold Peanut Butter and 1× 180g Grand Reserve Zafran Gold Butter.",
     nutrition: { calories: "586 kcal", protein: "23.5g", fats: "50.9g", carbs: "18.9g" },
-    tastingNotes: ["Bold Roasted Peanut", "Kashmiri Saffron", "Mamra Almond"],
-    pills: ["15% Off", "Everyday & Luxury", "Stone-Ground", "Signature Pair"]
+    tastingNotes: ["Bold Roasted Peanut", "Kashmiri Saffron", "Almond"],
+    pills: ["Curated Gift Set", "Everyday & Luxury", "Stone-Ground", "Signature Pair"]
   },
   {
     id: "combo-pure-nut-flight",
@@ -839,11 +834,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "combo",
     discountEligible: false,
-    tag: "20% Off • Connoisseur Tasting Set",
+    tag: "Connoisseur Tasting Set",
     subtitle: "Peanut, Almond, Cashew, Hazelnut Chocolate & Pistachio (180g each)",
     origin: "Terroir: Multi-Terroir Artisanal Harvests",
-    coldMilledTemp: "20% Combo Savings",
-    shelfLife: "6 Months",
+    coldMilledTemp: "Published set price",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -855,10 +850,10 @@ const PRODUCTS = [
     },
     sizes: createComboSizes(2199),
     ingredients: "Peanut Butter, Almond Butter, Cashew Butter, Hazelnut Chocolate Butter, Pistachio Butter (180g each).",
-    description: "A comprehensive 5-jar master tasting flight spanning our finest single-origin nuts, artisanal dark cacao Gianduja, and pure emerald pistachio butter.",
+    description: "A comprehensive 5-jar master tasting flight spanning our finest single-origin nuts, artisanal dark cocoa Gianduja, and pure emerald pistachio butter.",
     nutrition: { calories: "578 kcal", protein: "20.1g", fats: "49.2g", carbs: "22.3g" },
     tastingNotes: ["Complete Nut Harmony", "Single-Origin Notes", "Silky Textures"],
-    pills: ["20% Off", "5 Jars Set", "Connoisseur Flight", "Gift Ready"]
+    pills: ["Curated Gift Set", "5 Jars Set", "Connoisseur Flight", "Gift Ready"]
   },
   {
     id: "combo-build-your-own-trio",
@@ -868,11 +863,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "combo",
     discountEligible: false,
-    tag: "15% Off • Custom Trio Selection",
-    subtitle: "Choose Any 3 Jars (180g) — 15% Automatic Bundle Discount",
+    tag: "Custom Trio Selection",
+    subtitle: "Choose Any 3 Jars (180g) — Owner Quotation",
     origin: "Terroir: Tailored to Your Selection",
-    coldMilledTemp: "15% Custom Bundle Discount",
-    shelfLife: "6 Months",
+    coldMilledTemp: "Pricing shared by owner",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -884,10 +879,10 @@ const PRODUCTS = [
     },
     sizes: createComboSizes(null),
     ingredients: "Any 3 Jars of your choice from our single-origin stone-ground collection.",
-    description: "Customize your own bespoke 3-jar tasting box from any of our 19 handcrafted varieties. Our concierge team will prepare your personalized set with 15% bundle savings.",
+    description: "Customize your own 3-jar tasting box from our handcrafted varieties. The owner will share a quote for your selected flavors and gift packaging.",
     nutrition: { calories: "580 kcal", protein: "20.0g", fats: "50.0g", carbs: "20.0g" },
     tastingNotes: ["Custom Selection", "Tailored Flight", "Personalized Gift"],
-    pills: ["15% Off", "Custom Trio", "Concierge Custom", "Gift Box"]
+    pills: ["Quote on Request", "Custom Trio", "Concierge Custom", "Gift Box"]
   },
   {
     id: "combo-corporate-bulk-set-10",
@@ -897,11 +892,11 @@ const PRODUCTS = [
     categoryLabel: "Curated Combos & Sets",
     productType: "combo",
     discountEligible: false,
-    tag: "20% Off • Bespoke Gifting Box",
+    tag: "Bespoke Gifting Box",
     subtitle: "10 Custom Selected Jars in Luxury Gift Packaging",
     origin: "Terroir: Handcrafted in Surat, Gujarat",
-    coldMilledTemp: "20% Wholesale / Corporate Discount",
-    shelfLife: "6 Months",
+    coldMilledTemp: "Pricing shared by owner",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
@@ -916,33 +911,33 @@ const PRODUCTS = [
     description: "Prestigious gift hampers tailored for corporate clients, executive gifting, Diwali/festive hampers, and luxury wedding favors. Custom sleeve branding and direct door delivery available.",
     nutrition: { calories: "580 kcal", protein: "20.0g", fats: "50.0g", carbs: "20.0g" },
     tastingNotes: ["Luxury Presentation", "Custom Ribbon & Sleeve", "Bespoke Hamper"],
-    pills: ["20% Off", "10 Jars Set", "Corporate Gifting", "Wholesale Quote"]
+    pills: ["Quote on Request", "10 Jars Set", "Corporate Gifting", "Wholesale Quote"]
   },
   {
-    id: "combo-milad-mithai-box",
-    name: "Milad Mithai Box",
-    slug: "milad-mithai-box",
+    id: "combo-diwali-mithai-box",
+    name: "Diwali Mithai Box",
+    slug: "diwali-mithai-box",
     category: "combos",
     categoryLabel: "Curated Combos & Sets",
     productType: "combo",
     discountEligible: false,
     tag: "Festive Edition • Pure Sweet Luxury",
     subtitle: "Peanut Chocolate + Hazelnut Chocolate + Almond Pista Saffron (180g each)",
-    origin: "Terroir: Kashmiri Saffron & Single-Estate Cacao",
-    coldMilledTemp: "10% Celebration Special",
-    shelfLife: "6 Months",
+    origin: "Terroir: Kashmiri Saffron & Cocoa",
+    coldMilledTemp: "Pricing shared by owner",
+    shelfLife: "2 Months",
     hasImages: true,
     isCombo: true,
     isAvailable: true,
     includedProductIds: ["peanut-chocolate-butter", "hazelnut-chocolate-butter", "zafran-gold-butter"],
     images: {
-      front: "combo/milad.webp",
-      left: "mockups/zafran-gold-butter/front.webp",
-      right: "mockups/hazelnut-chocolate-butter/front.webp"
+      front: "assets/diwali/greeting-800.webp",
+      left: "assets/diwali/ingredients-800.webp",
+      right: "assets/diwali/gifting-800.webp"
     },
-    sizes: createComboSizes(1999),
+    sizes: createComboSizes(null),
     ingredients: "1× 180g Peanut Chocolate, 1× 180g Hazelnut Chocolate Gianduja, 1× 180g Almond Pista Saffron.",
-    description: "A celebration of purity for Milad un Nabi. 100% natural, refined-sugar-free sweet nut butters crafted with pure Kashmiri saffron, single-origin dark cacao, and organic hazelnuts.",
+    description: "Share sweetness and spread love this Diwali with our three-jar Mithai Box. 100% natural, refined-sugar-free sweet nut butters crafted with pure Kashmiri saffron, Cocoa, and organic hazelnuts.",
     nutrition: { calories: "588 kcal", protein: "19.5g", fats: "51.8g", carbs: "22.0g" },
     tastingNotes: ["Floral Mongra Saffron", "Gianduja Chocolate", "Toasted Peanut Truffle"],
     pills: ["Festive Box", "Zero Refined Sugar", "Zero Palm Oil", "Celebration Set"]
@@ -950,6 +945,18 @@ const PRODUCTS = [
 ];
 
 // ==========================================
+// Keep catalog and saved-bag media valid from both root pages and Journal articles.
+const SITE_ASSET_BASE = new URL('.', document.currentScript?.src || window.location.href);
+PRODUCTS.forEach(product => {
+  product.isUpcoming = !product.isCombo && !product.hasImages;
+  if (product.isUpcoming) product.sizes.forEach(option => {
+    option.price = null; option.isBulk = true; option.bulkLabel = 'Coming soon';
+  });
+  if (product.images) Object.keys(product.images).forEach(angle => {
+    product.images[angle] = new URL(product.images[angle], SITE_ASSET_BASE).href;
+  });
+});
+
 // 1b. CENTRALIZED SCROLL LOCK (prevents body scroll when overlays are open)
 // ==========================================
 let _scrollLockCount = 0;
@@ -978,6 +985,7 @@ function _unlockScroll() {
     document.body.style.width = '';
     document.body.style.overflow = '';
     window.scrollTo({ top: _savedScrollY, left: 0, behavior: 'instant' });
+    window.dispatchEvent(new Event('njoy:scroll-unlock'));
   }
 }
 
@@ -1005,6 +1013,23 @@ const Cart = {
     } catch (e) {
       this.items = [];
     }
+    // Remove old placeholder prices from saved gift bags as well.
+    this.items = this.items.map(item => {
+      if (item.image) item.image = new URL(item.image, SITE_ASSET_BASE).href;
+      if (item.productId === 'combo-milad-mithai-box') {
+        item.productId = 'combo-diwali-mithai-box'; item.name = 'Diwali Mithai Box';
+        item.image = new URL('assets/diwali/greeting-480.webp', SITE_ASSET_BASE).href;
+      }
+      const product = PRODUCTS.find(p => p.id === item.productId);
+      if (product) {
+        const option = product.sizes.find(s => s.size === item.size) || product.sizes[0];
+        item.price = option.price; item.isBulk = option.price === null || option.isBulk;
+        if (product.isUpcoming) item.name = `${product.name} (Coming soon)`;
+      } else if (item.productId?.startsWith('custom-box-')) {
+        item.price = null; item.isBulk = true;
+      }
+      return item;
+    });
     this.updateBadges();
     this.renderDrawer();
   },
@@ -1042,6 +1067,7 @@ const Cart = {
   add(productId, size = "180g", quantity = 1) {
     const product = PRODUCTS.find(p => p.id === productId);
     if (!product) return;
+    if (product.isUpcoming) { this.showToast('This product is coming soon.'); return; }
 
     const sizeOpt = product.sizes.find(s => s.size === size) || product.sizes[0];
     const isBulk = Boolean(sizeOpt.isBulk);
@@ -1051,6 +1077,7 @@ const Cart = {
 
     if (existing) {
       existing.quantity += quantity;
+      existing.price = sizeOpt.price; existing.isBulk = isBulk;
     } else {
       this.items.push({
         cartItemId,
@@ -1067,7 +1094,7 @@ const Cart = {
 
     this.save();
     if (isBulk) {
-      this.showToast(`Added ${product.name} (Bulk Inquiry) to Tasting Bag`);
+      this.showToast(`Added ${product.name} to cart — price on request`);
     } else {
       this.showToast(`Added ${product.name} (${sizeOpt.size}) to Tasting Bag`);
     }
@@ -1147,6 +1174,7 @@ const Cart = {
   },
 
   openDrawer() {
+    if (this._drawerOpen) return;
     const drawer = document.getElementById("cart-drawer");
     const overlay = document.getElementById("cart-overlay");
     if (overlay) {
@@ -1159,6 +1187,7 @@ const Cart = {
   },
 
   closeDrawer() {
+    if (!this._drawerOpen) return;
     const drawer = document.getElementById("cart-drawer");
     const overlay = document.getElementById("cart-overlay");
     if (drawer) drawer.classList.remove("active");
@@ -1212,7 +1241,7 @@ const Cart = {
 
     let html = items.map(item => {
       const priceDisplay = item.isBulk || item.price === null
-        ? `<div class="cart-item-price" style="color:var(--olive); font-size:12px; font-weight:700;">Price on Request (Wholesale)</div>`
+        ? `<div class="cart-item-price" style="color:var(--olive); font-size:12px; font-weight:700;">Price on request</div>`
         : `<div class="cart-item-price">₹${item.price.toLocaleString("en-IN")}</div>`;
 
       return `
@@ -1264,7 +1293,7 @@ const Cart = {
 
         ${totals.discount > 0 ? `
           <div class="cart-discount-line">
-            <span>Milad Discount (10%)</span>
+            <span>Discount</span>
             <span>-₹${totals.discount.toLocaleString("en-IN")}</span>
           </div>
         ` : ''}
@@ -1423,7 +1452,7 @@ const Cart = {
         </div>
     `;
 
-    container.innerHTML = html;
+    container.innerHTML = html.replace(/ \*<\/label>/g, '</label>');
 
     // Footer only contains final total and button
     if (footerEl) {
@@ -1431,7 +1460,7 @@ const Cart = {
       if (totals.subtotal > 0) {
         footerHtml += `
           <div class="cart-subtotal-row" style="margin-bottom: 14px; font-size: 15px;">
-            <span>Payable Total</span>
+            <span>${hasBulkItems ? 'Fixed-price subtotal' : 'Items total'}</span>
             <strong>₹${totals.finalTotal.toLocaleString("en-IN")}</strong>
           </div>
         `;
@@ -1440,7 +1469,7 @@ const Cart = {
       if (hasBulkItems) {
         footerHtml += `
           <div style="font-size:11px; color:var(--brown-muted); margin-bottom:8px; text-align:center;">
-            Includes Wholesale/Bulk items (Quote to follow)
+            Diwali and custom bulk items are quoted separately. Fixed-price items are shown above.
           </div>
         `;
       }
@@ -1448,7 +1477,7 @@ const Cart = {
       footerHtml += `
         <button class="btn-whatsapp-checkout" onclick="Cart.checkoutWhatsApp()" style="width: 100%;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.19-.48-.31z"/></svg>
-          <span>Send Order to WhatsApp</span>
+          <span>Get quote on WhatsApp</span>
         </button>
       `;
       footerEl.innerHTML = footerHtml;
@@ -1456,135 +1485,29 @@ const Cart = {
   },
 
   checkoutWhatsApp() {
-    if (this.items.length === 0) {
-      this.showToast("Your Tasting Bag is empty");
-      return;
+    if (!this.items.length) { this.showToast("Your cart is empty"); return; }
+    const fixed = this.items.filter(item => Number.isFinite(item.price) && !item.isBulk);
+    const quoted = this.items.filter(item => item.isBulk || item.price === null);
+    const money = amount => `₹${amount.toLocaleString('en-IN')}`;
+    const lines = ['Hello NJOY by Nut Delicacy,', '', 'Please review my cart and share a quote, delivery charges and availability.'];
+    if (fixed.length) {
+      lines.push('', 'FIXED-PRICE ITEMS');
+      fixed.forEach(item => lines.push(`• ${item.name} — ${item.sizeLabel || item.size}: ${money(item.price)} × ${item.quantity} = ${money(item.price * item.quantity)}`));
+      const subtotal = fixed.reduce((sum,item) => sum+item.price*item.quantity,0);
+      lines.push(`Fixed-price subtotal: ${money(subtotal)}${quoted.length ? ' (quote items excluded)' : ''}`);
     }
-
-    // Validation based on orderType
-    const isGift = this.orderType === 'gift';
-    const required = isGift
-      ? ['gift-rec-name', 'gift-rec-phone', 'gift-rec-address', 'gift-rec-area', 'gift-rec-city', 'gift-rec-state', 'gift-rec-pin', 'gift-sender-name', 'gift-sender-phone']
-      : ['dlv-name', 'dlv-phone', 'dlv-address', 'dlv-area', 'dlv-city', 'dlv-state', 'dlv-pin'];
-
-    let isValid = true;
-    let firstInvalid = null;
-
-    for (let id of required) {
-      const val = (this.deliveryDetails[id] || "").trim();
-      const errEl = document.getElementById(`err-${id}`);
-      if (!val) {
-        isValid = false;
-        if (errEl) errEl.style.display = 'block';
-        if (!firstInvalid) firstInvalid = document.getElementById(id);
-      } else {
-        if (errEl) errEl.style.display = 'none';
-      }
+    if (quoted.length) {
+      lines.push('', 'ITEMS REQUIRING AN OWNER QUOTE');
+      quoted.forEach(item => lines.push(`• ${item.name} — ${item.sizeLabel || item.size}, quantity ${item.quantity}: please share pricing.`));
+      lines.push('The final total will include the above fixed-price subtotal plus the quoted items and any delivery charges.');
     }
-
-    if (!isValid) {
-      this.showToast(isGift ? "Please complete recipient and sender details." : "Please complete all required delivery details.");
-      if (firstInvalid) {
-        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        firstInvalid.focus();
-      }
-      return;
-    }
-
-    const retailItems = this.items.filter(i => !i.isBulk);
-    const bulkItems = this.items.filter(i => i.isBulk);
-
-    let itemsText = "";
-
-    if (retailItems.length > 0) {
-      itemsText += `ORDER DETAILS
-
-` +
-        retailItems.map((item) =>
-          `${item.name} — ${item.size}
-₹${item.price.toLocaleString("en-IN")} × ${item.quantity} = ₹${(item.price * item.quantity).toLocaleString("en-IN")}`
-        ).join("\n\n") + "\n\n";
-    }
-
-    if (bulkItems.length > 0) {
-      itemsText += `WHOLESALE / BULK INQUIRY
-
-` +
-        bulkItems.map((item) =>
-          `${item.name} — ${item.size}
-Quantity: ${item.quantity} units (Wholesale Quote Requested)`
-        ).join("\n\n") + "\n\n";
-    }
-
-    const totals = this.calculateTotals();
-
-    let totalLine = "";
-    if (totals.subtotal > 0) {
-      totalLine = `--------------------
-` +
-        `Items Subtotal: ₹${totals.subtotal.toLocaleString("en-IN")}
-`;
-        
-      if (totals.discount > 0) {
-        totalLine += `Promo Discount: -₹${totals.discount.toLocaleString("en-IN")}
-`;
-      }
-      
-      totalLine += `Payable Total: ₹${totals.finalTotal.toLocaleString("en-IN")}
-` +
-        `--------------------
-
-`;
-    }
-
-    let dlvText = "";
-    if (isGift) {
-      dlvText += `🎁 *FESTIVE GIFT ORDER (DIRECT TO RECIPIENT)*\n\n`;
-      dlvText += `*RECIPIENT (DELIVER TO):*\n`;
-      dlvText += `• Name: ${(this.deliveryDetails['gift-rec-name'] || '').trim()}\n`;
-      dlvText += `• Mobile: ${(this.deliveryDetails['gift-rec-phone'] || '').trim()}\n`;
-      dlvText += `• Address: ${(this.deliveryDetails['gift-rec-address'] || '').trim()}, ${(this.deliveryDetails['gift-rec-area'] || '').trim()}\n`;
-      dlvText += `• City & PIN: ${(this.deliveryDetails['gift-rec-city'] || '').trim()}, ${(this.deliveryDetails['gift-rec-state'] || '').trim()} - ${(this.deliveryDetails['gift-rec-pin'] || '').trim()}\n\n`;
-
-      dlvText += `*GIFT SENT BY (SENDER):*\n`;
-      dlvText += `• Sender Name: ${(this.deliveryDetails['gift-sender-name'] || '').trim()}\n`;
-      dlvText += `• Sender Mobile: ${(this.deliveryDetails['gift-sender-phone'] || '').trim()}\n`;
-
-      const giftMsg = (this.deliveryDetails['gift-message'] || '').trim();
-      if (giftMsg) {
-        dlvText += `• Card Greeting Note: "${giftMsg}"\n`;
-      }
-    } else {
-      dlvText += `*DELIVERY DETAILS:*\n\n`;
-      dlvText += `• Name: ${(this.deliveryDetails['dlv-name'] || '').trim()}\n`;
-      dlvText += `• Mobile: ${(this.deliveryDetails['dlv-phone'] || '').trim()}\n\n`;
-      dlvText += `• Address: ${(this.deliveryDetails['dlv-address'] || '').trim()}, ${(this.deliveryDetails['dlv-area'] || '').trim()}\n`;
-      dlvText += `• City & PIN: ${(this.deliveryDetails['dlv-city'] || '').trim()}, ${(this.deliveryDetails['dlv-state'] || '').trim()} - ${(this.deliveryDetails['dlv-pin'] || '').trim()}\n`;
-      
-      if (this.deliveryDetails['dlv-landmark'] && this.deliveryDetails['dlv-landmark'].trim()) {
-        dlvText += `• Landmark: ${this.deliveryDetails['dlv-landmark'].trim()}\n`;
-      }
-      if (this.deliveryDetails['dlv-instructions'] && this.deliveryDetails['dlv-instructions'].trim()) {
-        dlvText += `• Delivery Instructions: ${this.deliveryDetails['dlv-instructions'].trim()}\n`;
-      }
-    }
-
-    const message = `Hello Nut Delicacy,
-
-` +
-      `I would like to place an order.
-
-` +
-      `${itemsText}` +
-      `${totalLine}` +
-      `${dlvText}
-
-` +
-      `Please share the available payment options so I can complete my order.`;
-
-    const encoded = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/919512512151?text=${encoded}`;
-    window.open(whatsappUrl, "_blank");
+    const labels = this.orderType === 'gift'
+      ? {'gift-rec-name':'Recipient','gift-rec-phone':'Recipient phone','gift-rec-address':'Recipient address','gift-rec-city':'City','gift-rec-state':'State','gift-rec-pin':'PIN','gift-sender-name':'Sender','gift-sender-phone':'Sender phone','gift-message':'Greeting'}
+      : {'dlv-name':'Name','dlv-phone':'Phone','dlv-address':'Address','dlv-area':'Area','dlv-city':'City','dlv-state':'State','dlv-pin':'PIN','dlv-instructions':'Delivery note'};
+    const details = Object.entries(labels).filter(([key]) => String(this.deliveryDetails[key] || '').trim()).map(([key,label]) => `${label}: ${String(this.deliveryDetails[key]).trim()}`);
+    if (details.length) lines.push('', 'CONTACT / DELIVERY DETAILS', ...details);
+    lines.push('', 'Please confirm the full amount and dispatch timeline before payment. Thank you.');
+    window.open(`https://wa.me/919512512151?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener,noreferrer');
   },
 
   showToast(text) {
@@ -1904,10 +1827,12 @@ function handleProductOpen(productId) {
 }
 
 function openProductModal(productId) {
+  productId = productId.replace("combo-milad-mithai-box", "combo-diwali-mithai-box");
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return;
 
-  // Cleanly close any open zoom before opening modal
+  // Release the previous product layer before switching a product hash.
+  if (currentModalProductId) closeProductModal(false);
   closeImageZoom();
 
   // Completely reset modal state
@@ -1947,8 +1872,9 @@ function openProductModal(productId) {
     if (product.includedProductIds && product.includedProductIds.length >= 2) {
       const p1 = PRODUCTS.find(p => p.id === product.includedProductIds[0]);
       const p2 = PRODUCTS.find(p => p.id === product.includedProductIds[1]);
-      if (p1) jar1Label = p1.name.replace(" Butter", "").replace(" (100% Pure)", "");
-      if (p2) jar2Label = p2.name.replace(" Butter", "").replace(" (100% Pure)", "");
+      if (product.id === 'combo-diwali-mithai-box') { jar1Label = 'Ingredients'; jar2Label = 'Gifting Ideas'; }
+      else if (p1) jar1Label = p1.name.replace(" Butter", "").replace(" (100% Pure)", "");
+      if (p2 && product.id !== 'combo-diwali-mithai-box') jar2Label = p2.name.replace(" Butter", "").replace(" (100% Pure)", "");
     }
     angleGalleryHtml = `
       <div class="modal-angle-gallery">
@@ -2017,12 +1943,12 @@ function openProductModal(productId) {
   const specGridHtml = isCombo ? `
     <div class="modal-spec-grid">
       <div class="modal-spec">
-        <span class="spec-label">Combo Savings</span>
+        <span class="spec-label">Gift Pricing</span>
         <span class="spec-val">${product.coldMilledTemp}</span>
       </div>
       <div class="modal-spec">
-        <span class="spec-label">Packaging</span>
-        <span class="spec-val">Luxury Presentation Box</span>
+        <span class="spec-label">Butter Shelf Life</span>
+        <span class="spec-val">2 months</span>
       </div>
       <div class="modal-spec" style="grid-column: 1 / -1;">
         <span class="spec-label">Included Jars</span>
@@ -2078,13 +2004,13 @@ function openProductModal(productId) {
           ${product.sizes.map((s, idx) => `
             <button type="button" class="size-btn ${idx === 0 ? 'selected' : ''} ${s.isBulk || s.price === null ? 'bulk-opt' : ''}" onclick="selectModalSize('${s.size}', this)">
               <span class="size-name">${s.size}</span>
-              <span class="size-price">${s.isBulk || s.price === null ? 'Price on Request' : '₹' + s.price.toLocaleString("en-IN")}</span>
+              <span class="size-price">${s.isBulk || s.price === null ? 'Price on request' : '₹' + s.price.toLocaleString("en-IN")}</span>
             </button>
           `).join("")}
         </div>
 
         <div id="modal-bulk-notice" class="bulk-inquiry-box" style="display:none;">
-          <strong>Wholesale / Bulk / Custom Order Selected:</strong> Pricing is tailored based on quantity. When you click below, your inquiry will be sent directly to our WhatsApp concierge.
+          <strong>Price on request.</strong> Add this selection to your cart to discuss it with the owner.
         </div>
 
         <div class="modal-purchase-container" id="modal-action-row">
@@ -2095,8 +2021,8 @@ function openProductModal(productId) {
               <button type="button" onclick="changeModalQty(1)" aria-label="Increase quantity">+</button>
             </div>
             <button type="button" class="btn-primary modal-add-btn" id="modal-main-add-btn" onclick="addModalToBag()">
-              <span>Add to Tasting Bag</span>
-              <strong id="modal-total-price">${product.sizes[0].price !== null ? '₹' + product.sizes[0].price.toLocaleString("en-IN") : 'Price on Request'}</strong>
+              <span>Add to cart</span>
+              <strong id="modal-total-price">${product.sizes[0].price !== null ? '₹' + product.sizes[0].price.toLocaleString("en-IN") : 'Price on request'}</strong>
             </button>
           </div>
           <div class="modal-tier2-row">
@@ -2110,6 +2036,12 @@ function openProductModal(productId) {
     </div>
   `;
 
+  if (product.isUpcoming) {
+    const sizes = content.querySelector('.modal-size-selector');
+    sizes?.previousElementSibling?.remove(); sizes?.remove();
+    content.querySelector('#modal-bulk-notice')?.remove();
+    content.querySelector('#modal-action-row').innerHTML = '<p class="upcoming-product-note">Coming soon. This product is not yet available to order.</p>';
+  }
   // Explicit backdrop dismiss handler
   backdrop.onclick = function(e) {
     if (e.target === backdrop) {
@@ -2141,6 +2073,7 @@ function changeModalQty(delta) {
 function updateModalPriceDisplay() {
   const product = PRODUCTS.find(p => p.id === currentModalProductId);
   if (!product) return;
+  if (product.isUpcoming) return;
   const sizeOpt = product.sizes.find(s => s.size === currentModalSize) || product.sizes[0];
   const isBulk = Boolean(sizeOpt.isBulk || sizeOpt.price === null);
 
@@ -2149,19 +2082,19 @@ function updateModalPriceDisplay() {
   const bulkNotice = document.getElementById("modal-bulk-notice");
 
   if (isBulk) {
-    if (bulkNotice) bulkNotice.style.display = "block";
-    if (priceEl) priceEl.textContent = "Price on Request";
+    if (bulkNotice) bulkNotice.style.display = 'none';
+    if (priceEl) priceEl.textContent = "Price on request";
     if (mainBtn) {
-      mainBtn.innerHTML = `<span>Request Quote on WhatsApp</span>`;
+      mainBtn.innerHTML = `<span>Add to cart</span><strong>Price on request</strong>`;
       mainBtn.className = "btn-bulk-whatsapp";
-      mainBtn.onclick = () => orderModalDirectWhatsApp();
+      mainBtn.onclick = () => addModalToBag();
     }
   } else {
     if (bulkNotice) bulkNotice.style.display = "none";
     const totalPrice = sizeOpt.price * currentModalQty;
     if (priceEl) priceEl.textContent = `₹${totalPrice.toLocaleString("en-IN")}`;
     if (mainBtn) {
-      mainBtn.innerHTML = `<span>Add to Tasting Bag</span><strong id="modal-total-price">₹${totalPrice.toLocaleString("en-IN")}</strong>`;
+      mainBtn.innerHTML = `<span>Add to cart</span><strong id="modal-total-price">₹${totalPrice.toLocaleString("en-IN")}</strong>`;
       mainBtn.className = "btn-primary modal-add-btn";
       mainBtn.onclick = () => addModalToBag();
     }
@@ -2209,6 +2142,7 @@ function orderModalDirectWhatsApp() {
 }
 
 function closeProductModal(fromUserAction = false) {
+  if (!currentModalProductId) return;
   const backdrop = document.getElementById("product-modal-backdrop");
   if (backdrop) {
     backdrop.classList.remove("active");
@@ -2233,6 +2167,8 @@ function closeProductModal(fromUserAction = false) {
 // ==========================================
 // 6. DYNAMIC CATALOG GRID RENDERER (SORTED BY AVAILABILITY)
 // ==========================================
+const CATALOG_THUMBNAILS = new Set(["zafran-gold-butter", "hazelnut-chocolate-butter", "pistachio-butter", "hazelnut-butter-pure", "macadamia-butter", "almond-butter", "cashew-butter", "cashew-chocolate-butter", "almond-chocolate-butter", "almond-dark-chocolate-butter", "walnut-almond-butter", "walnut-chocolate-butter", "pecan-chocolate", "walnut-butter", "pecan-butter", "walnut-almond-chocolate", "peanut-butter", "peanut-chocolate-butter", "sunflower-seed-butter", "pumpkin-seed-butter", "nuts-and-seeds-balls", "combo-everyday-duo", "combo-classic-duo", "combo-grand-reserve-trio", "combo-complete-collection", "combo-chocolate-lovers-duo", "combo-nutty-trio-starter", "combo-zafran-pista-duo", "combo-everyday-to-exquisite", "combo-pure-nut-flight", "combo-build-your-own-trio", "combo-corporate-bulk-set-10"]);
+
 function renderCatalogGrid(category = "all") {
   const container = document.getElementById("products-grid-container");
   if (!container) return;
@@ -2251,6 +2187,10 @@ function renderCatalogGrid(category = "all") {
   }
 
   const sorted = [...filtered].sort((a, b) => {
+    if (container.dataset.gifting) {
+      if (a.id === 'combo-diwali-mithai-box') return -1;
+      if (b.id === 'combo-diwali-mithai-box') return 1;
+    }
     const getAvailabilityTier = (p) => {
       if (p.hasImages) return 1;
       if (p.category === "combos") return 2;
@@ -2261,24 +2201,29 @@ function renderCatalogGrid(category = "all") {
 
   container.innerHTML = sorted.map(product => {
     const defaultSize = product.sizes[0];
+    const gifting = container.dataset.gifting === "true";
     let frontImg = "product-preview.webp";
     if (product.images && product.images.front) {
       frontImg = product.images.front;
     } else if (product.category === "combos") {
-      frontImg = "hero banner image.webp";
+      frontImg = "assets/catalog/gift-placeholder-800.webp";
     } else {
-      frontImg = "upcoming products.webp";
+      frontImg = "assets/catalog/coming-soon-800.webp";
     }
 
-    const priceText = defaultSize.price !== null
+    if (CATALOG_THUMBNAILS.has(product.id)) frontImg = `assets/catalog/${product.id}-480.webp`;
+    const responsiveImage = CATALOG_THUMBNAILS.has(product.id)
+      ? `srcset="assets/catalog/${product.id}-480.webp 480w, assets/catalog/${product.id}-800.webp 800w" sizes="(max-width: 600px) 45vw, (max-width: 1000px) 30vw, 300px"`
+      : product.id === 'combo-diwali-mithai-box' ? 'srcset="assets/diwali/greeting-480.webp 480w, assets/diwali/greeting-800.webp 800w" sizes="(max-width: 600px) 45vw, 300px"' : '';
+    const priceText = product.isUpcoming ? 'Coming soon' : defaultSize.price !== null
       ? `₹${defaultSize.price.toLocaleString("en-IN")}`
-      : "Price on Request";
+      : "Price on request";
 
     return `
       <article class="product-card" id="product-${product.id}">
-        <a class="card-link" href="#product-${product.id}" data-product-id="${product.id}" aria-label="View details of ${product.name}">
+        <a class="card-link" href="${product.hasImages ? new URL('shop/' + product.slug + '.html', SITE_ASSET_BASE).href : '#product-' + product.id}" onclick="if(!event.ctrlKey&&!event.metaKey&&!event.shiftKey&&!event.altKey){event.preventDefault();handleProductOpen(this.dataset.productId)}" data-product-id="${product.id}" aria-label="View details of ${product.name}">
           <div class="card-img-wrap">
-            <img src="${frontImg}" alt="${product.name}" class="card-img" loading="lazy" onerror="this.src='product-preview.webp'">
+            <img src="${frontImg}" ${responsiveImage} alt="${product.name}" width="800" height="800" decoding="async" class="card-img" loading="lazy" onerror="this.src='product-preview.webp'">
           </div>
           <div class="card-info">
             <h3 class="card-title">${product.name}</h3>
@@ -2286,8 +2231,9 @@ function renderCatalogGrid(category = "all") {
           </div>
         </a>
         <button type="button" class="btn-card-quick-view" data-product-id="${product.id}" onclick="event.preventDefault(); window.location.hash = '#product-' + this.dataset.productId;" aria-label="Quick View ${product.name}">
-          <span>View Details →</span>
+          <span>View details →</span>
         </button>
+        ${product.isUpcoming ? '' : `<button type="button" class="btn-card-add" onclick="Cart.add('${product.id}', '${defaultSize.size}', 1)" aria-label="Add ${product.name} to cart">Add to cart <span aria-hidden="true">+</span></button>`}
       </article>
     `;
   }).join("");
@@ -2340,8 +2286,8 @@ function initPagePreloader() {
     }, 450);
   }
 
-  if (document.readyState === "complete") {
-    setTimeout(dismiss, 100);
+  if (document.readyState !== "loading") {
+    dismiss();
   } else {
     window.addEventListener("load", () => setTimeout(dismiss, 150));
     // Safety fallback: dismiss after 700ms max
@@ -2368,85 +2314,6 @@ function sendConciergeInquiry(type) {
 }
 
 // ==========================================
-// 9. FESTIVE CELEBRATION (NAVRATRI & DIWALI POPUP)
-// ==========================================
-const FestiveCelebration = {
-  hasTriggeredOnHomeClimax: false,
-  isActive: false,
-
-  injectModalHtml() {
-    if (document.getElementById("festive-celebration-wrap")) return;
-    const wrap = document.createElement("div");
-    wrap.id = "festive-celebration-wrap";
-    wrap.innerHTML = `
-      <div class="festive-modal-backdrop" id="festive-modal-backdrop" onclick="if(event.target===this) FestiveCelebration.closeModal()">
-        <div class="festive-modal-card" onclick="event.stopPropagation()">
-          <button type="button" class="festive-modal-close" onclick="FestiveCelebration.closeModal()" aria-label="Close celebration modal">✕</button>
-          
-          <div class="festive-header">
-            <div class="festive-badge-shine">
-              <span class="festive-sparkle-icon">✨</span>
-              <span>Coming Soon</span>
-              <span class="festive-sparkle-icon">✨</span>
-            </div>
-
-            <h2 class="festive-title">
-              Navratri & Diwali <span class="festive-highlight-text">Collections</span>
-            </h2>
-            
-            <div class="festive-ornament-divider">
-              <span class="ornament-line"></span>
-              <span class="ornament-symbol">✦ 🪔 ✦</span>
-              <span class="ornament-line"></span>
-            </div>
-          </div>
-
-          <div class="festive-banner-frame">
-            <img src="hero banner image.webp" alt="Njoy by Nut Delicacy Festive Collection" class="festive-banner-img" onerror="this.src='product-preview.webp'">
-            <div class="festive-banner-badge">Upcoming Exclusive Hampers</div>
-          </div>
-
-          <p class="festive-desc">
-            Get ready for our limited-edition Navratri and Diwali festive hampers. Experience the joy of pure, stone-ground luxury nut butters crafted specially for the season.
-          </p>
-
-          <div class="festive-actions">
-            <button type="button" class="btn-festive-apply" onclick="FestiveCelebration.closeModal()">
-              <span>Stay Tuned</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(wrap);
-  },
-
-  launchCelebration() {
-    this.injectModalHtml();
-    const backdrop = document.getElementById("festive-modal-backdrop");
-    if (backdrop) {
-      backdrop.style.display = "flex";
-      // trigger reflow
-      void backdrop.offsetWidth;
-      backdrop.classList.add("active");
-    }
-    this.isActive = true;
-  },
-
-  closeModal() {
-    const backdrop = document.getElementById("festive-modal-backdrop");
-    if (backdrop) {
-      backdrop.classList.remove("active");
-      setTimeout(() => {
-        backdrop.style.display = "none";
-      }, 400); // Wait for transition
-    }
-    this.isActive = false;
-    sessionStorage.setItem("festive_modal_dismissed", "true");
-  }
-};
-
-
 // Keyboard navigation for modals, lightboxes & image slider
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
@@ -2455,9 +2322,7 @@ window.addEventListener("keydown", (e) => {
       closeImageZoom();
       return;
     }
-    if (typeof FestiveCelebration !== "undefined" && FestiveCelebration.isActive) {
-      FestiveCelebration.closeModal();
-    }
+
     closeProductModal();
     Cart.closeDrawer();
   } else if (e.key === "ArrowRight") {
@@ -2479,7 +2344,7 @@ window.addEventListener("keydown", (e) => {
 function syncModalFromHash() {
   const hash = window.location.hash || "";
   if (hash.startsWith("#product-")) {
-    const productId = hash.replace("#product-", "");
+    const productId = hash.replace("#product-", "").replace("combo-milad-mithai-box", "combo-diwali-mithai-box");
     openProductModal(productId);
   } else {
     closeProductModal(false);
@@ -2492,7 +2357,14 @@ window.addEventListener("hashchange", syncModalFromHash);
 document.addEventListener("DOMContentLoaded", () => {
   initPagePreloader();
   Cart.init();
-  renderCatalogGrid("all");
+  renderCatalogGrid(document.getElementById("products-grid-container")?.dataset.gifting ? "combos" : "all");
+  document.querySelectorAll('.filter-tab-btn[onclick]').forEach(button => {
+    const category = button.getAttribute('onclick').match(/filterCategory\(['"]([^'"]+)/)?.[1];
+    if (category && /\(\d+\)/.test(button.textContent)) {
+      const count = category === 'all' ? PRODUCTS.length : PRODUCTS.filter(p => p.category === category).length;
+      button.textContent = button.textContent.replace(/\(\d+\)/, `(${count})`);
+    }
+  });
   initCategoryFromUrl();
   syncModalFromHash();
 
@@ -2505,68 +2377,60 @@ window.addEventListener("popstate", () => {
     closeImageZoom();
     return;
   }
-  if (typeof FestiveCelebration !== "undefined" && FestiveCelebration.isActive) {
-    FestiveCelebration.closeModal();
-    return;
-  }
+
 });
 
 
 
 // ==========================================
-// 3. MORE MENU DRAWER & GLOBAL CONTROLLER
-// ==========================================
+// Shared, accessible navigation controller.
+let moreMenuReturnFocus = null;
+
 function openMoreMenu() {
-  const overlay = document.getElementById("more-menu-overlay");
-  const sheet = document.getElementById("more-menu-sheet");
-  if (overlay) {
-    overlay.style.display = "block";
-    setTimeout(() => overlay.classList.add("active"), 10);
-  }
-  if (sheet) {
-    sheet.style.display = "block";
-    sheet.style.visibility = "visible";
-    setTimeout(() => sheet.classList.add("active"), 10);
-  }
-  if (typeof Cart !== "undefined" && Cart.updateBadges) {
-    Cart.updateBadges();
-  }
+  const sheet = document.getElementById('more-menu-sheet');
+  const overlay = document.getElementById('more-menu-overlay');
+  if (!sheet || sheet.classList.contains('active')) return;
+  moreMenuReturnFocus = document.activeElement;
+  sheet.hidden = false;
+  overlay.hidden = false;
+  sheet.classList.add('active');
+  overlay.classList.add('active');
+  document.querySelectorAll('[aria-controls="more-menu-sheet"]').forEach(b => b.setAttribute('aria-expanded', 'true'));
+  _lockScroll();
+  sheet.querySelector('button').focus({ preventScroll: true });
 }
 
 function closeMoreMenu() {
-  const overlay = document.getElementById("more-menu-overlay");
-  const sheet = document.getElementById("more-menu-sheet");
-  if (sheet) {
-    sheet.classList.remove("active");
-    setTimeout(() => {
-      sheet.style.display = "none";
-      sheet.style.visibility = "hidden";
-    }, 380);
-  }
-  if (overlay) {
-    overlay.classList.remove("active");
-    setTimeout(() => { overlay.style.display = "none"; }, 300);
-  }
+  const sheet = document.getElementById('more-menu-sheet');
+  if (!sheet || !sheet.classList.contains('active')) return;
+  sheet.classList.remove('active');
+  sheet.hidden = true;
+  const overlay = document.getElementById('more-menu-overlay');
+  overlay.classList.remove('active');
+  overlay.hidden = true;
+  document.querySelectorAll('[aria-controls="more-menu-sheet"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+  _unlockScroll();
+  moreMenuReturnFocus?.focus({ preventScroll: true });
 }
 
 function toggleMoreMenu() {
-  const sheet = document.getElementById("more-menu-sheet");
-  if (sheet && sheet.classList.contains("active")) {
-    closeMoreMenu();
-  } else {
-    openMoreMenu();
-  }
+  document.getElementById('more-menu-sheet')?.classList.contains('active') ? closeMoreMenu() : openMoreMenu();
 }
 
-function toggleNavDropdown(e) {
-  if (e) e.stopPropagation();
-  const wrap = document.querySelector(".nav-dropdown-wrap");
-  if (wrap) wrap.classList.toggle("open");
-}
+function toggleNavDropdown() { toggleMoreMenu(); }
 
-document.addEventListener("click", function(e) {
-  const wrap = document.querySelector(".nav-dropdown-wrap");
-  if (wrap && !wrap.contains(e.target)) {
-    wrap.classList.remove("open");
-  }
+document.addEventListener('keydown', e => {
+  const sheet = document.getElementById('more-menu-sheet');
+  if (!sheet?.classList.contains('active')) return;
+  if (e.key === 'Escape') closeMoreMenu();
+  if (e.key !== 'Tab') return;
+  const items = [...sheet.querySelectorAll('a[href], button')];
+  const first = items[0], last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#site-header,.mobile-bottom-nav,.whatsapp-concierge-wrap').forEach(el => el.classList.add('cinematic-visible'));
+  document.querySelectorAll('.more-links a').forEach(a => a.addEventListener('click', closeMoreMenu));
 });
