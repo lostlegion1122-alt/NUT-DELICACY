@@ -1,3 +1,154 @@
+/* ==========================================================================
+   ELEGANT 'J' & 'j' LETTERFORM REFINEMENT FOR FRAUNCES
+   Replaces ONLY U+004A ('J') and U+006A ('j') across the entire website
+   so that all other Fraunces characters (A-I, K-Z, a-i, k-z, etc.) remain
+   100% untouched, while 'J' and 'j' render with elegant, balanced serif shapes.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('assets/fonts/fraunces-j-norm_400.woff') format('woff'), url('/assets/fonts/fraunces-j-norm_400.woff') format('woff'), url('assets/fonts/fraunces-j-norm_400.ttf') format('truetype');
+  font-weight: 300 450;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('assets/fonts/fraunces-j-norm_500.woff') format('woff'), url('/assets/fonts/fraunces-j-norm_500.woff') format('woff'), url('assets/fonts/fraunces-j-norm_500.ttf') format('truetype');
+  font-weight: 451 550;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('assets/fonts/fraunces-j-norm_600.woff') format('woff'), url('/assets/fonts/fraunces-j-norm_600.woff') format('woff'), url('assets/fonts/fraunces-j-norm_600.ttf') format('truetype');
+  font-weight: 551 650;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('assets/fonts/fraunces-j-norm_700.woff') format('woff'), url('/assets/fonts/fraunces-j-norm_700.woff') format('woff'), url('assets/fonts/fraunces-j-norm_700.ttf') format('truetype');
+  font-weight: 651 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('assets/fonts/fraunces-j-ital_400.woff') format('woff'), url('/assets/fonts/fraunces-j-ital_400.woff') format('woff'), url('assets/fonts/fraunces-j-ital_400.ttf') format('truetype');
+  font-weight: 300 450;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('assets/fonts/fraunces-j-ital_500.woff') format('woff'), url('/assets/fonts/fraunces-j-ital_500.woff') format('woff'), url('assets/fonts/fraunces-j-ital_500.ttf') format('truetype');
+  font-weight: 451 550;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('assets/fonts/fraunces-j-ital_600.woff') format('woff'), url('/assets/fonts/fraunces-j-ital_600.woff') format('woff'), url('assets/fonts/fraunces-j-ital_600.ttf') format('truetype');
+  font-weight: 551 650;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('assets/fonts/fraunces-j-ital_700.woff') format('woff'), url('/assets/fonts/fraunces-j-ital_700.woff') format('woff'), url('assets/fonts/fraunces-j-ital_700.ttf') format('truetype');
+  font-weight: 651 900;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces-JFix';
+  src: url('assets/fonts/fraunces-j-norm_400.woff') format('woff'), url('/assets/fonts/fraunces-j-norm_400.woff') format('woff'), url('assets/fonts/fraunces-j-norm_400.ttf') format('truetype');
+  font-weight: 300 450;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces-JFix';
+  src: url('assets/fonts/fraunces-j-norm_500.woff') format('woff'), url('/assets/fonts/fraunces-j-norm_500.woff') format('woff'), url('assets/fonts/fraunces-j-norm_500.ttf') format('truetype');
+  font-weight: 451 550;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces-JFix';
+  src: url('assets/fonts/fraunces-j-norm_600.woff') format('woff'), url('/assets/fonts/fraunces-j-norm_600.woff') format('woff'), url('assets/fonts/fraunces-j-norm_600.ttf') format('truetype');
+  font-weight: 551 650;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces-JFix';
+  src: url('assets/fonts/fraunces-j-norm_700.woff') format('woff'), url('/assets/fonts/fraunces-j-norm_700.woff') format('woff'), url('assets/fonts/fraunces-j-norm_700.ttf') format('truetype');
+  font-weight: 651 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces-JFix';
+  src: url('assets/fonts/fraunces-j-ital_400.woff') format('woff'), url('/assets/fonts/fraunces-j-ital_400.woff') format('woff'), url('assets/fonts/fraunces-j-ital_400.ttf') format('truetype');
+  font-weight: 300 450;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces-JFix';
+  src: url('assets/fonts/fraunces-j-ital_500.woff') format('woff'), url('/assets/fonts/fraunces-j-ital_500.woff') format('woff'), url('assets/fonts/fraunces-j-ital_500.ttf') format('truetype');
+  font-weight: 451 550;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces-JFix';
+  src: url('assets/fonts/fraunces-j-ital_600.woff') format('woff'), url('/assets/fonts/fraunces-j-ital_600.woff') format('woff'), url('assets/fonts/fraunces-j-ital_600.ttf') format('truetype');
+  font-weight: 551 650;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
+@font-face {
+  font-family: 'Fraunces-JFix';
+  src: url('assets/fonts/fraunces-j-ital_700.woff') format('woff'), url('/assets/fonts/fraunces-j-ital_700.woff') format('woff'), url('assets/fonts/fraunces-j-ital_700.ttf') format('truetype');
+  font-weight: 651 900;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+004A, U+006A;
+}
+
 /* ===================================================
    NUT DELICACY — LUXURY BRAND DESIGN SYSTEM & SHARED STYLES
    =================================================== */
@@ -88,7 +239,7 @@
 }
 
 .preloader-brand-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 2.5px;
@@ -186,13 +337,18 @@ header.scrolled {
 
 .brand-text strong {
   display: block;
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Fraunces-JFix', 'Fraunces-JFix', 'Fraunces', Georgia, serif;
   font-size: 22px;
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   line-height: 1;
   color: var(--brown);
   white-space: nowrap;
+}
+
+.footer-brand strong {
+  font-family: 'Fraunces-JFix', 'Fraunces-JFix', 'Fraunces', Georgia, serif !important;
+  letter-spacing: 0;
 }
 
 .brand-text span {
@@ -634,7 +790,7 @@ nav.main-nav a.active::after {
 }
 
 .festive-title {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', Georgia, serif;
   font-size: clamp(28px, 5vw, 42px);
   font-weight: 800;
   color: #2e1a11;
@@ -644,7 +800,7 @@ nav.main-nav a.active::after {
 
 .festive-highlight-text {
   display: inline-block;
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', Georgia, serif;
   font-style: italic;
   font-weight: 700;
   color: #b38b47;
@@ -795,7 +951,7 @@ nav.main-nav a.active::after {
 }
 
 .hero-showcase-title {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', Georgia, serif;
   font-size: clamp(36px, 5.5vw, 64px);
   color: var(--brown-dark);
   line-height: 1.08;
@@ -1107,7 +1263,7 @@ nav.main-nav a.active::after {
 }
 
 .product-card .card-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 18px;
   font-weight: 600;
   color: var(--brown);
@@ -1120,7 +1276,7 @@ nav.main-nav a.active::after {
 }
 
 .product-card .card-price {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 17px;
   font-weight: 700;
   color: var(--olive);
@@ -1199,7 +1355,7 @@ nav.main-nav a.active::after {
 }
 
 .featured-horizontal-header h2 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: clamp(28px, 4vw, 46px);
   color: var(--brown-deep);
   line-height: 1.12;
@@ -1351,7 +1507,7 @@ nav.main-nav a.active::after {
 }
 
 .featured-card-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 19px;
   color: var(--brown-deep);
   line-height: 1.2;
@@ -1462,7 +1618,7 @@ nav.main-nav a.active::after {
 }
 
 .explore-more-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 24px;
   color: var(--white);
   line-height: 1.2;
@@ -1677,7 +1833,7 @@ nav.main-nav a.active::after {
 }
 
 .lightbox-title-box strong {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 20px;
   display: block;
   color: #fffdfa;
@@ -1956,7 +2112,7 @@ nav.main-nav a.active::after {
 }
 
 .cart-drawer-header h3 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 22px;
   font-weight: 600;
   color: var(--brown);
@@ -2007,7 +2163,7 @@ nav.main-nav a.active::after {
 }
 
 .cart-empty-state h4 {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 20px;
   color: var(--brown);
 }
@@ -2036,7 +2192,7 @@ nav.main-nav a.active::after {
 }
 
 .cart-item-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 15.5px;
   font-weight: 600;
   color: var(--brown);
@@ -2220,7 +2376,7 @@ nav.main-nav a.active::after {
 }
 
 .cart-subtotal-row strong {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 22px;
   color: var(--brown);
 }
@@ -2502,7 +2658,7 @@ nav.main-nav a.active::after {
 }
 
 .modal-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: clamp(26px, 3.5vw, 36px);
   color: var(--brown);
   line-height: 1.15;
@@ -2901,7 +3057,7 @@ nav.main-nav a.active::after {
 
 .concierge-header-info strong {
   display: block;
-  font-family: 'Fraunces', serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', serif;
   font-size: 17px;
 }
 
@@ -3436,7 +3592,7 @@ nav.main-nav a.active::after {
 }
 
 .more-menu-header h3 {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Fraunces-JFix', 'Fraunces', Georgia, serif;
   font-size: 22px;
   font-weight: 600;
   color: #2E1A11;
@@ -3804,7 +3960,7 @@ nav.main-nav a,.nav-dropdown-btn { min-height:44px; display:inline-flex; align-i
 .more-menu-sheet { z-index:1260; top:90px; right:24px; bottom:auto; left:auto; margin:0; width:360px; max-width:calc(100vw - 32px); max-height:calc(100svh - 116px); border:1px solid #e3dac8; border-radius:12px; background:#fffcf5; padding:24px; box-shadow:0 16px 60px #201b1420; transform:none; transition:none; }
 .more-menu-sheet.active { display:block; }
 .more-menu-header { margin:0; padding-bottom:20px; border-color:#e3dac8; }
-.more-menu-header h3 { font-family:'Fraunces',Georgia,serif; font-size:24px; color:#302315; margin:5px 0 0; }
+.more-menu-header h3 { font-family:'Fraunces-JFix', 'Fraunces',Georgia,serif; font-size:24px; color:#302315; margin:5px 0 0; }
 .more-menu-eyebrow { color:#7c6745; font-size:9px; letter-spacing:.14em; }
 .more-menu-close { display:grid; place-items:center; width:44px; height:44px; background:none; border:1px solid #e3dac8; border-radius:50%; font-size:24px; color:#51452f; cursor:pointer; flex-shrink:0; }
 .more-links { display:block; }

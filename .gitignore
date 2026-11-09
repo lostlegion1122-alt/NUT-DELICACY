@@ -8,6 +8,8 @@ node_modules/
 *.log
 scratch/
 .system_generated/
+__pycache__/
+*.pyc
 
 # Local QA and source artwork
 output/

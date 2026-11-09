@@ -3,7 +3,7 @@
 .product-page-visual img { width:100%; height:auto; aspect-ratio:1; object-fit:contain; display:block; border-radius:10px; }
 .product-page-copy { padding:20px 0; }
 .product-page-copy .guide-category { color:#9b7e46; letter-spacing:.12em; font-size:10px; text-transform:uppercase; }
-.product-page-copy h1 { font:500 clamp(32px,4vw,48px)/1.12 'Fraunces',Georgia,serif; margin:20px 0; }
+.product-page-copy h1 { font:500 clamp(32px,4vw,48px)/1.12 'Fraunces-JFix','Fraunces-JFix', 'Fraunces',Georgia,serif; margin:20px 0; }
 .product-page-copy > p { color:#7c6c51; font-size:13px; line-height:1.8; margin:0 0 20px; }
 .product-page-subtitle { color:#657343 !important; font-size:14px !important; }
 .product-page-options { display:grid; gap:8px; margin:24px 0 20px; }
@@ -16,6 +16,6 @@
 .product-page-add { min-height:48px; padding:14px 20px; border:1px solid #3f4b23; border-radius:6px; background:#3f4b23; color:#fffdf4; font:600 12px 'Plus Jakarta Sans',sans-serif; cursor:pointer; width:100%; }
 .product-page-note { font-size:10px !important; color:#9c8b6a !important; margin-top:18px !important; }
 .product-page-information { margin-top:42px; max-width:800px; border-top:1px solid #dbceb3; padding-top:25px; }
-.product-page-information h2 { font:500 25px 'Fraunces',Georgia,serif; margin:25px 0 15px; }
+.product-page-information h2 { font:500 25px 'Fraunces-JFix','Fraunces-JFix', 'Fraunces',Georgia,serif; margin:25px 0 15px; }
 .product-page-information p { font-size:13px; color:#807056; line-height:1.8; }
 @media(max-width:850px) { .product-page-layout { grid-template-columns:1fr; gap:18px; } .product-page-visual { position:static; } .product-page-visual img { max-height:370px; } .product-page-copy { padding:10px 0; } .product-page-copy h1 { font-size:34px; } }
